@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>An alternate construction of the complex numbers</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">An alternate construction of the complex numbers</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgb561dee">Introduction</a></li>
+<li><a href="#org14b19a7">Quotient rings of \(\Z\)</a></li>
+<li><a href="#org8216d9b">Quotient rings of \(\R[x]\)</a></li>
+<li><a href="#org62d1794">The alternate construction</a></li>
+<li><a href="#org3a4bf99">Closing remarks</a></li>
+</ul>
+</div>
+</div>
+<p>
+This post does not assume much more than basic knowledge of set theory
+and complex numbers, as well as familiarity with the concept of
+remainders in arithmetic (when dividing one number by another).
+</p>
+<div id="outline-container-orgb561dee" class="outline-2">
+<h2 id="orgb561dee">Introduction</h2>
+<div class="outline-text-2" id="text-orgb561dee">
+<p>
+The standard definition of complex numbers establishes the value \(i =
+\sqrt{-1}\) and then constructs the set
+\[\{a+bi \mid a,b \in \R\},\]
+along with an addition and multiplication operation. It seems
+reasonable enough, yet it still raises a few quesions: does it really
+make sense to define a number \(i\) by the property that \(i^2 = -1\)? Why
+do we define addition and multiplication this way, and not another
+way? An alternate construction may help clarify these issues.
+</p>
+</div>
+</div>
+<div id="outline-container-org14b19a7" class="outline-2">
+<h2 id="org14b19a7">Quotient rings of \(\Z\)</h2>
+<div class="outline-text-2" id="text-org14b19a7">
+<p>
+The central concept being introduced here is that of a <b>quotient
+ring</b>. Before we talk about quotient rings, we must first talk about
+rings.
+</p>
+
+<p>
+Roughly speaking, they are sets equipped with an addition and
+multiplication operation which satisfy a few properties; these
+properties will not be mentioned here. The main fact to keep in mind
+is that the sets \(\Z,\Q\) and \(\R\) are rings under the standard
+addition and multiplication, and the set of rational polynomials
+\(\Q[x]\) as well as the set of real polynomials \(\R[x]\) are rings under
+polynomial addition and multiplication.
+</p>
+
+<p>
+In \(\Z\), there is the notion of modular arithmetic, where addition and
+multiplication is done \(\text{mod}\) a particular number (say 4). For
+instance,
+</p>
+\begin{align*}
+2 + 3 &\equiv 1\ (\text{mod}\ 4) \\  
+3 \times 5 &\equiv 3\ (\text{mod}\ 4).
+\end{align*}
+
+<p>
+The statement \(a \equiv b\ (\text{mod}\ 4)\) means "\(a\) and \(b\) have
+the same remainder \(\text{mod}\ 4\)".
+</p>
+
+<p>
+We could try to define new operations \(+_4\) and \(\times_4\) (shorthand
+for "addition/multiplication \(\text{mod}\ 4\)"), such that the
+congruences become equalities:
+</p>
+\begin{align*}
+2 +_4 3 &= 1 \\
+3 \times_4 5 &= 3
+\end{align*}
+
+<p>
+However, this introduces some ambiguity. For example, the expression
+\(2 +_4 3 = 5\) is valid as well, since \(2 + 3 \equiv 5\ (\text{mod}\
+4)\). Yet clearly \(1 \neq 5\) as integers.
+</p>
+
+<p>
+What we would like is a way to treat numbers with the same remainder
+\(\text{mod}\ 4\) as "being equal", so that the operations \(+_4\) and
+\(\times_4\) become well-defined. Consider the sets
+</p>
+\begin{align*}
+\bar{0} &= \{\cdots,-8,-4,0,4,8,\cdots\} \\
+\bar{1} &= \{\cdots,-7,-3,1,5,9,\cdots\} \\
+\bar{2} &= \{\cdots,-6,-2,2,6,10,\cdots\} \\
+\bar{3} &= \{\cdots,-5,-1,3,7,11,\cdots\}
+\end{align*}
+<p>
+of integers with the same remainder \(\text{mod}\ 4\) (note that
+\(0,1,2,3\) are all the possible remainders \(\text{mod}\ 4\)). The key
+insight is to consider the sets themselves as individual elements, and
+then define \(+_4\) and \(\times_4\) on these elements. Namely,
+</p>
+\begin{align*}
+\bar{i} +_4 \bar{j} &= \text{the set containing $i+j$} \\
+\bar{i}	\times_4 \bar{j} &= \text{the set containing $ij$}.
+\end{align*}
+
+<p>
+ <div class="example">
+We have \(\bar{2} +_4 \bar{3} = \bar{1}\), because \(\bar{1}\) contains
+the element \(2+3 = 5\). Similarly \(\bar{2} \times_4 \bar{3} = \bar{2}\).
+ </div>
+</p>
+
+<p>
+It turns out that \(+_4\) and \(\times_4\) satisfy the properties required
+of a ring.  Hence, the elements \(\{\bar{0}, \bar{1}, \bar{2},
+\bar{3}\}\) under these operations form a ring called \(\Z/4\Z\). This
+construction can be generalised, giving rise to a family of rings
+\(\Z/n\Z\) where \(n\) is a positive integer. The name "quotient ring"
+reflects the choice of notation, which looks like a fraction
+\(\frac{\Z}{n\Z}\).
+</p>
+</div>
+</div>
+<div id="outline-container-org8216d9b" class="outline-2">
+<h2 id="org8216d9b">Quotient rings of \(\R[x]\)</h2>
+<div class="outline-text-2" id="text-org8216d9b">
+<p>
+Earlier, we constructed the sets \(\bar{i}\) of numbers with the same
+remainder \(\text{mod}\ 4\), defined the operations \(+_4\) and \(\times_4\)
+on these sets, and showed that this forms a ring.
+</p>
+
+<p>
+The general procedure works not just on integers but on polynomials as
+well. But we first have to establish what it means by "taking
+remainders mod a polynomial".
+</p>
+
+<p>
+Fix a real polynomial \(r(x)\), and let \(p(x),q(x)\) be arbitrary real
+polynomials. When we say that \(p(x) \equiv q(x)\ (\text{mod}\ r(x))\),
+we mean that \[p(x) = c(x)r(x)+q(x)\] for some polynomial \(c(x)\). In
+other words, \(p(x)\) and \(q(x)\) differ by a polynomial multiple of
+\(r(x)\).
+</p>
+
+<p>
+ <div class="example">
+We can say that \(x^2+4x+2 \equiv x\ (\text{mod}\ x+1)\), because
+\[x^2+4x+2 = (x+2)(x+1) + x.\]
+ </div>
+</p>
+
+<p>
+This is analagous to the integers: if \(a \equiv b\ \text{mod}\ n\),
+that means they differ by some multiple of \(n\).
+</p>
+
+<p>
+ <div class="definition">
+The <b>remainder</b> of a polynomial \(p(x)\) \(\text{mod}\ r(x)\) is the
+smallest degree polynomial \(q(x)\) such that \[p(x) \equiv q(x)\
+(\text{mod}\ r(x)).\]
+ </div>
+</p>
+
+<p>
+ <div class="example">
+As mentioned above, \[x^2+4x+2 \equiv x\ (\text{mod}\ x+1),\] but it
+is also true that \[x^2+4x+2 \equiv x^2+3x+1\ (\text{mod}\ x+1).\]
+(Why?) However, \(x\) is the smallest degree polynomial \(p(x)\)
+satisfying \(x^2+4x+2 \equiv p(x)\ (\text{mod}\ x+1)\), so it is the
+remainder of \(x^2+4x+2\ \text{mod}\ x+1\).
+ </div>
+</p>
+
+<p>
+Note that if \(q(x)\) is the remainder of \(p(x)\ \text{mod}\ r(x)\), then
+\(\deg q \le \deg r\). This fact is important, as we shall see.
+</p>
+
+<p>
+We shall proceed to construct a quotient ring of \(\R[x]\), just as we
+did with the integers. Let \(r(x) = x^2\). The set \[\{ax+b \mid a,b \in
+\R\}\] is precisely the set of all possible remainders \(\text{mod}\
+x^2\). For each \(a,b \in \R\), we shall define the set \(\overline{ax+b}\)
+to be the set of all polynomials whose remainder \(\text{mod}\ x^2\) is
+\(ax+b\). Just as before, we let
+</p>
+\begin{align*}
+\overline{ax+b} +_{x^2} \overline{cx+d} &= \text{the set containing $(ax+b)+(cx+d)$} \\
+\overline{ax+b} \times_{x^2} \overline{cx+d} &= \text{the set containing $(ax+b)(cx+d)$}.
+\end{align*}
+
+<p>
+The operations \(+_{x^2}\) and \(\times_{x^2}\) do satisfy the properties
+required of a ring, so the elements \(\overline{ax+b}\) under these
+operations form a ring called \(\R[x]/(x^2)\).
+</p>
+
+<p>
+We could replace \(x^2\) with any polynomial \(r(x)\), which would induce
+a corresponding quotient ring \(\R[x]/(r(x))\). The elements of this
+quotient ring are of the form \(\overline{q(x)}\), where \(q(x)\) is any
+polynomial satisfying \(\deg q \le \deg r\).
+</p>
+</div>
+</div>
+<div id="outline-container-org62d1794" class="outline-2">
+<h2 id="org62d1794">The alternate construction</h2>
+<div class="outline-text-2" id="text-org62d1794">
+<p>
+Here's the amazing fact: we could simply <b>define</b> the complex numbers
+\(\C\) to be the quotient ring \(\R[x]/(x^2+1)\)! What do polynomials have
+to do with complex numbers? The relationship is surprising:
+</p>
+
+<ol class="org-ol">
+<li>The element \(\bar{x}\) satisfies \(\bar{x}^2 + \bar{1} = \bar{0}\),
+just like how \(i^2+1 = 0\).</li>
+<li>Each element of \(\R[x]/(x^2+1)\) is of the form \(\overline{ax+b}\)
+(or equivalently \(\overline{b+ax}\)), just like how each complex
+number is of the form \(p+qi\) for real \(p,q\).</li>
+<li>It can be shown that
+\[\overline{b+ax} +_{x^2+1} \overline{d+cx} = \overline{(b+d)+(a+c)x}\]
+and that
+\[\overline{b+ax} \times_{x^2+1} \overline{d+cx} = \overline{(bd-ac)+(ad+bc)x}.\]
+(Does this seem familiar?)</li>
+</ol>
+
+<p>
+Suppose we removed all the overlines, replaced all instances of \(x\)
+with \(i\), and interpreted the operations \(+_{x^2+1}\) and
+\(\times_{x^2+1}\) as complex addition/multiplication instead. What we
+get is indistinguishable from the complex numbers! Hence, we might as
+well pretend they <b>are</b> in fact complex numbers (in more precise
+terms, there is a canonical isomorphism from \(\R[x]/(x^2+1)\) to \(\C\)
+given by \(\overline{ax+b} \mapsto b+ai\)).
+</p>
+
+<p>
+Note how complex addition/multiplication is in a sense just polynomial
+addition/multiplication. Also notice how we did not <b>prove</b> the
+existence of an element \(x\) satisfying \(x^2+1 = 0\), so much as
+<b>construct</b> a new ring which happens to contain this element.
+</p>
+</div>
+</div>
+<div id="outline-container-org3a4bf99" class="outline-2">
+<h2 id="org3a4bf99">Closing remarks</h2>
+<div class="outline-text-2" id="text-org3a4bf99">
+<p>
+This construction may seem like nothing more than a neat trick, but it
+really is fundamental to field theory. One would often start with the
+set of rationals \(\Q\), "add in" roots of polynomials, and then study
+the resulting set.
+</p>
+
+<p>
+These roots of polynomials nearly always do not lie in \(\Q\) (for
+example, consider the polynomial \(x^2-2\)). By taking quotients of
+\(\Q[x]\), we are able to construct a bigger ring in which these roots
+exist, <b>without having to assume their existence beforehand</b>.
+</p>
+
+<p>
+For instance, we know in the quotient ring \(\Q[x]/(x^2-2)\), the
+element \(\bar{x}\) satisfies \(\bar{x}^2-\bar{2} = \bar{0}\),
+i.e. \(\bar{x}\) is a root of the polynomial \(p(t) = t^2-2\). However,
+note how we did not have to assume the existence of \(\R\) (which in
+particular contains the roots \(\pm\sqrt{2}\)) to show that this root
+exists.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

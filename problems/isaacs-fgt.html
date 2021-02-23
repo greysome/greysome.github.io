@@ -1,0 +1,1602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Isaacs: Finite Group Theory</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Isaacs: Finite Group Theory</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd3e412b">1A.1: Condition for subgroup of prime index to be normal</a></li>
+<li><a href="#orgb50a25c">1A.2: Order of double coset</a></li>
+<li><a href="#org4407ea8">1A.3: Subgroups with coprime indices</a></li>
+<li><a href="#orgaa86c39">1A.4: Sets of the form \(H^xK^y\)</a></li>
+<li><a href="#org1d01997">1A.6: Permutation characters and Burnside's Lemma</a></li>
+<li><a href="#org291ad2e">1A.7: Number of elements not lying in any conjugate of a proper subgroup</a></li>
+<li><a href="#orgdb3e1b5">1A.8: McKay's proof of Cauchy's Theorem</a></li>
+<li><a href="#org836fe2e">1A.9: Groups of order \(pm\)</a></li>
+<li><a href="#orgea7a60d">1A.10: Index of subgroup in its normalizer</a></li>
+<li><a href="#org8a42dcd">1B.1: Basic properties of Sylow $p$-subgroups</a></li>
+<li><a href="#orgba5eb25">1B.2: The subgroup \(O_p(G)\)</a></li>
+<li><a href="#org585535e">1B.3: Normalizer of a Sylow $p$-subgroup is self-normalizing</a></li>
+<li><a href="#org36bf703">1B.4: An alternative proof of the existence of Sylow $p$-subgroups</a></li>
+<li><a href="#org05d412f">1B.5: Basic facts about Hall $&pi;$-subgroups, part 1</a></li>
+<li><a href="#orge1a1965">1B.6: Basic facts about Hall $&pi;$-subgroups, part 2</a></li>
+<li><a href="#org9f7a96d">1B.7: The subgroup \(O_\pi(G)\)</a></li>
+<li><a href="#org25429fd">1B.8: The subgroup \(O^\pi(G)\)</a></li>
+<li><a href="#orga5f4f0d">1C.1: Subgroups containing Sylow $p$-subgroup's normalizer are self-normalizing</a></li>
+<li><a href="#org759c111">1C.2: Sylow $p$-subgroups of a subgroup</a></li>
+<li><a href="#orgab032fd">1C.3: Subset of all $p$-power-order elements</a>
+<ul>
+<li>
+<ul>
+<li><a href="#org8dd0abf"><span class="todo TODO">TODO</span> figure out alternative approach of letting Sylow $p$-subgroup act on \(X\)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgcba892a">1C.4: Order \(120\) subgroup contains index \(3\) or \(5\) subgroup</a></li>
+<li><a href="#org375796e">1C.5: Normalizer of Sylow $p$-subgroup of \(A_{p+1}\)</a></li>
+<li><a href="#orgd255b69">1C.6: Sylow $p$-subgroups in composite groups</a></li>
+<li><a href="#org79a53bd">1C.7: Group where every maximal subgroup has prime index</a></li>
+<li><a href="#org6c03a53">1C.8: Number of order \(p^a\) subgroups in \(G\) and its Sylow $p$-subgroups</a></li>
+<li><a href="#org3b5f163">1D.1: Normaliser of Sylow $p$-subgroup in a subgroup</a></li>
+<li><a href="#org3013313">1D.2: TODO</a></li>
+<li><a href="#org10b902f">1D.3: Frobenius complements</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd3e412b" class="outline-2">
+<h2 id="orgd3e412b">1A.1: Condition for subgroup of prime index to be normal</h2>
+<div class="outline-text-2" id="text-orgd3e412b">
+<p>
+Let \(H\) be a subgroup of prime index \(p\) in the finite group \(G\), and
+suppose that no prime smaller than \(p\) divides \(\bars{G}\). Prove that
+\(H \triangleleft G\).
+</p>
+
+<p>
+Let \(G\) act on left cosets of \(H\) by left multiplication. The
+kernel of this action is
+\[\text{core}_G(H) = \bigcap_{g \in G} gHg^{-1},\]
+</p>
+
+<p>
+which is normal in \(G\). Let \(K\) denote the quotient group
+\(G/\text{core}_G(H)\). By the first isomorphism theorem, \(K\) is
+isomorphic to a subgroup of \(S_p\), so \(\bars{K} \mid p!\).
+</p>
+
+<p>
+Since no prime \(< p\) can divide \(\bars{K}\) (otherwise it would
+contradict the second hypothesis), it follows that \(\bars{K}\) is
+either \(1\) or \(p\). The former implies that \(\text{core}_G(H) = G\),
+which is impossible since \(H\) is a proper subgroup. The latter implies
+that \(\text{core}_G(H) = H\), i.e. there is only one $G$-conjugate of
+\(H\). This completes the proof.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb50a25c" class="outline-2">
+<h2 id="orgb50a25c">1A.2: Order of double coset</h2>
+<div class="outline-text-2" id="text-orgb50a25c">
+<p>
+Given subgroups \(H,K \subseteq G\) and an element \(g \in G\), the set
+\[HgK = \{hgk \mid h \in H, k \in K\}\]
+is called an $(H,K)$-double coset. In the case where \(H\) and \(K\) are
+finite, show that $\bars{HgK} = \bars{H}\bars{K}/\bars{K \cap H^g}.$
+</p>
+
+<p>
+Let \(G = H \times K\). Define the map
+</p>
+\begin{align*}
+G \times HgK &\rightarrow HgK \\
+(h,k) \cdot (h'gk') &\mapsto h(h'gk')k^{-1}
+\end{align*}
+
+<p>
+This is easily seen to be a transitive group action, so
+\[\bars{HgK} = \bars{\mathcal{O}_g} = \frac{\bars{G}}{\bars{G_g}} = \frac{\bars{H}\bars{K}}{\bars{G_g}}.\]
+</p>
+
+<p>
+If \((h,k) \in G_g\), then \(hgk^{-1} = g\), which can be rewritten as \(k
+= g^{-1}hg \in H^g\). Conversely, \((h,g^{-1}hg) \cdot g =
+hg(g^{-1}h^{-1}g) = g\). Thus \(\bars{G_g} = \bars{K \cap H^g}\),
+yielding the conclusion.
+</p>
+</div>
+</div>
+<div id="outline-container-org4407ea8" class="outline-2">
+<h2 id="org4407ea8">1A.3: Subgroups with coprime indices</h2>
+<div class="outline-text-2" id="text-org4407ea8">
+<p>
+Suppose that \(G\) is finite and that \(H,K \subseteq G\) are subgroups.
+</p>
+
+<p>
+(a) Show that \(\bars{H : H \cap K} \le \bars{G : K}\), with equality if
+and only if \(HK = G\).
+</p>
+
+<p>
+This follows easily from the fact that
+\[\bars{H : H \cap K} = \frac{\bars{H}\bars{K}}{\bars{H \cap K}\bars{K}}
+= \frac{\bars{HK}}{\bars{K}}.\]
+</p>
+
+<p>
+(b) If \(\bars{G : H}\) and \(\bars{G : K}\) are coprime, show that \(HK = G\).
+</p>
+
+<p>
+Since \(H \cap K\) is a subgroup of both \(H\) and \(K\), it follows that
+\(\bars{G : H}\) and \(\bars{G : K}\) both divide \(\bars{G : H \cap
+K}\). But \(\bars{G : H}\) and \(\bars{G : K}\) are coprime, so we have
+</p>
+\begin{align*}
+\bars{G : H}\bars{G : K} \mid \bars{G : H \cap K}
+&\implies \frac{\bars{G}^2}{\bars{H}\bars{K}} \mid \frac{\bars{G}}{\bars{H \cap K}} \\
+&\implies \bars{G} \mid \frac{\bars{H}\bars{K}}{\bars{H \cap K}} \\
+&\implies \bars{HK} = \bars{G}.
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orgaa86c39" class="outline-2">
+<h2 id="orgaa86c39">1A.4: Sets of the form \(H^xK^y\)</h2>
+<div class="outline-text-2" id="text-orgaa86c39">
+<p>
+Suppose that \(G = HK\), where \(H\) and \(K\) are subgroups. Show that also
+\(G = H^xK^y\) for all elements \(x,y \in G\). Deduce that if \(G = HH^x\)
+for a subgroup \(H\) and an element \(x \in G\), then \(H = G\).
+</p>
+
+<p>
+To prove that \(HK = H^xK^y\), it suffices to show that \(AB = A^xB\) for
+all subgroups \(A,B\) with \(AB = G\). Since \(A^x\) and \(B\) are then
+permutable, we have \[H^xK = KH^x = K^yH^x = H^xK^y.\]
+</p>
+
+<p>
+Note that
+</p>
+\begin{equation}
+\label{eq1} \tag{*}
+\bars{H^xK} = \frac{\bars{H^x}\bars{K}}{\bars{K \cap H^x}}
+= \frac{\bars{H}\bars{K}}{\bars{K \cap H^x}}
+= \bars{HxK}.
+\end{equation}
+
+<p>
+Since \(G = HK\), we can write \(x\) as a product \(h_0k_0\). For all \(h \in
+H\) and \(k \in K\), we have
+</p>
+\begin{align*}
+hk &= hh_0^{-1}(h_0k_0)k_0^{-1}k_0 \\
+&= hh_0^{-1}xk_0^{-1}k_0 \\
+&\in HxK;
+\end{align*}
+<p>
+on the other hand, 
+\[hxk = (hh_0)(k_0k) \in HK.\]
+</p>
+
+<p>
+Thus \(HxK = HK = G\), which by \eqref{eq1} implies \(H^xK = HK\).
+</p>
+
+<p>
+The second statement then follows easily:
+\[G = HH^x = H(H^x)^{x^{-1}} = HH = H.\]
+<a id="org618bae9"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org1d01997" class="outline-2">
+<h2 id="org1d01997">1A.6: Permutation characters and Burnside's Lemma</h2>
+<div class="outline-text-2" id="text-org1d01997">
+<p>
+Let \(G\) act on \(\Omega\), where both \(G\) and \(\Omega\) are finite. For
+each element \(g \in G\), write \(\chi(g) = \bars{\{\alpha \in \Omega
+\mid g \cdot \alpha = \alpha\}}\). The nonnegative-integer-valued
+function \(\chi\) is called the <b>permutation character</b> associated with
+the action. Show that
+</p>
+\begin{equation}
+\label{eq2} \tag{*} 
+\sum_{g \in G} \chi(g) = \sum_{\alpha \in \Omega} \bars{G_\alpha} = n\bars{G},
+\end{equation}
+<p>
+where \(n\) is the number of orbits of \(G\) on \(\Omega\).
+</p>
+
+<p>
+The proof is clear when group actions are represented as tables. For
+example, here is the group action of \(S_3\) on the set \(\{1,2,3\}\),
+where all instances of elements being fixed are underlined:
+ <div align="center">
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(1\)</td>
+<td class="org-right"><span class="underline">1</span></td>
+<td class="org-right"><span class="underline">2</span></td>
+<td class="org-right"><span class="underline">3</span></td>
+</tr>
+
+<tr>
+<td class="org-left">\((12)\)</td>
+<td class="org-right">2</td>
+<td class="org-right">1</td>
+<td class="org-right"><span class="underline">3</span></td>
+</tr>
+
+<tr>
+<td class="org-left">\((13)\)</td>
+<td class="org-right">3</td>
+<td class="org-right"><span class="underline">2</span></td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">\((23)\)</td>
+<td class="org-right"><span class="underline">1</span></td>
+<td class="org-right">3</td>
+<td class="org-right">2</td>
+</tr>
+
+<tr>
+<td class="org-left">\((123)\)</td>
+<td class="org-right">2</td>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-left">\((132)\)</td>
+<td class="org-right">3</td>
+<td class="org-right">1</td>
+<td class="org-right">2</td>
+</tr>
+</tbody>
+</table>
+<p>
+ </div>
+</p>
+
+<p>
+The first sum in \eqref{eq2} corresponds to a horizontal summation of
+the underlined elements, while the second sum corresponds to a
+vertical summation. Lastly,
+</p>
+\begin{align*}
+\sum_{\alpha \in \Omega} \bars{G_\alpha}
+&= \sum_{\text{orbits}\ \mathcal{O} \subseteq \Omega} \sum_{\alpha \in \mathcal{O}} \bars{G_\alpha} \\
+&= \sum_{\text{orbits}\ \mathcal{O} \subseteq \Omega} \sum_{\alpha \in \mathcal{O}} \frac{\bars{G}}{\bars{\mathcal{O}}} \\
+&= \sum_{\text{orbits}\ \mathcal{O} \subseteq \Omega} \bars{G} \\
+&= n\bars{G}.
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org291ad2e" class="outline-2">
+<h2 id="org291ad2e">1A.7: Number of elements not lying in any conjugate of a proper subgroup</h2>
+<div class="outline-text-2" id="text-org291ad2e">
+<p>
+Let \(G\) be a finite group, and suppose that \(H < G\) is a proper
+subgroup. Show that the number of elements of \(G\) that do not lie in
+any conjugate of \(H\) is at least \(\bars{H}\).
+</p>
+
+<p>
+Let \(G\) act on the left cosets of \(H\) by left multiplication. This
+action is clearly transitive, thus if \(\chi\) is the permutation
+character associated with the action, then \[\sum_{g \in G} \chi(g)
+= \bars{G}.\]
+</p>
+
+<p>
+Now let \(H\) act similarly on left cosets of \(H\). Since \(H < G\), there
+is more than \(1\) left coset. But the orbit of the coset \(1H\) contains
+only itself, so there are at least \(2\) orbits. Thus
+\[\sum_{h \in H} \chi(h) \ge 2\bars{H}.\]
+</p>
+
+<p>
+Note that \(g \in G\) fixes a coset \(xH\) i.e. \(gxH = xH\) iff \(x^{-1}gx
+\in H\) iff \(g \in H^x\). In other words, if \(g\) does not lie in any
+conjugate of \(H\), then \(\chi(g) = 0\). To find the number of elements
+\(g\) where \(\chi\) vanishes, observe that by combining the above two
+equations we get
+\[\sum_{g \not\in H} \chi(g) \le \bars{G} - 2\bars{H}.\]
+</p>
+
+<p>
+But the number of elements \(g \not\in H\) is precisely \(\bars{G} -
+\bars{H}\), so there at least \(\bars{H}\) elements where \(\chi\)
+vanishes.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdb3e1b5" class="outline-2">
+<h2 id="orgdb3e1b5">1A.8: McKay's proof of Cauchy's Theorem</h2>
+<div class="outline-text-2" id="text-orgdb3e1b5">
+<p>
+Let \(G\) be a finite group, let \(n > 0\) be an integer. Let \(\Omega\) be
+the set of $n$-tuples \((x_1,x_2,\cdots,x_n)\) of elements of \(G\) such
+that \(x_1x_2 \cdots x_n = 1\).
+</p>
+
+<p>
+(a) Show that \(C_n\) acts on \(\Omega\) according to the formula
+\[k \cdot (x_1,x_2,\cdots,x_n) = (x_{1+k},x_{2+k},\cdots,x_{n+k}),\]
+where \(k \in C_n\) and the subscripts are interpreted modulo \(n\).
+</p>
+
+<p>
+If \(x_1x_2 \cdots x_n = 1\), then
+</p>
+\begin{align*}
+x_{1+k} x_{2+k} \cdots x_{n+k}
+&= ({x_k}^{-1} {x_{k-1}}^{-1} \cdots {x_1}^{-1}) (x_1 x_2 \cdots x_k)(x_{1+k} x_{2+k} \cdots x_n)(x_{n+1} x_{n+2} \cdots x_{n+k}) \\
+&= ({x_k}^{-1} {x_{k-1}}^{-1} \cdots {x_1}^{-1}) (x_{n+1} x_{n+2} \cdots x_{n+k}) \\
+&= 1,
+\end{align*}
+<p>
+so the action is well-defined. It is easy to check that the conditions
+for a group action are also satisfied.
+</p>
+
+<p>
+(b) Now suppose that \(n=p\) is a prime number that divides
+\(\bars{G}\). Show that \(p\) divides the number of $C$-orbits of size \(1\)
+on \(\Omega\), and deduce that the number of elements of order \(p\) in
+\(G\) is congruent to \(-1\) mod \(p\).
+</p>
+
+<p>
+Let \(x \in \Omega\). By the orbit-stabilizer theorem,
+\(\bars{\mathcal{O}_x} = \bars{C_n}/\bars{(C_n)_x}\) is either \(1\) or
+\(p\). Letting \(n_1\) and \(n_p\) be the number of size \(1\) and size \(p\)
+orbits respectively, we have \(n_1 + pn_p = \bars{\Omega}\). But \(p \mid
+\bars{G}^{p-1} = \bars{\Omega}\) so \(p \mid n_1\).
+</p>
+
+<p>
+If the orbit of \((x_1,x_2,\cdots,x_p)\) has size \(1\), then \(x_1 = x_2 =
+\cdots = x_p\), so in particular \({x_1}^p = 1\). The number of elements
+such that \(x^p = 1\) is precisely the number of size \(1\) orbits \(n_1\),
+so the number of order \(p\) elements is \(n_1-1\) (as the identity
+satisfies \(x^p = 1\) but does not have order \(p\)). The fact that \(p
+\mid n_1\) gives the congruence.
+</p>
+</div>
+</div>
+<div id="outline-container-org836fe2e" class="outline-2">
+<h2 id="org836fe2e">1A.9: Groups of order \(pm\)</h2>
+<div class="outline-text-2" id="text-org836fe2e">
+<p>
+Suppose \(\bars{G} = pm\), where \(p > m\) and \(p\) is prime. Show that \(G\)
+has a unique subgroup of order \(p\).
+</p>
+
+<p>
+Suppose \(G\) has distinct order \(p\) subgroups \(H\) and \(K\). Their
+intersection is trivial, thus the order of \(HK\) is \(p^2\). But this is
+impossible because then \(\bars{HK} = p^2 > pm = \bars{G}\).
+<a id="orgedd04ca"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgea7a60d" class="outline-2">
+<h2 id="orgea7a60d">1A.10: Index of subgroup in its normalizer</h2>
+<div class="outline-text-2" id="text-orgea7a60d">
+<p>
+Let \(H \subseteq G\).
+</p>
+
+<p>
+(a) Show that \(\bars{N_G(H) : H}\) is equal to the number of left
+cosets of \(H\) in \(G\) that are invariant under left multiplication by
+\(H\).
+</p>
+
+<p>
+Let \(xH\) be any left coset. \(xH\) is fixed by all \(h \in H\) i.e. \(hxH =
+xH\) iff \(x^{-1}hx \in H\) iff \(h \in H^x\). But this means \(H \subseteq
+H^x\), so \(H = H^x\). Hence \(x \in N_G(H)\), and the statement follows.
+</p>
+
+<p>
+(b) Suppose that \(\bars{H}\) is a $p$-power and that \(\bars{G : H}\) is
+divisible by \(p\). Show that \(\bars{N_G(H) : H}\) is divisible by \(p\).
+</p>
+
+<p>
+Let \(\bars{H} = p^m\) and \(\bars{G : H} = pn\). Consider the action of
+\(H\) on the left cosets of \(H\) in \(G\) by left multiplication, and let
+\(n_k\) denote the number of size \(k\) orbits.
+</p>
+
+<p>
+Note that the orbit sizes divide \(p^m\) and are thus $p$-powers
+themselves. Hence
+\[n_1 = pn - \sum_{i=1}^m p^i n_{p^i}\]
+is divisible by \(p\). But from part (a), we can see that
+\(\bars{N_G(H) : H}\) is precisely \(n_1\), completing the proof.
+<a id="org616225e"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org8a42dcd" class="outline-2">
+<h2 id="org8a42dcd">1B.1: Basic properties of Sylow $p$-subgroups</h2>
+<div class="outline-text-2" id="text-org8a42dcd">
+<p>
+Let \(S \in \Syl_p(G)\), where \(G\) is a finite group.
+</p>
+
+<p>
+(a) Let \(P \subseteq G\) be a $p$-subgroup. Show that \(PS\) is a
+subgroup if and only if \(P \subseteq S\).
+</p>
+
+<p>
+Let \(\bars{G} = p^\alpha m\), \(\bars{P} = p^\beta\) and \(\bars{P \cap S}
+= p^\gamma\). If \(PS\) is a subgroup, then
+\[\bars{PS} = \frac{p^\alpha p^\beta}{p^\gamma}\]
+must divide \(p^\alpha m\). This forces \(p^\gamma = p^\beta\), or else
+\(S\) would not be a Sylow $p$-subgroup. This implies \(P \subseteq S\).
+</p>
+
+<p>
+The reverse implication is trivial.
+</p>
+
+<p>
+(b) If \(S \triangleleft G\), show that \(\Syl_p(G) = \{S\}\), and deduce
+that \(S\) is characteristic in \(G\).
+</p>
+
+<p>
+ <div class="lemma">
+Let \(H,K\) be subgroups of \(G\). If \(K \le N_G(H)\), then \(HK\) is a
+subgroup.
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+Let \(hk\) and \(h'k'\) be elements of \(HK\). Since \(K \le N_G(H)\), we also
+have \(kh'k^{-1} = h_0\) and \(k^{-1}h^{-1}k = h_1\) for some \(h_0,h_1 \in
+H\). Thus,
+\[hkh'k' = h(kh'k^{-1})kk' = hh_0kk' \in HK.\]
+Furthermore,
+\[(hk)^{-1} = k^{-1}h^{-1} = (k^{-1}h^{-1}k)k^{-1} = h_1k^{-1} \in HK.\]
+ </div>
+</p>
+
+<p>
+Let \(\bars{S} = p^\alpha\). Suppose there was another Sylow
+$p$-subgroup \(S'\). Since \(S' \le N_G(S) = G\), \(SS'\) is a subgroup of
+\(G\). But (a) implies that \(S \subseteq S'\), a clear contradiction.
+</p>
+
+<p>
+Lastly, each automorphism must send \(S\) to another Sylow $p$-subgroup
+i.e. itself, thus \(S\) is characteristic in \(G\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgba5eb25" class="outline-2">
+<h2 id="orgba5eb25">1B.2: The subgroup \(O_p(G)\)</h2>
+<div class="outline-text-2" id="text-orgba5eb25">
+<p>
+Show that \(O_p(G)\) (the intersection of the Sylow $p$-subgroups) is
+the unique largest normal $p$-subgroup of \(G\).
+</p>
+
+<p>
+First, we show that \(O_p(G) \triangleleft G\). In fact, we can do one
+better and show that \(O_p(G)\) is characteristic in \(G\). Suppose there
+was an automorphism \(\varphi\) and an element \(g \in O_p(G)\) such that
+\(\varphi(g) \not\in O_p(G)\). This means \(\varphi(g)\) is not in some
+Sylow $p$-subgroup \(S\). But that implies \(g \not\in \varphi^{-1}(S)\),
+which cannot be true as \(\varphi^{-1}(S)\) is also a Sylow
+$p$-subgroup.
+</p>
+
+<p>
+Secondly, we show that \(O_p(G)\) contains every normal
+$p$-subgroup. 
+</p>
+
+<p>
+Suppose \(H\) is a normal $p$-subgroup. For every Sylow $p$-subgroup \(S\)
+we have \(S \le N_G(H) = G\), so by the lemma in <a href="#org616225e">1B.1</a> \(HS\) is a
+subgroup, implying \(H \subseteq S\). Hence \(H \subseteq O_p(G)\).
+<a id="org7a8d646"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org585535e" class="outline-2">
+<h2 id="org585535e">1B.3: Normalizer of a Sylow $p$-subgroup is self-normalizing</h2>
+<div class="outline-text-2" id="text-org585535e">
+<p>
+Let \(S \in \Syl_p(G)\), and write \(N = N_G(S)\). Show that \(N = N_G(N)\).
+</p>
+
+<p>
+Note that \(S\) is a Sylow $p$-subgroup of \(N\), and that \(S
+\triangleleft N\). Thus by <a href="#org616225e">1B.1</a>(b), \(S\) is characteristic in
+\(N\). Furthermore, \(N \triangleleft N_G(N)\), and this implies \(S
+\triangleleft N_G(N)\). But \(N_G(S)\) is the largest group \(K\)
+satisfying the property \(S \triangleleft K\), so \(N_G(N) \subseteq
+N_G(S)\) and equality follows.
+</p>
+</div>
+</div>
+<div id="outline-container-org36bf703" class="outline-2">
+<h2 id="org36bf703">1B.4: An alternative proof of the existence of Sylow $p$-subgroups</h2>
+<div class="outline-text-2" id="text-org36bf703">
+<p>
+Let \(P \subseteq G\) be a $p$-subgroup such that \(\bars{G : P}\) is
+divisible by \(p\). Using Cauchy's theorem, but without appealing to
+Sylow's theorem, show that there exists a subgroup \(Q\) of \(G\)
+containing \(P\), and such that \(\bars{Q : P} = p\). Deduce that a
+maximal $p$-subgroup of \(G\) (which obviously must exist) must be a
+Sylow $p$-subgroup of \(G\).
+</p>
+
+<p>
+From <a href="#orgedd04ca">1A.10</a>, we know that \(\bars{N_G(P) : P}\) is divisible by \(p\). By
+Cauchy's theorem, the quotient group \(N_G(P)/P\) has an order \(p\)
+subgroup \(\bar{Q}\). The corresponding subgroup \(Q \le G\) under the
+correspondence theorem then contains \(P\), and has order \(p\bars{P}\).
+</p>
+
+<p>
+Let \(P \subset Q_1 \subset Q_2 \subset \cdots\) be the tower of
+subgroups constructed using this method. Since there is a maximum
+integer \(\alpha\) such that \(p^\alpha \mid \bars{G}\), this tower must
+stabilize to a maximal $p$-subgroup \(Q'\) of order \(p^\alpha\), which is
+then a Sylow $p$-subgroup.
+</p>
+</div>
+</div>
+<div id="outline-container-org05d412f" class="outline-2">
+<h2 id="org05d412f">1B.5: Basic facts about Hall $&pi;$-subgroups, part 1</h2>
+<div class="outline-text-2" id="text-org05d412f">
+<p>
+Let \(\pi\) be any set of prime numbers, and let \(\theta : G \rightarrow
+K\) be a surjective homomorphism of finite groups.
+</p>
+
+<p>
+(a) If \(H\) is a Hall $&pi;$-subgroup of \(G\), prove that \(\theta(H)\) is
+a Hall $&pi;$-subgroup of \(K\).
+</p>
+
+<p>
+Let \(N = \ker \theta\). Applying the first isomorphism theorem to \(\theta\) and
+\(\theta|_H\) respectively yields the equalities
+\[\bars{G} = \bars{N}\bars{K}\ \text{and}\ \bars{H} = \bars{H \cap N}\bars{\theta(H)}.\]
+</p>
+
+<p>
+Since \(\bars{\theta(H)} \mid \bars{H}\), it is a
+$&pi;$-subgroup. Furthermore, we have
+\[
+\bars{K : \theta(H)} = \frac{\bars{K}\bars{H \cap N}}{\bars{H}}
+\mid \frac{\bars{K}\bars{N}}{\bars{H}}
+= \bars{G : H},
+\]
+so for all \(p \in \pi\), \(p \not\mid \bars{K : \theta(H)}\) since \(p
+\not\mid \bars{G : H}\). Hence \(\theta(H)\) is a Hall $&pi;$-subgroup.
+</p>
+
+<p>
+(b) Show that every Sylow $p$-subgroup of \(K\) has the form
+\(\theta(H)\), where \(H\) is some Sylow $p$-subgroup of \(G\).
+</p>
+
+<p>
+Let \(N = \ker \theta\). By the first isomorphism theorem, we can
+identify \(K\) with the quotient \(G/N\). If \(S\) is a Sylow $p$-subgroup
+of \(K\), its preimage under \(\theta\) is a subgroup \(S' \le G\) with
+order \(\bars{S}\bars{N}\).
+</p>
+
+<p>
+Let \(H\) be a Sylow $p$-subgroup of \(S'\). Applying (a) to the map
+\(\theta|_{S'}\), we have that \(\theta(H)\) is a Sylow $p$-subgroup of
+\(\theta(S') = S\). But \(S\) is already a Sylow $p$-subgroup of \(K\), so
+\(\theta(H) = K\). Furthermore, we have that \(p \not\mid \bars{S' : H}\)
+and
+\[p \not\mid \bars{K : S} = \frac{\bars{G}}{\bars{N}\bars{S}} = \bars{G : S'},\]
+so \(p \not\mid \bars{G : H}\) and \(H\) is a Sylow $p$-subgroup of \(G\).
+</p>
+
+<p>
+(Note that the statement is not generally true if 'Sylow $p$-subgroup'
+is replaced with 'Hall $&pi;$-subgroup', as a Hall $&pi;$-subgroup of
+\(S'\) may not exist.)
+</p>
+
+<p>
+(c) Show that \(\bars{\Syl_p(G)} \ge \bars{\Syl_p(K)}\) for every prime
+number \(p\).
+</p>
+
+<p>
+This follows immediately from (b).
+</p>
+
+<p>
+<a id="orgeeb3837"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge1a1965" class="outline-2">
+<h2 id="orge1a1965">1B.6: Basic facts about Hall $&pi;$-subgroups, part 2</h2>
+<div class="outline-text-2" id="text-orge1a1965">
+<p>
+Let \(G\) be a finite group, and let \(K \subseteq G\) be a
+subgroup. Suppose that \(H \subseteq G\) is a Hall $&pi;$-subgroup, where
+\(\pi\) is some set of primes. Show that if \(HK\) is a subgroup, then \(H
+\cap K\) is a Hall $&pi;$-subgroup of \(K\).
+</p>
+
+<p>
+Clearly \(H \cap K\) is a $&pi;$-subgroup of \(K\). Furthermore, the fact
+that \(HK\) is a subgroup implies
+\[\bars{K : H \cap K} = \frac{\bars{HK}}{\bars{H}} \mid \bars{G :
+H}.\] Thus \(p \not\mid \bars{K : H \cap K}\) for all \(p \in \pi\), since
+\(p \not\mid \bars{G : H}\). So \(H \cap K\) is a Hall $&pi;$-subgroup of
+\(K\).
+</p>
+</div>
+</div>
+<div id="outline-container-org9f7a96d" class="outline-2">
+<h2 id="org9f7a96d">1B.7: The subgroup \(O_\pi(G)\)</h2>
+<div class="outline-text-2" id="text-org9f7a96d">
+<p>
+Let \(G\) be a finite group, and let \(\pi\) be any set of primes.
+</p>
+
+<p>
+(a) Show that \(G\) has a (necessarily unique) normal $&pi;$-subgroup \(N\)
+such that \(M \subseteq N\) whenever \(M \triangleleft G\) is a
+$&pi;$-subgroup.
+</p>
+
+<p>
+Let \(M_1, M_2, \cdots, M_n\) be all the normal $&pi;$-subgroups of \(G\),
+and let \(N\) be the composite \(M_1M_2 \cdots M_n\). By the lemma in
+<a href="#org616225e">1B.1</a>, it is a subgroup; in fact it is easily seen to be a
+$&pi;$-subgroup. Also it contains all \(M_i\) and is normal in \(G\)
+itself, since
+\[g \left(\prod_i m_i\right) g^{-1} = \prod_i gm_ig^{-1} \in N\]
+for \(m_i \in M_i\).
+</p>
+
+<p>
+(b) Show that the subgroup \(N\) of part (a) is contained in every Hall
+$&pi;$-subgroup of \(G\).
+</p>
+
+<p>
+If \(H\) is a Hall $&pi;$-subgroup, then \(HN\) is a subgroup by the lemma
+in <a href="#org616225e">1B.1</a>. By <a href="#orgeeb3837">1B.6,</a> \(H \cap N\) is a Hall $&pi;$-subgroup of \(N\). But \(N\)
+is a $&pi;$-subgroup itself, so \(H \cap N = N\) i.e. \(N \subseteq H\).
+</p>
+
+<p>
+(c) Assuming that \(G\) has a Hall $&pi;$-subgroup, show that \(N\) is
+exactly the intersection of all the Hall $&pi;$-subgroups of \(G\).
+</p>
+
+<p>
+The intersection of the Hall $&pi;$-subgroups is a characteristic and
+hence normal $&pi;$-subgroup of \(G\). Hence by part (a), it is contained
+in \(N\). The reverse inclusion was proved in part (b).
+</p>
+</div>
+</div>
+<div id="outline-container-org25429fd" class="outline-2">
+<h2 id="org25429fd">1B.8: The subgroup \(O^\pi(G)\)</h2>
+<div class="outline-text-2" id="text-org25429fd">
+<p>
+Let \(G\) be a finite group, and let \(\pi\) be any set of primes.
+</p>
+
+<p>
+(a) Show that \(G\) has a (necessarily unique) normal subgroup \(N\) such
+that \(G/N\) is a $&pi;$-group and \(N \subseteq M\) whenever \(M
+\triangleleft G\) and \(G/M\) is a $&pi;$-group.
+</p>
+
+<p>
+Let \(M_1, M_2, \cdots, M_n\) be all the normal subgroups where the
+corresponding quotients are $&pi;$-groups, and let \(N = \cap_i
+M_i\). Clearly \(N \triangleleft G\) and \(N\) is contained in all \(M_i\);
+furthermore by considering the homomorphism
+\[g \mapsto (gM_1, gM_2, \cdots, gM_n),\]
+one can see that \(G/N\) is a subgroup of \(\prod_i G/M_i\). Since all
+primes dividing \(\bars{\prod_i G/M_i} = \prod_i \bars{G : M_i}\) are
+contained in \(\pi\), it follows that \(G/N\) is a $&pi;$-group.
+</p>
+
+<p>
+(b) Show that the subgroup \(N\) of part (a) is generated by the set of
+all elements of \(G\) that have order not divisible by any prime in
+\(\pi\).
+</p>
+
+<p>
+Let \(\pi = \{p_1,p_2,\cdots,p_k\}\), and let \(\pi' =
+\{p_{k+1},p_{k+2},\cdots,p_l\}\) be the remaining prime divisors of
+\(\bars{G}\). Let \(n_i\) denote the multiplicity of \(p_i\) in \(\bars{G}\)
+for \(1 \le i \le l\), and let \(d = \prod_{i=k+1}^l {p_i}^{n_i}\).
+</p>
+
+<p>
+Let \(A = \{g \in G \mid g^d = 1\}\). For any \(g \in G\), \(g \in A\) if
+and only if its order is not divisible by any prime in \(\pi\). Thus \(A\)
+is equal to the set in the question, and it suffices to show that
+\(\angles{A} = N\).
+</p>
+
+<p>
+Suppose \(g \in A\). Then by the first isomorphism theorem, the image of
+the subgroup \(\angles{g}\) under the projection map \(\theta : G
+\rightarrow G/N\) satisfies
+\[\bars{\theta\angles{g}} = \frac{\bars{\angles{g}}}{\bars{\angles{g} \cap N}}.\]
+</p>
+
+<p>
+Since \(G/N\) is a $&pi;$-group, \(\theta\angles{g}\) is a $&pi;$-group as
+well. But the prime divisors of \(\bars{\angles{g}}\) all lie in \(\pi'\),
+forcing
+\[\bars{\angles{g} \cap N} = \bars{\angles{g}}\]
+which means \(\angles{g} \subseteq N\). Since \(g \in A\) was arbitrary,
+we then have \(\angles{A} \subseteq N\).
+</p>
+
+<p>
+To prove the reverse inclusion, we have to show that \(\angles{A}\)
+satisfies the hypotheses in part (a). Firstly, note that
+\[a^d = 1\ \text{implies}\ (gag^{-1})^d = ga^dg^{-1} = 1,\]
+</p>
+
+<p>
+so \(gag^{-1} \in A\) for any \(g \in G\) and \(a \in A\). Now, every \(x \in
+\angles{A}\) can be written as a finite product \(\prod_i x_i\) where for
+each \(x_i\), either \(x_i \in A\) or \(x_i^{-1} \in A\). For all \(g
+\in G\), we have
+\[gxg^{-1} = \prod_i gx_ig^{-1}.\]
+</p>
+
+<p>
+If \(x_i \in A\), then \(gx_ig^{-1} \in A\) as shown above. Otherwise
+\((gx_ig^{-1})^{-1} = gx_i^{-1}g^{-1} \in A\) so \(gx_ig^{-1} \in
+\angles{A}\). Hence \(gxg^{-1} \in \angles{A}\), implying \(\angles{A}
+\triangleleft G\).
+</p>
+
+<p>
+Furthermore, let \(S\) be a Sylow $p$-subgroup of \(G\), where \(p \in
+\pi'\). Then the order of its elements are $p$-powers which divide \(d\),
+so \(S \subseteq \angles{A}\). This means that \(d\) must divide
+\(\bars{\angles{A}}\), since otherwise \(\angles{A}\) would not contain
+some Sylow $p$-subgroup. Thus \(G/\angles{A}\) is a $&pi;$-group, and by
+part (a) \(N \subseteq \angles{A}\).
+</p>
+</div>
+</div>
+<div id="outline-container-orga5f4f0d" class="outline-2">
+<h2 id="orga5f4f0d">1C.1: Subgroups containing Sylow $p$-subgroup's normalizer are self-normalizing</h2>
+<div class="outline-text-2" id="text-orga5f4f0d">
+<p>
+Let \(P \in \Syl_p(G)\), and suppose that \(N_G(P) \subseteq H \subseteq
+G\), where \(H\) is a subgroup. Prove that \(H = N_G(H)\) (this generalizes
+<a href="#org7a8d646">1B.3</a>).
+</p>
+
+<p>
+Clearly \(H \triangleleft N_G(H)\) and \(P\) is a Sylow $p$-subgroup of
+\(H\). Hence by the Frattini argument, \(N_G(H) = N_G(P)H = H\).
+</p>
+</div>
+</div>
+<div id="outline-container-org759c111" class="outline-2">
+<h2 id="org759c111">1C.2: Sylow $p$-subgroups of a subgroup</h2>
+<div class="outline-text-2" id="text-org759c111">
+<p>
+Let \(H \subseteq G\), where \(G\) is a finite group.
+</p>
+
+<p>
+(a) If \(P \in \Syl_p(H)\), prove that \(P = H \cap S\) for some member \(S
+\in \Syl_p(G)\).
+</p>
+
+<p>
+\(P\) is a $p$-subgroup of \(G\), so it is contained in some Sylow
+$p$-subgroup \(S\) of \(G\). Let \(\bars{H} = p^\alpha m\) and \(\bars{S} =
+p^\beta\), where \(p \not\mid m\) and \(\beta \ge \alpha\). Then \(\bars{H
+\cap S}\) is a $p$-power dividing \(p^\alpha\). But \(P \subseteq H \cap
+S\) forces \(\bars{H \cap S} = \bars{P} = p^\alpha\), so \(P = H \cap S\).
+</p>
+
+<p>
+(b) Show that \(n_p(H) \le n_p(G)\) for all primes \(p\).
+</p>
+
+<p>
+This follows immediately from (a).
+<a id="orgd1155c9"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-orgab032fd" class="outline-2">
+<h2 id="orgab032fd">1C.3: Subset of all $p$-power-order elements</h2>
+<div class="outline-text-2" id="text-orgab032fd">
+<p>
+Let \(G\) be a finite group, and let \(X\) be the subset of \(G\) consisting
+of all elements whose order is a power of \(p\), where \(p\) is some fixed
+prime.
+</p>
+
+<p>
+(a) Show that \(X = \cup\ \Syl_p(G)\).
+</p>
+
+<p>
+If \(x \in X\) has $p$-power order, then the subgroup \(\angles{x}\) is
+contained in some Sylow $p$-subgroup \(S\). In particular \(x \in S
+\subseteq \Syl_p(G)\). Conversely, all elements of a Sylow $p$-subgroup
+have $p$-power order, so \(\Syl_p(G) \subseteq X\).
+</p>
+
+<p>
+(b) Show that if \(p\) divides \(\bars{G}\), then \(\bars{X}\) is divisible
+by \(p\).
+</p>
+
+<p>
+The intersection of any number of Sylow $p$-subgroups has $p$-power
+order. Thus by the inclusion-exclusion principle, \(\bars{X}\) is
+divisible by \(p\).
+</p>
+</div>
+<div id="outline-container-org8dd0abf" class="outline-4">
+<h4 id="org8dd0abf"><span class="todo TODO">TODO</span> figure out alternative approach of letting Sylow $p$-subgroup act on \(X\)</h4>
+</div>
+</div>
+<div id="outline-container-orgcba892a" class="outline-2">
+<h2 id="orgcba892a">1C.4: Order \(120\) subgroup contains index \(3\) or \(5\) subgroup</h2>
+<div class="outline-text-2" id="text-orgcba892a">
+<p>
+Let \(\bars{G} = 120 = 2^3 \cdot 3 \cdot 5\). Show that \(G\) has a
+subgroup of index \(3\) or a subgroup of index \(5\) (or both).
+</p>
+
+<p>
+We know that \(n_2 \equiv 1\) mod \(p\) and \(n_2 \mid 15\), so the
+possibilities are \(1\), \(3\), \(5\) and \(15\).
+</p>
+
+<ol class="org-ol">
+<li><p>
+\(n_2 = 1\)
+</p>
+
+<p>
+The unique Sylow $2$-subgroup \(G_2\) is normal in \(G\). If \(G_3 \in
+   \Syl_3(G)\) and \(G_5 \in \Syl_5(G)\), then by <a href="#org616225e">this previous lemma</a>
+\(G_2G_3\) and \(G_2G_5\) are subgroups. Since \(G_2 \cap G_3\) and \(G_2
+   \cap G_5\) are trivial, the subgroups' indices are \(5\) and \(3\)
+respectively.
+</p></li>
+
+<li><p>
+\(n_2 = 3\)
+</p>
+
+<p>
+If \(G_2 \in \Syl_2(G)\), the subgroup \(N_G(G_2)\) has index \(3\).
+</p></li>
+
+<li><p>
+\(n_2 = 5\)
+</p>
+
+<p>
+If \(G_2 \in \Syl_2(G)\), the subgroup \(N_G(G_2)\) has index \(5\).
+</p></li>
+
+<li><p>
+\(n_2 = 15\)
+</p>
+
+<p>
+Let \(G_2 \in \Syl_2(G)\). Since \(n_2 \not\equiv 1\) mod \(2^2\), the
+largest intersection between any two Sylow $2$-subgroups has order
+\(2\). Thus the number of distinct elements in Sylow $2$-subgroups is
+at least \[2 + 15(8-2) = 92.\]
+</p>
+
+<p>
+Suppose that \(n_3,n_5 \neq 1\), forcing \(n_3 \ge 4\) and \(n_5 =
+   6\). Then the number of distinct elements in Sylow $3$- and
+$5$-subgroups, excluding the identity, is at least \[4(3-1) +
+   6(5-1) = 32.\] But that implies there are at least \(92+32 = 124 >
+   120\) distinct elements, which cannot be true. Hence at least one of
+\(n_3,n_5\) must be \(1\). If \(n_3 = 1\), then the Sylow $3$-subgroup
+\(G_3\) is normal, and \(G_2G_3\) is an index 5 subgroup (likewise if
+\(n_5 = 1\)).
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org375796e" class="outline-2">
+<h2 id="org375796e">1C.5: Normalizer of Sylow $p$-subgroup of \(A_{p+1}\)</h2>
+<div class="outline-text-2" id="text-org375796e">
+<p>
+Let \(P \in \Syl_p(G)\), where \(G = A_{p+1}\), the alternating group on
+\(p+1\) symbols. Show that \(\bars{N_G(P)} = p(p-1)/2\).
+</p>
+
+<p>
+If \(p = 2\) then the statement is trivially true. Hence we shall only
+consider odd \(p\).
+</p>
+
+<p>
+The order of an element of \(A_{p+1}\) is the LCM of the lengths of
+cycles in its cycle decomposition. Since the maximum cycle length is
+\(p\) (a (\(p+1\))-cycle is an odd permutation and is not contained in
+\(A_{p+1}\)), it follows that the maximum $p$-power order is \(p\)
+itself. Thus by <a href="#orgd1155c9">1C.3(a)</a>, the union of Sylow $p$-subgroups is precisely
+the set of all order \(p\) elements, together with the identity.
+</p>
+
+<p>
+The order \(p\) elements are exactly the $p$-cycles of \(A_{p+1}\). By
+<a href="../posts/perms-combis.html#org9614690">this formula</a>, the number of order \(p\) elements is
+\[\frac{(p+1)!}{p[(p+1)-p]!} = (p+1)(p-1)!\]
+</p>
+
+<p>
+On the other hand, the number of distinct elements in all Sylow
+$p$-subgroups, excluding the identity, is \(n_2(p-1)\). Since the two
+expressions are equal, we have \(n_2 = (p+1)(p-2)!\), so
+\[\bars{N_G(P)} = \frac{(p+1)!}{2(p+1)(p-2)!} = \frac{p(p-1)}{2}.\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgd255b69" class="outline-2">
+<h2 id="orgd255b69">1C.6: Sylow $p$-subgroups in composite groups</h2>
+<div class="outline-text-2" id="text-orgd255b69">
+<p>
+Let \(G = HK\), where \(H\) and \(K\) are subgroups, and fix a prime \(p\).
+</p>
+
+<p>
+(a) Show that there exists \(P \in \Syl_p(G)\) such that \(P \cap H \in
+\Syl_p(H)\) and \(P \cap K \in \Syl_p(K)\).
+</p>
+
+<p>
+By the Sylow C-theorem, there is some \(Q \in \Syl_p(G)\) and \(g = hk
+\in G\) such that \(Q^{hk} \cap H \in \Syl_p(H)\) and \(Q \cap K \in
+\Syl_p(K)\). This implies
+\[Q^k \cap H = (Q^{hk} \cap H)^{h^{-1}} \in \Syl_p(H)\]
+and
+\[Q^k \cap K = (Q \cap K)^k \in \Syl_p(K).\]
+</p>
+
+<p>
+(b) If \(P\) is as in (a), show that \(P = (P \cap H)(P \cap K)\).
+</p>
+
+<p>
+Clearly \((P \cap H)(P \cap K) \subseteq P\), so it suffices to prove that
+\[
+\bars{P} \le \bars{(P \cap H)(P \cap K)}
+= \frac{\bars{P \cap H}\bars{P \cap K}}{\bars{P \cap H \cap K}}.
+\]
+</p>
+
+<p>
+Let \(\bars{H} = p^\alpha l\), \(\bars{K} = p^\beta m\) and \(\bars{G} =
+p^\gamma n\), where \(p \not\mid l,m,n\) (hence \(\bars{P} =
+p^\gamma\)). Then by (a), \(\bars{P \cap H} = p^\alpha\) and \(\bars{P
+\cap K} = p^\beta\). Furthermore, we have
+\[
+\bars{G} = p^\gamma n
+= \frac{p^{\alpha+\beta}lm}{\bars{H \cap K}}
+= \frac{\bars{H}\bars{K}}{\bars{H \cap K}}.
+\]
+</p>
+
+<p>
+Since \(\gamma\) is the exponent of \(p\) in \(\bars{G}\), it follows that
+the exponent of \(p\) in \(\bars{H \cap K}\) is \(p^{\alpha+\beta-\gamma}\).
+Since \(P \cap H \cap K\) is a $p$-group, \(\bars{P \cap H \cap K} \mid
+p^{\alpha+\beta-\gamma}\). Putting it all together,
+\[
+\bars{P} = p^\gamma
+= \frac{p^\alpha p^\beta}{p^{\alpha+\beta-\gamma}}
+\mid \frac{\bars{P \cap H}\bars{P \cap K}}{\bars{P \cap H \cap K}}.
+\]
+This completes the proof.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org79a53bd" class="outline-2">
+<h2 id="org79a53bd">1C.7: Group where every maximal subgroup has prime index</h2>
+<div class="outline-text-2" id="text-org79a53bd">
+<p>
+Let \(G\) be a finite group in which every maximal subgroup has prime
+index, and let \(p\) be the largest prime divisor of \(\bars{G}\). Show
+that a Sylow $p$-subgroup of \(G\) is normal.
+</p>
+
+<p>
+Let \(P \in \Syl_p(G)\). If \(N_G(P) \neq G\), then it is contained in
+some maximal subgroup \(M\), and it follows that \(N_G(P) = N_M(P)\).
+Thus
+\[n_p(M) = \bars{M : N_M(P)} \mid \bars{G : N_G(P)} = n_p(G).\]
+</p>
+
+<p>
+In particular, \(n_p(G)/n_p(M)\) is a prime \(p'\) since \(M\) has prime
+index. Since \(p\) does not divide \(n_p(G)\) we have \(p' \neq p\), which
+by hypothesis implies \(p' < p\). At the same time, \(n_p(M)\) and
+\(n_p(G)\) are congruent to \(1\) mod \(p\). This means that
+\[n_p(G) = p'n_p(M) \equiv p'\ \text{mod $p$}.\]
+</p>
+
+<p>
+But then this means \(p' = 1\) since \(p' < p\), which is a
+contradiction. Hence \(N_G(P) = G\).
+</p>
+</div>
+</div>
+<div id="outline-container-org6c03a53" class="outline-2">
+<h2 id="org6c03a53">1C.8: Number of order \(p^a\) subgroups in \(G\) and its Sylow $p$-subgroups</h2>
+<div class="outline-text-2" id="text-org6c03a53">
+<p>
+Let \(P\) be a Sylow $p$-subgroup of \(G\). Show that for every
+nonnegative integer \(a\), the numbers of subgroups of order \(p^a\) in
+\(P\) and in \(G\) are congruent mod \(p\).
+</p>
+
+<p>
+Let \(P\) act on the order \(p^a\) subgroups of \(G\) by conjugation. This
+action has two blocks: one consists of subgroups contained in \(P\), and
+the other consists of the remaining subgroups. For given \(p \in P\) and
+a subgroup \(P_1 \le P\), \({P_1}^p\) is also a subgroup of
+\(P\). Conversely, if \(H^p \le P\), then \(H = (H^p)^{p^{-1}} \le P\).
+</p>
+
+<p>
+Let \(k_1,k_2\) denote the number of elements in the respective block,
+and suppose \(k_2\) is not divisible by \(p\). Since all orbit sizes are
+$p$-powers, it follows that there is some size \(1\) orbit \(\{Q\}\). \(Q\)
+is invariant under conjugation by \(P\), so \(P \le N_G(Q)\) and \(PQ\) is a
+subgroup. But by <a href="#org616225e">1B.1(a)</a>, this implies that \(Q \le P\), which
+contradicts the fact that \(Q\) lies in the second block. Therefore,
+\(k_1+k_2 \equiv k_1\) mod \(p\), and this completes the proof.
+</p>
+</div>
+</div>
+<div id="outline-container-org3b5f163" class="outline-2">
+<h2 id="org3b5f163">1D.1: Normaliser of Sylow $p$-subgroup in a subgroup</h2>
+<div class="outline-text-2" id="text-org3b5f163">
+<p>
+Let \(P \in \Syl_p(H)\), where \(H \subseteq G\), and suppose that \(N_G(P)
+\subseteq H\). Show that \(p\) does not divide \(\bars{G : H}\).
+</p>
+
+<p>
+Suppose \(p \mid \bars{G : H}\). Then by <a href="#orgedd04ca">1A.10(b)</a>, \(N_G(P)/P\) is
+divisible by \(p\). This means that \(N_G(P) \not\subseteq H\), since the
+order of \(P\) is a maximal $p$-power of \(\bars{H}\).
+</p>
+</div>
+</div>
+<div id="outline-container-org3013313" class="outline-2">
+<h2 id="org3013313">1D.2: TODO</h2>
+</div>
+<div id="outline-container-org10b902f" class="outline-2">
+<h2 id="org10b902f">1D.3: Frobenius complements</h2>
+<div class="outline-text-2" id="text-org10b902f">
+<p>
+Let \(H \subseteq G\) have the property that \(H \cap H^g = 1\) for all
+elements \(g \in G-H\).
+</p>
+
+<p>
+(a) Show that \(N_G(K) \subseteq H\) for all subgroups \(K\) with \(1 < K
+\subseteq H\).
+</p>
+
+<p>
+For all \(g \in G-H\), we have \(H \cap K^g \subseteq H \cap H^g =
+1\). Thus \(K^g \not\subseteq H\), forcing \(N_G(K) \subseteq H\).
+</p>
+
+<p>
+(b) Show that \(H\) is a Hall subgroup of \(G\).
+</p>
+
+<p>
+Let \(H\) act on the left cosets of \(H\) in \(G\). The stabiliser of the
+coset \(1H\) is \(H\) itself, thus its orbit has size \(1\). On the other
+hand, the stabiliser of the coset \(xH\) where \(x \not\in H\) is given by
+\(H \cap H^x\):
+\[hxH = xH \Leftrightarrow x^{-1}hx \in H \Leftrightarrow h \in H^x.\]
+</p>
+
+<p>
+Since \(H \cap H^x = 1\), the orbit has size \(\bars{H}\). Adding up the
+orbit sizes yields \(\bars{G : H} = 1 + k\bars{H}\) for some nonnegative
+integer \(k\), which shows that \(\bars{G : H}\) and \(\bars{H}\) are
+coprime.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

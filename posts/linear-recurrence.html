@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Solving order 2 homogeneous linear recurrences with constant coefficients</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Solving order 2 homogeneous linear recurrences with constant coefficients</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org7fa1945">Introduction</a></li>
+<li><a href="#org1267383">Case 1: characteristic polynomial has distinct roots</a></li>
+<li><a href="#org870f043">Case 2: characteristic polynomial has repeated roots</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org7fa1945" class="outline-2">
+<h2 id="org7fa1945">Introduction</h2>
+<div class="outline-text-2" id="text-org7fa1945">
+<p>
+Consider the recurrence
+\[u_n = au_{n-1} + bu_{n-2},\]
+where \(a,b\) are arbitrary real constants.
+</p>
+
+<p>
+ <div class="definition">
+The <b>characteristic polynomial</b> of the recurrence \(\{u_n\}\) is given
+as \(p(x) = x^2-ax-b\).
+ </div>
+</p>
+
+<p>
+We would like to find a closed form for \(u_n\) purely in terms of the
+initial conditions \(u_1\) and \(u_0\). Specifically, we show that the
+following result is true:
+</p>
+
+<p>
+ <div class="proposition">
+Let \(\lambda_1,\lambda_2\) be the roots of the characteristic
+polynomial.
+</p>
+<ol class="org-ol">
+<li>If \(\lambda_1 \neq \lambda_2\), then \(u_n = A\lambda_1^n +
+   B\lambda_2^n\) for some real constants \(A,B\).</li>
+<li>If \(\lambda_1 = \lambda_2\), then \(u_n =
+   An\lambda_1^{n-1}+B\lambda_1^n\) for some real constants \(A,B\).</li>
+</ol>
+<p>
+ </div>
+</p>
+
+<p>
+The key insight is that we can express the recurrence as a matrix
+relation:
+</p>
+\begin{align*}
+\begin{pmatrix} u_{n+1} \\ u_n \end{pmatrix}
+&= A \begin{pmatrix} u_n \\ u_{n-1} \end{pmatrix} \\
+&= A^2 \begin{pmatrix} u_{n-1} \\ u_{n-2} \end{pmatrix} \\
+&= \cdots \\
+&= A^n \begin{pmatrix} u_{1} \\ u_{0} \end{pmatrix},
+\end{align*}
+<p>
+where
+</p>
+\begin{align*}
+A = \begin{pmatrix} a & b \\ 1 & 0 \end{pmatrix}.
+\end{align*}
+
+<p>
+Note that the characteristic polynomial of \(\{u_n\}\) is precisely the
+characteristic polynomial of \(A\).
+</p>
+
+<p>
+If we can find an expression for \(A^n\), say
+</p>
+\begin{align*}
+A^n = \begin{pmatrix} f_1(n) & f_2(n) \\ f_3(n) & f_4(n) \end{pmatrix},
+\end{align*}
+<p>
+then we obtain the solution
+\[u_n = f_3(n)u_1 + f_4(n)u_0.\]
+</p>
+
+<p>
+This approach seems promising, but manually computing powers of \(A\)
+with arbitrary choices of \(a\) and \(b\) is generally not
+feasible. Luckily, we can use linear algebra to reduce \(A\) to a
+simpler matrix whose powers are much easier to express. In particular,
+we make use of diagonalization and the Jordan normal form.
+</p>
+</div>
+</div>
+<div id="outline-container-org1267383" class="outline-2">
+<h2 id="org1267383">Case 1: characteristic polynomial has distinct roots</h2>
+<div class="outline-text-2" id="text-org1267383">
+<p>
+In this case \(A\) has two eigenvalues, namely \(\lambda_1\) and
+\(\lambda_2\). Let \(v_1\) and \(v_2\) are eigenvectors corresponding to
+\(\lambda_1\) and \(\lambda_2\) respectively. We can directly solve for
+\(v_1\) and \(v_2\):
+</p>
+\begin{align*}
+\begin{pmatrix} a-\lambda_1 & b \\ 1 & -\lambda_1 \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix} = 0
+& \implies
+\begin{pmatrix} 0 & 0 \\ 1 & -\lambda_1 \end{pmatrix}
+\begin{pmatrix} x \\ y \end{pmatrix} = 0 \\
+& \implies x = \lambda_1 y.
+\end{align*}
+
+<p>
+The first implication is from subtracting the first row by
+\(a-\lambda_1\) times the second row. Evidently \(v_2\) has a similar
+solution set, with \(\lambda_1\) replaced by \(\lambda_2\).
+</p>
+
+<p>
+For convenience, we shall pick \(v_1 = (\lambda_1\ 1)^t\) and \(v_2 =
+(\lambda_2\ 1)^t\). It is clear that they are linearly independent, so
+\(\{v_1,v_2\}\) is a basis of eigenvectors and \(A\) is diagonalizable (we
+could have deduced before solving for \(v_1\) and \(v_2\) that they are
+linearly independent, since they correspond to different
+eigenvalues).
+</p>
+
+<p>
+We can express \(D\) as a basechange \(P^{-1}AP\) where
+\[
+D = \begin{pmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}\
+\text{and}\
+P = \begin{pmatrix} \lambda_1 & \lambda_2 \\ 1 & 1 \end{pmatrix},
+\]
+so
+</p>
+\begin{align*}
+A^n &= PD^nP^{-1} \\
+&= \begin{pmatrix} \lambda_1 & \lambda_2 \\ 1 & 1 \end{pmatrix}
+\begin{pmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{pmatrix}^n
+\begin{pmatrix} \lambda_1 & \lambda_2 \\ 1 & 1 \end{pmatrix}^{-1} \\
+&= \frac{1}{\lambda_1-\lambda_2}
+\begin{pmatrix}
+\lambda_1^{n+1}-\lambda_2^{n+1} & \lambda_1\lambda_2^{n+1}-\lambda_1^{n+1}\lambda_2 \\
+\lambda_1^n-\lambda_2^n & \lambda_1\lambda_2^n-\lambda_1^n\lambda_2.
+\end{pmatrix}
+\end{align*}
+
+<p>
+As noted in the introduction, this gives the solution
+</p>
+\begin{align*}
+u_n &= \frac{1}{\lambda_1-\lambda_2}
+((\lambda_1^n-\lambda_2^n)u_1 + (\lambda_1\lambda_2^n-\lambda_1^n\lambda_2)u_0) \\
+&= \frac{1}{\lambda_1-\lambda_2}
+((u_1 - \lambda_2 u_0)\lambda_1^n + (\lambda_1 u_0 - u_1)\lambda_2^n),
+\end{align*}
+<p>
+proving part 1 of the proposition.
+</p>
+
+<p>
+Let's test this on the Fibonacci sequence
+\[u_n = u_{n-1}+u_{n-2},\ u_1 = u_0 = 1.\]
+</p>
+
+<p>
+Solving the characteristic polynomial yields
+\[\lambda_1 = \frac{1+\sqrt{5}}{2},\ \lambda_2 = \frac{1-\sqrt{5}}{2}.\]
+</p>
+
+<p>
+We have
+</p>
+\begin{align*}
+\lambda_1-\lambda_2 &= \sqrt{5} \\
+u_1 - \lambda_2 u_0 &= \frac{1+\sqrt{5}}{2} \\
+\lambda_1 u_0 - u_1 &= -\frac{1-\sqrt{5}}{2},
+\end{align*}
+<p>
+so
+\[
+u_n = \frac{1}{\sqrt{5}} \left(\left(\frac{1+\sqrt{5}}{2}\right)^{n+1} - \left(\frac{1-\sqrt{5}}{2}\right)^{n+1}\right).
+\]
+Checking the first few values of \(u_n\) confirms that this is indeed a
+solution.
+</p>
+</div>
+</div>
+<div id="outline-container-org870f043" class="outline-2">
+<h2 id="org870f043">Case 2: characteristic polynomial has repeated roots</h2>
+<div class="outline-text-2" id="text-org870f043">
+<p>
+Let the root be \(\lambda\), so that the characteristic polynomial is
+equal to \((x-\lambda)^2\), or \(x^2-2\lambda x+\lambda^2\). Comparing
+coefficients with \(x^2-ax-b\) gives us the relations \[\lambda =
+\frac{a}{2},\ \lambda^2 = -b.\]
+</p>
+
+<p>
+It turns out that the eigenspace \(E_\lambda\) only has dimension 1,
+namely the set \(\{(\lambda y\ y)^t \mid y \in \R\}\) (the method used
+is the one used to find \(v_1\) and \(v_2\) in the previous
+section). Sadly, we cannot apply the same approach as the previous
+section as \(A\) does not have a basis of eigenvectors.
+</p>
+
+<p>
+Fortunately, we can still get something close to a diagonal matrix,
+namely a matrix \(J\) in Jordan form. Since \(J\) must be a \(2 \times 2\)
+matrix, there are 2 possibilities:
+</p>
+<ol class="org-ol">
+<li>\(J\) consists of two \(1 \times 1\) Jordan blocks</li>
+<li>\(J\) consists of one \(2 \times 2\) Jordan block</li>
+</ol>
+
+<p>
+The former possibility can be eliminated because that would require a
+basis of eigenvectors, which we have already shown not to exist. That
+leaves us with the latter possibility.
+</p>
+
+<p>
+We have to construct a Jordan basis of the form \(\{v, (A-\lambda
+I)v\}\), where \(v\) is a generalized eigenvector of exponent 2. Since
+</p>
+\begin{align*}
+(A-\lambda I)^2
+&= {\begin{pmatrix} \lambda & b \\ 1 & -\lambda \end{pmatrix}}^2 \\
+&= \begin{pmatrix} \lambda^2+b & 0 \\ 0 & b+\lambda^2 \end{pmatrix}
+\end{align*}
+
+<p>
+is the zero matrix, we can first set \(v\) to be a convenient value,
+like \((1\ 0)^t\). Then
+</p>
+
+\begin{align*}
+(A-\lambda I)v
+&= \begin{pmatrix} \lambda & b \\ 1 & -\lambda \end{pmatrix}
+\begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+&= \begin{pmatrix} \lambda \\ 1 \end{pmatrix}
+\end{align*}
+
+<p>
+is clearly nonzero, which confirms that \(v\) has exponent 2. Thus
+\(\{(1\ 0)^t, (\lambda\ 1)^t\}\) is a Jordan basis. Just as before, we
+can express \(J\) as a basechange \(P^{-1}AP\) where
+\[
+J = \begin{pmatrix} \lambda & 0 \\ 1 & \lambda \end{pmatrix}\ \text{and}\
+P = \begin{pmatrix} 1 & \lambda \\ 0 & 1 \end{pmatrix},
+\]
+so
+</p>
+\begin{align*}
+A^n &= PJ^nP^{-1} \\
+&= \begin{pmatrix} 1 & \lambda \\ 0 & 1 \end{pmatrix}
+\begin{pmatrix} \lambda & 0 \\ 1 & \lambda \end{pmatrix}^n
+\begin{pmatrix} 1 & -\lambda \\ 0 & 1 \end{pmatrix} \\
+&= \begin{pmatrix} 1 & \lambda \\ 0 & 1 \end{pmatrix}
+\left[\begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} +
+\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}\right]^n
+\begin{pmatrix} 1 & -\lambda \\ 0 & 1 \end{pmatrix} \\
+&= \begin{pmatrix} 1 & \lambda \\ 0 & 1 \end{pmatrix}
+\begin{pmatrix} \lambda^n & 0 \\ n\lambda^{n-1} & \lambda^n \end{pmatrix}
+\begin{pmatrix} 1 & -\lambda \\ 0 & 1 \end{pmatrix} \\
+&=
+\begin{pmatrix}
+(n+1)\lambda^n & -n\lambda^{n+1} \\
+n\lambda^{n-1} & (1-n)\lambda^n
+\end{pmatrix},
+\end{align*}
+
+<p>
+The seconde last equality comes from expanding the sum as per the
+binomial theorem. The expansion only consists of two nonzero terms,
+since \(\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}^k\) is the zero
+matrix for \(k \ge 2\).
+</p>
+
+<p>
+This yields the solution
+</p>
+\begin{align*}
+u_n &= (n\lambda^{n-1})u_1 + [(1-n)\lambda^n]u_0 \\
+&= n(u_1 - \lambda u_0) \lambda^{n-1} + u_0 \lambda^n,
+\end{align*}
+<p>
+proving part 2 of the proposition.
+</p>
+
+<p>
+As an example, consider the recurrence
+\[u_n = 4u_{n-1}-4u_{n-2},\ u_1 = 5,\ u_0 = 3,\]
+which has characteristic polynomial \(x^2-4x+4 = (x-2)^2\). Then \(\lambda
+= 2\) and \(u_n = -n(2^{n-1})+3(2^n)\). One can verify that this
+expression gives the expected values.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

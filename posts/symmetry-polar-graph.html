@@ -1,0 +1,647 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Symmetries in polar curves</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Symmetries in polar curves</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3c8942b">Introduction</a></li>
+<li><a href="#org4bae17e">Groups</a></li>
+<li><a href="#org74e72ed">Subgroups</a></li>
+<li><a href="#orgb63a711">Stabilizers</a></li>
+<li><a href="#orgcc559de">Conclusion</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3c8942b" class="outline-2">
+<h2 id="org3c8942b">Introduction</h2>
+<div class="outline-text-2" id="text-org3c8942b">
+<p>
+There are 3 types of symmetries that polar curves can exhibit:
+</p>
+<ol class="org-ol">
+<li>About the x-axis / polar axis</li>
+<li>About the y-axis / the line \(\theta = \pi/2\)</li>
+<li>About the pole</li>
+</ol>
+
+<p>
+When we say a curve has "symmetry about the x-axis", it means that
+reflecting the curve across the x-axis does not change it. Likewise, a
+curve with "symmetry about the y-axis" is unchanged by reflections
+about the y-axis, and a curve with "symmetry about the pole" is
+unchanged by reflections about the pole.
+</p>
+
+<p>
+For example, the curve of \(r = 1 + \sin \theta\) has symmetry about the
+x-axis, but not the y-axis or the pole:
+</p>
+
+<div class="figure">
+<p><img src="../img/polar-symmetry-1.png" alt="polar-symmetry-1.png" />
+</p>
+</div>
+
+<p>
+On the other hand, the curve of \(r = 1 + \cos \theta \sin \theta\) has
+symmetry about the pole, but not about the x-axis or the y-axis:
+</p>
+
+<div class="figure">
+<p><img src="../img/polar-symmetry-2.png" alt="polar-symmetry-2.png" />
+</p>
+</div>
+
+<p>
+Perhaps interestingly, we can formalize the notion of
+symmetry using groups.
+</p>
+</div>
+</div>
+<div id="outline-container-org4bae17e" class="outline-2">
+<h2 id="org4bae17e">Groups</h2>
+<div class="outline-text-2" id="text-org4bae17e">
+<p>
+There is a precise definition of a group, but for simplicity we shall
+use a more informal definition:
+</p>
+
+<p>
+ <div class="definition">
+A <b>group</b> \(G\) is a set of actions that can be composed one after
+another, such that the following conditions are satisfied:
+</p>
+<ol class="org-ol">
+<li>The composition of any two actions is another action in \(G\)</li>
+<li>Each action can be reversed</li>
+<li>The composition is <b>associative</b></li>
+</ol>
+
+<p>
+The <b>order</b> of \(G\) is defined as the number of actions in \(G\).
+ </div>
+</p>
+
+<p>
+The first condition is an instance of a property called <b>closure</b>. In
+this case, we say that \(G\) is closed under composition.
+</p>
+
+<p>
+We shall denote the composition of 2 actions \(a,b\) (applying \(a\), then
+\(b\)) by \(ab\). Thus the third condition can be described as follows:
+suppose we want to compose 3 actions \(a,b,c\) in that order. There are
+two ways we can achieve this:
+</p>
+<ol class="org-ol">
+<li>Compose \(ab\) with \(c\).</li>
+<li>Compose \(a\) with \(bc\).</li>
+</ol>
+
+<p>
+What associativity says is that both methods should yield the same
+action, i.e. \((ab)c = a(bc)\).
+</p>
+
+<p>
+What does this have to do with the 3 types of symmetries mentioned
+earlier? Well, these symmetries are closely related to their
+corresponding actions on the plane:
+</p>
+<ol class="org-ol">
+<li>Reflection about the x-axis, \(h\)</li>
+<li>Reflection about the y-axis, \(v\)</li>
+<li>Reflection about the pole, \(d\).</li>
+</ol>
+
+<p>
+We shall add an additional action, called the <b>identity</b>:
+</p>
+<ol class="org-ol">
+<li value="4">Doing nothing, \(e\).</li>
+</ol>
+
+<p>
+It turns out that these four actions form a group \(\{e,h,v,d\}\), which
+we shall simply denote \(V\). Note that the identity corresponds to the
+action \(h^2\) (and \(v^2\), and \(d^2\)). For those who know group theory,
+this group is isomorphic to the Klein 4-group \(V_4\).
+</p>
+</div>
+</div>
+<div id="outline-container-org74e72ed" class="outline-2">
+<h2 id="org74e72ed">Subgroups</h2>
+<div class="outline-text-2" id="text-org74e72ed">
+<p>
+ <div class="definition">
+A <b>subgroup</b> \(H\) of a group \(G\) is a subset of actions which is closed
+under composition.
+ </div>
+</p>
+
+<p>
+Every group \(G\) automatically has two subgroups, namely itself and the
+trivial group \(\{e\}\) (every group has an identity element). However,
+\(V\) has a few additional subgroups, namely \(\{e,h\}\), \(\{e,v\}\) and
+\(\{e,d\}\). Note that there are no subgroups with 3 elements; this is a
+result of Lagrange's Theorem, which will not be proven here:
+ <div class="theorem">
+If \(H\) is a subgroup of \(G\), then the order of \(H\) divides the order
+of \(G\).
+ </div>
+</p>
+</div>
+</div>
+<div id="outline-container-orgb63a711" class="outline-2">
+<h2 id="orgb63a711">Stabilizers</h2>
+<div class="outline-text-2" id="text-orgb63a711">
+<p>
+ <div class="definition">
+Let \(C\) be any polar curve. The <b>stabilizer</b> of \(C\) is the subset of
+actions in \(V\) which do not change \(C\).
+ </div>
+</p>
+
+<p>
+Using this definition, we can rephrase the examples in the
+introduction:
+</p>
+<ol class="org-ol">
+<li>The stabilizer of the curve \(r = 1 + \sin \theta\) is \(\{e,h\}\)</li>
+<li>The stabilizer of the curve \(r = 1 + \cos \theta \sin \theta\) is \(\{e,d\}\).</li>
+</ol>
+
+<p>
+Intuitively, the stabilizer measures how much symmetry an object
+has. The bigger the stabilizer, the more symmetry it has; if the
+stabilizer of a polar curve is \(V\) itself, then the curve has all 3
+symmetries.
+</p>
+
+<p>
+Clearly the stabilizer of any curve must contain the identity. Note
+also that the above stabilizers were both subgroups; this is the case
+for all polar curves.
+</p>
+
+<p>
+That stabilizers are subgroups is a non-trivial fact: it implies that
+the stabilizer of a curve can never have 3 elements, because of
+Lagrange's Theorem. In other words, if a curve is <b>stabilised</b> by any
+two non-identity actions, then it is stabilised by the other
+non-identity action.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcc559de" class="outline-2">
+<h2 id="orgcc559de">Conclusion</h2>
+<div class="outline-text-2" id="text-orgcc559de">
+<p>
+This was a simple application of group theory, where there were only 3
+different symmetries. However, groups can be applied in many other
+settings where there is a notion of symmetry, and it can yield deep
+and non-trivial results. Indeed, the power of group theory lies in its
+generality.
+</p>
+
+<p>
+For example, the moves of the Rubik's Cube form a group with \(4 \times
+10^{19}\)(!) elements. The results used here are also applied to
+analyse the symmetries of this gigantic group, which allows us to
+develop solving algorithms, as well as compute <a href="https://ruwix.com/the-rubiks-cube/gods-number/">God's number</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

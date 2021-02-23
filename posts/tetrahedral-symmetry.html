@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Visualising the tetrahedral symmetry group</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Visualising the tetrahedral symmetry group</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgcd7dd11">Construction via permutations</a></li>
+<li><a href="#orgcdbe86b">Construction via semidirect product</a></li>
+<li><a href="#org2537540">Conjugacy classes</a></li>
+<li><a href="#org5833180">Normal subgroups</a></li>
+</ul>
+</div>
+</div>
+<p>
+The aim of the post is to give a geometric interpretation of the
+tetrahedral symmetry group \(T\) as well as some of its
+properties. Credits to my good friend Ash for the awesome graphics.
+</p>
+
+<p>
+We shall label the vertices of a tetrahedron \(1\) to \(4\) (one could
+label the faces instead, but it doesn't make a difference because of
+duality).
+</p>
+
+<div id="outline-container-orgcd7dd11" class="outline-2">
+<h2 id="orgcd7dd11">Construction via permutations</h2>
+<div class="outline-text-2" id="text-orgcd7dd11">
+<p>
+Since every tetrahedral symmetry can be uniquely identified as a
+permutation of these \(4\) points, it follows that \(T\) is a subgroup of
+\(S_4\). We shall determine \(T\) by studying the cycle types of these
+symmetries.
+</p>
+
+<p>
+Recall that the non-trivial cycle types of \(S_4\) are \((2)\), \((3)\),
+\((2,2)\) and \((4)\).
+</p>
+
+<ol class="org-ol">
+<li><p>
+\((2)\)
+</p>
+
+<p>
+This corresponds to the action of swapping two vertices while
+leaving the other two unchanged. It clearly does not preserve
+orientation, and hence does not correspond to any tetrahedral
+symmetry.
+</p></li>
+</ol>
+
+
+<div class="figure">
+<p><img src="../img/tetrahedron-1.png" alt="tetrahedron-1.png" width="500px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Visualisation of the permutation \((12)\)</p>
+</div>
+
+<ol class="org-ol">
+<li value="2"><p>
+\((3)\)
+</p>
+
+<p>
+Let \(\pi = (abc)\) be a $3$-cycle, and let \(d\) be the remaining
+vertex. Then \(\pi\) corresponds to the action of <b>rotation about
+\(d\)</b><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>:
+</p></li>
+</ol>
+
+
+<div class="figure">
+<p><img src="../img/tetrahedron-2.png" alt="tetrahedron-2.png" width="500px" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Visualisation of the permutation \((243)\), which is a rotation about \(1\)</p>
+</div>
+
+<ol class="org-ol">
+<li value="3"><p>
+\((2,2)\)
+</p>
+
+<p>
+<a id="org2c5822e"></a>
+Note that any $(2,2)$-cycle is the product of $3$-cycles: \((ab)(cd)
+   = (acb)(acd)\). So it corresponds to the action of two successive
+rotations about different vertices.
+</p></li>
+</ol>
+
+
+<div class="figure">
+<p><img src="../img/tetrahedron-3.png" alt="tetrahedron-3.png" width="500px" />
+</p>
+<p><span class="figure-number">Figure 3: </span>Visualisation of the permutation \((243)(143)\), which is a rotation about \(1\) followed by a rotation about \(2\)</p>
+</div>
+
+<ol class="org-ol">
+<li value="4"><p>
+\((4)\)
+</p>
+
+<p>
+Any $4$-cycle is the product of a $3$-cycle and $2$-cycle: \((abcd)
+   = (abc)(cd)\). Hence it does not correspond to any tetraheral
+symmetry, otherwise \((cd) = (acb)(abcd)\) would be a tetrahdral
+symmetry.
+</p></li>
+</ol>
+
+<p>
+In summary, nontrivial tetrahdral symmetries have cycle types \((3)\)
+and \((2,2)\), which make up all the even permutations. Thus \(T \cong
+A_4\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgcdbe86b" class="outline-2">
+<h2 id="orgcdbe86b">Construction via semidirect product</h2>
+<div class="outline-text-2" id="text-orgcdbe86b">
+<p>
+Alternatively, one can view \(T\) as a combination of two types of
+actions (see <a href="./intuition-semidirect-products.html">this</a> for a detailed explanation). The first is the
+action of \(C_3\) by rotation about a fixed vertex which we shall call
+the <b>apex</b>.
+</p>
+
+<p>
+The second can be thought of as the action which "changes the apex":
+imagine the tetrahedron lying on a flat plane, and let the top vertex
+be the apex (this justifies my using that word). Choose any non-apex
+vertex \(v\), and tip the tetrahedron over such that \(v\) is now the
+base. Then, rotate \(v\) clockwise by \(2\pi/3\) radians, such that the
+alignment of the tetrahedron (when viewed from a fixed direction)
+matches the original:
+</p>
+
+
+<div class="figure">
+<p><img src="../img/tetrahedron-4.png" alt="tetrahedron-4.png" width="500px" />
+</p>
+<p><span class="figure-number">Figure 4: </span>Visualisation of the permutation \((14)(23)\), obtained by tipping \(1\) over towards North-west, then rotating the base</p>
+</div>
+
+<p>
+By labelling the faces of tetrahedron, it can be seen that the second
+type of action corresponds to $(2,2)$-cycles, so it is acted on by the
+Klein four-group \(V_4\). Notice that this matches the <a href="#org2c5822e">above</a> description
+of $(2,2)$-cycles as two successive rotations about different
+vertices.
+</p>
+
+<p>
+It should be intuitively clear that any tetrahedral symmetry can be
+expressed as a combination of a rotation and a apex-change. Thus \(T\)
+is a semidirect product \(V_4 \rtimes C_3\). It is not \(C_3 \rtimes V_4\)
+because as I show later on, \(C_3\) is not normal in \(A_4\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2537540" class="outline-2">
+<h2 id="org2537540">Conjugacy classes</h2>
+<div class="outline-text-2" id="text-org2537540">
+<p>
+We know that the $(2,2)$-cycles (corresponding to two successive
+rotations about different faces) form one conjugacy class in \(A_4\),
+while the $3$-cycles form two (see <a href="./conjugacy-permgroup.html">here</a> for more details).
+</p>
+
+<p>
+<a id="org3c67bf4"></a>
+For example, \((123)\) and \((132)\) are not conjugate to each other in
+\(A_4\). One is a clockwise \(2\pi/3\) rotation about vertex \(4\), while
+the other is a counterclockwise \(2\pi/3\) rotation. This is true in
+general: so the clockwise and counterclockwise \(2\pi/3\) rotations form
+distinct conjugacy classes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5833180" class="outline-2">
+<h2 id="org5833180">Normal subgroups</h2>
+<div class="outline-text-2" id="text-org5833180">
+<p>
+The sizes of the conjugacy classes of \(A_4\) are \(1\), \(3\) and
+\(8\). Using the fact that a normal subgroup is a union of conjugacy
+classes, we can conclude that any proper nontrivial normal subgroup
+has order \(4 = 1+3\). The only such subgroup is \(\angles{(12)(34),
+(13)(24)}\), which is isomorphic to \(V_4\).
+</p>
+
+<p>
+The subgroup \(H = \angles{(123)}\) (and its conjugates) is not normal
+because as mentioned <a href="#org3c67bf4">above</a>, \((123)\) and \((132)\) belong to different
+conjugacy classes, and \(H\) does not contain both classes.
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+Embed the tetrahedron in \(\R^3\) such that the center is at the
+origin, and let \(W\) be the $2$-dimensional subspace parallel to the
+face opposite \(d\). Then \(\pi\) can be identified as the linear operator
+which rotates \(W\) clockwise by either \(2\pi/3\) or \(4\pi/3\) radians.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

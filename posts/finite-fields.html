@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Finite fields: the very basics</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Finite fields: the very basics</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org821c6aa">Identifying finite fields</a></li>
+<li><a href="#org34a12c1">Irreducible polynomials in \(\F_p[x]\)</a></li>
+<li><a href="#org3bc4302">The Galois group \(\text{Gal}(\F_{p^n}/\F_p)\)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org821c6aa" class="outline-2">
+<h2 id="org821c6aa">Identifying finite fields</h2>
+<div class="outline-text-2" id="text-org821c6aa">
+<p>
+The prime subfield of a finite field \(F\) is isomorphic to \(\F_p\) for
+some prime \(p\). Thus we can view \(F\) as a vector space over \(\F_p\):
+supposing the dimension of the vector space is \(n\), let \(\{x_1,
+  \cdots, x_n\}\) be any basis. Then every element of \(F\) can be
+uniquely represented in the form \[\sum_{i=1} a_i x_i,\] where \(a_i
+  \in \F_p\). This proves that \(F\) must have \(p^n\) elements.
+</p>
+
+<p>
+Conversely, we can show that for any prime \(p\) and positive integer
+\(n\) there exists a finite field of order \(p^n\) by explicitly
+constructing one: namely the splitting field of the polynomial \(f(x)
+  = x^{p^n}-x\) over \(\F_p\). It is separable as the derivative \(f'(x) =
+  {p^n}x^{p^n-1}-1 = -1\) has no roots, meaning there are \(p^n\)
+distinct roots. We can then show that these \(p^n\) roots form a
+field, by using the fact that in characteristic \(p\), we have
+\((\alpha+\beta)^{p^n} = \alpha^{p^n}+\beta^{p^n}\) and
+\((\alpha\beta)^{p^n} = \alpha^{p^n}\beta^{p^n}\). In particular, the
+prime subfield \(\F_p\) is contained in the roots since \(1\) is a
+root. Thus the splitting field has precisely \(p^n\) elements.
+</p>
+
+<p>
+Furthermore, we can show that finite fields of order \(p^n\) are
+unique up to isomorphism. Suppose the finite field \(F\) has dimension
+\(n\) over its prime subfield \(\F_p\). Its multiplicative group
+\(F^\times\) is cyclic and has order \(p^n-1\), so for \(a \neq 0\) we
+have \(a^{p^n} = a\). Clearly \(0^{p^n} = 0\) as well, so the elements
+of \(F\) are all roots of the polynomial \(f(x) = x^{p^n}-x \in
+  \F_p[x]\). But there are at most \(\deg f = p^n\) roots, and there are
+precisely \(p^n\) elements in \(F\). Thus \(F\) is the splitting field of
+\(f(x)\). It follows then that finite fields of order \(p^n\) are unique
+up to isomorphism since splitting fields are unique up to
+isomorphism.
+</p>
+
+<p>
+Essentially, for every prime \(p\) and positive integer \(n\), there is
+one and only one finite field with order \(p^n\), namely the splitting
+field of the polynomial \(x^{p^n}-x\). Thus we can unambiguously
+denote the field \(\F_{p^n}\). <b>NOTE:</b> \(\F_{p^n}\), just like \(\F_p\),
+has characteristic \(p\).
+</p>
+</div>
+</div>
+<div id="outline-container-org34a12c1" class="outline-2">
+<h2 id="org34a12c1">Irreducible polynomials in \(\F_p[x]\)</h2>
+<div class="outline-text-2" id="text-org34a12c1">
+<p>
+We can proceed to prove the existence of irreducible polynomials
+over \(\F_p\) of all degrees, and derive a formula which will allow us
+to find explicitly all the irreducible polynomials over \(\F_p\).
+</p>
+
+<p>
+If \(\theta\) is a generator of the cyclic multiplicative group
+\(\F_{p^n}^\times\), then we can write \(\F_{p^n} =
+  \F_p(\theta)\). Since \(\F_{p^n}\) has degree \(n\) over \(\F_p\), the
+minimal polynomial \(m_\theta(x)\) has degree \(n\). Minimal polynomials
+are irreducible, so we have essentially shown that degree \(n\)
+irreducible polynomials exist, where \(n\) is any positive integer.
+</p>
+
+<p>
+This gives us another way to construct \(\F_{p^n}\) as the quotient
+\(\F_p[x]/(f(x))\), where \(f\) is an irreducible degree \(n\)
+polynomial. Being able to express elements of \(\F_{p^n}\) as residue
+classes of polynomials is useful for carrying out concrete
+computations.
+</p>
+
+<p>
+A particularly significant result is that if \(f(x)\) is an
+irreducible polynomial of degree \(n\) over \(\F_p\), then \(f(x) \mid
+  x^{p^n}-x\). If \(\alpha\) is a root of \(f(x)\), then \(\F_p(\alpha)\) is
+a degree \(n\) extension of \(\F_p\) and is thus isomorphic to
+\(\F_{p^n}\). In particular, \(\alpha^{p^n} = \alpha\) so it is a root
+of \(x^{p^n}-x\).
+</p>
+
+<p>
+A related result is that \(d \mid n\) if and only if \(x^{p^d}-x \mid
+  x^{p^n}-x\). The forward implication follows from the fact that
+\(x^{p^d-1}-1 \mid x^{p^n-1}-1\), since \(p^d-1 \mid p^n-1\). As for the
+reverse implication, we can use the division algorithm to write \(n =
+  qd+r\) where \(0 \le r < d\). Let \(f(x)\) be an irreducible degree \(d\)
+polynomial with a root \(\alpha\). Since \(\alpha^{p^d} = \alpha\), we
+have a chain of equalities \(\alpha = \alpha^{p^{2d}} = \cdots =
+  \alpha^{p^{qd}}\); multiplying the first and last times by both sides
+gives \(\alpha^{p^r} = \alpha^{p^n}\). Also, \(\alpha\) is a root of
+\(x^{p^n}-x\), so \(\alpha^{p^n} = \alpha\). Thus \(\alpha^{p^r} =
+  \alpha\). Now we shall identify \(\alpha \in \F_p(\alpha)\) with the
+element \(\bar{x} \in \F_p[x]/(f(x))\). It is known that
+\(g(\bar{x})^{p^r} = g(\bar{x}^{p^r}) = g(\bar{x})\) for every
+polynomial \(g(x) \in \F_p[x]\). Since every congruence class has a
+representative of the form \(g(\bar{x})\), it follows that every
+element of \(\F_p[x]/(f(x))\) is a root of the polynomial \(X^{p^r}-X\)
+in \(X\). If \(r > 0\), then \(X^{p^r}-X\) has nonzero degree and has at
+most \(p^d\) roots, so \(p^d \le p^r\), a contradiction since \(0 \le r <
+  d\). Thus \(r = 0\) and \(d \mid n\).
+</p>
+
+<p>
+The next step is showing that each irreducible polynomial dividing
+\(x^{p^n}-x\) only appears once in the factorization of
+\(x^{p^n}-x\). This is easy to see since \(x^{p^n}-x\) is
+separable.
+</p>
+
+<p>
+By combining the past few results, we can conclude that
+\[
+  x^{p^n}-x =
+  \prod_{d \mid n} \prod_{\substack{f\ \text{irreducible} \\ \deg f = d}} f(x).
+  \]
+</p>
+
+<p>
+Using this result, we can recursively compute all degree \(n\)
+polynomials. Furthermore, we can derive a formula for the number of
+degree \(n\) irreducible polynomials \(\phi(n)\) using the Mobius
+inversion formula:
+\[
+  \phi(n) = \frac{1}{n} \sum_{d \mid n} \mu(d)p^{n/d},
+  \]
+where \(\mu(n)\) is the Mobius $&mu;$-function.
+</p>
+</div>
+</div>
+<div id="outline-container-org3bc4302" class="outline-2">
+<h2 id="org3bc4302">The Galois group \(\text{Gal}(\F_{p^n}/\F_p)\)</h2>
+<div class="outline-text-2" id="text-org3bc4302">
+<p>
+As mentioned earlier, \(\F_{p^n}\) is the splitting field of the
+separable polynomial \(x^{p^n}-x\) is hence Galois. It can be verified
+that the map \(\sigma_p : \F_{p^n} \rightarrow \F_{p^n}\) given by \(x
+  \mapsto x^p\) is an automorphism. In \(G = \text{Gal}(\F_{p^n}/\F_p)\),
+it generates an order \(n\) subgroup and the elements are \(\sigma_p^i\)
+where \(0 \le i < n\). But by the Fundamental Theorem of Galois
+theory, \(\left|G\right| = [\F_{p^n} : \F_p] = n\). Thus \(G \cong Z_n\)
+with \(\sigma_p\) as a generator.
+</p>
+
+<p>
+The subfields of \(\F_{p^n}\) containing \(\F_p\) correspond to the
+subgroups of the cyclic group \(Z_n\), which in turn correspond to the
+divisors of \(n\). Concretely, for every divisor \(d\) of \(n\), \(Z_d\) is
+a subgroup of \(Z_n\) with corresponding fixed field \(\F_{p^{n/d}}\):
+it suffices to check that \(\F_{p^{n/d}}\) is the fixed field of
+\(\sigma_p^{n/d}\). Clearly all the elements of \(\F_{p^{n/d}}\) are
+roots of the polynomial \(x^{p^{n/d}}-x\), and there are at most
+\(p^{n/d}\) such roots, giving the result. This correspondence between
+subfields and divisors implies that \(\F_{p^d} \subseteq \F_{p^n}\) if
+and only if \(d \mid n\).
+</p>
+
+<p>
+We can also consider the Galois conjugates of some \(\alpha \in
+  \F_{p^n} \setminus \F_p\) (note that if \(\alpha \in \F_p\) then it is
+fixed by all automorphisms, so that the only Galois conjugate is
+itself). Since the elements of \(\text{Gal}(\F_{p^n}/\F_p)\) are of
+the form \(\sigma_p^i\) where \(0 \le i < n\), it follows that the
+Galois conjugates are \(\alpha, \alpha^p, \alpha^{p^2}, \cdots,
+  \alpha^{p^{n-1}}\). We can further conclude that these $p$-powers of
+\(\alpha\) are precisely the roots of \(m_\alpha(x)\), since each
+\(\sigma_p^i\) must send roots to roots.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

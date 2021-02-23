@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Motivating semidirect products via group actions</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Motivating semidirect products via group actions</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2fc3759">Introduction</a></li>
+<li><a href="#orgf8be681">Deriving the semidirect product</a></li>
+<li><a href="#org69953e0">Example 1: The dihedral group \(D_{2n}\)</a></li>
+<li><a href="#org07db24b">Example 2: The group of isometries on \(\R^2\)</a></li>
+<li><a href="#org8b05d8b">Example 3: Wreath products</a></li>
+</ul>
+</div>
+</div>
+<p>
+The aim of this post is to give an alternate explanation of the
+semidirect product as a way to 'combine' group actions.
+</p>
+<div id="outline-container-org2fc3759" class="outline-2">
+<h2 id="org2fc3759">Introduction</h2>
+<div class="outline-text-2" id="text-org2fc3759">
+<p>
+Consider the actions of two groups \(G\) and \(H\) on a set \(A\). As a
+simple example, an $n$-gon is acted on by both the group of rotations
+\(C_n\) and the group \(C_2\) whose nontrivial element is a flip.
+</p>
+
+<p>
+Can we combine these two actions to form another group action? Suppose
+it is possible; let \(G+H\) denote the 'combined' group. Then the action
+of \(G+H\) on \(A\) should contain both the rotations and flips. More
+precisely, we want the action of some element \(x \in G+H\) to be a
+<i>composition</i> of a flip and a rotation.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf8be681" class="outline-2">
+<h2 id="orgf8be681">Deriving the semidirect product</h2>
+<div class="outline-text-2" id="text-orgf8be681">
+<p>
+A naive approach would be to let \(G+H\) be the direct product \(G \times
+H\), which acts on \(A\) by
+\[(g,h) \cdot a = g \cdot (h \cdot a).\]
+</p>
+
+<p>
+(Note the \(\cdot\)'s in the RHS represent different operations,
+depending on which group the left operand is from. Despite the
+potential ambiguity, this notation will be used for convenience.)
+</p>
+
+<p>
+The main problem with this approach however, is that this operation
+does not necessarily define a group action. On one hand, we have
+\[(g,h) \cdot ((g',h') \cdot a) = g \cdot h \cdot g' \cdot h' \cdot a\]
+</p>
+
+<p>
+(from now on brackets are omitted for convenience), but 
+\[(gg',hh') \cdot a = g \cdot g' \cdot h \cdot h' \cdot a.\]
+</p>
+
+<p>
+The two expressions in the right-hand side may not be equal, since the
+actions of \(g'\) and \(h\) might not commute with each other. Not all
+hope is lost however: if we can find a unique element \(\bar{g}\) such
+that
+</p>
+
+<p>
+\[h \cdot g' \cdot (h' \cdot a) = \bar{g} \cdot h \cdot (h' \cdot a),\]
+</p>
+
+<p>
+define \((g,h)(g',h') = (g\bar{g},hh')\), and then prove that the
+Cartesian product \(G \times H\) forms a group under this definition, we
+have a well-defined group action.
+</p>
+
+<p>
+Note that \(h' \cdot a\) runs through all elements of \(A\), thus \(h'
+\cdot a\) will be replaced with just \(a\). As before, suppose that for
+all \(g \in G\) and \(h \in H\), there exists a unique element \(\bar{g}
+\in G\) such that \(h \cdot g \cdot a = \bar{g} \cdot h \cdot a\) for all
+\(a \in A\) (note that \(\bar{g}\) actually depends on both \(g\) and
+\(h\)). In other words, the maps \(\varphi_h : G \rightarrow G\) mapping
+\(g \mapsto \bar{g}\) are injective.
+</p>
+
+<p>
+We can already say a lot about \(\varphi_h\) itself. Firstly, it is
+surjective: for all \(g' \in G\) we have
+</p>
+\begin{align*}
+g' \cdot h \cdot a &= h \cdot h^{-1} \cdot g' \cdot h \cdot a \\
+&= h \cdot \varphi_{h^{-1}}(g') \cdot h^{-1} \cdot h \cdot a \\
+&= h \cdot \varphi_{h^{-1}}(g') \cdot a,
+\end{align*}
+
+<p>
+so \(\varphi_h(\varphi_{h^{-1}}(g')) = g'\). Secondly, \(\varphi_h\) is an
+endomorphism of \(G\): since
+</p>
+\begin{align*}
+\varphi_h(g) \cdot \varphi_h(g') \cdot h \cdot a
+&= \varphi_h(g) \cdot h \cdot g' \cdot a \\
+&= h \cdot g \cdot g' \cdot a \\
+&= h \cdot gg' \cdot a \\
+&= \varphi_h(gg') \cdot h \cdot a
+\end{align*}
+<p>
+and \(h \cdot a\) runs through all elements of \(A\), it follows that
+\(\varphi_h(g)\varphi_h(g') = \varphi_h(gg')\). This combined with
+injectivity and surjectivity means \(\varphi_h \in \Aut(G)\).
+</p>
+
+<p>
+Furthermore, the map \(\varphi : h \mapsto \varphi_h\) is an
+homomorphism from \(H\) to \(\Aut(G)\):
+</p>
+
+\begin{align*}
+\varphi_{hh'}(g) \cdot hh' \cdot a
+&= hh' \cdot g \cdot a \\
+&= h \cdot h' \cdot g \cdot a \\
+&= h \cdot \varphi_{h'}(g) \cdot h' \cdot a \\
+&= \varphi_h\varphi_{h'}(g) \cdot h \cdot h' \cdot a \\
+&= \varphi_h\varphi_{h'}(g) \cdot hh' \cdot a.
+\end{align*}
+
+<p>
+As mentioned earlier, if the Cartesian product \(G \times H\) is a group
+under the operation
+\[(g,h)(g',h') = (g\varphi(h)(g'),hh'),\]
+</p>
+
+<p>
+then we have a valid group action. This is precisely the definition of
+the semidirect product \(G \rtimes_\varphi H\)! In addition however, we
+have provided a useful interpretation of \(\varphi(h)\): it allows for a
+weaker version of commutativity to be satisfied, namely \(h \cdot g
+\cdot a = \varphi(h)(g) \cdot h \cdot a\). This is important because we
+can then define a group action which "contains" the actions of \(G\) and
+\(H\).
+</p>
+
+<p>
+This interpretation can be used to analyze common examples of
+semidirect products where each element is a composition of two actions
+of different types, acting on the same set (for example, a rotation
+and a flip).
+</p>
+</div>
+</div>
+<div id="outline-container-org69953e0" class="outline-2">
+<h2 id="org69953e0">Example 1: The dihedral group \(D_{2n}\)</h2>
+<div class="outline-text-2" id="text-org69953e0">
+<p>
+Let \(A\) be the set of all possible labellings of the vertices of an
+$n$-gon from \(1\) to \(n\). The groups \(R = \angles{r}\) and \(S = \{1,s\}\)
+act separately on \(A\), where \(r\) acts by rotating the figure \(2\pi/n\)
+radians and \(s\) acts by flipping about the $y$-axis.
+</p>
+
+<p>
+The identity \(sr = r^{-1}s\) should be familiar; in the language of
+group actions this means
+\[s \cdot r \cdot a = r^{-1} \cdot s \cdot a.\]
+</p>
+
+<p>
+Expressing it in this form is useful because we can immediately
+determine that \(\varphi(s)(r) = r^{-1}\); since \(r\) generates \(R\) this
+value completely determines \(\varphi(s)\).  Since \(\varphi\) is a
+homomorphism, \(\varphi(1)\) must be the identity automorphism. The
+semidirect product \(C_n \rtimes C_2\) thus acts on \(A\), and
+each element is a composition of a reflection and a flip. Hence it is
+isomorphic to \(D_{2n}\).
+</p>
+
+<p>
+Note that there is no semidirect product \(C_2 \rtimes C_n\) for \(n >
+2\). This is because there is no \(x \in S\) such that
+\[r \cdot s \cdot a = x \cdot r \cdot a.\]
+Hence unlike a direct product, there is an asymmetry in the factors of
+a semidirect product.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org07db24b" class="outline-2">
+<h2 id="org07db24b">Example 2: The group of isometries on \(\R^2\)</h2>
+<div class="outline-text-2" id="text-org07db24b">
+<p>
+An isometry of \(\R^2\) can be characterised as the composition of a
+translation and a glide reflection (which is itself a composition of a
+reflection and a rotation). Translations are represented via the action
+of \(\R^2\) on itself by
+</p>
+<p>
+\[
+\begin{pmatrix} a \\ b \end{pmatrix}
+\cdot \begin{pmatrix} x \\ y \end{pmatrix}
+= \begin{pmatrix} a+x \\ b+y \end{pmatrix},
+\]
+</p>
+
+<p>
+while glide reflections are represented via the natural action of
+\(O(2)\) (the group of orthogonal \(2\times2\) real matrices) on
+\(\R^2\). Let \(t = (i, j)^t \in \R^2\) and \(M = \big(\begin{smallmatrix}
+a&b\\c&d \end{smallmatrix}\big) \in O(2)\). It can be seen that there is a unique
+translation \(t' \in \R^2\) such that
+\[M \cdot t \cdot a = t' \cdot M \cdot a,\]
+namely \(t' = (ai+bj, ci+dj)^t = Mt\). Thus the homomorphism defined by
+\(\varphi(M)(t) = Mt\) induces a semidirect product \(\R^2 \rtimes O(2)\),
+which in turn is the group of isometries on \(\R^2\).
+</p>
+</div>
+</div>
+<div id="outline-container-org8b05d8b" class="outline-2">
+<h2 id="org8b05d8b">Example 3: Wreath products</h2>
+<div class="outline-text-2" id="text-org8b05d8b">
+<p>
+Suppose there are \(n\) groups with \(k\) elements each. We can define one
+type of action where elements in the same group are permuted amongst
+themselves:
+</p>
+
+
+<div class="figure">
+<p><img src="../img/wreathproduct-permute-within-group.png" alt="wreathproduct-permute-within-group.png" />
+</p>
+</div>
+
+<p>
+There is another type of action where the positions of the groups
+themselves are shifted, but the elements of each group are fixed in
+their own positions:
+</p>
+
+
+<div class="figure">
+<p><img src="../img/wreathproduct-permute-groups.png" alt="wreathproduct-permute-groups.png" />
+</p>
+</div>
+
+<p>
+More precisely, these are the actions of \(G = S_k \times \cdots \times
+S_k\) (with \(n\) factors) and \(H = S_n\) respectively on the permutations
+of a set. For simplicity, let \(k = 3\) and \(n = 2\). Let \(g =
+(\theta_1,\theta_2) \in G\), \(h\) be the nontrivial element of \(H\) and
+\(a = (a,b,c,d,e,f)\) be a permutation. There is a unique element \(g'
+\in G\) such that
+</p>
+\begin{align*}
+h \cdot g \cdot a
+&= (\theta_2(d),\theta_2(e),\theta_2(f),\theta_1(a),\theta_1(b),\theta_2(c)) \\
+&= g' \cdot (d,e,f,a,b,c) \\
+&= g' \cdot h \cdot a,
+\end{align*}
+
+<p>
+namely \(g' = (\theta_2,\theta_1) = h(g)\). In general, the homomorphism
+defined by \(\varphi(h)(g) = h(g)\) induces a semidirect product \(G
+\rtimes H\), which is the wreath product \(S_k \wr S_n\). In other words,
+the wreath product \(S_k \wr S_n\) preserves <i>grouping</i>: the order of
+elements within a group and the order of groups do not matter.
+</p>
+
+<p>
+Interestingly, this can be used to give an alternate characterisation
+of \(D_8\). \(D_8\) is precisely the group which preserves the <i>diagonals</i>
+of a square, or equivalently the pairs of diagonally opposite
+points. There are two such pairs, and \(D_8\) preserves the grouping of
+the 4 vertices into these 2 pairs. Thus \(D_8 \cong S_2 \wr S_2\).
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

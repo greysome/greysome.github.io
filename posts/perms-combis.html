@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A group-theoretic approach to basic counting</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">A group-theoretic approach to basic counting</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2ff1333">Introduction</a></li>
+<li><a href="#org26c9e0d">Everything goes back to permutations</a></li>
+<li><a href="#orga9b196d">Symmetries of $k$-permutations as group actions</a></li>
+<li><a href="#orga6e76ce">Combining symmetries</a></li>
+</ul>
+</div>
+</div>
+<p>
+This post assumes basic knowledge on permutations and combinations, as
+well as group theory (particularly the symmetric group \(S_n\), the
+orbit-stabilizer theorem, and Burnside's lemma).
+</p>
+<div id="outline-container-org2ff1333" class="outline-2">
+<h2 id="org2ff1333">Introduction</h2>
+<div class="outline-text-2" id="text-org2ff1333">
+<p>
+The goal is to provide a group-theoretic framework for the topic of
+counting. The key idea is to encode symmetries of $k$-permutations as
+group actions, and then use Burnside's lemma to count the number of
+distinct objects under these symmetries.
+</p>
+</div>
+</div>
+<div id="outline-container-org26c9e0d" class="outline-2">
+<h2 id="org26c9e0d">Everything goes back to permutations</h2>
+<div class="outline-text-2" id="text-org26c9e0d">
+<p>
+The fundamental objects of study are $k$-permutations. All other
+structures should be thought of as equivalence classes of
+$k$-permutations under some symmetry. Here are some examples (let
+\(x,y\) be arbitrary $k$-permutations of some set \(S\)):
+</p>
+
+<p>
+ <div align="center">
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Structure</th>
+<th scope="col" class="org-left">\(x \sim y\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">combination</td>
+<td class="org-left">\(x\) contains precisely the same elements as \(y\)</td>
+</tr>
+
+<tr>
+<td class="org-left">labelled permutation<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></td>
+<td class="org-left">the sequence of labels in \(x\) and \(y\) are equal</td>
+</tr>
+
+<tr>
+<td class="org-left">necklace</td>
+<td class="org-left">\(x\) is a shifted version of \(y\)</td>
+</tr>
+</tbody>
+</table>
+<p>
+ </div>
+</p>
+
+<p>
+An elementary result is first established before we move on:
+ <div class="proposition">
+Let \(S\) be a finite set with \(n\) elements. The number of
+$k$-permutations of \(S\), denoted \(\perm{n}{k}\), is
+\(\frac{n!}{(n-k)!}\).
+ </div>
+</p>
+
+<p>
+The simplest method involves multiplying the number of possibilities
+for the 1st entry, and the 2nd entry, and so on, yielding a product
+\[n(n-1)\cdots(n-(k-1)) = \frac{n!}{(n-k)!}.\]
+</p>
+
+<p>
+There is an alternative approach using group actions.
+ <div class="proof">
+Let \(A\) be the set of all $k$-permutations of \(S\). Let \(S_n\) act on
+\(A\) by entry-wise evaluation.  Clearly this action is transitive, as
+there is a bijection of \(S\) mapping any $k$-permutation to any other
+$k$-permutation. Hence, it suffices to consider the orbit of one
+$k$-permutation, say \(x = (1,2,\cdots,k)\).
+</p>
+
+<p>
+The stabilizer of \(x\) is the group of bijections fixing
+\(1,2,\cdots,k\), which is precisely \(S_{n-k}\). Thus by the
+orbit-stabilizer theorem,
+\[
+\perm{n}{k} = \left|\mathcal{O}_x\right|
+= \frac{\left|S_n\right|}{\left|S_{n-k}\right|}
+= \frac{n!}{(n-k)!}.
+\]
+ </div>
+</p>
+
+<p>
+In the above proof, each element of \(S\) was identified with a unique
+number from \(1\) to \(n\). In future discussion, we will do likewise and
+work with these numbers directly. Also, from now on \(A\) refers to the
+set defined in the proof.
+</p>
+</div>
+</div>
+<div id="outline-container-orga9b196d" class="outline-2">
+<h2 id="orga9b196d">Symmetries of $k$-permutations as group actions</h2>
+<div class="outline-text-2" id="text-orga9b196d">
+<p>
+As mentioned earlier, the structures mentioned in the above table
+should be treated as equivalence classes of
+$k$-permutations. Equivalently, they are the orbits of specific group
+actions:
+</p>
+
+<p>
+ <div class="example">
+Let \(x\) be an arbitrary $k$-permutation.
+</p>
+
+<ol class="org-ol">
+<li>Let \(S_k\) act on \(A\) by permuting the entries in each
+$k$-permutation. Then the orbit of \(x\) consists of $k$-permutations
+containing the entries of \(x\), but listed in different orders. This
+orbit can be identified with a $k$-combination, where order does
+not matter.</li>
+
+<li><p>
+A <b>label symmetry</b> of a labelled set \(S\) is defined to be a
+label-preserving bijection. It can be seen that the group of label
+symmetries \(L\) is the direct product \(\prod_i S_{n_i}\) (see <sup><a id="fnr.1.100" class="footref" href="#fn.1">1</a></sup>
+regarding notation).
+</p>
+
+<p>
+Let \(L\) act on \(A\) by entry-wise evaluation. Then the orbit of \(x\)
+contains all $k$-permutations that are equal to \(x\) up to label
+symmetry. This orbit can be identified with a labelled
+$k$-permutation.
+</p></li>
+
+<li>Let \(C_k\) act on \(A\) by shifting each entry a fixed number of
+places. The orbit of \(x\) can be identified with a $k$-necklace.</li>
+</ol>
+<p>
+ </div>
+</p>
+
+<p>
+By adopting the language of group actions, we can apply Burnside's
+lemma to calculate the number of orbits.
+</p>
+
+<p>
+ <div class="lemma">
+Let \(G\) be a group acting on the set \(X\). Then the number of orbits
+\(\left|X/G\right|\) is given by
+\[\left|X/G\right| = \frac{1}{\left|G\right|} \sum_{g \in G} \left|X^g\right|,\]
+where
+\[X^g = \{x \in X \mid g \cdot x = x\}.\]
+ </div>
+</p>
+
+<p>
+ <div class="example">
+Each point is a continuation from the previous example. Let \(g\) be an
+arbitrary element in the respective group. Clearly if \(g = 1\) then
+\(\left|A^g\right| = \perm{n}{k}\).
+</p>
+
+<ol class="org-ol">
+<li>If \(g\) is nontrivial, then \(A^g\) is empty. Thus the number of
+$k$-combinations is \[\frac{\left|A^1\right|}{\left|S_k\right|} =
+   \frac{n!}{k!(n-k)!}.\]</li>
+
+<li><p>
+For nontrivial \(g\), let \(M_g\) be the subset of \(S\) not fixed by \(g\)
+and let \(d_g = \left|M_g\right|\). Then \(\left|A^g\right|\) is the
+number of permutations which are disjoint from \(M_g\), namely
+\(\perm{n-d_g}{k}\) (we define \(\perm{d}{k} = 0\) if \(d < k\)). So the
+number of labelled $k$-permutations is \[\frac{1}{\left|L\right|}
+   \sum_{g \in L} \perm{n-d_g}{k}.\]
+</p>
+
+<p>
+In the special case \(k=n\), \(\perm{n-d_g}{k} = 0\) for all nontrivial
+\(g\), since \(n-d_g < k\). Thus the number of labelled
+$n$-permutations is \[\frac{\perm{n-d_1}{n}}{\left|L\right|} =
+   \frac{n!}{n_1!n_2! \cdots n_m!}.\]
+</p></li>
+</ol>
+
+<p>
+<a id="org9614690"></a>
+</p>
+<ol class="org-ol">
+<li value="3">Using similar reasoning as above, the number of $k$-necklaces
+is \[\frac{\left|A^1\right|}{\left|C_k\right|} =
+   \frac{n!}{k(n-k)!}.\]</li>
+</ol>
+<p>
+ </div>
+</p>
+</div>
+</div>
+<div id="outline-container-orga6e76ce" class="outline-2">
+<h2 id="orga6e76ce">Combining symmetries</h2>
+<div class="outline-text-2" id="text-orga6e76ce">
+<p>
+Consider the following problem: a basket contains three apples, two
+oranges and two bananas. Suppose three fruits were selected from this
+basket without replacement; say that selections \(A\) and \(B\) are equal
+if the number of each type of fruit in \(A\) and \(B\) are equal. How many
+possible selections are there?
+</p>
+
+<p>
+Just as above, this question involves counting the number of objects
+under some symmetry. But this time, the symmetry in question is
+actually a combination of two symmetries: namely permutation and label
+symmetry. The order in which the fruits were selected does not matter,
+and only the type of fruit is considered when determining when two
+selections are equal.
+</p>
+
+<p>
+Let \(G\) and \(H\) be two symmetry groups. In general, the 'combined'
+symmetry group takes the form of a semidirect product \(G \rtimes H\) or
+\(H \rtimes G\). More details can be found <a href="./intuition-semidirect-products.html">here</a>.
+</p>
+
+<p>
+ <div class="example">
+</p>
+<ol class="org-ol">
+<li>The relevant symmetry groups for the problem above are \(S_3\) and \(L
+   = S_3 \times S_2 \times S_2\). Note that for all \(p \in S_3\) and \(l
+   \in L\), the actions of \(p\) and \(l\) on a $3$-permutation commute
+with each other. Hence the combined symmetry group is simply the
+direct product \(S_3 \times L\), and the problem can be solved by
+applying Burnside's lemma to this group.</li>
+
+<li value="2"><p>
+Let \(x = (a,b,c,d)\) be a $4$-permutation, and arrange the
+entries in a square:
+</p>
+
+
+<div class="figure">
+<p><img src="../img/square-labelled-edges.png" alt="square-labelled-edges.png" />
+</p>
+</div>
+
+<p>
+Let the nontrivial element of the group \(C_2\) act on this square by
+flipping it horizontally. Combining this flip symmetry with shift
+symmetry (in the case of this square, rotational symmetry) yields a
+semidirect product \[C_4 \rtimes C_2 \cong D_8.\]
+</p></li>
+</ol>
+<p>
+ </div>
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+For our purposes, we shall define a <b>labelled set</b> as a set \(S\)
+with labels \(l_1,l_2,\cdots,l_m\), such that each \(s \in S\) is
+associated with a unique \(l_i\). The multiplicity of \(l_i\) is denoted
+by \(n_i\). A <b>labelled permutation</b> is a permutation of \(S\), except two
+labelled permutations are equal if the corresponding sequences of
+labels are equal.
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

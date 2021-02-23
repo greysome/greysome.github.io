@@ -1,0 +1,2904 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Artin: Algebra</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Artin: Algebra</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org77bc586">1-M10: \(I_m-AB\) invertible iff \(I_n-BA\) invertible</a></li>
+<li><a href="#org2a4e5fb">1-M8: An exercise in logic</a></li>
+<li><a href="#org060890e">2-12-3: Partitions of groups satisfying a closure property</a></li>
+<li><a href="#orgbe13f30">2-12-4: An interesting quotient group of \(\C^\times\)</a></li>
+<li><a href="#orga1efef0">2-M11: LU decomposition</a></li>
+<li><a href="#orgcac244a">2-M4: Classification of semigroups generated by one element</a></li>
+<li><a href="#org200ed8b">2-M7: Path-connectedness in \(GL_n(\R)\)</a></li>
+<li><a href="#org89dfeee">3-3-4: Row space of matrix after applying elementary row operations</a></li>
+<li><a href="#org9980e63">3-3-5: Subspaces of \(F^n\) as solution spaces</a></li>
+<li><a href="#org89d2f66">3-3-7: Deriving a basis of \(\R^{m \times n}\) from bases of \(\R^m\) and \(\R^n\)</a></li>
+<li><a href="#orga596eea">3-3-8: Invertibility of matrix consisting of coordinate vectors of basis</a></li>
+<li><a href="#org33b981a">3-4-4: Bases of \(\F_p^2\) and \(GL_2(\F_p)\)</a></li>
+<li><a href="#orge74ef3e">3-5-1: \(\R^{n \times n}\) as a direct sum of symmetric/anti-symmetric matrices</a></li>
+<li><a href="#orge1ff718">3-5-2: \(\R^{n \times n}\) as a direct sum of trace 0 matrices and what else?</a></li>
+<li><a href="#org585ff17">3-6-4: Countably infinite spanning set</a></li>
+<li><a href="#orga887a9f">3-M1: Number of 2x2 matrices with particular determinants</a></li>
+<li><a href="#org201ee0d">3-M2: All real square matrices satisfy a nontrivial polynomial relation</a></li>
+<li><a href="#org7407585">4-4-2: Linear operators \(T\) such that \(T^n = I\)</a></li>
+<li><a href="#orgabaab2d">4-6-10: Diagonalizability of diagonal block matrix</a></li>
+<li><a href="#org762c884">5-1-5: Determining the pole of an arbitrary 3D rotation</a></li>
+<li><a href="#org6f7e44c">5-2-1: Formula for \(A^{-1}\) using Cayley-Hamilton</a></li>
+<li><a href="#org94115df">5-2-2: The operator \(T(M) = AMB\)</a></li>
+<li><a href="#org16643ab">5-2-3: The operator \(T(M) = AM-MA\)</a></li>
+<li><a href="#orge07d0c2">5-2-4: Two matrices are simultaneously diagonalizable iff they commute</a></li>
+<li><a href="#orgee78b58">5-M2: Cayley-Hamilton via Jordan form</a></li>
+<li><a href="#orgfeefb8e">5-M7: Square root of diagonalizable \(2 \times 2\) matrix</a></li>
+<li><a href="#org96217cb">5-M8: Matrix where trace of powers is 0</a></li>
+<li><a href="#orgae192ae">8-1-1: Decomposition of bilinear form as a sum of symmetric and skew-symmetric form</a></li>
+<li><a href="#org20be420">8-2-1: Maximal entries of a positive definite, symmetric, real matrix</a></li>
+<li><a href="#orgee6c932">8-2-2: Ranks of different representations of a bilinear form</a></li>
+<li><a href="#org6b94a8b">8-3-1: Matrix such that \(x^*Ax\) is real for all \(x\)</a></li>
+<li><a href="#orge1dd74d">8-3-3: Positive definite Hermitian matrices</a></li>
+<li><a href="#org124baf8">8-4-3: The matrix \(A^tA\)</a></li>
+<li><a href="#org6769b49">8-4-14: Alternate proof of diagonalizability of symmetric matrices (INCOMPLETE)</a></li>
+<li><a href="#org193f232">8-4-20: Criterion for symmetric matrix to be positive definite</a></li>
+<li><a href="#org038792f">8-4-21: Sylvester's Law</a></li>
+<li><a href="#orgd7e7b22">8-6-19: The cyclic shift operator</a></li>
+<li><a href="#org5dbe19e">8-M1: Orbits of symmetric \(2 \times 2\) matrices under basechange</a></li>
+<li><a href="#org7bdeaf4">8-M8: Polar decomposition</a></li>
+<li><a href="#orgf57437d">9-1-1: Embedding of \(GL_n(\C)\) into \(GL_{2n}(\R)\)</a></li>
+<li><a href="#orga6f92c0">10-1-1: Image of complex $1$-dimensional representation is cyclic</a></li>
+<li><a href="#org38a4a3d">10-2-2: When is the standard representation of \(D_n\) irreducible?</a></li>
+<li><a href="#org2498287">10-3-3: Determining finite groups with faithful real \(2\) and $3$-dimensional representations</a></li>
+<li><a href="#org318817c">10-3-5: Counterexample to Maschke's theorem in \(GL_2(\F_p)\)</a></li>
+<li><a href="#org07bbcdd">10-4-12: Conjugate representations</a></li>
+<li><a href="#org897a4ce">10-5-2: Trivial and sign representations are the only one-dimensional representations of \(S_n\)</a></li>
+<li><a href="#org8d958e7">10-5-4: Bound on the magnitude of \(\chi(g)\)</a></li>
+<li><a href="#orgdb1f7a0">10-6-9: Using character tables to determine simplicity of a group (INCOMPLETE)</a></li>
+<li><a href="#org75f1d60">10-7-1: Converse to Schur's lemma</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org77bc586" class="outline-2">
+<h2 id="org77bc586">1-M10: \(I_m-AB\) invertible iff \(I_n-BA\) invertible</h2>
+<div class="outline-text-2" id="text-org77bc586">
+<p>
+Let \(A,B\) be \(m \times n\) and \(n \times m\) matrices. Prove that
+\(I_m-AB\) is invertible if and only if \(I_n-BA\) is invertible.
+</p>
+
+<p>
+Suppsoe \(I_m-AB\) is invertible. Consider the power series
+\[(1-x)^{-1} = 1+x+x^2+\cdots;\]
+</p>
+
+<p>
+We can substitute in matrices and perform some ad-hoc manipulation to
+arrive at a guess for \((I_n-BA)^{-1}\) (note that equality signs are
+used very liberally):
+</p>
+\begin{align*}
+(I_m-AB)^{-1} &= I_m+AB+(AB)^2+\cdots \\
+I_n+B(I_m-AB)^{-1}A &= I_n+BA+(BA)^2+(BA)^3+\cdots \\
+&= (I_n-BA)^{-1}.
+\end{align*}
+
+<p>
+Checking our guess:
+</p>
+\begin{align*}
+&(I_n-BA)[I_n+B(I_m-AB)^{-1}A] \\
+&=\ I_n - BA + B(I_m-AB)^{-1}A - BAB(I_m-AB)^{-1}A \\
+&=\ I_n - BA + B[(I_m-AB)^{-1}-AB(I_m-AB)^{-1}]A \\
+&=\ I_n - BA + B[(I_m-AB)(I_m-AB)^{-1}]A \\
+&=\ I_n.
+\end{align*}
+
+<p>
+The reverse direction is essentially the same.
+</p>
+</div>
+</div>
+<div id="outline-container-org2a4e5fb" class="outline-2">
+<h2 id="org2a4e5fb">1-M8: An exercise in logic</h2>
+<div class="outline-text-2" id="text-org2a4e5fb">
+<p>
+Consider a general system \(AX = B\) of \(m\) linear equations in \(n\)
+unknowns, where \(m\) and \(n\) are not necessarily equal. The coefficient
+matrix \(A\) may have a left inverse \(L\), such that \(LA = I_n\). If so,
+we may try to solve the system as we learn to do in school:
+\[AX = B,\ LAX = LB,\ X = LB.\]
+</p>
+
+<p>
+But when we try to check our work by running the solution backward, we
+run into trouble: If \(X = LB\), then \(AX = ALB\). We seem to want \(L\) to
+be a right inverse, which isn't what was given.
+</p>
+
+<p>
+(a) Work some examples to convince yourself that there is a problem here.
+Let
+\[
+X = \begin{pmatrix} 1 & 2 \end{pmatrix},\
+A = \begin{pmatrix} 2 \\ 3 \end{pmatrix},\
+L = \begin{pmatrix} 2 & -1 \end{pmatrix}.
+\]
+On one hand we have
+\[
+B = AX = \begin{pmatrix} 2 \\ 3 \end{pmatrix} \begin{pmatrix} 1 & 2 \end{pmatrix}
+= \begin{pmatrix} 2 & 4 \\ 3 & 6 \end{pmatrix};
+\]
+on the other hand,
+\[
+ALB = \begin{pmatrix} 2 \\ 3 \end{pmatrix} \begin{pmatrix} 2 & -1 \end{pmatrix} \begin{pmatrix} 2 & 4 \\ 3 & 6 \end{pmatrix}
+= \begin{pmatrix} 2 & 4 \\ 3 & 6 \end{pmatrix} = B.
+\]
+</p>
+
+<p>
+Yet
+\[AL = \begin{pmatrix} 4 & -2 \\ 6 & -3 \end{pmatrix}\]
+is clearly not the identity, so \(L\) is not a right inverse of \(A\).
+</p>
+
+<p>
+(b) Exactly what does the sequence of steps made above show? What
+would the existence of a right inverse show? Explain clearly.
+</p>
+
+<p>
+If \(M,N\) are matrices, then \(MN = N\) does not necessarily imply \(M =
+I\). If \(A\) had a right inverse \(R\), then \[R = I_nR = (LA)R = L(AR) =
+LI_m = L.\]
+Note that even if \(A\) does not have a right inverse, \(AL\) acts like
+the identity on \(B\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org060890e" class="outline-2">
+<h2 id="org060890e">2-12-3: Partitions of groups satisfying a closure property</h2>
+<div class="outline-text-2" id="text-org060890e">
+<p>
+Let \(P\) be a partition of a group \(G\) with the property that for any
+pair of elements \(A,B\) of the partition, the product set \(AB\) is
+contained entirely within another element \(C\) of the partition. Let
+\(N\) be the element of \(P\) that contains 1. Prove that \(N\) is a normal
+subgroup of \(G\) and that \(P\) is the set of its cosets.
+</p>
+
+<p>
+To prove that \(N \trianglelefteq G\) we have to show 3 things:
+</p>
+<ol class="org-ol">
+<li>\(N\) is closed under multiplication</li>
+<li>\(N\) is closed under inverses</li>
+<li>For all \(g \in G\), \(gNg^{-1} \subset N\).</li>
+</ol>
+
+<p>
+ <div class="lemma">
+If \(A \in P\), then \(AN = A = NA\).
+ </div>
+ <div class="proof">
+Note that \(AN\) contains \(A\) as a subset, namely the elements \(an\)
+where \(n=1\). At the same time, \(AN\) is contained entirely within some
+\(C \in P\). Since \(A \subset AN \subset C\) and \(P\) is a partition, it
+follows that \(C = A\). Thus \(AN = A\) and likewise \(NA = A\).
+ </div>
+</p>
+
+<ol class="org-ol">
+<li>If \(a \in N\) and \(b \in N\), then \(ab \in NN = N\).</li>
+<li>Suppose \(a \in N\) and \(a^{-1} \in A \neq N\). Then \(1 = aa^{-1} \in
+   NA = A\), a contradiction.</li>
+<li>For any \(g \in G\), let \(A,B \in P\) be the elements containing \(g\)
+and \(g^{-1}\) respectively. Then for any \(n \in N\) we have
+\[gng^{-1} \in ANB = AB \subset C\] for some \(C \in P\). In
+particular, \(AB\) contains the element \(g1g^{-1} = 1 \in N\), so
+using the fact that \(P\) is a partition we have \(C = N\).</li>
+</ol>
+
+<p>
+We now show that \(P\) is the set of cosets. Let \(A \in P\) and \(a,a' \in
+A\).  Then \(a \subset xN\) and \(b \subset x'N\) for some \(x,x' \in
+A\). Let \(B \in P\) be the element containing \(a^{-1}\). Then \[a'a^{-1}
+\in AB \subset C\] for some \(C \in P\). Since \(AB\) in particular
+contains the element \(aa^{-1} = 1 \in N\), it follows that \(C =
+N\). Thus \(xN = x'N\), implying \(A \subset xN\). On the other hand, \[xN
+\subset AN = A,\] so \(A = xN\) is a coset and the conclusion follows.
+</p>
+</div>
+</div>
+<div id="outline-container-orgbe13f30" class="outline-2">
+<h2 id="orgbe13f30">2-12-4: An interesting quotient group of \(\C^\times\)</h2>
+<div class="outline-text-2" id="text-orgbe13f30">
+<p>
+Let \(H = \{\pm 1, \pm i\}\) be the subgroup of \(G = \C^\times\) of
+fourth roots of unity. Describe the cosets of \(H\) in \(G\)
+explicitly. Is \(G/H\) isomorphic to \(G\)?
+</p>
+
+<p>
+For each \(z \in G\), the coset \(zH\) is precisely the set of vertices of
+a square centered at the origin with diagonal length \(2\left|z\right|\)
+and whose rotation depends on \(\arg z\). This gives an explicit
+geometric description of the cosets of \(G/H\). In particular, each
+square can be identified by its vertice in the first quadrant where \(0
+\le \arg z < \pi/2\). Using this fact, we can construct a map which we
+shall show to be an isomorphism:
+</p>
+\begin{align*}
+\phi \colon\ G/H &\rightarrow G \\
+re^{i\theta} &\mapsto re^{i4\theta},
+\end{align*}
+<p>
+where \(0 \le \theta < \pi/2\) and addition of angles in \(G/H\) is taken
+'mod' \(\pi/2\). Clearly it is a homomorphism and is also surjective, so
+it suffices to check injectivity. If \(re^{i4\theta} = r'e^{i4\theta'}\)
+then \(r = r'\) and \(4\theta = 4\theta' + 2k\pi\) for some \(k \in
+\Z\). The latter statement implies \(\theta = \theta' + k\pi/2\); since
+\(0 \le \theta,\theta' < \pi/2\) it follows that \(\theta =
+\theta'\). Thus \(G/H \cong G\).
+</p>
+
+<p>
+(Alternatively we can consider the map \(z \mapsto z^4\); its kernel is
+\(H\) and its image is precisely \(G\), giving the isomorphism)
+</p>
+</div>
+</div>
+<div id="outline-container-orga1efef0" class="outline-2">
+<h2 id="orga1efef0">2-M11: LU decomposition</h2>
+<div class="outline-text-2" id="text-orga1efef0">
+<p>
+Most invertible matrices can be written as a product \(A = LU\) of a
+lower triangular matrix \(L\) and an upper triangular matrix \(U\), where
+in addition all diagonal entries of \(U\) are 1.
+</p>
+
+<p>
+We use the fact that if \(L,L'\) are lower triangular matrices, then
+\(LL'\) and \(L^{-1}\) are also lower triangular (similarly for upper
+triangular).
+</p>
+
+<p>
+(a) Explain how to compute \(L\) and \(U\) when the matrix \(A\) is given.
+</p>
+
+<p>
+For each row \(i\) from 1 to \(n-1\), subtract rows \(i+1,\cdots,n\) from a
+multiple of it, such that the $i$th term of the row is 0. Afterwards,
+scale all rows such that their leading entry (which is on the
+diagonal) is 1. This yields a matrix in row-echelon form. Let \(L'\) be
+the matrix form of this procedure.
+</p>
+
+<p>
+Dually, for each row \(i\) from \(n\) to 2, subtract rows
+\(i-1,i-2,\cdots,1\) by row \(i\). This process is backsubstitution, and
+reduces the matrix to the identity. Let \(U'\) be the matrix form of
+this procedure.
+</p>
+
+<p>
+It can be seen that \(L'\) is lower triangular and \(U'\) is upper
+triangular, and that \(L'AU' = I\). If we let \(L = L'^{-1}\) and \(U =
+U'^{-1}\), then \(A = LU\).
+</p>
+
+<p>
+Note that this procedure only works when no row swapping operations
+are required. In particular, it fails when the 1st term of the 1st row
+is 0.
+</p>
+
+<p>
+(b) Prove uniqueness, that there is at most one way to write \(A\) as
+such a product.
+</p>
+
+<p>
+Let \(LU\) and \(L'U'\) be two decompositions of \(A\). Then we have
+\(L'^{-1}L = U'U^{-1}\), so \(U'U^{-1}\) is both upper and lower
+triangular and hence diagonal. Since the diagonal entries of \(U'\) and
+\(U^{-1}\) are 1, it follows that \(U'U^{-1} = I = L'L^{-1}\) and the
+decomposition are equal.
+</p>
+
+<p>
+(c) Show that every invertible matrix \(A\) can be written as a product
+\(LPU\), where \(L,U\) are as above and \(P\) is a permutation matrix.
+</p>
+
+<p>
+For each column \(i\), get the highest row \(k_i\) such that the $i$th
+entry is nonzero. For \(i\) from 1 to \(n\), subtract by row \(k_i\) the
+rows \(k_i+1,\cdots,n\) that are not of the form \(k_j\), \(j <
+i\). Afterwards, scale each row such that its leading entry is 1.
+</p>
+
+<p>
+The matrix form of this procedure is a lower triangular matrix \(L'\),
+and the resultant matrix is in row echelon form up to permutation of
+rows, so \(P'L'A = U'\) for matrices \(P',U'\). Thus \(A = LPU\), where \(L =
+L'^{-1}\), \(P = P'^{-1}\) and \(U = U'^{-1}\).
+</p>
+
+<p>
+(d) Describe the double cosets \(LgU\).
+</p>
+
+<p>
+Each double coset consists of all matrices (up to scaling) that can be
+obtained from \(g\) by adding higher rows to lower rows, and then adding
+lower rows to higher rows.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcac244a" class="outline-2">
+<h2 id="orgcac244a">2-M4: Classification of semigroups generated by one element</h2>
+<div class="outline-text-2" id="text-orgcac244a">
+<p>
+Classify semigroups that are generated by one element.
+</p>
+
+<p>
+Let \(\Z_0\) denote \(\Z^+ \cup \{0\}\). Consider a semigroup \(S\)
+generated by the element \(s\). Let \(k\) be the smallest integer such
+that \(s^k = s^n\) for some \(n \in \Z_0\) (note that \(n \ge k\)). If there
+is no such \(k\), then \(S\) is isomorphic to \(\Z_0\) under
+addition. Otherwise, \(S\) is the semigroup where
+</p>
+\begin{align*}
+s^i =
+\begin{cases}
+s^{i-n+k} & i \ge n \\
+s^i & i < n.
+\end{cases}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org200ed8b" class="outline-2">
+<h2 id="org200ed8b">2-M7: Path-connectedness in \(GL_n(\R)\)</h2>
+<div class="outline-text-2" id="text-org200ed8b">
+<p>
+The set of \(n \times n\) matrices can be identified with the space
+\(\R^{n \times n}\). Let \(G\) be a subgroup of \(GL_n(\R)\). Prove:
+</p>
+
+<p>
+(a) If \(A,B,C,D\) are in \(G\), and if there are paths in \(G\) from \(A\) to
+\(B\) and from \(C\) to \(D\), then there is a path in \(G\) from \(AC\) to
+\(BD\).
+</p>
+
+<p>
+Note that
+\[(AC)_{ij} = \sum_{k} A_{ik}C_{kj},\ (BD)_{ij} = \sum_{k} B_{ik}D_{kj}.\]
+</p>
+
+<p>
+Choose a set of indices \(i,j\). For all \(k\), there are paths \(P_k,P'_k\)
+from \(A_{ik}\) to \(B_{ik}\), and from \(C_{kj}\) to \(D_{kj}\)
+respectively. The function \(Q = \sum_{k} P_kP'_k\) is then clearly a
+path from \((AC)_{ij}\) to \((BD)_{ij}\). Since we have a path for all
+matrix entries, there is an induced path from matrices \(AC\) to \(BD\).
+</p>
+
+<p>
+(b) The set of matrices that can be joined to the identity \(I\) forms a
+normal subgroup, called the connected component of \(G\).
+</p>
+
+<p>
+If \(M,M'\) can be joined to \(I\), then \(MM'\) can be joined to \(II =
+I\). Also, there is a trivial path \(M^{-1} \rightarrow M^{-1}\), so that
+\(MM^{-1} = I\) can be joined to \(IM^{-1} = M^{-1}\). Thus the set forms
+a subgroup of \(G\).
+</p>
+
+<p>
+Suppose there is a path from \(A\) to \(I\). For all \(M \in G\), there are
+the trivial paths \(M \rightarrow M\) and \(M^{-1} \rightarrow
+M^{-1}\). From path (b), it follows that there is a path from
+\(MAM^{-1}\) to \(MIM^{-1} = I\). Thus the subgroup is normal.
+<a id="orge04ea88"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org89dfeee" class="outline-2">
+<h2 id="org89dfeee">3-3-4: Row space of matrix after applying elementary row operations</h2>
+<div class="outline-text-2" id="text-org89dfeee">
+<p>
+Let \(A\) be an \(m \times n\) matrix, and let \(A'\) be the result of a
+sequence of elementary row operations on \(A\). Prove that the rows of
+\(A\) span the same space as the rows of \(A'\).
+</p>
+
+<p>
+Let \(S = \{v_1,v_2,\cdots,v_n\}\) be the rows of \(A\), and let \(v \in
+\text{span}(S)\), so that \[v = \sum_{i} a_iv_i\] for scalars \(a_i\). We shall
+divide the proof into 3 cases, one for each elementary row operation:
+</p>
+
+<ol class="org-ol">
+<li>Type 1 operation <br />
+Without loss of generality, let us assume that \(bv_2\) is added to
+\(v_1\) for some scalar \(b\), so that the new set of rows is \(S' =
+   \{v_1+av_2,v_2,\cdots,v_m\}\). Then
+\[
+   v = a_1(v_1+bv_2) + (a_2-ba_1)v_2 + \sum_{i=3}^m a_iv_i \in \text{span}(S').
+   \]</li>
+
+<li>Type 2 operation <br />
+Without loss of generality, suppose \(v_1\) is scaled by a nonzero
+scalar \(c\), so that the new rows is \(S' =
+   \{cv_1,\cdots,v_m\}\). Then \[v = \frac{a_1}{c}(cv_1) + \sum_{i=2}^m
+   a_iv_i \in \text{span}(S')\]</li>
+
+<li>Type 3 operation <br />
+This is rather obvious.</li>
+</ol>
+
+<p>
+We have just proved that \(\text{span}(S) \subseteq \text{span}(S')\);
+the reverse inclusion can be shown by interchanging the roles of \(A\)
+and \(A'\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9980e63" class="outline-2">
+<h2 id="org9980e63">3-3-5: Subspaces of \(F^n\) as solution spaces</h2>
+<div class="outline-text-2" id="text-org9980e63">
+<p>
+Let \(V = F^n\) be the space of column vectors. Prove that every
+subspace \(W\) of \(V\) is the space of solutions of some system of
+homogeneous linear equations \(AX = 0\).
+</p>
+
+<p>
+Overpowered method:
+Let \(B\) be the standard basis of \(F^n\) and \(B'\) be any basis of
+\(V/W\). Let \(A\) be the matrix representing the projection \(V
+\rightarrow V/W\) with respect to \(B\) and \(B'\). Clearly \(Av = 0\)
+precisely if \(v \in W\), so \(AX = 0\) is the desired system of
+homogeneous linear equations.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org89d2f66" class="outline-2">
+<h2 id="org89d2f66">3-3-7: Deriving a basis of \(\R^{m \times n}\) from bases of \(\R^m\) and \(\R^n\)</h2>
+<div class="outline-text-2" id="text-org89d2f66">
+<p>
+Let \((X_1,\cdots,X_m)\) and \((Y_1,\cdots,Y_m)\) be bases for \(\R^m\) and
+\(\R^n\) respectively. Do the \(mn\) matrices \(X_i Y_j^t\) form a basis for
+the vector space \(\R^{m \times n}\) of all \(m \times n\) matrices?
+</p>
+
+<p>
+Yes; it suffices to show that the \(X_i Y_j^t\) are linearly
+independent. Suppose there are scalars \(a_{ij}\) such that
+\[\sum_{i,j} a_{ij} X_i Y_j^t = 0.\]
+</p>
+
+<p>
+Since the \(X_i\) are linearly independent and
+</p>
+
+<p>
+\[\sum_{i,j} a_{ij} X_i Y_j^t = \sum_{i} X_i \left(\sum_{j} a_{ij}
+Y_j^t\right),\]
+</p>
+
+<p>
+it follows that
+</p>
+
+<p>
+\[\sum_{j} a_{ij}Y_j^t = 0\]
+</p>
+
+<p>
+for all \(i\). But the \(Y_j\) are also linearly independent, so \(a_{ij} =
+0\) for all \(i,j\).
+</p>
+
+<p>
+<a id="org5348ef8"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga596eea" class="outline-2">
+<h2 id="orga596eea">3-3-8: Invertibility of matrix consisting of coordinate vectors of basis</h2>
+<div class="outline-text-2" id="text-orga596eea">
+<p>
+Prove that a set \((v_1,\cdots,v_n)\) of vectors in \(F^n\) is a basis if
+and only if the matrix obtained by assembling the coordinate vectors
+of \(v_i\) is invertible.
+</p>
+
+<p>
+Let \(A\) be the matrix where the rows are the coordinate vectors of
+\(v_i\). If \(A\) is not invertible, then reducing \(A\) via elementary row
+operations yields a matrix \(A'\) with a row of zeroes. By <a href="#orge04ea88">3.3.4</a>, the
+row spaces of \(A\) and \(A'\) are the same; in particular the rows of \(A\)
+do not span \(F^n\), so \((v_1,\cdots,v_n)\) is not a basis.
+</p>
+
+<p>
+If \(A\) is invertible, then \(A\) can be reduced to \(I_n\). Since the rows
+of \(I_n\) span \(F^n\), it follows that \((v_1,\cdots,v_n)\) is a basis.
+<a id="orgd8383e6"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org33b981a" class="outline-2">
+<h2 id="org33b981a">3-4-4: Bases of \(\F_p^2\) and \(GL_2(\F_p)\)</h2>
+<div class="outline-text-2" id="text-org33b981a">
+<p>
+Let \(\F_p\) be a prime field, and let \(V = \F_p^2\). Prove:
+</p>
+
+<p>
+(a) the number of bases of \(V\) is equal to the order of the general
+linear group \(GL_2(\F_p)\).
+</p>
+
+<p>
+By <a href="#org5348ef8">3.3.8</a>, \((v_1,v_2)\) is a basis for \(\F_p^2\) if and only if the
+matrix \((v_1\ v_2)\) is invertible, i.e. is in \(GL_2(\F_p)\).
+</p>
+
+<p>
+(b) The order of \(GL_2(\F_p)\) is \(p(p+1)(p-1)^2\), and the order of
+\(SL_2(\F_p)\) is \(p(p+1)(p-1)\).
+</p>
+
+<p>
+Note that \(SL_2(\F_p)\) is a subgroup of \(GL_2(\F_p)\), and its cosets
+are precisely the sets \(A_d = \{\det(M) = d \mid M \in GL_2(\F_p)\}\)
+where \(d\) is a nonzero element of \(\F_p\). Since all cosets have equal
+order and there are \(p-1\) such cosets, it follows that
+\[\left|SL_2(\F_p)\right| = \frac{\left|GL_2(\F_p)\right|}{p-1} = p(p+1)(p-1),\]
+as desired.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge74ef3e" class="outline-2">
+<h2 id="orge74ef3e">3-5-1: \(\R^{n \times n}\) as a direct sum of symmetric/anti-symmetric matrices</h2>
+<div class="outline-text-2" id="text-orge74ef3e">
+<p>
+Prove that the space \(\R^{n \times n}\) of \(n \times n\) real matrices
+is the direct sum of the space of symmetric matrices and the space of
+skew-symmetric matrices.
+</p>
+
+<p>
+Let \(A \in \R^{n \times n}\). We want to express it in the form \(B+C\),
+where \(B^t = B\) and \(C^t = -C\). If \(a_{ij}\) is any element of \(A\),
+then the following relations must hold:
+\[a_{ij} = b_{ij} + c_{ij} \\ a_{ji} = b_{ji} + c_{ji} = b_{ij} - c_{ij}.\]
+</p>
+
+<p>
+Specifically, \(b_{ij}\) and \(c_{ij}\) are completely determined by the
+two values \(a_{ij}\) and \(a_{ji}\). Since this is true for arbitrary
+indices \(i,j\), it follows that \(B,C\) are completely determined by \(A\),
+meaning the sum \(A = B+C\) is unique.
+</p>
+</div>
+</div>
+<div id="outline-container-orge1ff718" class="outline-2">
+<h2 id="orge1ff718">3-5-2: \(\R^{n \times n}\) as a direct sum of trace 0 matrices and what else?</h2>
+<div class="outline-text-2" id="text-orge1ff718">
+<p>
+The trace of a square matrix is the sum of its diagonal entries. Let
+\(W_1\) be the space of \(n \times n\) matrices whose trace is zero. Find
+a subspace \(W_2\) so that \(\R^{n \times n} = W_1 \oplus W_2\).
+</p>
+
+<p>
+It can be seen that \(W_1\) has dimension \(n^2-1\). Every matrix in \(W_1\)
+can be expressed in the form
+</p>
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{31} & a_{32} & \cdots & -\sum_{i=1}^{n-1} a_{ii}
+\end{pmatrix}
+
+<p>
+Intuitively, there are \(n^2-1\) degrees of freedom as every entry
+except the last can be chosen arbitrarily, while the last entry is
+completely determined by the other diagonal entries.
+</p>
+
+<p>
+Hence, we can choose \(W_2\) such that it supplies the "last degree of
+freedom", i.e. let \(W_2\) be the space of matrices where all entries
+except the last are zero. It is easily seen that every real \(n \times
+n\) matrix can be expressed uniquely as a sum in \(W_1\) and \(W_2\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org585ff17" class="outline-2">
+<h2 id="org585ff17">3-6-4: Countably infinite spanning set</h2>
+<div class="outline-text-2" id="text-org585ff17">
+<p>
+Let \(V\) be a vector space that is spanned by a countably infinite
+set. Prove that every independent subset of \(V\) is finite or countably
+infinite.
+</p>
+
+<p>
+ <div class="lemma">
+Let \(S\) be a countably infinite spanning set of the vector space
+\(V\). Then there is a subset of \(S\) that is a basis for \(V\).
+ </div>
+ <div class="proof">
+Since \(S\) is countably infinite, we can list its elements out as a
+sequence of vectors \(\{a_i\}\). Now define the sets \(A_i\) as follows:
+</p>
+\begin{align*}
+A_1 &= \{a_1\} \\
+n_i &= \inf\ \{k \mid a_k \not\in \text{span}(A_k)\}\ \\
+& \text{(or $1$ if the set is empty)} \\
+A_{i+1} &= A_i \cup \{a_{n_i}\}.
+\end{align*}
+
+<p>
+Consider the subset \(S' = \cup_{n \in \N} A_n\). Since every finite
+subset is contained in some \(A_i\) and each \(A_i\) is independent by
+construction, it follows that \(S'\) is independent.
+</p>
+
+<p>
+Note also that every \(a_k\) is contained in the span of sufficiently
+large \(A_i\). Thus
+</p>
+\begin{align*}
+V &= \text{span}(S) \\
+&= \text{span}(\{a_k \mid k \in \N\}) \\
+&\subseteq \text{span}(S'),
+\end{align*}
+<p>
+so \(S'\) is a basis for \(V\).
+ </div>
+</p>
+
+<p>
+For convenience, let \(F^\infty\) denote the space of <b>eventually zero
+sequences</b> in the field \(F\). Let \(K\) be the underlying field of \(V\),
+let \(S\) be the countably infinite spanning set and let \(T\) be the
+independent subset. Let \(S' \subseteq S\) be the basis from the
+lemma. If it is finite, then \(V \cong K^n\) for some \(n \in \Z^+\), so
+every independent subset must be finite.
+</p>
+
+<p>
+If \(S'\) is infinite, then \(V \cong K^\infty\). Suppose \(T\) is
+uncountable. We shall identify every element of \(T\) with its image in
+\(K^\infty\). Consider the map
+</p>
+\begin{align*}
+\varphi\ \colon\ T &\rightarrow \F_2^{\infty} \\
+\{a_i\} &\mapsto \{b_i\}
+\end{align*}
+
+<p>
+where \(b_i = 0\) if \(a_i = 0\) and \(1\) otherwise. Viewing each element
+of \(\F_2^{\infty}\) as a finite binary string, it is clear that
+\(\F_2^{\infty}\) is countable. Since \(\varphi\) maps an uncountable set
+to a countable set, it follows that some \(x \in \text{im}\ \varphi\) is
+taken on infinitely many times. In other words, there is an infinite
+subset \(T' \subseteq T\) of sequences whose nonzero coordinates are in
+precisely the same positions.
+</p>
+
+<p>
+Let the number of nonzero coordinates be \(d\). Then we can choose \(d+1\)
+distinct elements from \(T'\) which are independent by hypothesis. On
+the other hand, identifying these \(d+1\) elements with vectors in \(K^d\)
+shows that they are not independent, which is a contradiction. Hence
+\(T\) cannot be uncountably infinite.
+</p>
+</div>
+</div>
+<div id="outline-container-orga887a9f" class="outline-2">
+<h2 id="orga887a9f">3-M1: Number of 2x2 matrices with particular determinants</h2>
+<div class="outline-text-2" id="text-orga887a9f">
+<p>
+Consider the determinant function \(\det : \F_p^{2 \times 2}
+\rightarrow \F_p\). Show that this map is surjective, that all nonzero
+values of the determinant are taken on the same number of times, but
+that there are more matrices with determinant 0 than with
+determinant 1.
+</p>
+
+<p>
+Clearly the map is surjective; consider the matrices
+</p>
+\begin{pmatrix}
+a & 0 \\ 0 & 1
+\end{pmatrix}
+<p>
+for all nonzero \(a \in \F_p\).
+</p>
+
+<p>
+As mentioned in <a href="#orgd8383e6">3.4.4</a>, the number of matrices \(n_d\) with determinant
+\(d\) is the same for all nonzero \(d\). From the same problem, we know
+that \(\left|GL_2(\F_p)\right| = p(p+1)(p-1)^2\), so the total number of
+determinant 0 (i.e. non-invertible) matrices is
+\[p^4-p(p+1)(p-1)^2 = p(p^2+p-1),\]
+which is clearly greater than \(p(p^2-1) = p(p+1)(p-1)\), the number of
+determinant 1 matrices.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org201ee0d" class="outline-2">
+<h2 id="org201ee0d">3-M2: All real square matrices satisfy a nontrivial polynomial relation</h2>
+<div class="outline-text-2" id="text-org201ee0d">
+<p>
+Let \(A\) be a real \(n \times n\) matrix. Prove that there is an integer
+\(N\) such that \(A\) satisfies a nontrivial polynomial relation \(A^N +
+c_{N-1}A^{N-1} + \cdots + c_1A + c_0I = 0\).
+</p>
+
+<p>
+The vector space \(\R^{n \times n}\) has dimension \(n^2\). Consider the
+vectors \(A^{n^2}, A^{n^2-1}, \cdots, A, I\). If they are all distinct
+then they form a set with \(n^2+1\) elements, which must be linearly
+dependent. In this case we can let \(N = n^2\). Otherwise, there are
+distinct nonnegative integers \(k,l\) such that \(A^k = A^l\), which is a
+nontrivial polynomial relation. In this case \(N = \max(k,l)\).
+</p>
+</div>
+</div>
+<div id="outline-container-org7407585" class="outline-2">
+<h2 id="org7407585">4-4-2: Linear operators \(T\) such that \(T^n = I\)</h2>
+<div class="outline-text-2" id="text-org7407585">
+<p>
+(a) Let \(T\) be a linear operator on a FDVS such that \(T^2 = I\). Prove
+that for any vector \(v \in V\), \(v-Tv\) is either an eigenvector with
+eigenvalue \(-1\), or the zero vector. Prove that \(V\) is the direct sum
+of the eigenspaces \(V^{(1)}\) and \(V^{(-1)}\).
+</p>
+
+<p>
+Note that \(T(v-Tv) = -(v-Tv)\) and \(T(v+Tv) = v+Tv\). Hence, if \(v-Tv,
+v+Tv \neq 0\) then they are eigenvectors with eigenvalues \(-1\) and \(1\)
+respectively.
+</p>
+
+<p>
+Now, \(V^{(1)}\) and \(V^{(-1)}\) intersect trivially since they
+correspond to different eigenvalues. Furthermore, for all \(v \in V\) we
+can write \[v = \frac{1}{2}[(v-Tv) + (v+Tv)].\] This proves that \(V =
+V^{(1)} \oplus V^{(-1)}\).
+</p>
+
+<p>
+(b) Generalize this method to prove that a linear operator \(T\) such
+that \(T^4 = I\) decomposes a complex vector space into a sum of four
+eigenspaces.
+</p>
+
+<p>
+We will prove this in the general case where \(T^n = I\) for some
+positive integer \(n\). Let \(z = e^{2{\pi}i/n}\), let \(v\) be an arbitrary
+element of \(V\) and let \([x_0,\cdots,x_{n-1}]\) denote the sum
+\[\sum_{i=0}^{n-1} x_i T^i(v).\] Note that applying \(T\) to
+\([x_0,\cdots,x_{n-1}]\) has the effect of shifting its elements one
+place to the right:
+</p>
+\begin{align*}
+T\left(\sum_{i=0}^{n-1} x_i T^i(v)\right) &= \sum_{i=0}^{n-1} x_i T^{i+1}(v) \\
+&= x_{n-1} v + \sum_{i=0}^{n-2} x_i T^{i+1}(v).
+\end{align*}
+
+<p>
+Thus the $n$th roots of unity (i.e. the powers of \(z\)) are
+eigenvalues:
+</p>
+\begin{align*}
+[1,1,1,\cdots,1] &\mapsto [1,1,1,\cdots,1] \\
+[1,z,z^2,\cdots,z^{n-1}] &\mapsto [z^{n-1},1,z,\cdots,z^{n-2}] \\
+&\vdots \\
+[1,z^{n-1},z^{n-2},\cdots,z^2] &\mapsto [z^2,1,z^{n-1},\cdots,z^3].
+\end{align*}
+
+<p>
+Note that \(\sum_{i=0}^{n-1} z^i = 0\). Thus \(v\) can be written as a sum
+of eigenvectors:
+</p>
+\begin{align*}
+v &= \frac{1}{n}([1,1,\cdots,1] + [1,z,\cdots,z^{n-1}] + \cdots + [1,z^{n-1},\cdots,z^2]) \\
+&= \frac{1}{n}[n,0,\cdots,0] \\
+&= [1,0,\cdots,0].
+\end{align*}
+
+<p>
+Furthermore, the eigenspaces \(V^{(z^i)}\) clearly intersect
+trivially. Thus \[V = \oplus_{i=0}^{n-1} V^{(z^i)}.\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgabaab2d" class="outline-2">
+<h2 id="orgabaab2d">4-6-10: Diagonalizability of diagonal block matrix</h2>
+<div class="outline-text-2" id="text-orgabaab2d">
+<p>
+Let \(M\) be a matrix made up of two diagonal blocks: $
+\big(\begin{smallmatrix} A &amp; 0 \\ 0 &amp; D \end{smallmatrix}\big)$. Prove
+that \(M\) is diagonalizable if and only if \(A\) and \(D\) are
+diagonalizable.
+</p>
+
+<p>
+(\(\Leftarrow\)): Let \(P\) and \(Q\) be the diagonalizing matrices of \(A\)
+and \(D\). Then clearly \(\big(\begin{smallmatrix} P & 0 \\ 0 &
+Q\end{smallmatrix}\big)\) is a diagonalizing matrix of \(M\), by block
+multiplication.
+</p>
+
+<p>
+(\(\Rightarrow\)): Let \(p(X)\) denote the characteristic polynomial. It
+is a well-known fact that
+</p>
+
+<p>
+\[p(A) = \det (A-\lambda I) \mid \det (M-\lambda I) = p(M).\]
+</p>
+
+<p>
+Thus if \(p(M)\) has distinct roots, then so does \(p(A)\), implying that
+\(A\) is diagonalizable. Likewise for \(D\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org762c884" class="outline-2">
+<h2 id="org762c884">5-1-5: Determining the pole of an arbitrary 3D rotation</h2>
+<div class="outline-text-2" id="text-org762c884">
+<p>
+Let \(A\) be a \(3 \times 3\) orthogonal matrix with \(\det A = 1\), whose
+angle of rotation is different from \(0\) or \(\pi\), and let \(M = A -
+A^t\).
+</p>
+
+<p>
+(a) Show that \(M\) has rank \(2\), and that a nonzero vector \(X\) in the
+nullspace of \(M\) is an eigenvector of \(A\) with eigenvalue \(1\).
+</p>
+
+<p>
+Since \(\det A = 1\), with respect to some orthonormal basis \(B\) it has
+the form
+</p>
+
+<p>
+\[R = \begin{pmatrix} 1 & & \\ & c & -s \\ & s & c \end{pmatrix},\]
+where \(c = \cos \theta\) and \(s = \sin \theta\). Thus \(A = PRP^{-1}\)
+where \(P\) is an orthogonal matrix, and
+</p>
+\begin{align*}
+M &= A - A^t \\
+&= PRP^{-1} - (P^{-1})^tR^tP^t \\
+&= PRP^{-1} - PR^tP^{-1} \\
+&= P(R-R^t)P^{-1}.
+\end{align*}
+
+<p>
+Since \(P\) is invertible, \(Mx = 0\) implies \((R-R^t)P^{-1}x =
+0\). We have
+</p>
+
+<p>
+\[R - R^t = \begin{pmatrix} 0 & & \\ & & -2s \\ & 2s & \end{pmatrix},\]
+</p>
+
+<p>
+so \(P^{-1}x\) must have the form \((a,0,0)^t\) (note that \(s \neq 0\)
+since \(\theta \neq 0,\pi\)). But \(P^{-1}x\) is the coordinate vector of
+\(x\) with respect to \(B\), implying that \(x\) lies on the $1$-dimensional
+subspace spanned by the pole. Thus \(x\) is an eigenvector of \(A\) with
+eigenvalue \(1\).
+</p>
+
+<p>
+(b) Find such an eigenvector explicitly in terms of the entries of the
+matrix \(A\).
+</p>
+
+<p>
+Let
+</p>
+
+<p>
+\[A = \begin{pmatrix} a & b & c \\ d & e & f \\ g & h & i \end{pmatrix};\]
+</p>
+
+<p>
+then
+</p>
+
+<p>
+\[A - A^t = \begin{pmatrix} 0 & p & q \\ -p & 0 & r \\ -q & -r & 0 \end{pmatrix},\]
+</p>
+
+<p>
+where \(p = b-d\), \(q = c-g\) and \(r = f-h\). Applying row reduction to
+this matrix yields
+</p>
+
+<p>
+\[\begin{pmatrix} pq & 0 & -qr \\ 0 & p & q \\ 0 & 0 & 0 \end{pmatrix};\]
+</p>
+
+<p>
+it can be verified that \((r,-q,p)^t\) is a solution.
+</p>
+</div>
+</div>
+<div id="outline-container-org6f7e44c" class="outline-2">
+<h2 id="org6f7e44c">5-2-1: Formula for \(A^{-1}\) using Cayley-Hamilton</h2>
+<div class="outline-text-2" id="text-org6f7e44c">
+<p>
+Use the Cayley-Hamilton Theorem to express \(A^{-1}\) in terms of \(A\),
+\((\det A)^{-1}\) and the coefficients of the characteristic
+polynomial. Verify your expression in the \(2 \times 2\) case.
+</p>
+
+<p>
+By Cayley-Hamilton, we have
+</p>
+
+<p>
+\[c_nA^n + \ldots + c_1A + c_0I = O,\]
+</p>
+
+<p>
+where \(c_0 = (-1)^n(\det A) \neq 0\). We multiply both sides by
+\(A^{-1}\) and bring the term with coefficient \(c_0\) over to the right
+hand side:
+</p>
+
+<p>
+\[c_nA^{n-1} + \ldots + c_1I = (-1)^{n-1}(\det A)A^{-1}.\]
+</p>
+
+<p>
+The reader can perform the verification himself.
+</p>
+</div>
+</div>
+<div id="outline-container-org94115df" class="outline-2">
+<h2 id="org94115df">5-2-2: The operator \(T(M) = AMB\)</h2>
+<div class="outline-text-2" id="text-org94115df">
+<p>
+Let \(A \in \C^{m \times m}\) and \(B \in \C^{n \times n}\), and consider
+the linear operator \(T\) on \(\C^{m \times n}\) defined by \(T(M) = AMB\).
+</p>
+
+<p>
+(a) Show how to construct an eigenvector for \(T\) out of a pair of
+column vectors \(x,y\), where \(x\) is an eigenvector for \(A\) and \(y\) is
+an eigenvector for \(B^t\).
+</p>
+
+<p>
+\(xy^t\) is an eigenvector of \(T\):
+\[Axy^tB = (Ax)(B^ty)^t = \lambda \mu xy^t.\]
+</p>
+
+<p>
+(b) Determine the eigenvalues of \(T\) in terms of those of \(A\) and \(B\).
+</p>
+
+<p>
+We use slightly different notation, letting \(T_{A,B}\) denote the
+operator defined by \(T(M) = AMB\).
+</p>
+
+<p>
+ <div class="lemma">
+Suppose \(D,D'\) are diagonal matrices. Then the eigenvalues of
+\(T_{D,D'}\) are precisely the products of \(\lambda_i \mu_j\), where \(i,j\)
+run through all the eigenvalues (with multiplicity) of \(D\) and \(D'\).
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+This is up to the reader to verify.
+ </div>
+</p>
+
+<p>
+ <div class="lemma">
+Suppose \(P \in \C^{m \times m}\) and \(Q \in \C^{n \times n}\) are
+invertible. Then the eigenvalues of \(T_{A,B}\) and
+\(T_{PAP^{-1},QBQ^{-1}}\) are precisely the same, and so are their
+geometric multiplicies.
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+Note that
+\[T_{PAP^{-1},QBQ^{-1}}(PMQ^{-1}) = PT_{A,B}(M)Q^{-1}.\]
+</p>
+
+<p>
+It is then clear that if \(M\) is an eigenvector of \(T_{A,B}\) then
+\(PMQ^{-1}\) is an eigenvector of \(T_{PAP^{-1},QBQ^{-1}}\) with the same
+eigenvalue. The converse is also true, since \(P,Q\) are invertible.
+ </div>
+</p>
+
+<p>
+Let \(\lambda_i,\mu_j\) be the eigenvalues of \(A\) and \(B\)
+respectively. Let \(A_i \rightarrow A\) and \(B_j \rightarrow B\) be
+sequences of diagonalizable matrices, and let
+\(\lambda_{i,k},\mu_{j,k}\) denote the corresponding eigenvalues. This
+induces a sequence \(T_{A_i,B_j} \rightarrow T_{A,B}\), since the matrix
+representation of \(T_{A,B}\) wrt the standard basis is continuous wrt
+\(A\) and \(B\). Furthermore, we know that each eigenvalue of
+\(T_{A_i,B_j}\) has the form \(\lambda_{i,k}\mu_{j,k'}\), and with the
+appropriate numbering, we have \(\lambda_{i,k} \rightarrow \lambda_k\)
+and \(\mu_{j,k} \rightarrow \mu_k\). Therefore, each eigenvalue of
+\(T_{A,B}\) is of the form \(\lambda_k\mu_k'\).
+</p>
+
+<p>
+(c) Determine the trace of this operator.
+</p>
+
+<p>
+The trace is the sum of the eigenvalues, therefore it is equal to
+\(\sum_{i,j} \lambda_i \mu_j\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org16643ab" class="outline-2">
+<h2 id="org16643ab">5-2-3: The operator \(T(M) = AM-MA\)</h2>
+<div class="outline-text-2" id="text-org16643ab">
+<p>
+Let \(A \in \C^{n \times n}\).
+</p>
+
+<p>
+(a) Consider the linear operator \(T\) defined on \(\C^{n \times n}\) by
+the rule \(T(M) = AM-MA\). Prove that the rank of this operator is at
+most \(n^2-n\).
+</p>
+
+<p>
+We modify the notation slightly: for an arbitrary matrix \(A \in \C^{n
+\times n}\), let \(T_A\) denote the operator where \(T_A(M) = AM-MA\).
+</p>
+
+<p>
+ <div class="lemma">
+Let \(D\) be a diagonal \(n \times n\) matrix. Then \(\rank T_D \le n^2-n\).
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+The matrices \((e_{ii})\) are linearly independent, and it can be easily
+seen that they commute with \(D\) and so lie in the kernel of \(T_D\). The
+conclusion follows from the rank-nullity theorem.
+ </div>
+</p>
+
+<p>
+ <div class="lemma">
+Let \(P\) be an invertible \(n \times n\) matrix, and \(A\) be an arbitrary
+\(n \times n\) matrix. Then \(\rank T_{PAP^{-1}} = \rank T_A\).
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+It is easily seen that
+</p>
+
+<p>
+\[T_{PAP^{-1}}(PMP^{-1}) = PT_A(M)P^{-1}.\]
+</p>
+
+<p>
+Thus, \(P(\ker T_A)P^{-1} \subseteq \ker T_{PAP^{-1}}\). Since \(\dim
+\ker T_A = \dim (P(\ker T_A)P^{-1})\), by the rank-nullity theorem we
+have \(\rank T_A \ge \rank T_{PAP^{-1}}\). The reverse inequality is
+also true:
+</p>
+
+<p>
+\[\rank T_{PAP^{-1}} \ge \rank T_{P^{-1}(PAP^{-1})P} = \rank T_A.\]
+</p>
+
+<p>
+This concludes the proof.
+ </div>
+</p>
+
+<p>
+There is a sequence of diagonalizable matrices \(A_k \rightarrow A\). By
+the lemmas, it follows that \(\rank T_{A_k} \le n^2-n\). Now suppose
+\(\rank T_A > n^2-n\). Then \(A\) has a \(m \times m\) invertible submatrix
+\(B\), where \(m = n^2-n+1\), and the corresponding submatrices \(B_k\) of
+\(A_k\) converge to \(B\). But \(B_k\) is not invertible since \(\rank
+T_{A_k} < m\), contradicting the fact that the invertible matrices form
+an open set (credits to this <a href="https://math.stackexchange.com/a/969798">Math.SE response</a>).
+</p>
+
+<p>
+(b) Determine the eigenvalues of \(T\) in terms of the eigenvalues
+\(\lambda_1,\ldots,\lambda_n\) of \(A\).
+</p>
+
+<p>
+If \(D\) is a diagonal \(n \times n\) matrix, then the eigenvalues of
+\(T_D\) are precisely the differences \(\lambda_i-\lambda_j\), where \(i,j\)
+run through all eigenvalues of \(D\).
+</p>
+
+<p>
+Furthermore, if \(P\) is invertible, then the eigenvalues of \(T_A\) are
+precisely the eigenvalues of \(T_{PAP^{-1}}\):
+</p>
+
+<p>
+\[T_A(M) = \lambda M \Leftrightarrow T_{PAP^{-1}}(PMP^{-1}) = PT_A(M)P^{-1} = \lambda PMP^{-1}.\]
+</p>
+
+<p>
+Let \(A_k \rightarrow A\) be a sequence of diagonalizable matrices, so
+that the evs of \(T_{A_k}\) are differences of the evs of \(A_k\). Then
+the evs of \(A_k\) converge to the evs of \(A\). Since the matrix
+representation of \(T_A\) wrt the standard basis is continuous wrt \(A\),
+the evs of \(T_{A_k}\) converge to those of \(T_A\) as well. The fact that
+both sequences of evs converge mean that the evs of \(T_A\) have the
+same form as that of \(T_{A_k}\). This solves the question.
+</p>
+</div>
+</div>
+<div id="outline-container-orge07d0c2" class="outline-2">
+<h2 id="orge07d0c2">5-2-4: Two matrices are simultaneously diagonalizable iff they commute</h2>
+<div class="outline-text-2" id="text-orge07d0c2">
+<p>
+Let \(A\) and \(B\) be diagonalizable complex matrices. Prove that there
+is an invertible matrix \(P\) such that \(P^{-1}AP\) and \(P^{-1}BP\) are
+both diagonal if and only if \(AB = BA\).
+</p>
+
+<p>
+(\(\Rightarrow\)): This is obvious, since diagonal matrices commute.
+</p>
+
+<p>
+(\(\Leftarrow\)): Let \(T_A\) and \(T_B\) denote the corresponding linear
+maps, and let \(v\) be an eigenvector of \(A\) with eigenvalue
+\(\lambda\). Then \(Bv\) is also an eigenvector:
+\[A(Bv) = B(Av) = \lambda Bv.\]
+</p>
+
+<p>
+This implies that every nontrivial vector in the subspace \(W =
+\text{span}\ \{B^k v \mid k \ge 0\}\) is an eigenvector of
+\(A\). Furthermore, the restriction of \(T_B\) to \(W\) is diagonalizable
+since \(W\) is clearly \(T_B\) -invariant, thus \(W\) has a basis of
+eigenvectors for \(B\), which must also be eigenvectors for \(A\).
+</p>
+
+<p>
+Choose a subspace \(U\) such that \(V = W \oplus U\). Since \(\dim U < n\),
+we can use induction on \(T_A|_U\) and \(T_B|_U\) to obtain a basis
+consisting of eigenvectors of both \(A\) and \(B\), which we can then
+combine with the basis for \(W\) to obtain a basis for \(V\). Then the
+matrix whose columns are the elements of this basis is the desired
+matrix \(P\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgee78b58" class="outline-2">
+<h2 id="orgee78b58">5-M2: Cayley-Hamilton via Jordan form</h2>
+<div class="outline-text-2" id="text-orgee78b58">
+<p>
+Prove the Cayley-Hamilton Theorem using Jordan form.
+</p>
+
+<p>
+Let \(A \in \C^{n \times n}\). The Cayley-Hamilton holds under
+similarity, hence it suffices to consider the case where \(A\) is in
+Jordan form. Since \(A\) is a block diagonal matrix where the blocks are
+Jordan blocks, by block multiplication it suffices to consider the
+action of the characteristic polynomial on each block separately.
+</p>
+
+<p>
+Suppose \(\lambda\) is an eigenvector with algebraic multiplicity
+\(k\). Since \(k\) is the sum of the sizes of the Jordan blocks for
+\(\lambda\), it is clear that each Jordan block has size at most
+\(k\). Thus, if \(B\) is a block corresponding to \(\lambda\), then it is
+easily seen that
+</p>
+
+<p>
+\[
+(B-\lambda I)^k
+= \underbrace{
+\begin{pmatrix}
+0 & 1 &   &   &   &\\
+  & 0 & 1 &   &   &\\
+  &   & \ddots &   & \\
+  &   &   & 0 & 1 & \\
+  &   &   &   & 0 &
+\end{pmatrix}^k
+}_{\text{$\le k$ columns and rows}}
+= O.
+\]
+</p>
+
+<p>
+But \((t-\lambda)^k\) divides the characteristic polynomial \(p(t)\), thus
+\(p(B) = O\), as desired.
+</p>
+</div>
+</div>
+<div id="outline-container-orgfeefb8e" class="outline-2">
+<h2 id="orgfeefb8e">5-M7: Square root of diagonalizable \(2 \times 2\) matrix</h2>
+<div class="outline-text-2" id="text-orgfeefb8e">
+<p>
+Let \(A\) be a complex \(2 \times 2\) complex matrix with distinct
+eigenvalues, and let \(X\) be an indeterminate \(2 \times 2\) matrix. How
+many solutions to the matrix equation \(X^2 = A\) can there be?
+</p>
+
+<p>
+Since \(A\) is diagonalisable, we can write \(A = PDP^{-1}\), where \(D\) is
+diagonal. Now, \(X\) satisfies the equation if and only if
+\[D = P^{-1}X^2P = (P^{-1}XP)^2,\]
+</p>
+
+<p>
+so it suffices to find the number of possible values for
+\(P^{-1}XP\). If \(P^{-1}XP = \big(\begin{smallmatrix} a & b \\ c &
+d \end{smallmatrix}\big)\), then
+\[D = \begin{pmatrix} a^2+bc & b(a+d) \\ c(a+d) & bc+d^2 \end{pmatrix}.\]
+</p>
+
+<p>
+We have \(c(a+d) = b(a+d) = 0\), so either \(b = c = 0\) or \(a = -d\). If the
+latter, then
+\[\lambda_1-\lambda_2 = (a^2+bc)-(bc+d^2) = a^2-d^2 = (a+d)(a-d) = 0,\]
+</p>
+
+<p>
+contradicting the fact that the eigenvalues are distinct. Thus \(b = c
+= 0\), and there are \(4\) possible square roots for \(D =
+\big(\begin{smallmatrix} a^2 & 0 \\ 0 & d^2 \end{smallmatrix}\big)\),
+and hence \(4\) possible solutions for \(X^2 = A\).
+</p>
+</div>
+</div>
+<div id="outline-container-org96217cb" class="outline-2">
+<h2 id="org96217cb">5-M8: Matrix where trace of powers is 0</h2>
+<div class="outline-text-2" id="text-org96217cb">
+<p>
+Let \(A\) be an \(n \times n\) complex matrix. Prove that if \(\trace A^k =
+0\) for all \(k > 0\), then \(A\) is nilpotent.
+</p>
+
+<p>
+ <div class="lemma">
+Let \(x_i \in \C\) and \(a_i \in \R^+\), where \(1 \le i \le n\). If \(\sum_i
+a_i x_i^k = 0\) for all \(1 \le k \le n\), then \(x_i = 0\) for all \(i\).
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+By the hypothesis, we have
+</p>
+
+<p>
+\[
+\begin{pmatrix}
+1 & 1 & \ldots & 1 \\
+x_1 & x_2 & \ldots & x_n \\
+\vdots & \vdots & \ddots & \vdots \\
+x_1^{n-1} & x_2^{n-1} & \ldots & x_n^{n-1}
+\end{pmatrix}
+\begin{pmatrix}
+a_1x_1 \\ a_2x_2 \\ \vdots \\ a_nx_n
+\end{pmatrix}
+= 0.
+\]
+</p>
+
+<p>
+If \((x_1,x_2,\ldots,x_n) \neq 0\), then the square matrix has
+determinant \(0\), since it is non-invertible. Because it is also a
+Vandermonde matrix, the determinant is the square root of the
+discriminant of the polynomial \[p(x) = (x-x_1)(x-x_2)\ldots(x-x_n).\]
+</p>
+
+<p>
+Thus \(p(x)\) has repeated roots; WLOG we can assume that \(x_1 =
+x_2\). Substituting in \(x_2\) for \(x_1\) in the sum of the hypothesis
+gives
+</p>
+
+<p>
+\[(a_1+a_2)x_2^k + a_3x_3^k + \ldots + a_nx_n^k = 0,\]
+</p>
+
+<p>
+where \(a_1+a_2 \in \R^+\) and \(k\) runs through \(1\) to \(n-1\). By
+induction, we have \(x_j = 0\) for \(2 \le j \le n\). Subbing it back into
+the original sum with \(k = 1\) shows that \(x_1 = 0\) as well.
+ </div>
+</p>
+
+<p>
+ <div class="lemma">
+Let \(A\) be an \(n \times n\) complex matrix with eigenvalues
+\(\lambda_1,\ldots,\lambda_n\) (with multiplicity). Then the eigenvalues
+of \(A^k\) are precisely \(\lambda_1^k,\ldots,\lambda_n^k\), with
+multiplicity.
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+\(A\) is similar to an upper triangular matrix \(U\) whose diagonal
+entries are \(\lambda_i\). Then \(U^k\) is also an upper triangular matrix
+whose diagonal entries are \(\lambda_i^k\), meaning that the
+\(\lambda_i^k\)'s are the eigenvalues of \(U^k\). Since \(A^k\) is similar
+to \(U^k\), the conclusion follows.
+ </div>
+</p>
+
+<p>
+Let \(\lambda_1,\ldots,\lambda_n\) be the eigenvalues of \(A\). Then by
+the second lemma, \(\trace A^k\) is equal to the sum \(\sum_i
+\lambda_i^k\), which is equal to \(0\) for all \(k > 0\). Thus \(\lambda_i =
+0\) for all \(i\) by the first lemma, meaning the Jordan form of \(A\) is
+of the form
+</p>
+
+<p>
+\[
+\begin{pmatrix}
+0 & a_1 & 0 & \ldots & 0 \\
+0 & 0 & a_2 & \ldots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \ldots & a_{n-1} \\
+0 & 0 & 0 & \ldots & 0
+\end{pmatrix},
+\]
+</p>
+
+<p>
+where \(a_i \in \{0,1\}\). This matrix is clearly nilpotent, and so \(A\)
+is nilpotent as well.
+</p>
+</div>
+</div>
+<div id="outline-container-orgae192ae" class="outline-2">
+<h2 id="orgae192ae">8-1-1: Decomposition of bilinear form as a sum of symmetric and skew-symmetric form</h2>
+<div class="outline-text-2" id="text-orgae192ae">
+<p>
+Show that a bilinear form \(\angles{,}\) on a real vector space \(V\) is a
+sum of a symmetric form and a skew-symmetric form.
+</p>
+
+<p>
+Let \(\beta\) be a basis of \(V\), and let \(\angles{,}_M\) denote the
+bilinear form corresponding to \(M\) wrt \(\beta\). Then it is clear that
+\[\angles{,}_{A+B} = \angles{,}_A + \angles{,}_B.\]
+</p>
+
+<p>
+Hence, it suffices to show that the matrix representation \(A\) of
+\(\angles{,}\) wrt \(\beta\) is a sum of a symmetric and skew-symmetric
+matrix. But
+\[A = \frac{1}{2}(A+A^t) + \frac{1}{2}(A-A^t).\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org20be420" class="outline-2">
+<h2 id="org20be420">8-2-1: Maximal entries of a positive definite, symmetric, real matrix</h2>
+<div class="outline-text-2" id="text-org20be420">
+<p>
+Prove that the maximal entries of a positive definite, symmetric, real
+matrix are on the diagonal.
+</p>
+
+<p>
+Let \(A\) be the matrix. By theorem 8.2.5, the form \(x^tAy\) represents
+the dot product wrt to some basis \(\beta = \{v_1,\ldots,v_n\}\) of
+\(\R^n\), and the $i,j$-th entry of \(A\) is equal to \(v_i \cdot v_j\).
+</p>
+
+<p>
+Let \(v_k\) be a vector in \(\beta\) whose dot product with itself is
+maximised. Then it is easily seen that \(v_k \cdot v_k\) is the maximum
+dot product across all pairs of vectors in \(\beta\). But \(v_k \cdot
+v_k\) is the $k,k$-th entry of \(A\), which lies on the diagonal.
+</p>
+</div>
+</div>
+<div id="outline-container-orgee6c932" class="outline-2">
+<h2 id="orgee6c932">8-2-2: Ranks of different representations of a bilinear form</h2>
+<div class="outline-text-2" id="text-orgee6c932">
+<p>
+Let \(A\) and \(A'\) be symmetric matrices related by \(A' = P^tAP\), where
+\(P\) is invertible. Is it true that the ranks of \(A\) and \(A'\) are
+equal?
+</p>
+
+<p>
+Since \(P\) is invertible, \(P^t\) is also invertible. Thus, we have
+\((P^tAP)x = 0 \implies A(Px) = 0\) and \(Ax = 0 \implies
+(P^tAP)(P^{-1}x) = 0\). In other words, \(P(\ker A') = \ker A\); since
+\(P\) is invertible it follows that \(\dim \ker A' = \dim \ker A\). The
+conclusion follows from the rank-nullity theorem.
+</p>
+</div>
+</div>
+<div id="outline-container-org6b94a8b" class="outline-2">
+<h2 id="org6b94a8b">8-3-1: Matrix such that \(x^*Ax\) is real for all \(x\)</h2>
+<div class="outline-text-2" id="text-org6b94a8b">
+<p>
+Is a complex \(n \times n\) matrix \(A\) such that \(x^*Ax\) is real for all
+\(x\) Hermitian?
+</p>
+
+<p>
+Choose some basis \(\beta\) of \(\C^n\), and let \(\angles{,}_M\) be the
+bilinear form on \(\R^n\) corresponding to \(M\) wrt \(\beta\). Then the
+statement in the question is equivalent to saying that
+\[\angles{x,x}_A = \angles{x,x}_{A^*}\]
+</p>
+
+<p>
+for all \(x\), since \(x^*Ax = (x^*Ax)^* = x^*A^*x\). Also note that
+\(\angles{x,y}_A = \overline{\angles{y,x}_{A^*}}\). Thus we have
+</p>
+
+\begin{align*}
+&\angles{x+y,x+y}_A = \angles{x+y,x+y}_{A^*} \\
+\implies &\angles{x,x}_A + \angles{y,y}_A + \angles{x,y}_A + \angles{y,x}_A
+= \angles{x,x}_{A^*} + \angles{y,y}_{A^*} + \angles{x,y}_{A^*} + \angles{y,x}_{A^*} \\
+\implies &\angles{x,y}_A + \angles{y,x}_A = \angles{x,y}_{A^*} + \angles{y,x}_{A^*} \\
+\implies &\angles{x,y}_A + \overline{\angles{x,y}_{A^*}} = \angles{x,y}_{A^*} + \overline{\angles{x,y}_{A}} \\
+\implies &\angles{x,y}_{A-A^*} = \overline{\angles{x,y}_{A-A^*}} \\
+\implies &\Im \angles{x,y}_A = \Im \angles{x,y}_{A^*}.
+\end{align*}
+
+<p>
+Similarly,
+</p>
+\begin{align*}
+&\angles{x+iy,x+iy}_A = \angles{x+iy,x+iy}_{A^*} \\
+\implies &i\angles{x,y}_A - i\angles{y,x}_A = i\angles{x,y}_{A^*} - i\angles{y,x}_{A^*} \\
+\implies &i\angles{x,y}_A - i\overline{\angles{x,y}_{A^*}} = i\angles{x,y}_{A^*} - i\overline{\angles{x,y}_{A}} \\
+\implies &\angles{x,y}_{A-A^*} = \overline{-\angles{x,y}_{A-A^*}} \\
+\implies &\Re \angles{x,y}_A =  \Re \angles{x,y}_{A^*}.
+\end{align*}
+
+<p>
+Therefore, \(\angles{x,y}_A = \angles{x,y}_{A^*}\) for all \(x,y \in
+\C^n\), giving us the conclusion.
+</p>
+</div>
+</div>
+<div id="outline-container-orge1dd74d" class="outline-2">
+<h2 id="orge1dd74d">8-3-3: Positive definite Hermitian matrices</h2>
+<div class="outline-text-2" id="text-orge1dd74d">
+<p>
+Let \(A\) and \(B\) be positive definite Hermitian matrices. Decide which
+of the following matrices are necessarily positive definite Hermitian:
+\(A^2\), \(A^{-1}\), \(AB\), \(A+B\).
+</p>
+
+<p>
+\(A^2 = A^*A\) is clearly Hermitian. It is also positive definite since
+\(x^*A^*Ax = (Ax)^*(Ax)\), and \(x \neq 0\) implies \(Ax \neq 0\) (we assume
+that \(A\) is invertible).
+</p>
+
+<p>
+Since \((A^{-1})^* A^* = (AA^{-1})^* = I\), we have \((A^{-1})^* =
+(A^*)^{-1} = A^{-1}\), so \(A^{-1}\) is Hermitian. Also, we have
+\[x^*A^{-1}x = x^*(A^{-1}AA^{-1})x = (A^{-1}x)^*A(A^{-1}x);\]
+</p>
+
+<p>
+since \(A^{-1}x \neq 0\) only when \(x \neq 0\) and \(A\) is positive
+definite, \(A^{-1}\) is also positive definite.
+</p>
+
+<p>
+\(AB\) is not necessarily Hermitian if \(AB \neq BA\): \((AB)^* = B^*A^* =
+BA \neq AB\).
+</p>
+
+<p>
+Lastly, \(A+B\) is clearly Hermitian, and is also positive definite
+since \(x^*(A+B)x = x^*Ax + x^*Bx\).
+</p>
+</div>
+</div>
+<div id="outline-container-org124baf8" class="outline-2">
+<h2 id="org124baf8">8-4-3: The matrix \(A^tA\)</h2>
+<div class="outline-text-2" id="text-org124baf8">
+<p>
+Let \(A\) be a real \(m \times n\) matrix. Prove that \(B = A^tA\) is
+positive semidefinite, and that \(A\) and \(B\) have the same rank.
+</p>
+
+<p>
+\(B\) is positive semidefinite since \(x^t(A^tA)x = (Ax)^tAx\). To show
+that \(A\) and \(B\) have the same rank, it suffices to show that their
+kernels are equal. Clearly \(\ker A \subseteq \ker B\), so we only have
+to prove that \(\ker B \subseteq \ker A\). Suppose \(Bv = 0\). Then
+clearly \(v^tBv = v^t(A^tA)v = (Av)^t(Av) = 0\), which implies \(Av = 0\),
+because the dot product is positive definite.
+</p>
+</div>
+</div>
+<div id="outline-container-org6769b49" class="outline-2">
+<h2 id="org6769b49">8-4-14: Alternate proof of diagonalizability of symmetric matrices (INCOMPLETE)</h2>
+<div class="outline-text-2" id="text-org6769b49">
+<p>
+The matrix form of Theorem 8.4.10 asserts that if \(A\) is a real
+symmetric matrix, there exists an invertible matrix \(P\) such that
+\(P^tAP\) is diagonal. Prove this by row and column operations.
+</p>
+
+<p>
+We proceed by induction, and reduce \(A\) to a diagonal matrix by
+repeatedly performing a row operation followed by the corresponding
+column operation.
+</p>
+
+<ol class="org-ol">
+<li><p>
+\(A\) is a \(2 \times 2\) matrix
+</p>
+
+<p>
+Let \(A = \begin{pmatrix} a & b \\ b & c \end{pmatrix}\). If \(a \neq
+   0\), we can subtract \(b/a\) times row \(1\) from row \(2\), then subtract
+\(b/a\) times column \(1\) from column \(2\). This procedure yields a
+diagonal matrix.
+</p>
+
+<p>
+If \(a = c = 0\), then swapping the rows yields a diagonal matrix. If
+\(a = 0\) and \(c \neq 0\), then swapping the rows followed by the
+columns yields another matrix whose top-left entry is \(c\). Thus we
+can apply the above procedure.
+</p></li>
+
+<li><p>
+\(A\) is an \(n \times n\) matrix
+</p>
+
+<p>
+By induction, the top-left \((n-1) \times (n-1)\) minor can be
+reduced to a diagonal matrix, so we can assume that \(A\) has the
+form
+</p>
+
+\begin{pmatrix}
+a_1 & 0 & 0 & \ldots & 0 & b_1 \\
+0 & a_2 & 0 & \ldots & 0 & b_2 \\
+0 & 0 & a_3 & \ldots & 0 & b_3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & \ldots & a_{n-1} & b_{n-1} \\
+b_1 & b_2 & b_3 & \ldots & b_{n-1} & a_n
+\end{pmatrix}</li>
+</ol>
+
+<p>
+TODO: figure out for real
+</p>
+</div>
+</div>
+
+<div id="outline-container-org193f232" class="outline-2">
+<h2 id="org193f232">8-4-20: Criterion for symmetric matrix to be positive definite</h2>
+<div class="outline-text-2" id="text-org193f232">
+<p>
+Prove the criterion for positive definiteness given in Theorem
+8.4.19. Does the criterion carry over to Hermitian matrices?
+</p>
+
+<p>
+Theorem 8.4.19: Let \(A\) be a real symmetric \(n \times n\) matrix, and
+\(A_k\) be the top-left \(k \times k\) minor of \(A\). Then \(A\) is positive
+definite if and only if \(\det A_k > 0\) for \(k = 1,\ldots,n\).
+</p>
+
+<p>
+(\(\Leftarrow\)): Firstly, note that the sign of the determinant of a
+symmetric matrix is preserved under basechange: if \(\det A > 0\) and
+\(P\) is invertible then \[\det P^tAP = (\det P)^2 \det A > 0.\]
+</p>
+
+<p>
+Secondly, note that a symmetric matrix is positive definite if and
+only if all of its eigenvalues are positive.
+</p>
+
+<p>
+By induction, \(A_{n-1}\) is positive definite since it is symmetric and
+\(\det A_k > 0\) for \(k = 1,\ldots,n-1\).
+</p>
+
+<p>
+Interpreting the basechange \(P^tA_{n-1}P\) into a diagonal matrix in
+terms of row and column operations and applying them to the matrix \(A\)
+yields a matrix of the form
+</p>
+
+<p>
+\[
+D' = \begin{pmatrix}
+\lambda_1 & 0 & 0 & \ldots & 0 & a_1 \\
+0 & \lambda_2 & 0 & \ldots & 0 & a_2 \\
+0 & 0 & \lambda_3 & \ldots & 0 & a_3 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & \ldots & \lambda_{n-1} & a_{n-1} \\
+a_1 & a_2 & a_3 & \ldots & a_{n-1} & a_n
+\end{pmatrix},
+\]
+</p>
+
+<p>
+where each \(\lambda_i\) is positive. This matrix can further be
+simplified into a diagonal matrix \(D\) by performing these tasks in
+order for all \(i\):
+</p>
+
+<ol class="org-ol">
+<li>subtract \(a_i/\lambda_i\) times row \(i\) off row \(n\)</li>
+<li>subtract \(a_i/\lambda_i\) times column \(i\) off column \(n\).</li>
+</ol>
+
+<p>
+Since \(D\) is conjugate to \(A\) by an invertible matrix, its determinant
+is positive (\(\det A_n\) &gt; 0), so the last diagonal entry must be
+positive. Thus the eigenvalues of \(A\) are all positive, and so it is
+positive definite.
+</p>
+
+<p>
+This is not generally true for Hermitian matrices because \(\det A\) is
+not necessarily equal to \(\det A^*\), so sign of determinant is not
+necessarily preserved under basechange.
+</p>
+
+<p>
+(\(\Rightarrow\)): Suppose that \(\det A_k \le 0\) for some \(k\). If \(D =
+P^tA_kP\) is the diagonal form of \(A_k\), then \(D\) contains at least one
+nonpositive diagonal entry.
+</p>
+
+<p>
+Treat the basechange \(P^tA_kP\) as a sequence of row/column
+operations. Applying these operations on the matrix
+\[A = \begin{pmatrix} A_k & A \\ A^t & B \end{pmatrix}\]
+</p>
+
+<p>
+causes a basechange to another symmetric matrix of the form
+\[D' = \begin{pmatrix} D & A' \\ (A')^t & B' \end{pmatrix}.\]
+</p>
+
+<p>
+Since there is some nonpositive diagonal entry in \(D'\) (in the
+top-left block), it is not positive definite. So \(A\) is not positive
+definite.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org038792f" class="outline-2">
+<h2 id="org038792f">8-4-21: Sylvester's Law</h2>
+<div class="outline-text-2" id="text-org038792f">
+<p>
+Prove Sylvester's Law (the signature of a symmetric matrix does not
+depend on the choice of orthogonal basis).
+</p>
+
+<p>
+Let \(\angles{,}\) be a symmetric form on a vector space \(V\).
+</p>
+
+<p>
+ <div class="lemma">
+Suppose \(W_1,W_2\) are subspaces of \(V\) such that \(\angles{,}\) is
+positive definite on \(W_1\) and negative semidefinite on \(W_2\). Then
+\(W_1 \cap W_2 = 0\).
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+If \(v \in W_1 \cap W_2\) and \(v \neq 0\), then we have \(\angles{v,v} >
+0\) and \(\angles{v,v} \le 0\), which clearly cannot be true.
+ </div>
+</p>
+
+<p>
+Let \(\{v_1,\ldots,v_n\}\) and \(\{w_1,\ldots,w_n\}\) be orthogonal bases
+of \(V\), and let the tuples \((p,m,z)\) and \((p',m',z')\) be the
+signatures of \(\angles{,}\) with respect to these bases. Relabel the
+\(v_i\)'s so that \(\angles{,}\) is positive definite on
+</p>
+
+<p>
+\[P = \span \{v_1,\ldots,v_p\}\]
+</p>
+
+<p>
+and negative semidefinite on
+</p>
+
+<p>
+\[N = \span \{v_{p+1},\ldots,v_n\}.\]
+</p>
+
+<p>
+Do likewise for the \(w_i\)'s, using primes to denote the corresponding
+spans.
+</p>
+
+<p>
+WLOG suppose \(p > p'\). Then \(m+z < m'+z'\), and by the lemma we have
+</p>
+
+\begin{align*}
+\dim (P+N') &= \dim P + \dim N' - \dim (P \cap N') \\
+&= p+(m'+z')-0 \\
+&> p+m+z \\
+&= n,
+\end{align*}
+
+<p>
+a contradiction.
+</p>
+
+<p>
+This shows that \(p = p'\). Now, observe that if \(P,Q\) are invertible
+matrices, then
+\[\rank Q^tAQ = \rank A = \rank P^tAP.\]
+</p>
+
+<p>
+Thus \(z = z'\), which also implies \(m = m'\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgd7e7b22" class="outline-2">
+<h2 id="orgd7e7b22">8-6-19: The cyclic shift operator</h2>
+<div class="outline-text-2" id="text-orgd7e7b22">
+<p>
+Prove that the cyclic shift operator
+</p>
+
+<p>
+\[
+A =
+\begin{pmatrix}
+0 & 1 & & & &  \\
+& 0 & 1 & & & \\
+& & \cdot & \cdot & & \\
+& & & \cdot & \cdot & \\
+& & & & \cdot & 1 \\
+1 & & & & & 0 \\
+\end{pmatrix}
+\]
+</p>
+
+<p>
+is unitary, and determine its diagonalization.
+</p>
+
+<p>
+It is easy to see that the cyclic shift operator is unitary. Now
+suppose \(v = (v_1,\ldots,v_n)^t\) is an eigenvector with eigenvalue
+\(\lambda\). Then we have
+</p>
+
+<p>
+\[
+A \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix}
+= \begin{pmatrix} v_2 \\ \vdots \\ v_1 \end{pmatrix}
+= \begin{pmatrix} \lambda v_1 \\ \vdots \\ \lambda v_n \end{pmatrix}.
+\]
+</p>
+
+<p>
+Thus, if \(\lambda\) is an $n$th root of unity, then
+\((1,\lambda,\lambda^2,\ldots,\lambda^{n-1})^t\) is an eigenvector with
+eigenvalue \(\lambda\). Therefore the eigenvalues of \(A\) are simply the
+$n$th roots of unity.
+</p>
+</div>
+</div>
+<div id="outline-container-org5dbe19e" class="outline-2">
+<h2 id="org5dbe19e">8-M1: Orbits of symmetric \(2 \times 2\) matrices under basechange</h2>
+<div class="outline-text-2" id="text-org5dbe19e">
+<p>
+According to Sylvester's Law, every \(2 \times 2\) real symmetric matrix
+is congruent to exactly one of six standard types. List them. If we
+consider the operation of \(GL_2\) on \(2 \times 2\) matrices by \(P \cdot
+A = P^tAP\), then Sylvester's Law asserts that the symmetric matrices
+form six orbits. We may view the symmetric matrices as points in
+\(\R^3\), letting \((x,y,z)\) correspond to the matrix \(\begin{pmatrix} x
+& y \\ y & x \end{pmatrix}\). Describe the decomposition of \(\R^3\) into
+orbits geometrically, and make a clear drawing depicting it.
+</p>
+
+<p>
+The six standard types are
+\[
+\begin{pmatrix} 1 & \\ & 1 \end{pmatrix},
+\begin{pmatrix} -1 & \\ & -1 \end{pmatrix},
+\begin{pmatrix} 0 & \\ & 0 \end{pmatrix},
+\begin{pmatrix} 1 & \\ & 0 \end{pmatrix},
+\begin{pmatrix} -1 & \\ & 0 \end{pmatrix},
+\begin{pmatrix} 1 & \\ & -1 \end{pmatrix}.
+\]
+</p>
+
+<p>
+The signature of an arbitrary symmetric matrix \(\begin{pmatrix} x & y
+\\ y & z \end{pmatrix}\) is determined by the signs of its eigenvalues
+\(\lambda_1,\lambda_2\): by the Spectral Theorem, there is an orthogonal
+matrix \(P\) such that \(P^{-1}AP = \begin{pmatrix} \lambda_1 & \\ &
+\lambda_2 \end{pmatrix}\). Since \(P\) is orthogonal, this basechange of
+\(A\) is also a basechange of the form induced by \(A\). Thus, normalising
+and rearranging the eigenvalues gives one of the standard types.
+</p>
+
+<p>
+We find the signs of the eigenvalues directly by solving for the roots
+of the characteristic polynomial \(\lambda^2-(x+z)\lambda+(xz-y^2)\):
+\(\lambda_1 = \frac{A+\sqrt{B}}{2}\) and \(\lambda_2 =
+\frac{A-\sqrt{B}}{2}\), where
+</p>
+\begin{align*}
+A &= x+z, \\
+B &= (x-z)^2+4y^2.
+\end{align*}
+
+<p>
+Note that \(\lambda_1 > \lambda_2\); this is crucial in formulating the
+relations on \(x,y,z\). We now find the relations case-by-case:
+</p>
+
+<ol class="org-ol">
+<li><p>
+\((2,0,0)\)
+</p>
+
+<p>
+It suffices to check that \(\lambda_2 > 0\) (since it follows that
+\(\lambda_1 > 0\) as well). So \(A > \sqrt{B}\).
+</p></li>
+
+<li><p>
+\((0,2,0)\)
+</p>
+
+<p>
+It suffices to check that \(\lambda_1 < 0\) (similar reasoning as
+first case). So \(A < -\sqrt{B}\).
+</p></li>
+
+<li><p>
+\((0,0,2)\)
+</p>
+
+<p>
+The only matrix congruent to \(O\) is itself. So \(x = y = z = 0\).
+</p></li>
+
+<li><p>
+\((1,0,1)\)
+</p>
+
+<p>
+It suffices to check that \(\lambda_2 = 0\) (since \(\lambda_1\) is
+guaranteed to be positive). So \(A = \sqrt{B}\).
+</p></li>
+
+<li><p>
+\((0,1,1)\)
+</p>
+
+<p>
+It suffices to check that \(\lambda_1 = 0\). So \(A = -\sqrt{B}\).
+</p></li>
+
+<li><p>
+\((1,1,0)\)
+</p>
+
+<p>
+We do not need to carry out any special analysis for this case; it
+consists of all the remaining points not covered in the previous
+cases.
+</p></li>
+</ol>
+
+<p>
+The loci of the relations forms a rather symmetrical and aesthetically
+pleasing partition of \(\R^3\), which unfortunately will take too much
+effort to show here.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7bdeaf4" class="outline-2">
+<h2 id="org7bdeaf4">8-M8: Polar decomposition</h2>
+<div class="outline-text-2" id="text-org7bdeaf4">
+<p>
+(a) Show that if \(A\) is a nonsingular complex matrix, there is a
+positive definite Hermitian matrix \(B\) such that \(B^2 = A^*A\), and
+that \(B\) is uniquely determined by \(A\).
+</p>
+
+<p>
+\(A^*A\) is clearly Hermitian, and it is positive definite since
+\(x^*(A^*A)x = (Ax)^*(Ax) > 0\) for all \(x \neq 0\). Therefore, there is
+a unitary matrix \(P\) such that \(D = P^*(A^*A)P\) is diagonal. Since
+\(A^*A\) is positive definite, the diagonal entries are \(D\) are positive
+and so it has a unique square root \(\sqrt{D}\), which is positive
+definite. It thus follows that \(A^*A\) has a unique square root \(B =
+P\sqrt{D}P^*\), which is also positive definite since it represents a
+basechange of \(\sqrt{D}\) by \(P^*\). Lastly, \(B\) is clearly Hermitian.
+</p>
+
+<p>
+(b) Let \(A\) be a nonsingular complex matrix, and let \(B\) be a positive
+definite Hermitian matrix such that \(B^2 = A^*A\). Show that \(AB^{-1}\)
+is unitary.
+</p>
+
+<p>
+\[(AB^{-1})^*(AB^{-1}) = (B^{-1})^*A^*AB^{-1} = B^{-1}B^2B^{-1} = I.\]
+</p>
+
+<p>
+(c) Prove the Polar decomposition: Every nonsingular matrix \(A\) is a
+product \(A = UP\), where \(P\) is positive definite Hermitian and \(U\) is
+unitary.
+</p>
+
+<p>
+\[A = (AB^{-1})B.\]
+</p>
+
+<p>
+(d) Prove that the Polar decomposition is unique.
+</p>
+
+<p>
+Suppose \(A = UP = U'P'\), and that \(P \neq P'\). Then \(P^2 \neq P'^2\),
+for otherwise we have \(P^2 = P^*P = P'^2\), which contradicts the fact
+that the square root of \(P^*P\) is uniquely determined. Therefore,
+\[(UPP'^{-1})^*(UPP'^{-1}) = P'^{-1}P^2P'^{-1} \neq I.\]
+</p>
+
+<p>
+This means that \(U' = UPP'^{-1}\) is not unitary, which is a clear
+contradiction. Thus \(P = P'\) and so \(U = U'\).
+</p>
+
+<p>
+(e) What does this say about the operation of left multiplication by
+\(U_n\) on \(GL_n\)?
+</p>
+
+<p>
+It is faithful; if \(U_1(UP) = U_2(UP)\) then \(U_1U = U_2U\) and so \(U_1
+= U_2\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgf57437d" class="outline-2">
+<h2 id="orgf57437d">9-1-1: Embedding of \(GL_n(\C)\) into \(GL_{2n}(\R)\)</h2>
+<div class="outline-text-2" id="text-orgf57437d">
+<p>
+(a) Is \(GL_n(\C)\) isomorphic to a subgroup of \(GL_{2n}(\R)\)?
+</p>
+
+<p>
+Consider the case \(n = 1\). We can define a homomorphism \(\varphi\) on
+\(GL_1(\C)\) mapping \((a+bi)\) to \(\begin{pmatrix} a & -b \\ b & a
+\end{pmatrix}\). It is easily checked that \(\varphi\) is a homomorphism.
+</p>
+
+<p>
+This special case induces a homomorphism \(\varphi'\) in the general
+case:
+</p>
+<p>
+\[
+\varphi'
+\begin{pmatrix}
+m_{11} & m_{12} & \ldots & m_{1n} \\
+m_{21} & m_{22} & \ldots & m_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+m_{n1} & m_{n2} & \ldots & m_{nn}
+\end{pmatrix}
+= 
+\begin{pmatrix}
+\varphi(m_{11}) & \varphi(m_{12}) & \ldots & \varphi(m_{1n}) \\
+\varphi(m_{21}) & \varphi(m_{22}) & \ldots & \varphi(m_{2n}) \\
+\vdots & \vdots & \ddots & \vdots \\
+\varphi(m_{n1}) & \varphi(m_{n2}) & \ldots & \varphi(m_{nn})
+\end{pmatrix},
+\]
+</p>
+<p>
+where the RHS is to be interpreted as a block matrix.
+</p>
+
+<p>
+Lastly, \(\varphi\) and hence \(\varphi'\) is injective, and this
+completes the proof.
+</p>
+
+<p>
+(b) Is \(SO_2(\C)\) a bounded subset of \(\C^{2 \times 2}\)?
+</p>
+
+<p>
+Each element \(M \in SO_2(\C)\) can be identified with an element
+\(\varphi(M) \in GL_4(\R)\), as mentioned in (a). In fact, it can be
+checked that the properties \(\varphi(M)^t\varphi(M) = I\) and \(\det
+\varphi(M) = 1\) still hold, so \(\varphi(M) \in SO_4(\R)\). Since
+\(SO_4(\R)\) is bounded in \(\R^{4 \times 4}\), so is \(SO_2(\C)\).
+<a id="org6afd33b"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-orga6f92c0" class="outline-2">
+<h2 id="orga6f92c0">10-1-1: Image of complex $1$-dimensional representation is cyclic</h2>
+<div class="outline-text-2" id="text-orga6f92c0">
+<p>
+Show that the image of a representation of dimension \(1\) of a finite
+group is a cyclic group.
+</p>
+
+<p>
+The image is a finite subgroup of \(\C^{1 \times 1} \cong \C^\times\),
+so it suffices to show that any finite subgroup \(H\) of \(\C^\times\) is
+cyclic.
+</p>
+
+<p>
+Now, if \(h \in H\), then it follows that \(|h| = 1\), otherwise its order
+is infinite. In particular, \(h\) is a \(n_h\) -th root of unity, for some
+positive integer \(n_h\). Furthermore, it can be seen that the product
+\(\prod_{h \in H} h\) has order \(n\), where \(n\) is the LCM of all the
+\(n_h\)'s, and that \(n\) is the greatest order across all elements of
+\(H\). Therefore, \(H \cong C_n\).
+</p>
+</div>
+</div>
+<div id="outline-container-org38a4a3d" class="outline-2">
+<h2 id="org38a4a3d">10-2-2: When is the standard representation of \(D_n\) irreducible?</h2>
+<div class="outline-text-2" id="text-org38a4a3d">
+<p>
+Consider the standard $2$-dimensional representation \(\rho\) of
+\(D_n\). For which \(n\) is this an irreducible complex representation?
+</p>
+
+<p>
+\(\rho\) is irreducible if and only if it has no \(D_n\) -invariant
+subspaces, which is true if and only if the matrices
+</p>
+<p>
+\[
+R = \begin{pmatrix} \cos\frac{2\pi}{n} & -\sin\frac{2\pi}{n} \\ \sin\frac{2\pi}{n} & \cos\frac{2\pi}{n} \end{pmatrix},\
+T = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
+\]
+</p>
+<p>
+have no eigenvectors.
+</p>
+
+<p>
+Suppose \(v = (x,y)^t\) is an eigenvector. Then \(y = 0\), since \(Tv =
+(x,-y)^t\). This reduces the problem to finding \(n\) such that the
+$y$-coordinate of \(Rv\) is nonzero, i.e. \(x \sin\frac{2\pi}{n} \neq
+0\). This is only true when \(n \neq 1,2\).
+</p>
+</div>
+</div>
+<div id="outline-container-org2498287" class="outline-2">
+<h2 id="org2498287">10-3-3: Determining finite groups with faithful real \(2\) and $3$-dimensional representations</h2>
+<div class="outline-text-2" id="text-org2498287">
+<p>
+(a) Let \(R : G \rightarrow SL_2(\R)\) be a faithful representation of a
+finite group by real \(2 \times 2\) matrices with determinant \(1\). Prove
+that \(G\) is a cyclic group.
+</p>
+
+<p>
+Identiy \(G\) with its image under \(R\). We know that \(G\) is conjugate to
+a subgroup \(H \le O_2(\R)\). Since the determinant is preserved under
+conjugation, \(H\) is in fact contained in \(SO_2(\R)\). \(SO_2(\R)\) is
+isomorphic to the unit circle subgroup of \(\C^\times\), so by <a href="#org6afd33b">10.1.1</a>,
+it follows that \(H\) is cyclic.
+</p>
+
+<p>
+(b) Determine the finite groups that have faithful real
+$2$-dimensional representations.
+</p>
+
+<p>
+This is equivalent to determining the possible isomorphism classes of
+a finite subgroup \(G \le O_2(\R)\). Consider the group homomorphism
+\(\det : G \rightarrow \R^\times\); its kernel is \(H = G \cap SO_2(\R)\),
+and it has at most two fibers (since determinant is \(\pm 1\)).
+</p>
+
+<p>
+If \(\det\) has one fiber, then \(G = H \le SO_2(\R)\) must be cyclic by
+part (a).
+</p>
+
+<p>
+If \(\det\) has two fibers, the elements of \(G\) are either of the form
+\(R^k\) or \(R^kM\), where \(R\) is a generator of \(H\), and \(M\) is any
+determinant \(-1\) matrix in \(G\). In fact, \(M\) itself can be decomposed
+as a product \(R'F\), where \(R'\) is a rotation matrix and \(F\) is a
+reflection about the \(e_2\) -axis.
+</p>
+
+<p>
+From the identity \(R_0F = FR_0^{-1}\) (where \(R_0\) is any rotation
+matrix), we can deduce the relations
+\[R^n = M^2 = 1, RM = MR^{-1},\]
+</p>
+
+<p>
+where \(n = \bars{H}\). Clearly \(R\) and \(M\) generate \(G\), so \(G \cong
+D_n\).
+</p>
+
+<p>
+(c) Determine the finite groups that have faithful real
+$3$-dimensional representations with determinant \(1\).
+</p>
+</div>
+</div>
+<div id="outline-container-org318817c" class="outline-2">
+<h2 id="org318817c">10-3-5: Counterexample to Maschke's theorem in \(GL_2(\F_p)\)</h2>
+<div class="outline-text-2" id="text-org318817c">
+<p>
+Let \(x\) be a generator of a cyclic group \(G\) of order \(p\). Sending \(x
+\mapsto \begin{pmatrix} 1 & 1 \\ & 1 \end{pmatrix}\) defines a matrix
+representation \(G \rightarrow GL_2(\F_p)\). Prove that this
+representation is not the direct sum of irreducible representations.
+</p>
+
+<p>
+Note that every matrix in the image of \(G\) has the form
+\(\begin{pmatrix} 1 & x \\ & 1 \end{pmatrix}\), where \(x \in
+\F_p\). Since the vector \((1,0)^T\) is an eigenvector for every such
+matrix, it is $G$-invariant and so the representation is reducible.
+</p>
+
+<p>
+To check that it cannot be decomposed as a direct sum of irreducible
+representations, it suffices to check that \(M = \begin{pmatrix} 1 & 1
+\\ & 1 \end{pmatrix}\) cannot be diagonalised. This is in fact the
+case, since \(1\) is the only eigenvalue of \(M\), and the eigenspace
+\(E_1\) only has dimension \(1\).
+</p>
+</div>
+</div>
+<div id="outline-container-org07bbcdd" class="outline-2">
+<h2 id="org07bbcdd">10-4-12: Conjugate representations</h2>
+<div class="outline-text-2" id="text-org07bbcdd">
+<p>
+Let \(H\) be a subgroup of index \(2\) of a group \(G\), and let \(\sigma: H
+\rightarrow GL(V)\) be a representation. Let \(a \in G \setminus
+H\). Define a conjugation representation \(\sigma': H \rightarrow GL(V)\)
+by the rule \(\sigma'(h) = \sigma(a^{-1}ha)\). Prove that
+</p>
+
+<p>
+(a) \(\sigma'\) is a representation of \(H\).
+</p>
+
+<p>
+Note that \(\sigma'\) is well-defined, since \(H\) is a normal
+subgroup. That \(\sigma'\) is a representation is trivial to verify.
+</p>
+
+<p>
+(b) If \(\sigma\) is the restriction to \(H\) of a representation of \(G\),
+then \(\sigma'\) is isomorphic to \(\sigma\).
+</p>
+
+<p>
+The desired isomorphism is \(\sigma_{a^{-1}}\): we have
+\[\sigma_{a^{-1}} \sigma_h = \sigma'_h \sigma_{a^{-1}}.\]
+</p>
+
+<p>
+(c) If \(b\) is another element of \(G\) not in \(H\), then the
+representation \(\sigma''(h) = \sigma(b^{-1}hb)\) is isomorphic to
+\(\sigma'\).
+</p>
+
+<p>
+The desired isomorphism is \(\sigma_{b^{-1}a}\).
+</p>
+</div>
+</div>
+<div id="outline-container-org897a4ce" class="outline-2">
+<h2 id="org897a4ce">10-5-2: Trivial and sign representations are the only one-dimensional representations of \(S_n\)</h2>
+<div class="outline-text-2" id="text-org897a4ce">
+<p>
+Prove that the sign and trivial representation are the only
+one-dimensional representations of the symmetric group \(S_n\).
+</p>
+
+<p>
+Every finite subgroup of \(\C^\times\) is cyclic. Thus, this is
+equivalent to asking for normal subgroups \(N\) such that the
+corresponding quotient \(S_n/N\) is cyclic. For \(n \ge 5\), we can use
+the fact that the only nontrivial normal subgroups are \(A_n\) and
+itself.
+</p>
+
+<p>
+For \(n = 4\), the normal subgroups of \(S_4\) are the Klein $4$-group
+\(V_4\), \(A_n\) and itself. However, \(S_4/V_4 \cong S_3\) is not cyclic,
+which eliminates that possibility. Hence we are left with the same
+conclusion.
+</p>
+
+<p>
+For \(n = 3\), once again the only normal subgroups are \(A_3\) and
+itself.  The last case \(n = 1,2\) is trivial.
+</p>
+</div>
+</div>
+<div id="outline-container-org8d958e7" class="outline-2">
+<h2 id="org8d958e7">10-5-4: Bound on the magnitude of \(\chi(g)\)</h2>
+<div class="outline-text-2" id="text-org8d958e7">
+<p>
+Let \(\chi\) be the character of a representation \(\rho\) of dimension
+\(d\). Prove that \(\bars{\chi(g)} \le d\) for all \(g \in G\), and that if
+\(\bars{\chi(g)} = d\), then \(\rho_g = \zeta I\), for some root of unity
+\(\zeta\). Moreover, if \(\chi(g) = d\), then \(\rho_g\) is the identity
+operator.
+</p>
+
+<p>
+If \(\bars{g} = k\), then \(\chi(g)\) is a sum of $k$th roots of unity
+\(\zeta_1,\ldots,\zeta_d\). The inequality \(\bars{\chi(g)} \le d\)
+follows from the triangle inequality, and equality holds only when all
+the \(\zeta_i\)'s are multiples of each other, i.e. are equal. In this
+case, it is clear that \(\rho_g = \zeta_1 I\). The last claim is also
+evident.
+</p>
+</div>
+</div>
+<div id="outline-container-orgdb1f7a0" class="outline-2">
+<h2 id="orgdb1f7a0">10-6-9: Using character tables to determine simplicity of a group (INCOMPLETE)</h2>
+<div class="outline-text-2" id="text-orgdb1f7a0">
+<p>
+(a) Explain how one can prove that a group is simple by looking at its
+character table.
+</p>
+
+<p>
+ <div class="lemma">
+If a group \(G\) has no nontrivial character \(\chi\) such that \(\chi(g) =
+\chi(1)\) for some nontrivial element \(g\), then \(G\) is simple.
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+Suppose \(G\) is not simple. Then there is a surjective homomorphism
+\(\varphi : G \rightarrow H\), where \(H \neq 1,G\). Composing this with
+the regular representation \({\rho'}^{reg}\) of \(H\) yields a
+representation \(\rho^{reg} = {\rho'}^{reg} \circ \varphi\) of
+\(G\). Since \({\rho'}^{reg}\) is a faithful representation, we have that
+\(\ker \rho^{reg} = \ker \varphi\) is a nontrivial normal subgroup. Thus
+\(\chi^{reg}(g) = \chi^{reg}(1)\) for some nontrivial element \(g\).
+ </div>
+</p>
+
+<p>
+Any character \(\chi\) of \(G\) is a linear combination of the irreducible
+characters \(\chi_i\). Hence it suffices to check that there is no
+linear combination of the rows of the character tables, such that the
+first entry is equal to some other entry.
+</p>
+
+<p>
+(b) Use the character table of the icosahedral group to prove that it
+is a simple group.
+</p>
+
+<p>
+The character table is as follows (\(\alpha = 1+2\cos(2\pi/5),\ \beta =
+1+2\cos(4\pi/5)\)).
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">1</th>
+<th scope="col" class="org-left">2</th>
+<th scope="col" class="org-left">3</th>
+<th scope="col" class="org-left">4</th>
+<th scope="col" class="org-left">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">\(\chi_1\)</td>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(1\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\chi_2\)</td>
+<td class="org-left">\(3\)</td>
+<td class="org-left">\(-1\)</td>
+<td class="org-left">\(0\)</td>
+<td class="org-left">\(\alpha\)</td>
+<td class="org-left">\(\beta\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\chi_3\)</td>
+<td class="org-left">\(3\)</td>
+<td class="org-left">\(-1\)</td>
+<td class="org-left">\(0\)</td>
+<td class="org-left">\(\beta\)</td>
+<td class="org-left">\(\alpha\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\chi_4\)</td>
+<td class="org-left">\(4\)</td>
+<td class="org-left">\(0\)</td>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(-1\)</td>
+<td class="org-left">\(-1\)</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\chi_5\)</td>
+<td class="org-left">\(5\)</td>
+<td class="org-left">\(1\)</td>
+<td class="org-left">\(-1\)</td>
+<td class="org-left">\(0\)</td>
+<td class="org-left">\(0\)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Note that in all but the first row, the first entry has a greater
+magnitude than the other entries. Therefore, any linear combination
+</p>
+</div>
+</div>
+<div id="outline-container-org75f1d60" class="outline-2">
+<h2 id="org75f1d60">10-7-1: Converse to Schur's lemma</h2>
+<div class="outline-text-2" id="text-org75f1d60">
+<p>
+Prove a converse to Schur's Lemma: If \(\rho\) is a representation, and
+if the only $G$-invariant linear operators on \(V\) are multiplications
+by scalars, then \(\rho\) is irreducible.
+</p>
+
+<p>
+Suppose \(\rho\) is reducible, and let \(W\) be a proper $G$-invariant
+subspace, \(\angles{.,.}\) be a $G$-invariant form, and \(\pi\) be the
+orthogonal projection onto \(W\). Then \(\pi\) is not multiplication by a
+scalar, since some nonzero vectors are mapped to \(0\) while others are
+not.
+</p>
+
+<p>
+Now, every vector \(v \in V\) can be expressed uniquely as a sum \(w+u\),
+where \(w \in W\) and \(u \in W^\perp\). Since \(W^\perp\) is also
+$G$-invariant, we have
+</p>
+
+<p>
+\[g^{-1} \pi (gv) = g^{-1} \pi(gw) + g^{-1} \pi(gu) = \pi w + \pi u =
+\pi v.\]
+</p>
+
+<p>
+Thus \(\pi\) is $G$-invariant.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hoffman: Analysis in Euclidean Space</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Hoffman: Analysis in Euclidean Space</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org113402d">1.2.1: Set of rational numbers not bounded below</a></li>
+<li><a href="#orge597423">1.2.3: Non-empty bounded sets where supremum \(\le\) infimum</a></li>
+<li><a href="#orgf26e5eb">1.2.4: Boundedness of the empty set</a></li>
+<li><a href="#org548c803">1.2.7: Real numbers as supremums</a></li>
+<li><a href="#orgf82460f">1.2.8: Irrationals are dense in the reals</a></li>
+<li><a href="#org1ca8154">1.2.9: Non-empty set of positive integers contains its infimum</a></li>
+<li><a href="#org7849b80">1.2.10: Subset of uncountable set not containing its supremum</a>
+<ul>
+<li><a href="#org9a990c0">TODO</a></li>
+</ul>
+</li>
+<li><a href="#orge7e2ad3">1.2.11: Existence of least upper bound implies completeness</a></li>
+<li><a href="#org8038847">1.2.12: \(\R\) contains no complete ordered proper subfield</a></li>
+<li><a href="#orgc11b5aa">1.2.13: Any two complete ordered fields are isomorphic</a></li>
+<li><a href="#org96a0684">1.3.1: Classification of intervals in \(\R\)</a></li>
+<li><a href="#orga0a7fb4">1.3.3: Intersection of all closed intervals containing a bounded real subset</a></li>
+<li><a href="#org7b00a10">1.3.4: Intersections of nested intervals</a></li>
+<li><a href="#org3f2687e">1.3.6: Nested closed intervals in \(\Q\) with empty intersection</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org113402d" class="outline-2">
+<h2 id="org113402d">1.2.1: Set of rational numbers not bounded below</h2>
+<div class="outline-text-2" id="text-org113402d">
+<p>
+Is the set of rational numbers bounded below?
+</p>
+
+<p>
+No. If it is, then let \(x = \inf \Q\). By definition, \(x \le r\) for
+every rational number \(r\). Since \(r-1\) is also a rational number, this
+means \(x \le r-1\) and so \(x+1 \le r\), which implies \(x+1\) is a lower
+bound for \(\Q\). This contradicts the fact that \(x\) is the greatest
+lower bound.
+<a id="org013a12d"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge597423" class="outline-2">
+<h2 id="orge597423">1.2.3: Non-empty bounded sets where supremum \(\le\) infimum</h2>
+<div class="outline-text-2" id="text-orge597423">
+<p>
+Find all non-empty bounded sets \(A\) such that \(\sup A \le \inf A\).
+</p>
+
+<p>
+The only such sets are \(\{r\}\) where \(r \in \R\): in this case \(\sup A
+= \inf A\). For if there are two points \(x,y \in A\) such that \(x < y\),
+then by definition it follows that
+\[
+\inf A \le x < y \le \sup A.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgf26e5eb" class="outline-2">
+<h2 id="orgf26e5eb">1.2.4: Boundedness of the empty set</h2>
+<div class="outline-text-2" id="text-orgf26e5eb">
+<p>
+Is the empty set bounded above? Does it have a least upper bound?
+</p>
+
+<p>
+Any real number \(r\) is an upper bound for \(\varnothing\): it is true
+that \(x \le r\) for all \(x \in \varnothing\), since there is no such
+\(x\). However, since the set of upper bounds is precisely \(\R\), there
+is clearly no least upper bound.
+<a id="orgb1054f3"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org548c803" class="outline-2">
+<h2 id="org548c803">1.2.7: Real numbers as supremums</h2>
+<div class="outline-text-2" id="text-org548c803">
+<p>
+Prove that, if \(x\) is a real number, then
+\[x = \sup \{r \in \Q \mid r < x\}.\]
+</p>
+
+<p>
+Let \(A = \{r \in \Q \mid r < x\}\). By definition, \(x\) is an upper
+bound of \(A\). Suppose then that \(x\) is not a least upper bound: there
+exists some \(x' \in \R\) such that \(x' < x\), and that \(r \le x'\)
+whenever \(r \in A\) (i.e. \(r < x\)). This is a contradiction, because
+there exists a rational number \(r'\) such that \(x' < r' < x\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgf82460f" class="outline-2">
+<h2 id="orgf82460f">1.2.8: Irrationals are dense in the reals</h2>
+<div class="outline-text-2" id="text-orgf82460f">
+<p>
+If \(x < y\), there exists an irrational number \(t\) such that \(x < t <
+y\).
+</p>
+
+<p>
+Suppose \(x\) is irrational. There is a positive integer \(n\) such that
+\(n > 1/(y-x)\). Since \(y-x > 0\), it follows that \(n(y-x) = ny-nx >
+1\). Hence \(ny > nx+1 > nx\) so \(y > (nx+1)/n > x\); we can then let \(t =
+(nx+1)/n\) since it is irrational.
+</p>
+
+<p>
+Suppose \(x\) is rational. Likewise, there is a positive integer \(n\)
+such that \(n(y-x) = ny-nx > \sqrt{2}\). Hence \(ny > nx+\sqrt{2} > nx\)
+so \(y > (nx+\sqrt{2})/n > x\); we can let \(t = (nx+\sqrt{2})/n\) since
+it is irrational.
+<a id="orgdc71393"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org1ca8154" class="outline-2">
+<h2 id="org1ca8154">1.2.9: Non-empty set of positive integers contains its infimum</h2>
+<div class="outline-text-2" id="text-org1ca8154">
+<p>
+Verify that every non-empty set of positive integers contains its
+infimum.
+</p>
+
+<p>
+Let \(A\) be a non-empty set of positive integers; then \(A\) is bounded
+below by \(0\). Thus the set
+\[B = \{n \in \Z \mid n \ge 0\ \text{and $n$ is a lower bound of $A$}\}\]
+is non-empty. Furthermore, \(B\) must be finite, otherwise it would not
+be bounded above. This would yield a contradiction: for any real
+number \(r\), there would be some \(b \in B\) such that \(r < b\). Fixing
+some \(a \in A\), it follows that \(r < b \le a\) for all \(r \in \R\),
+which is absurd.
+</p>
+
+<p>
+ <div class="lemma">
+Let \(a,b\) be integers. If \(a < b\), then \(a+1 \le b\).
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+Suppose \(a < b\) and \(a+1 > b\). Then we have \(b-1 < a < b\), which is
+clearly a contradiction, since there cannot be an integer between 2
+consecutive integers.
+ </div>
+</p>
+
+<p>
+Since \(B\) is non-empty and finite, it has a maximum element \(x\). By
+definition, \(x \le a\) for all \(a \in A\). In fact, \(x = y\) for some \(y
+\in A\), otherwise by the lemma \(x+1\) would also be a lower bound for
+\(A\) and hence an element of \(B\), contradicting the maximality of
+\(x\). It can then be easily seen that \(y = \inf A\), completing the
+proof.
+</p>
+</div>
+</div>
+<div id="outline-container-org7849b80" class="outline-2">
+<h2 id="org7849b80">1.2.10: Subset of uncountable set not containing its supremum</h2>
+<div class="outline-text-2" id="text-org7849b80">
+<p>
+Let \(A\) be an uncountable subset of \(\R\). Prove that there exists a
+subset \(B \subset A\) such that \(\sup B \not\in B\).
+</p>
+
+<p>
+ <div class="lemma">
+Suppose \(A\) is a non-empty set of integers that is bounded above
+(below). Then \(\sup A\) (\(\inf A\)) is an integer.
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+Let \(r\) be an upper bound of \(A\). By the Archimedean property, there
+is a positive integer \(x\) such that \(x > r\), so that \(x\) is also an
+upper bound. Using the same argument as in <a href="#orgdc71393">1.2.9</a>, it can be
+concluded that the set
+\[B = \{n \in \Z \mid n \le x\ \text{and $n$ is an upper bound of $A$}\}\]
+is non-empty and finite, and hence contains a maximum element
+\(b\). Then it can be proven that \(b = \sup A\), so that \(\sup A\) is an
+integer. The argument for \(\inf A\) is essentially the same.
+ </div>
+</p>
+
+<p>
+ <div class="lemma">
+Let \(r\) be a real number. Then there is some integer \(x\) such that \(x
+\le r < x+1\).
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+Let \(A = \{n \in \Z \mid n \le r\}\) and \(x = \sup A\). By the previous
+lemma, \(x\) is an integer. Also, we have \(x \le r\), because if \(x > r\)
+then there exists a smaller upper bound for \(A\), like
+\((x+r)/2\). Lastly, \(r < x+1\) because otherwise \(x+1\) is in \(A\) which
+implies \(x+1 \le x\).
+ </div>
+</p>
+
+<p>
+Let \(A_n = A \cap [n,n+1)\). The second lemma then says that \(A\) is the
+union of the countable family \(\{A_n\}_{n \in \Z}\). Since \(A\) is
+uncountable, it follows that some \(A_k\) is uncountable.
+</p>
+
+<p>
+Now construct a sequence of sets as follows:
+</p>
+\begin{align*}
+B_0 &= A_k \\
+B_{i+1} &= B_i \setminus \{\sup B_i\}.
+\end{align*}
+
+<p>
+Note that \(\sup B_i\) exists since each \(B_i\) is bounded above by
+\(n+1\).
+</p>
+</div>
+<div id="outline-container-org9a990c0" class="outline-3">
+<h3 id="org9a990c0">TODO</h3>
+</div>
+</div>
+<div id="outline-container-orge7e2ad3" class="outline-2">
+<h2 id="orge7e2ad3">1.2.11: Existence of least upper bound implies completeness</h2>
+<div class="outline-text-2" id="text-orge7e2ad3">
+<p>
+Prove the completeness of the reals from Theorem 1 (a non-empty subset
+of \(A \subset \R\) that is bounded above has a least upper bound).
+</p>
+
+<p>
+Let \(S,T\) be subsets of \(\R\) satisfying the hypotheses of the
+completeness property. Any element of \(T\) is an upper bound for \(S\),
+hence \(S\) has a least upper bound \(x\), which must be in either \(S\) or
+\(T\). If \(x \in S\), then \(x\) is the greatest element of \(S\) since \(x
+\ge s\) for all \(s \in S\). If \(x \in T\), then \(x\) is the least element
+of \(T\) since \(x \le t\) for all upper bounds \(t\).
+</p>
+</div>
+</div>
+<div id="outline-container-org8038847" class="outline-2">
+<h2 id="org8038847">1.2.12: \(\R\) contains no complete ordered proper subfield</h2>
+<div class="outline-text-2" id="text-org8038847">
+<p>
+Prove that if a subset of \(S\) of \(\R\) (with the inherited addition,
+multiplication, and ordering) is a complete ordered field, then \(S =
+\R\).
+</p>
+
+<p>
+Since \(S\) is a subfield of the characteristic \(0\) field \(\R\), it must
+contain the prime subfield of \(\R\), namely \(\Q\). From <a href="#orgb1054f3">1.2.7</a>, each
+real number \(x\) can be identified as the supremum of the set
+\[A = \{r \in \Q \mid r < x\}.\]
+</p>
+
+<p>
+Clearly \(A \subseteq S\), and there is a positive integer \(n\) such that
+\(n > x\), so \(A\) is bounded above by an element of \(S\). Since \(S\) is
+complete, \(A\) must therefore have a least upper bound \(x' \in S\). It
+then remains to show that \(x = x'\). If \(x' < x\), then \(x\) is not a
+least upper bound of \(A\) in \(\R\); if \(x < x'\), then there is a
+rational number \(r \in S\) such that \(x < r < x'\), hence \(x'\) is not a
+least upper bound of \(A\) in \(S\). Thus \(x = x' \in S\), and this
+completes the proof.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc11b5aa" class="outline-2">
+<h2 id="orgc11b5aa">1.2.13: Any two complete ordered fields are isomorphic</h2>
+<div class="outline-text-2" id="text-orgc11b5aa">
+<p>
+Let \(R\) and \(S\) be complete ordered fields. Show that \(R\) and \(S\) are
+isomorphic.
+</p>
+
+<p>
+Let \(0_F\) and \(1_F\) denote the additive and multiplicative identitites
+of the field \(F\). Firstly, \(R\) and \(S\) must have characteristic \(0\):
+if \(n = 0_F\) for some positive integer \(n\), then it follows that
+\[0_F <1_F < 1_F+1_F < \ldots < \underbrace{1_F+\ldots+1_F}_\text{$n$ times} = n = 0_F,\]
+which is a contradiction. Thus, their prime subfields are isomorphic
+to \(\Q\).
+</p>
+
+<p>
+Let \(\Q_F\) denote the isomorphic copy of \(\Q\) in \(F\). Then there is an
+isomorphism \(\varphi : \Q_R \rightarrow \Q_S\) mapping \(0_R \mapsto
+0_S\) and \(1_R \mapsto 1_S\). We can see that \(\varphi\) also preserves
+the order of rationals: clearly it preserve the order of integers, so
+that if \(a,b,c,d\) are integers in \(R\) such that \(ad < bc\), then
+\[\varphi(a)\varphi(d) = \varphi(ad) < \varphi(bc) = \varphi(b)\varphi(c).\]
+</p>
+
+<p>
+Expressing the previous statement in terms of fractions,
+if \(a/b < c/d\), then
+\[\varphi\left(\frac{a}{b}\right) = \frac{\varphi(a)}{\varphi(b)}
+< \frac{\varphi(c)}{\varphi(d)} = \varphi\left(\frac{c}{d}\right).\]
+</p>
+
+<p>
+By <a href="#orgb1054f3">1.2.7</a>, each element \(x\) of \(R\) can be identified as the supremum of
+the set \[A_x = \{r \in \Q_R \mid r < x\}.\]
+</p>
+
+<p>
+Let \(n\) be a positive integer such that \(n > x\). Then \(\varphi(n)\) is
+an upper bound of the set \(\varphi(A_x)\). We can then extend \(\varphi\)
+to a map \(R \rightarrow S\) by defining \(\varphi(x)\) as the supremum of
+\(\varphi(A_x)\), which exists since \(S\) is complete. We then have to
+prove that \(\varphi\) preserves order, is bijective and is a
+homomorphism.
+</p>
+
+<ol class="org-ol">
+<li>\(\varphi\) preserves order</li>
+</ol>
+
+<p>
+Suppose \(x,x'\) are elements of \(R\) such that \(x < x'\). Then there
+is a rational \(r\) such that \(x < r < x'\). In other words, \(r \in
+A_{x'}\) and \(r > a\) for all \(a \in A_x\). Taking images under
+\(\varphi\), we see that \(\varphi(r) > b\) for all \(b \in
+\varphi(A_x)\), so \(\varphi(r)\) is an upper bound for
+\(\varphi(A_x)\). In particular, \(\varphi(r) \ge \varphi(x)\).
+</p>
+
+<p>
+On the other hand, since \(\varphi(r) \in \varphi(A_{x'})\), we have
+\(\varphi(r) \le \sup \varphi(A_{x'}) = \varphi(x')\). In fact, the
+inequality is strict: if equality holds, then \(\varphi(x') =
+\varphi(r) \in \Q_S\); by injectivity of \(\varphi\) this implies \(x'
+= r\), which contradicts the inequality in the previous
+paragraph. Thus \(\varphi(x) \le \varphi(r) < \varphi(x')\).
+</p>
+
+<ol class="org-ol">
+<li value="2">\(\varphi\) is bijective</li>
+</ol>
+
+<p>
+Injectivity follows easily from the fact that \(\varphi\) preserves
+order, so it suffices to show surjectivity. Let \(y\) be an element
+of \(S\). Then \(y\) is the supremum of the set
+\[B_y = \{s \in \Q_S \mid s < y\}.\]
+</p>
+
+<p>
+There exists a positive integer \(m\) such that \(m > y\), so \(B_y\) is
+bounded above by an element of \(\Q_S\). Taking preimages, we have
+that \(\varphi^{-1}(B_y)\) is bounded above by \(\varphi^{-1}(m)\)
+(since \(\varphi\) preserves order), so it has a supremum \(x\). We
+claim that \(\varphi(x) = y\).
+</p>
+
+<p>
+If \(a \in \varphi^{-1}(B_y)\), then \(a \le x\), which implies
+\(\varphi(a) \le \varphi(x)\). Hence \(\varphi(x)\) is an upper bound
+of \(B_y\), so \(y \le \varphi(x)\). However, if \(y < \varphi(x)\), then
+there is some rational \(s \in \Q_S\) such that \(y < s <
+\varphi(x)\). Taking preimages yields \(\varphi^{-1}(s) < x\), which
+means that \(\varphi^{-1}(s)\) is not an upper bound for
+\(\varphi^{-1}(B_y)\). In particular, there is some \(r \in
+\varphi^{-1}(B_y)\) such that \(r > \varphi^{-1}(s)\). But then we
+have \(\varphi(r) > s > y\), which is a contradiction since
+\(\varphi(r) \in B_y\).
+</p>
+
+<ol class="org-ol">
+<li value="3">\(\varphi\) is a homomorphism</li>
+</ol>
+
+<p>
+We begin by proving the following lemmas:
+</p>
+
+<p>
+ <div class="lemma">
+Let \(x,x'\) be elements of a complete ordered field \(R\), and use the
+above notation for \(A_x,A_{x'}\). Then
+\[x+x' = \sup \{r+s \mid r \in A_x, s \in A_{x'}\}.\]
+</p>
+
+<p>
+Furthermore, if \(x,x' > 0\), then
+\[xx' = \sup \{rs \mid r,s > 0, r \in A_x, s \in A_{x'}\}.\]
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+</p>
+<ol class="org-ol">
+<li>Clearly \(x+x'\) is an upper bound. Suppose \(t\) is another upper
+bound. Then \(t \ge r+s\) for all \(r \in A_x\), \(s \in A_{x'}\). Thus
+\(t-r\) is an upper bound for \(A_{x'}\), so \(t-r \ge x'\). This then
+implies that \(t-x'\) is an upper bound for \(A_x\), so \(t-x' \ge x\). Thus
+\(t \ge x+x'\).</li>
+
+<li>The argument is essentially the same as 1.</li>
+</ol>
+<p>
+ </div>
+</p>
+
+<p>
+ <div class="lemma">
+Let \(A\) be a non-empty subset of \(R\) that is bounded above, and let
+\(\varphi\) be the map defined above. Then
+\[\varphi(\sup A) = \sup \varphi(A).\]
+ </div>
+</p>
+
+<p>
+ <div class="proof">
+For all \(a \in A\), we have \(\sup A \ge a\), so \(\varphi(\sup A) \ge
+\varphi(a)\) which shows \(\varphi(\sup A)\) is an upper bound. Suppose
+\(x\) is another upper bound of \(\varphi(A)\). Then \(x \ge \varphi(a)\)
+for all \(a \in A\). Taking preimages yields \(\varphi^{-1}(x) \ge a\),
+which implies \(\varphi^{-1}(x) \ge \sup A\). Thus \(x \ge \varphi(\sup
+A)\). This completes the proof.
+ </div>
+</p>
+
+<p>
+From the lemmas, we have
+</p>
+\begin{align*}
+\varphi(x+x') &= \varphi(\sup \{r+s \mid r \in A_x, s \in A_{x'}\}) \\
+&= \sup \varphi(\{r+s \mid r \in A_x, s \in A_{x'}\}) \\
+&= \sup \{t+u \mid t \in \varphi(A_x), s \in \varphi(A_{x'})\} \\
+&= \sup \{t+u \mid t \in B_{\varphi(x)}, s \in B_{\varphi(x')}\} \\
+&= \sup B_{\varphi(x)} + \sup B_{\varphi(x')} \\
+&= \varphi(x) + \varphi(x').
+\end{align*}
+
+<p>
+Only the fourth equality requires extra justification: if \(r \in \Q_R\)
+and \(r < x\), then \(\varphi(r) \in \Q_S\) and \(\varphi(r) < \varphi(x)\),
+so that \(\varphi(A_x) \subseteq B_{\varphi(x)}\).
+Conversely, if \(s < \varphi(x)\), then \(s = \varphi(r')\) for some \(r'\)
+where \(r' < x\), so that \(B_{\varphi(x)} \subseteq \varphi(A_x)\). The
+same argument can be used to show that \(\varphi(xx') =
+\varphi(x)\varphi(x')\) for positive \(x,x'\).
+</p>
+
+<p>
+Lastly, the multiplicativity of \(\varphi\) can be shown for negative
+numbers. Supposing \(x,x' > 0\) as before, we have \(f(-x)f(x') +
+f(x)f(x') = 0\), so
+\[f(-x)f(x') = -f(x)f(x') = -f(xx') = f(-xx').\]
+Likewise since \(f(-x)f(-x') + f(x)f(-x') = 0\), it follows that
+\[f(-x)f(-x') = -f(x)f(-x') = -f(-xx') = f(xx').\]
+</p>
+</div>
+</div>
+<div id="outline-container-org96a0684" class="outline-2">
+<h2 id="org96a0684">1.3.1: Classification of intervals in \(\R\)</h2>
+<div class="outline-text-2" id="text-org96a0684">
+<p>
+Prove that every interval in \(\R\) is one of the following nine types:
+</p>
+\begin{align*}
+&(-\infty,\infty), (a,\infty), [a,\infty), \\
+&(-\infty,b), (-\infty,b], (a,b), \\
+&[a,b), (a,b], [a,b].
+\end{align*}
+
+<p>
+Let \(I\) be an interval. We shall consider multiple cases:
+</p>
+<ol class="org-ol">
+<li><p>
+\(I\) not bounded above or below
+</p>
+
+<p>
+For any real number \(r\), there are real numbers \(s,t \in I\) such
+that \(s < r < t\). Thus \(r \in I\) as well, so \(I =
+   (-\infty,\infty)\).
+</p></li>
+
+<li><p>
+\(I\) not bounded below, bounded above
+</p>
+
+<p>
+Since \(I\) is bounded above, it has a supremum \(b\). Let \(r\) be a
+real number such that \(r < b\). Then there must be some \(t \in I\)
+such that \(r < t \le b\), otherwise \(r\) would be an upper
+bound. Since \(I\) is not bounded below, there is also some \(s \in I\)
+such that \(s < r\). Since \(s < r < t\), we have \(r \in I\).
+</p>
+
+<p>
+If \(b \in I\), then \(I = (-\infty,b]\). Otherwise, \(I = (-\infty,b)\).
+</p></li>
+
+<li><p>
+\(I\) not bounded above, bounded below
+</p>
+
+<p>
+Similarly, \(I\) can be classified as either \((a,\infty)\) or
+\([a,\infty)\), depending on whether \(a = \inf I \in I\).
+</p></li>
+
+<li><p>
+\(I\) bounded below and above
+</p>
+
+<p>
+\(I\) has an infimum \(a\) and a supremum \(b\). If \(a = b\), then by
+<a href="#org013a12d">1.2.3</a> \(I\) contains only one point, which is obviously untrue. Now
+suppose \(a < r < b\). There must be some \(s \in I\) such that \(a \le
+   s < r\), otherwise \(r\) is a lower bound for \(I\). Likewise, there is
+some \(t \in I\) such that \(r < t \le b\). Since \(s < r < t\), it
+follows that \(r \in I\).
+</p>
+
+<p>
+If \(a \in I\), then either \(I = [a,b)\) or \(I = [a,b]\) depending on
+whether \(b \in I\). Otherwise, either \(I = (a,b)\) or \(I = (a,b]\).
+</p></li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orga0a7fb4" class="outline-2">
+<h2 id="orga0a7fb4">1.3.3: Intersection of all closed intervals containing a bounded real subset</h2>
+<div class="outline-text-2" id="text-orga0a7fb4">
+<p>
+Let \(A\) be a bounded subset of \(\R\). What is the intersection of all
+closed intervals which contain \(A\)?
+</p>
+
+<p>
+Let \(B = [\inf A, \sup A]\), let \(S\) be the intersection, and let \(I\)
+be a closed interval containing \(A\) (note that \(I = [\inf I, \sup
+I]\)). We have \(\inf I \le \inf A\); if \(\inf I > \inf A\) then there
+must exist some \(a \in A\) such that \(\inf I > a \ge \inf A\), implying
+that \(a \not\in I\), a contradiction. Likewise, we have \(\sup A \le
+\sup I\), so that \(B \subseteq I\), and so \(B \subseteq S\). Furthermore,
+it is clear that \(B\) is a closed interval containing \(A\), so that \(S
+\subseteq B\). Thus \(S = I\).
+</p>
+</div>
+</div>
+<div id="outline-container-org7b00a10" class="outline-2">
+<h2 id="org7b00a10">1.3.4: Intersections of nested intervals</h2>
+<div class="outline-text-2" id="text-org7b00a10">
+<p>
+Give an example of a nested sequence of open intervals for which the
+intersection is empty. Give similar examples for which the
+intersection is a set with one member, an open interval, a closed
+interval, a semi-closed interval.
+</p>
+
+<p>
+Let \(n\) run through the natural numbers. Then
+</p>
+\begin{align*}
+\bigcap_n\ \left(0,\frac{1}{n}\right) &= \varnothing, \\
+\bigcap_n\ \left(-\frac{1}{n},\frac{1}{n}\right) &= \{0\}, \\
+\bigcap_n\ (-1,1) &= (-1,1), \\
+\bigcap_n\ \left(-1-\frac{1}{n},1+\frac{1}{n}\right) &= [-1,1], \\
+\bigcap_n\ \left(0,1+\frac{1}{n}\right) &= (0,1].
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org3f2687e" class="outline-2">
+<h2 id="org3f2687e">1.3.6: Nested closed intervals in \(\Q\) with empty intersection</h2>
+<div class="outline-text-2" id="text-org3f2687e">
+<p>
+Suppose you were working in the rational number system. Describe a
+nested sequence of closed intervals for which the intersection is
+empty.
+</p>
+
+<p>
+We will first in work in \(\R\). Let \(x_1 \le x_2 \le \ldots\) be a
+non-decreasing sequence of rational numbers such that \(\sup \{x_i\} =
+\sqrt{2}\). Likewise, let \(y_1 \ge y_2 \ge \ldots\) be a non-increasing
+sequence of rational numbers such that \(\inf \{y_i\} =
+\sqrt{2}\). Interpreting the interval \([x_i,y_i]\) as the set \(\{r \in
+\Q \mid x_i \le r \le y_i\}\), we have that \(\cup_i [x_i,y_i] =
+\varnothing\), since \(\sqrt{2} \not\in \Q\).
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>

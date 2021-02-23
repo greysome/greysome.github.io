@@ -1,0 +1,1796 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-02-23 Tue 18:35 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dummit-Foote: Abstract Algebra</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Recursive" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+  /* General page style */
+  @media (min-width: 600px) {
+      .header {
+	  padding-left: 5%;
+	  padding-right: 5%;
+      }
+
+      body {
+	  margin-left: 20%;
+	  margin-right: 20%;
+      }
+  }
+
+  @media (max-width: 600px) {
+      .header {
+	  padding-left: 1%;
+	  padding-right: 1%;
+      }
+
+      body {
+	  margin-left: 3%;
+	  margin-right: 3%;
+      }
+  }
+
+  .header {
+      display: flex;
+      align-items: center;
+      flex-direction: rows;
+  }
+
+  .name {
+      flex-basis: 50%;
+      text-align: left;
+  }
+
+  .tagline {
+      flex-basis: 50%;
+      text-align: right;
+  }
+
+  .made-with {
+      text-align: center;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  h1, h2, h3 {
+      font-family: "Recursive";
+  }
+
+  body {
+      margin-top: 2%;
+      margin-bottom: 2%;
+      font-family: "Open Sans";
+  }
+
+  a:link {
+      text-decoration: none;
+      color: #0066cc;
+  }
+
+  a:visited {
+      text-decoration: none;
+      color: #0033cc;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  h1 a:link {
+      color: #555555;
+  }
+
+  h1 a:visited {
+      color: #555555;
+  }
+
+  h1 a:hover {
+      color: #777777;
+  }
+
+  /* Special styling for theorems/defns/lemmas/proofs */ 
+  .theorem, .lemma, .proof, .definition, .proposition, .example, .box {
+      border-style: none none none solid;
+      padding-top: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 3px;
+      background-color: #eeeeee;
+      font-style: normal;
+      margin: 10px 0;
+  }
+
+  .theorem:before {
+      content: "Theorem.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .lemma:before {
+      content: "Lemma.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .proof:before {
+      content: "Proof.";
+      font-weight: bold;
+      font-style: normal;
+  }
+ 
+  .definition:before {
+      content: "Definition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .proposition:before {
+      content: "Proposition.";
+      font-weight: bold;
+      font-style: normal;
+  }
+
+  .example:before {
+      content: "Example.";
+      font-weight: bold;
+      font-style: normal;
+  }
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML">
+    MathJax.Hub.Config({
+	tex2jax: {
+            inlineMath: [['$', '$'], ["\\(", "\\)"]]
+	},
+	TeX: {
+	    Macros: {
+		F: '\\mathbb{F}',
+		N: '\\mathbb{N}',
+		Z: '\\mathbb{Z}',
+		Q: '\\mathbb{Q}',
+		R: '\\mathbb{R}',
+		C: '\\mathbb{C}',
+		Gal: '\\text{Gal}',
+		Aut: '\\text{Aut}',
+		comb: ['{{}^{#1}\\!C_{#2}}', 2],
+		perm: ['{{}^{#1}\\!P_{#2}}', 2],
+		bars: ['\\left|{#1}\\right|', 1],
+		angles: ['\\langle{#1}\\rangle', 1],
+		Syl: '\\text{Syl}',
+		inf: '\\text{inf}\\',
+		sup: '\\text{sup}\\',
+		rank: '\\text{rank}\\',
+		trace: '\\text{trace}\\',
+		nullity: '\\text{nullity}\\',
+		span: '\\text{span}\\',
+		floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1]
+	    }
+	}
+    });
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<div class="header">
+  <div class="name">
+    <h1><a href="/index.html">Way Yan</a></h1>
+  </div>
+  <div class="tagline">
+    <h3>does mostly math</h3>
+  </div>
+</div> 
+<hr>
+</div>
+<div id="content">
+<h1 class="title">Dummit-Foote: Abstract Algebra</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org8874c5c">3.4.1: Abelian simple groups</a></li>
+<li><a href="#org2e16f71">3.4.4: Subgroups of finite abelian groups</a></li>
+<li><a href="#orgb393d8d">3.4.5: Subgroups and quotient groups of solvable groups</a>
+<ul>
+<li><a href="#org6d86d35">Subgroups</a></li>
+<li><a href="#orgf29dab4">Quotient groups</a></li>
+</ul>
+</li>
+<li><a href="#org39ddd51">3.4.8: Reformulations of the statement "\(G\) is solvable"</a></li>
+<li><a href="#org532fc54">3.4.12: Restatement of the Feit-Thompson theorem</a></li>
+<li><a href="#org511d7ed">4.1.9: Action of group on orbits of normal subgroup</a></li>
+<li><a href="#org63ebeca">13.2.17: Irreducible factors of composite polynomials</a></li>
+<li><a href="#org0771f48">13.4.5: Characterisation of splitting fields</a></li>
+<li><a href="#orgd04c6c2">13.4.6: Composite and intersection of splitting fields</a></li>
+<li><a href="#org68311fb">14.1.7: Determination of \(\Aut(\R/\Q)\)</a></li>
+<li><a href="#org74eea6f">14.1.8: Automorphisms of a rational function field</a></li>
+<li><a href="#org531ad84">14.2.11: Simple extensions in splitting fields with Galois group \(S_4\)</a></li>
+<li><a href="#org163c8f5">14.2.14: Galois group of \(\Q(\sqrt{2+\sqrt{2}})\)</a></li>
+<li><a href="#orgb7728a5">14.2.28: Factoring irreducible polynomials in a Galois extension</a></li>
+<li><a href="#org4c3901b">14.3.6: Biquadratic extensions of finite fields</a></li>
+<li><a href="#org8f1b9f5">14.3.7: Squares in \(\F_p\)</a></li>
+<li><a href="#org8a14194">14.3.10: \(n\) divides \(\varphi(p^n-1)\)</a></li>
+<li><a href="#orgfc02c0a">14.4.3: Degree of embedded fields in \(M_n(\Q)\)</a></li>
+<li><a href="#org4b31538">14.4.6: Non-simplicity of \(\F_p(x,y)/\F_p(x^p,y^p)\)</a></li>
+<li><a href="#org980e1e9">14.5.6: Trace of primitive root of unity</a></li>
+<li><a href="#org43e8169">14.5.11: Primitive $n$th roots of unity as basis for \(\Q(\zeta_n)/\Q\)</a></li>
+<li><a href="#orgc06361b">14.5.12: Diagonalizability of the Frobenius automorphism</a></li>
+<li><a href="#orgf3b367e">14.5.13: \(\Gal(\Q(\zeta_n)/\Q)\) and the Chinese Remainder Theorem</a></li>
+<li><a href="#orgff905ca">14.6.11: Galois closure of non-Galois degree 4 extension</a></li>
+<li><a href="#orgb3ef0e7">14.6.12: Degree 4 extensions, biquadratics and quadratic extensions</a></li>
+<li><a href="#orgb0fe84b">14.6.13: Elementary test for the Galois group of a quartic polynomial</a></li>
+<li><a href="#org9cf9601">14.6.19: The field \(\Q(\sqrt{D})\) for a quartic</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a id="orga37c712"></a>
+</p>
+<div id="outline-container-org8874c5c" class="outline-2">
+<h2 id="org8874c5c">3.4.1: Abelian simple groups</h2>
+<div class="outline-text-2" id="text-org8874c5c">
+<p>
+Prove that if \(G\) is an abelian simple group then \(G \cong Z_p\) for
+some prime \(p\).
+</p>
+
+<p>
+The only subgroups of \(G\) are 1 and itself, because every subgroup of
+\(G\) is normal and \(G\) has no nontrivial proper normal subgroups. If \(x
+\in G\) is a nonidentity element, then \(G = \langle x \rangle\), so that
+either \(G\) is a finite cyclic group or \(G \cong \Z\). But every
+nonidentity element is a generator of \(G\), which is not the case with
+\(\Z\) and \(Z_n\) for nonprime \(n\). This concludes the proof.
+</p>
+</div>
+</div>
+<div id="outline-container-org2e16f71" class="outline-2">
+<h2 id="org2e16f71">3.4.4: Subgroups of finite abelian groups</h2>
+<div class="outline-text-2" id="text-org2e16f71">
+<p>
+Use Cauchy's Theorem and induction to show that a finite abelian group
+has a subgroup of order \(n\) for each positive divisor \(n\) of its
+order.
+</p>
+
+<p>
+Let \(G\) be a finite abelian group with order \(m\). We shall proceed by
+induction on \(k\), the number of (not necessarily distinct) factors in
+the prime factorization of \(m\). For \(k=1\) the statement is obvious. If
+\(k \ge 2\), then let the prime factors be \(p_1, p_2, \cdots, p_k\). By
+Cauchy's Theorem, for each \(p_i\) there is a subgroup \(H_i\) with that
+order, which is also normal.
+</p>
+
+<p>
+Thus we can consider the quotient \(G/H_i\): its order has \(k-1\) prime
+factors, so we can apply the induction hypothesis to conclude that
+\(G/H_i\) has a subgroup of order \(m'\) for every \(m' \mid m/p_i\). By the
+Lattice Isomorphism Theorem, each of these subgroups in \(G/H_i\)
+correspond to a subgroup in \(G\) of order \(m'p_i\). Taking the products
+\(m'p_i\) across all \(H_i\) gives the conclusion.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb393d8d" class="outline-2">
+<h2 id="orgb393d8d">3.4.5: Subgroups and quotient groups of solvable groups</h2>
+<div class="outline-text-2" id="text-orgb393d8d">
+<p>
+Prove that subgroups and quotient groups of a solvable group are
+solvable.
+</p>
+</div>
+
+<div id="outline-container-org6d86d35" class="outline-3">
+<h3 id="org6d86d35">Subgroups</h3>
+<div class="outline-text-3" id="text-org6d86d35">
+<p>
+Let \(G\) be a solvable group with a chain of subgroups
+\[1 = G_0 \trianglelefteq G_1 \trianglelefteq \cdots \trianglelefteq G_s = G\]
+such that \(G_{i+1}/G_i\) is abelian. If \(H\) is any subgroup, then
+consider the subgroups \(H \cap G_i\). Clearly \(H \cap G_{i+1}\) and
+\(G_i\) are subgroups of \(G_{i+1}\), and also \((H \cap G_{i+1}) \cap G_i
+= H \cap G_i\). Thus we have the following diagram:
+</p>
+\begin{matrix}
+&& G_{i+1} && \\
+&& \mid && \\
+&& (H \cap G_{i+1})G_i && \\
+& \diagup && \diagdown & \\
+H \cap G_{i+1} &&&& G_i \\
+& \diagdown && \diagup & \\
+&& H \cap G_i &&
+\end{matrix}
+
+<p>
+Since \(G_i \trianglelefteq G_{i+1}\), by the Second Isomorphism Theorem
+\(H \cap G_i\) is normal in \(H \cap G_{i+1}\), and \[(H \cap G_{i+1})/(H
+\cap G_i) \cong (H \cap G_{i+1})G_i/G_i \le G_{i+1}/G_i\] is
+abelian. We can then construct a chain of subgroups \[1 = H \cap G_0
+\trianglelefteq H \cap G_1 \trianglelefteq \cdots \trianglelefteq H
+\cap G_s = H,\] which shows that \(H\) is solvable.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf29dab4" class="outline-3">
+<h3 id="orgf29dab4">Quotient groups</h3>
+<div class="outline-text-3" id="text-orgf29dab4">
+<p>
+Let \(G\) be as above, and \(H\) be a normal subgroup. Consider the
+subgroups \(HG_i\); clearly \(HG_i \le HG_{i+1}\), \((HG_i)G_{i+1} = HG_{i+1}\), and \(G_i \le
+HG_i \cap G_{i+1}\). Thus we have the following diagram:
+</p>
+\begin{matrix}
+&& HG_{i+1} && \\
+& \diagup && \diagdown & \\
+G_{i+1} &&&& HG_i \\
+& \diagdown && \diagup & \\
+&& G_{i+1} \cap HG_i && \\
+&& \mid && \\
+&& G_i &&
+\end{matrix}
+
+<p>
+Note that \(G_{i+1}\) normalises both \(H\) and \(G_i\) so that \(G_{i+1} \le
+N_G(HG_i)\). Thus by the Second Isomorphism Theorem, \(HG_i
+\trianglelefteq HG_{i+1}\) and \(HG_{i+1}/HG_i \cong G_{i+1}/ (G_{i+1}
+\cap HG_i)\). Since \(G_i \trianglelefteq G_{i+1}\) it follows that \(G_i\)
+is normal in \(G_{i+1} \cap HG_i\), so that
+\[G_{i+1}/(G_{i+1} \cap HG_i) \cong (G_{i+1}/G_i)/(G_{i+1} \cap HG_i/G_i)\]
+</p>
+
+<p>
+is a quotient of an abelian group and hence is abelian. Taking the
+quotient of each \(HG_i\) by \(H\) and applying the Lattice Isomorphism
+Theorem we get a chain
+\[1 = \overline{HG_0} \trianglelefteq \overline{HG_1} \trianglelefteq \cdots \trianglelefteq \overline{HG_s} = G/H\]
+where \(\overline{HG_{i+1}}/\overline{HG_i} \cong HG_{i+1}/HG_i\) is
+abelian, completing the proof.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org39ddd51" class="outline-2">
+<h2 id="org39ddd51">3.4.8: Reformulations of the statement "\(G\) is solvable"</h2>
+<div class="outline-text-2" id="text-org39ddd51">
+<p>
+Let \(G\) be a finite group. Prove that the following are equivalent: <br />
+(i) \(G\) is solvable <br />
+(ii) \(G\) has a chain of subgroups:
+\[1 = H_0 \trianglelefteq H_1 \trianglelefteq \cdots \trianglelefteq H_s = G\]
+such that \(H_{i+1}/H_i\) is cyclic, \(0 \le i \le s-1\) <br />
+(iii) all composition factors of \(G\) are of prime order <br />
+(iv) \(G\) has a chain of subgroups:
+\[1 = N_0 \trianglelefteq N_1 \trianglelefteq \cdots \trianglelefteq N_t = G\]
+such that each \(N_i\) is a normal subgroup of \(G\) and \(N_{i+1}/N_i\) is
+abelian, \(0 \le i \le t-1\).
+</p>
+
+<p>
+((i) \(\implies\) (ii),(iii)): Let \[1 = G_0 \trianglelefteq G_1
+\trianglelefteq \cdots \trianglelefteq G_s = G\] be a series where
+\(G_{i+1}/G_i\) is abelian. Now let \[1 = K_0 \trianglelefteq K_1
+\trianglelefteq \cdots \trianglelefteq K_t = G_1/G_0\] be a
+composition series for \(G_1/G_0\). Clearly each \(K_i\) is abelian being
+a subgroup of an abelian group, so the quotient groups \(K_{i+1}/K_i\)
+are abelian. By the Lattice Isomorphism Theorem, this series
+corresponds to another series \[G_0 = K_0' \trianglelefteq K_1'
+\trianglelefteq \cdots \trianglelefteq K_t' = G_1,\] where
+\(K_{i+1}'/K_i' \cong K_{i+1}/K_i\) is simple and abelian. Hence by
+<a href="./dummit-foote-3-4-1.html">3.4.1</a>, \(K_{i+1}'/K_i' \cong Z_p\). This argument can be repeated for
+all \(G_{i+1}/G_i\), to obtain a composition series whose factors are
+cyclic groups of prime order.
+</p>
+
+<p>
+((ii) \(\implies\) (i)): obvious
+</p>
+
+<p>
+((iii) \(\implies\) (iv)): Let \(M\) be a minimal nontrivial normal
+subgroup of \(G\). By (iii), there is a subgroup \(N \trianglelefteq M\)
+of prime index. Since \(M/N\) is abelian, it follows that
+\(x^{-1}y^{-1}xy \in N\) for all \(x,y \in M\). This is in fact true for
+all $G$-conjugates of \(N\), since \(gNg^{-1} \trianglelefteq gMg^{-1} =
+M\) and it also has prime index. Thus \(x^{-1}y^{-1}xy\) lies in the
+intersection of all $G$-conjugates of \(N\), which is easily seen to be
+a normal subgroup of \(G\). But this implies \(x^{-1}y^{-1}xy = 1\) due to
+the minimality of \(M\). In other words, \(M\) is abelian.
+</p>
+
+<p>
+We can apply the induction hypothesis on the group \(G/M\) to obtain a
+chain of subgroups
+\[1 = N_0' \trianglelefteq N_1' \trianglelefteq \cdots \trianglelefteq N_t' = G/M\]
+</p>
+
+<p>
+such that \(N_i' \trianglelefteq G/M\) and \(N_{i+1}'/N_i'\) is
+abelian. By the Lattice Isomorphism Theorem, this corresponds to a
+chain of subgroups
+\[M = N_0 \trianglelefteq N_1 \trianglelefteq \cdots \trianglelefteq N_t = G\]
+where \(N_i \trianglelefteq G\) and \(N_{i+1}/N_i \cong N_{i+1}'/N_i'\) is
+abelian. Since \(M\) is abelian and \(M \trianglelefteq G\), the
+chain can be completed and the conclusion follows.
+</p>
+
+<p>
+((iv) \(\implies\) (i)): obvious
+</p>
+</div>
+</div>
+<div id="outline-container-org532fc54" class="outline-2">
+<h2 id="org532fc54">3.4.12: Restatement of the Feit-Thompson theorem</h2>
+<div class="outline-text-2" id="text-org532fc54">
+<p>
+Prove (without using the Feit-Thompson Theorem) that the following are
+equivalent: <br />
+(i) every group of odd order is solvable <br />
+(ii) the only simple groups of odd order are those of prime order
+</p>
+
+<p>
+(i) \(\implies\) (ii): Let \(G\) be a simple group of odd order. Then the
+only possible composition series is \(1 \trianglelefteq G\). Since \(G\)
+is solvable by the hypothesis, \(G \cong G/1\) is abelian, and by <a href="#orga37c712">3.4.1</a>
+\(G \cong Z_p\) for some prime \(p\).
+</p>
+
+<p>
+(ii) \(\implies\) (i): Let \(G\) be a group of odd order. It has a
+composition series
+\[1 = G_0 \trianglelefteq G_1 \trianglelefteq \cdots \trianglelefteq G_s = G.\]
+Since each \(G_{i+1}/G_i\) is simple and has odd order (being a divisor
+of \(\left|G\right|\)), it follows from the hypothesis that \(G_{i+1}/G_i
+\cong Z_p\) is abelian. Thus \(G\) is solvable.
+<a id="org46f61a3"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org511d7ed" class="outline-2">
+<h2 id="org511d7ed">4.1.9: Action of group on orbits of normal subgroup</h2>
+<div class="outline-text-2" id="text-org511d7ed">
+<p>
+Assume \(G\) acts transitively on the finite set \(A\) and let \(H\) be a
+normal subgroup of \(G\). Let \(\mathcal{O}_1, \cdots, \mathcal{O}_r\) be
+the distinct orbits of \(H\) on \(A\).
+</p>
+
+<p>
+(a) Prove that \(G\) permutes the sets \(\mathcal{O}_1, \cdots,
+\mathcal{O}_r\). Prove that \(G\) is transitive on \(\{\mathcal{O}_1,
+\cdots, \mathcal{O}_r\}\). Deduce that all orbits of \(H\) on \(A\) have
+the same cardinality.
+</p>
+
+<p>
+Let \(a_1, \cdots, a_r\) denote arbitrary representatives from each
+orbit. In particular, for each \(g \in G\) and \(1 \le i \le r\) let \(a_j
+= g \cdot a_i\), so that \(a_i = g^{-1} \cdot a_j\). Then
+</p>
+\begin{align*}
+g\mathcal{O}_i &= g\{h \cdot a_i \mid h \in H\} \\
+&= g\{h \cdot (g^{-1} \cdot a_j) \mid h \in H\} \\
+&= \{(ghg^{-1}) \cdot a_j \mid h \in H\} \\
+&= \{h' \cdot a_j \mid h' \in H\} \\
+&= \mathcal{O}_j
+\end{align*}
+<p>
+where the second last equality follows from the normality of \(H\).
+Since \(G\) is transitive, for each \(1 \le k \le r\) we can choose some
+\(g' \in G\) such that \(a_k = g' \cdot a_i\), and it follows from above
+that \(g\mathcal{O}_i = \mathcal{O}_k\).
+</p>
+
+<p>
+Suppose not all orbits are of the same size. Then renaming the indices
+if necessary, we can assume without loss of generality that
+\(\mathcal{O}_1\) has less elements than \(\mathcal{O}_2\). But then
+\(g\mathcal{O}_1 = \mathcal{O}_2\) for some \(g \in G\), which is a
+contradiction because \(g\mathcal{O}_1\) has at most
+\(\left|\mathcal{O}_1\right|\) elements.
+</p>
+
+<p>
+(b) Prove that if \(a \in \mathcal{O}_1\) then
+\(\left|\mathcal{O}_1\right| = \left|H : H \cap G_a\right|\) and
+prove that \(r = \left|G : HG_a\right|\).
+</p>
+
+<p>
+The first statement follows from the fact that \(H \cap G_a = H_a\). The
+second statement can be seen by drawing a diagram:
+</p>
+\begin{matrix}
+&& G && \\
+&& \mid && \\
+&& HG_a && \\
+& \diagup && \diagdown & \\
+H &&&& G_a \\
+& \diagdown && \diagup & \\
+&& H \cap G_a &&
+\end{matrix}
+
+<p>
+Since \(G\) is transitive, the size of \(A\) is given by the size of the
+orbit of \(a\) under \(G\), which is \(\left|G : G_a\right|\) by the
+orbit-stabilizer theorem. Since \(H \trianglelefteq G\), by the Second
+Isomorphism Theorem \(\left|HG_a : G_a\right| = \left|H : H \cap
+G_a\right|\) is the size of \(\mathcal{O}_1\). Using the fact that all
+orbits \(\mathcal{O}_i\) have the same size, we can conclude that
+\[r = \frac{\left|A\right|}{\left|\mathcal{O}_1\right|}
+= \frac{\left|G : G_a\right|}{\left|HG_a : G_a\right|}
+= \left|G : HG_a\right|.\]
+</p>
+</div>
+</div>
+<div id="outline-container-org63ebeca" class="outline-2">
+<h2 id="org63ebeca">13.2.17: Irreducible factors of composite polynomials</h2>
+<div class="outline-text-2" id="text-org63ebeca">
+<p>
+Let \(f(x) \in F[x]\) be an irreducible degree \(n\) polynomial, and \(g(x)
+\in F[x]\). Prove that every irreducible factor of the composite
+polynomial \(f(g(x))\) has degree divisible by \(n\).
+</p>
+
+<p>
+Let \(\beta\) be a root of \(f(g(x))\). If \(\alpha = g(\beta)\), then
+\(\alpha\) is a root of the irreducible polynomial \(f(x)\), so
+\(F(\alpha)\) is a degree \(n\) extension. Some irreducible factor of the
+polynomial \(g(x)-\alpha \in F(\alpha)[x]\) has \(\beta\) as a root, so
+\(\beta\) generates a field extension \(F(\alpha,\beta)\). Thus we have
+the chain \[F \subseteq F(\alpha) \subseteq F(\alpha,\beta).\] In
+particular note that \([F(\alpha,\beta) : F]\) is divisible by \(n\).
+</p>
+
+<p>
+Now, since \(\alpha = g(\beta) \in F(\beta)\), it follows that
+\(F(\alpha,\beta) = F(\beta)\).  Finally, every irreducible factor
+\(p(x)\) of \(f(g(x))\) is the minimal polynomial (up to degree) of some
+root \(\beta\), and so it follows that \(\deg p = [F(\beta) : F] =
+[F(\alpha,\beta) : F]\) is divisible by \(n\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0771f48" class="outline-2">
+<h2 id="org0771f48">13.4.5: Characterisation of splitting fields</h2>
+<div class="outline-text-2" id="text-org0771f48">
+<p>
+Let \(K\) be a finite extension of \(F\). Prove that \(K\) is a splitting
+field if and only if every irreducible polynomial in \(F[x]\) having a
+root in \(K\) splits completely in \(K[x]\).
+</p>
+
+<p>
+(\(\implies\)): Suppose \(K\) is the splitting field of \(f(x) \in F[x]\),
+suppose \(p(x) \in F[x]\) is irreducible with a root \(\alpha \in K\), and
+suppose also that \(p(x)\) has a root \(\beta \in L \setminus K\), where
+\(L\) is the splitting field of \(p(x)\). There is a natural isomorphism
+between \(F(\alpha)\) and \(F(\beta)\) which can be extended to an
+isomorphism between the splitting fields of \(f(x)\) over \(F(\alpha)\)
+and \(F(\beta)\). Since \(\alpha \in K\), the splitting field of \(f(x)\)
+over \(F(\alpha)\) is simply \(K\). Also, the splitting field of \(f(x)\)
+over \(F(\beta)\) is \(K(\beta)\). So \(K \cong K(\beta)\) which implies
+\(\beta \in K\), a contradiction (credits to <a href="https://math.stackexchange.com/questions/2380437/k-is-a-splitting-field-iff-any-irreducible-polynomial-with-a-root-in-k-sp">this post</a>).
+</p>
+
+<p>
+(\(\impliedby\)): Since \(K\) is a finite extension, it is generated by
+finitely many algebraic elements \(\alpha_1, \cdots, \alpha_n\). Each
+\(\alpha_i\) is the root of some irreducible polynomial \(p_i(x) \in
+F[x]\) (e.g. its minimal polynomial). Since \(\alpha_i \in K\), by the
+hypothesis all the roots of \(p_i(x)\) are contained in \(K\). If we let
+\(A_i\) be the set of roots of \(p_i(x)\), then
+</p>
+\begin{align*}
+K &= F(\alpha_1, \cdots, \alpha_n) \\
+&= F(\alpha_1, \cdots, \alpha_n, A_1 \setminus \{\alpha_1\}, \cdots, A_n \setminus \{\alpha_n\}) \\
+&= F(A_1, \cdots, A_n),
+\end{align*}
+<p>
+so \(K\) is the splitting field of the polynomial \(\prod_{i=1}^n p_i(x)\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgd04c6c2" class="outline-2">
+<h2 id="orgd04c6c2">13.4.6: Composite and intersection of splitting fields</h2>
+<div class="outline-text-2" id="text-orgd04c6c2">
+<p>
+Let \(K_1\) and \(K_2\) be finite extensions of \(F\) contained in the field
+\(K\), and assume both are splitting fields over \(F\).
+</p>
+
+<p>
+(a) Prove that their composite \(K_1K_2\) is a splitting field over \(F\).
+</p>
+
+<p>
+Suppose \(K_1\) and \(K_2\) are the splitting fields of the polynomials
+\(f(x)\) and \(g(x)\) over \(F\). Then it is clear the \(K_1K_2\) is the
+splitting field of the polynomial \(f(x)g(x)\).
+</p>
+
+<p>
+(b) Prove that \(K_1 \cap K_2\) is a splitting field over \(F\).
+</p>
+
+<p>
+Suppose the irreducible polynomial \(f(x) \in F[x]\) has a root \(\alpha
+\in K_1 \cap K_2\). Then the polynomial splits completely in \(K_1\)
+since \(\alpha \in K_1\). Likewise it splits completely in \(K_2\). Thus
+it splits completely in \(K_1 \cap K_2\), so \(K_1 \cap K_2\) is a
+splitting field.
+</p>
+</div>
+</div>
+<div id="outline-container-org68311fb" class="outline-2">
+<h2 id="org68311fb">14.1.7: Determination of \(\Aut(\R/\Q)\)</h2>
+<div class="outline-text-2" id="text-org68311fb">
+<p>
+This exercise determines \(\Aut(\R/\Q)\).
+</p>
+
+<p>
+(a) Prove that any \(\sigma \in \Aut(\R/\Q)\) takes squares to squares
+and takes positive reals to positive reals. Conclude that \(a < b\)
+implies \(\sigma a < \sigma b\) for all \(a,b \in \R\).
+</p>
+
+<p>
+All squares in \(\R\) are of the form \(x^2\) for \(x \in \R\), and so
+\(\sigma x^2 = (\sigma x)^2\) is a square. In fact, the set of squares
+in \(\R\) precisely \(\R^+ \cup \{0\}\), so each positive real \(y\) must be
+mapped to some element in \(\R^+ \cup \{0\}\). But \(0\) already maps to
+\(0\) under \(\sigma\) and \(\sigma\) is injective, so \(\sigma y \in \R^+\).
+Thus we can see that for all \(a,b \in \R\),
+\[
+a < b \implies b-a > 0 \implies \sigma b - \sigma a = \sigma(b-a) > 0 \implies \sigma b > \sigma a 
+\]
+</p>
+
+<p>
+(b) Prove that \(-\frac{1}{m} < a-b < \frac{1}{m}\) implies
+\(-\frac{1}{m} < \sigma a - \sigma b < \frac{1}{m}\) for every positive
+integer \(m\). Conclude that \(\sigma\) is a continuous map on \(\R\).
+</p>
+
+<p>
+The first statement is obvious since \(x < y \implies \sigma x < \sigma
+y\), and \(\pm \frac{1}{m} \in \Q\) are both fixed by \(\sigma\). But this
+means that \(\sigma\) is uniformly continuous, since \(\sigma a - \sigma
+b\) can be bounded within any $&epsilon;$-neighbourhood of 0, as long as
+\(a-b\) is bounded within some $&delta;$-neighbourhood of 0. Thus
+\(\sigma\) is continuous on \(\R\).
+</p>
+
+<p>
+(c) Prove that any continuous map on \(\R\) which is the identity on
+\(\Q\) is the identity map, hence \(\Aut(\R/\Q) = 1\).
+</p>
+
+<p>
+Suppose \(\sigma r \neq r\) for some \(r \in \R \setminus \Q\). Then for
+all \(\epsilon > 0\) we can find some \(\delta > 0\) such that
+\[\left|x-r\right| < \delta \implies \left|\sigma x - \sigma r \right|
+< \epsilon.\] In particular, we can choose \(\epsilon = \frac{\left|r -
+\sigma r\right|}{2}\) and set \(\delta' = \min(\delta, \epsilon)\). Thus,
+</p>
+\begin{align*}
+\left|x-r\right| < \delta' &\implies x \in \left(r-\frac{\left|r-\sigma r\right|}{2}, r+\frac{\left|r-\sigma r\right|}{2}\right) \\
+\left|\sigma x - \sigma r\right| < \epsilon &\implies \sigma x \in \left(\sigma r - \frac{\left|r-\sigma r\right|}{2}, \sigma r + \frac{\left|r-\sigma r\right|}{2}\right).
+\end{align*}
+<p>
+It can be seen visually (by drawing a number line) that these two
+intervals are disjoint, guaranteeing \(x \neq \sigma x\). It is a fact
+that there are rational numbers arbitrarily close to any real number,
+so there is \(x \in \Q\) such that \(\left|x-r\right| < \delta'\). But
+this contradicts the fact that \(\sigma\) fixes \(\Q\), so the conclusion
+follows.
+</p>
+</div>
+</div>
+<div id="outline-container-org74eea6f" class="outline-2">
+<h2 id="org74eea6f">14.1.8: Automorphisms of a rational function field</h2>
+<div class="outline-text-2" id="text-org74eea6f">
+<p>
+Prove that the automorphisms of the rational function field \(k(t)\)
+which fix \(k\) are precisely the fractional linear transformations
+determined by \[t \mapsto \frac{at+b}{ct+d}\] for \(a,b,c,d \in k\),
+\(ad-bc \neq 0\).
+</p>
+
+<p>
+It is easy to verify that fractional linear transformations are
+automorphisms of \(k(t)\) fixing \(k\). Conversely, let \(\varphi \in
+\Aut(k(t)/k)\). Then
+</p>
+\begin{align*}
+k(\varphi(t)) &= \varphi(k(t))\ &\text{(as $\varphi$ is a homormorphism)} \\
+&= k(t)\ &\text{(as $\varphi$ is surjective)},
+\end{align*}
+<p>
+so that \([k(t):k(\varphi(t))] = 1\). If \(\varphi(t) = p(t)/q(t)\) for
+\(p(t),q(t) \in k[t]\), where \(p(t),q(t)\) are relatively prime and \(q(t)
+\neq 0\), then by 13.2.18 \(\max(\deg p, \deg q) = [k(t):k(\varphi(t))]
+= 1\). The only possibility is \(p(t) = at+b\) and \(q(t) = ct+d\) for
+\(a,b,c,d \in k\). Lastly, if \(ad-bc = 0\), then \(a/c = x = b/d\) for some
+\(x \in k\) and so \(p(t)=xq(t)\), contradicting the fact that they are
+relatively prime. Note that in particular we cannot have \(a=c=0\).
+</p>
+</div>
+</div>
+<div id="outline-container-org531ad84" class="outline-2">
+<h2 id="org531ad84">14.2.11: Simple extensions in splitting fields with Galois group \(S_4\)</h2>
+<div class="outline-text-2" id="text-org531ad84">
+<p>
+Suppose \(f(x) \in \Z[x]\) is an irreducible quartic whose splitting
+field has Galois group \(S_4\) over \(\Q\). Let \(\theta\) be a root of
+\(f(x)\) and set \(K = \Q(\theta)\). Prove that \(K\) is an extension of
+\(\Q\) of degree 4 which has no proper subfields.
+</p>
+
+<p>
+Let the splitting field be \(L\). We have \(\text{Gal}(L/K) \cong S_3\) as
+one root is fixed, but the other 3 roots can be freely permuted. If \(M
+\subset K\) is a proper subfield containing \(F\), it must have degree 2
+since \(\left|S_4\right|/2 = 12\) is the only proper divisor of
+\(\left|S_4\right| = 24\) greater than \(\left|S_3\right| = 6\).  Since
+\(A_4\) is the unique index 2 subgroup in \(S_4\), it follows that
+\(\Gal(L/M) \cong A_4\). However, we show that this leads to a
+contradiction as \(A_4\) does not contain an isomorphic copy of \(S_3\).
+</p>
+
+<p>
+Note that there are 3 elements of order 2 in both \(S_3\) and \(A_4\),
+hence any embedding of \(S_3\) into \(A_4\) gives a one-to-one
+correspondence between these elements. But only the order 2 elements
+of \(A_4\), together with the identity, form a subgroup (namely \(Z_4\)),
+meaning there is no such embedding.
+</p>
+</div>
+</div>
+<div id="outline-container-org163c8f5" class="outline-2">
+<h2 id="org163c8f5">14.2.14: Galois group of \(\Q(\sqrt{2+\sqrt{2}})\)</h2>
+<div class="outline-text-2" id="text-org163c8f5">
+<p>
+Show that \(\Q(\sqrt{2+\sqrt{2}})\) is a cyclic quartic field.
+</p>
+
+<p>
+Let \(a_+ = \sqrt{2+\sqrt{2}}\) and \(a_- = \sqrt{2-\sqrt{2}}\). It can be
+seen that \(a_+\) is a root of the minimal polynomial
+\(p(x)=(x^2−2)^2−2=x^4−4x^2+2\) (being irreducible by Eisenstein), and
+solving for all roots of \(p(x)\) gives \(\pm a_+, \pm a_-\). Also note
+that \({a_+}^2-2 = \sqrt{2} \in \Q(a_+)\), so that
+\[\label{eq:relation}\tag{*} a_- = \frac{\sqrt{2}}{a_+} \in \Q(a_+).\]
+It follows that \(\Q(a_+)\) contains all the roots of \(p(x)\). Since
+\(\Q(a_+)\) has degree 4 over \(\Q\), it is in fact the splitting field of
+the separable polynomial \(p(x)\) and is thus Galois.
+</p>
+
+<p>
+We need only find 4 automorphisms in \(\text{Gal}(\Q(a_+)/\Q)\) and show
+that they form a cyclic group. Note that the automorphisms are fully
+determined by their action on \(a_+\) due to \(\eqref{eq:relation}\). Let
+\(\varphi\) be such an automorphism; then \[\varphi(a_-) =
+\frac{\varphi(\sqrt{2})}{\varphi(a_+)} =
+\frac{\varphi(a_+)^2-2}{\varphi(a_+)}.\] The images of the other roots
+under \(\varphi\) given \(\varphi(a_+)\) are as follows:
+</p>
+\begin{array}{|c|c|}
+\hline
+\varphi(a_+) & \varphi(-a_+) & \varphi(a_-) & \varphi(-a_-)\\
+\hline
+a_+ & -a_+ & a_- & -a_- \\
+-a_+ & a_+ & -a_- & a_- \\
+a_- & -a_- & -a_+ & a_+ \\
+-a_- & a_- & a_+ & -a_+ \\
+\hline
+\end{array}
+
+<p>
+Associate \(a_+,-a_+,a_-,-a_-\) with the numbers \(1,2,3,4\) in
+order. Then the automorphisms listed above correspond to the
+permutations \(1, (12)(34), (1324), (1423)\). It can be checked that
+\((1324)\) generates this set and thus the conclusion follows.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb7728a5" class="outline-2">
+<h2 id="orgb7728a5">14.2.28: Factoring irreducible polynomials in a Galois extension</h2>
+<div class="outline-text-2" id="text-orgb7728a5">
+<p>
+Let \(f(x) \in F[x]\) be an irreducible polynomial of degree \(n\) over
+the field \(F\), let \(L\) be the splitting field of \(f(x)\) over \(F\) and
+let \(\alpha\) be a root of \(f(x)\) in \(L\). If \(K\) is any Galois
+extension of \(F\) contained in \(L\), show that the polynomial \(f(x)\)
+splits into a product of \(m\) irreducible polynomials each of degree
+\(d\) over \(K\), where \(m = [F(\alpha) \cap K : F]\) and \(d =
+[K(\alpha):K]\).
+</p>
+
+<p>
+(Note: I assume that \(L\) is Galois over \(F\) even though it is not
+implied by the hypotheses)
+</p>
+
+<p>
+Let \(G = \Gal(L/F)\) and \(A\) be the set of roots of \(f(x)\) in \(L\). Then
+\(G\) acts transitively on \(A\): if \(\alpha,\beta\) are roots of \(f(x)\),
+then there is an isomorphism \(F(\alpha) \rightarrow F(\beta)\) that can
+be extended to an automorphism of \(L\). In the Galois extension \(K\),
+the polynomial \(f(x)\) has irreducible factors \(p_1(x),\cdots,p_m(x)\).
+If we let \(H = \Gal(K/F)\) and \(A_i \subseteq A\) be the set of roots of
+\(p_i(x)\), then it can be seen that the orbits of \(A\) under \(H\) are
+precisely the \(A_i\): if \(\alpha_i \in A_i\) is a root of \(p_i(x)\) then
+the distinct Galois conjugates \(\sigma\alpha_i\) are precisely the
+roots of \(p_i(x)\).
+</p>
+
+<p>
+Since \(H\) is a normal subgroup of \(G\), it follows by <a href="#org46f61a3">4.1.9(a)</a> that all
+\(A_i\) have the same cardinality \(d\). On the other hand, we can assume
+\(\alpha\) is a root of \(p_1(x)\) without loss of generality, so that
+there are \([K(\alpha):K]\) roots of \(p_1(x)\). Thus all \(p_i(x)\) have
+the same degree \(d = [K(\alpha):K]\). Now observe the following
+subfield/subgroup lattices:
+</p>
+\begin{matrix}
+&& K(\alpha) &&& \hspace{10mm} && H \cap G_a &&& \\
+& \diagup && \diagdown &&  & \diagup && \diagdown && \\
+K &&&& F(\alpha) &     H &&&& G_a & \\
+& \diagdown && \diagup &&     & \diagdown && \diagup && \\
+&& K \cap F(\alpha) &&&	      && HG_a &&& \\
+&& \mid &&&	    && \mid &&& \\
+&& F &&&	    && G &&& \\
+\end{matrix}
+
+<p>
+Note that the elements of \(G\) fixing \(F(\alpha)\) form precisely the
+subgroup \(G_a\). By <a href="#org46f61a3">4.1.9(b)</a>, the number of irreducible factors \(m\)
+(i.e. the number of orbits under the action of \(H\)) is given by
+\([G:HG_a]\), which corresponds to \([K \cap F(\alpha) : F]\).
+</p>
+</div>
+</div>
+<div id="outline-container-org4c3901b" class="outline-2">
+<h2 id="org4c3901b">14.3.6: Biquadratic extensions of finite fields</h2>
+<div class="outline-text-2" id="text-org4c3901b">
+<p>
+Suppose \(K = \Q(\theta) = \Q(\sqrt{D_1}, \sqrt{D_2})\) with \(D_1, D_2
+\in \Z\), is a biquadratic extension and that \(\theta = a +
+b\sqrt{D_1} + c\sqrt{D_2} + d\sqrt{D_1D_2}\) where \(a,b,c,d \in
+\Z\). Prove that the minimal polynomial \(m_\theta(x)\) over \(\Q\) is
+irreducible of degree 4 over \(\Q\) but is reducible modulo every prime
+\(p\). In particular show that the polynomial \(x^4-10x^2+1\) is
+irreducible in \(\Z[x]\) but is reducible modulo every prime.
+</p>
+
+<p>
+Clearly \(m_\theta(x)\) is irreducible and has degree 4 over
+\(\Q\). Taking the coefficients of \(m_\theta(x)\) mod \(p\) gives a new
+polynomial \(\overline{m_\theta}(x) \in \F_p[x]\). In fact, letting
+\(E_1,E_2\) denote \(\overline{D_1},\overline{D_2}\) respectively, we have
+\(\overline{m_\theta}(\bar{\theta}) = \overline{m_\theta(\theta)} = 0\),
+where \[\bar{\theta} = \bar{a} + \bar{b}\sqrt{E_1} +
+\bar{c}\sqrt{E_2} + \bar{d}\sqrt{E_1E_2}.\]
+</p>
+
+<p>
+In fact, from the above expression and through modding the expressions
+for \(\sqrt{D_1}\) and \(\sqrt{D_2}\) in terms of \(\theta\), it can be seen
+that \(\F_p(\bar{\theta}) = \F_p\left(\sqrt{E_1},
+\sqrt{E_2}\right)\). However, this extension cannot be of degree 4 over
+\(\F_p\). Otherwise, it has Galois group \(Z_4\), which has a unique order
+2 subgroup. This means that the degree 2 subfields
+\(\F_p\left(\sqrt{E_1}\right)\) and \(\F_p\left(\sqrt{E_2}\right)\) are
+equal, implying that \(\F_p(\sqrt{E_1}, \sqrt{E_2})\) has degree 2, a
+contradiction. Since \(m_\theta(x)\) is a monic polynomial, its leading
+term is nonzero mod \(p\) and so \(\overline{m_\theta}(x)\) has degree 4,
+meaning it is reducible.
+</p>
+
+<p>
+The polynomial \(p(x) = x^4-10x^2+1\) is the minimal polynomial of the
+root \(\sqrt{5+\sqrt{24}}\), which generates a biquadratic extension
+since \(5^2-24 = 1\) is a square in \(\Q\). Thus the result can be applied
+to \(p(x)\), giving us the last statement.
+</p>
+</div>
+</div>
+<div id="outline-container-org8f1b9f5" class="outline-2">
+<h2 id="org8f1b9f5">14.3.7: Squares in \(\F_p\)</h2>
+<div class="outline-text-2" id="text-org8f1b9f5">
+<p>
+Prove that one of \(2\), \(3\) or \(6\) is a square in \(\F_p\) for every
+prime \(p\). Conclude that the polynomial \[x^6-11x^4+36x^2-36 =
+(x^2-2)(x^2-3)(x^2-6)\] has a root modulo \(p\) for every prime \(p\) but
+has no root in \(\Z\).
+</p>
+
+<p>
+Suppose none of the elements are squares in \(\F_p\). Then the square
+roots \(\sqrt{2}\) and \(\sqrt{3}\) are of degree 2 over \(\F_p\), so the
+extension \(\F_p(\sqrt{2}, \sqrt{3})\) has either degree 2 or 4. If it
+is of degree 4, then the Galois group is \(Z_4\), which has a unique
+order 2 subgroup. Thus the degree 2 subfields \(\F_p(\sqrt{2})\) and
+\(\F_p(\sqrt{3})\) are equal, which then implies \(\F_p(\sqrt{2},
+\sqrt{3})\) has degree 2, a contradiction.
+</p>
+
+<p>
+In particular, \(\sqrt{2} = a+b\sqrt{3}\) for some \(a,b \in \F_p\), where
+\(b \neq 0\). We shall consider the cases \(a = 0\) and \(a \neq 0\):
+</p>
+
+<p>
+<b>1. \(a = 0\)</b> <br />
+Multiplying both sides of \(\sqrt{2} = b\sqrt{3}\) gives \(\sqrt{6} = 3b
+\in \F_p\), a contradiction.
+</p>
+
+<p>
+<b>2. \(a \neq 0\)</b> <br />
+We have
+</p>
+\begin{align*}
+\sqrt{2} = a+b\sqrt{3} &\implies 2 = a^2+2ab\sqrt{3}+3b^2 \\
+&\implies \sqrt{3} = \frac{2-a^2-3b^2}{2ab}.
+\end{align*}
+<p>
+Note the RHS of the last expression is well defined since \(2ab \neq
+0\). However, it is in fact in \(\F_p\), contradicting the fact that \(3\)
+is not a square in \(\F_p\). The second statement follows easily.
+</p>
+</div>
+</div>
+<div id="outline-container-org8a14194" class="outline-2">
+<h2 id="org8a14194">14.3.10: \(n\) divides \(\varphi(p^n-1)\)</h2>
+<div class="outline-text-2" id="text-org8a14194">
+<p>
+Prove that \(n\) divides \(\varphi(p^n-1)\), where \(p\) is a prime.
+</p>
+
+<p>
+Note that \(\varphi(p^n-1)\) is the number of automorphisms of an order
+\(p^n-1\) cyclic group, in particular the multiplicative group
+\(\F_{p^n}^\times\). We can extend each automorphism \(\sigma \in
+\F_{p^n}^\times\) to a bijection in \(\F_{p^n}\) by mapping \(0\) to
+itself. There are precisely \(n = [\F_{p^n}:\F_p]\) automorphisms formed
+this way that are also additive, and they form a group (namely
+\(\Gal(\F_{p^n}/\F_p)\)). Thus \(n\) divides \(\varphi(p^n-1)\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgfc02c0a" class="outline-2">
+<h2 id="orgfc02c0a">14.4.3: Degree of embedded fields in \(M_n(\Q)\)</h2>
+<div class="outline-text-2" id="text-orgfc02c0a">
+<p>
+Let \(F\) be a field contained in \(M_n(\Q)\). Prove that \([F:\Q] \le n\).
+</p>
+
+<p>
+Since \(F\) is a finite extension of the characteristic 0 field \(\Q\), we
+can write \(F = \Q(\theta)\). If we let \(M_\theta\) be the image of
+\(\theta\) in \(M_n(\Q)\), then by the Cayley-Hamilton theorem \(M_\theta\),
+hence \(\theta\) is a root of its own characteristic polynomial \(p(x)\)
+which has degree \(\le n\). Since the minimal polynomial \(m_\theta(x)\)
+divides \(p(x)\), it must have degree \(\le n\) as well. Hence
+\([\Q(\theta):\Q] \le n\).
+</p>
+</div>
+</div>
+<div id="outline-container-org4b31538" class="outline-2">
+<h2 id="org4b31538">14.4.6: Non-simplicity of \(\F_p(x,y)/\F_p(x^p,y^p)\)</h2>
+<div class="outline-text-2" id="text-org4b31538">
+<p>
+Prove that \(\F_p(x,y)/\F_p(x^p,y^p)\) is not a simple extension by
+explicitly exhibiting an infinite number of infinite subfields.
+</p>
+
+<p>
+Let \(F = \F_p(x^p,y^p)\), and consider the extensions
+\(\F_p(x^{pn+1}+y)\), where \(n \in \Z^+ \cup \{0\}\). They are degree \(p\)
+over \(\F_p(x^p,y^p)\) (due to the lone \(y\) term) and so are proper
+subfields of the degree \(p^2\) extension \(\F_p(x,y)\).
+</p>
+
+<p>
+Suppose \(\F_p(x^{pi+1}+y)=\F_p(x^{p(i+k)+1}+y)\) where \(i \ge 0, k > 0\)
+(denote the field \(K\)). Then \(x^{p(i+k)+1}−x^{pi+1} =
+x^{pi+1}(x^{pk}−1) \in K\), and dividing by \(x^{pi}(x^{pk}−1)\) (an
+element of \(F\)) gives \(x \in K\). In particular, \(x^{pi}+1 \in K\) so \(y
+\in K\), a clear contradiction. Hence the extensions \(\F_p(x^{pn+1}+y)\)
+are all distinct, and there are infinitely many of them.
+<a id="org9ac7e5b"></a>
+</p>
+</div>
+</div>
+<div id="outline-container-org980e1e9" class="outline-2">
+<h2 id="org980e1e9">14.5.6: Trace of primitive root of unity</h2>
+<div class="outline-text-2" id="text-org980e1e9">
+<p>
+Let \(\zeta_n\) denote a primitive $n$th root of unity and let \(K =
+\Q(\zeta_n)\) be the associated cyclotomic field. Let \(a_n\) denote the
+trace of \(\zeta_n\) from \(K\) to \(\Q\). Prove that \(a_1 = 1\), \(a_n = 0\)
+if \(n\) is divisible by the square of a prime, and \(a_n = (-1)^r\) if
+\(n\) is the product of \(r\) distinct primes.
+</p>
+
+<p>
+Note that two primitive $n$th roots of unity \(\zeta_n,\zeta_n'\) have
+the same trace. This is because there is some automorphism \(\sigma\)
+mapping \(\zeta_n\) to \(\zeta_n'\), which simply permutes the individual
+summands in the trace of \(\zeta_n\). Hence for simplicity's sake, we
+shall assume that \(\zeta_n\) is the complex root of unity with the
+smallest positive argument. This is to ensure that if \(m = kn\) then
+\(\zeta_n = {\zeta_m}^k\).
+</p>
+
+<p>
+
+For all \(n\), \(\sum_{i=1}^{n-1} {\zeta_n}^i = -1\) (note the sum is
+<b>not</b> equal to the trace).
+
+
+The polynomial \(x^n-1\) can be factored as
+\((x-1)(x^{n-1}+x^{n-2}+\cdots+1)\). Since \(\zeta_n \neq 1\) and
+\({\zeta_n}^n-1 = 0\), it follows that
+\({\zeta_n}^{n-1}+{\zeta_n}^{n-2}+\cdots+1 = 0\), so the conclusion
+follows.
+
+</p>
+
+<p>
+
+If \(p\) is a prime and \(k\) is a positive integer greater than 1, then
+\(a_{p^k} = 0\).
+
+
+The only numbers between \(0\) and \(p^n\) that are not relatively prime
+to \(p^n\) are those of the form \(dp\) for \(0 < d < p^{n-1}-1\). Thus
+</p>
+\begin{align*}
+a_{p^n} &= \sum_{i=1}^{p^n-1} {\zeta_{p^n}}^i - \sum_{d=1}^{p^{n-1}-1} {\zeta_{p^n}}^{dp} \\
+&= \sum_{i=1}^{p^n-1} {\zeta_{p^n}}^i - \sum_{d=1}^{p^{n-1}-1} {\zeta_{p^{n-1}}}^{d} \\
+&= -1 - (-1)\ \text{(by the lemma)} \\
+&= 0
+\end{align*}
+<p>
+
+</p>
+
+<p>
+Let \(n = p^k q^l\) for primes \(p,q\), and consider the product
+</p>
+\begin{align*}
+a_{p^k}a_{q^l} &= \left(\sum_{\substack{i=1 \\ (i,p^k)=1}}^{p^k} {\zeta_{p^k}}^i\right)
+\left(\sum_{\substack{j=1 \\ (j,q^l)=1}}^{q^l} {\zeta_{q^l}}^j\right) \\
+&= \left(\sum_{\substack{i=1 \\ (i,p^k)=1}}^{p^k} {\zeta_n}^{iq^l}\right)
+\left(\sum_{\substack{j=1 \\ (j,q^l)=1}}^{q^l} {\zeta_n}^{jp^k}\right).
+\end{align*}
+
+<p>
+Expanding this product into a sum, each term is of the form
+\({\zeta_n}^{iq^l+jp^k} = {\zeta_{p^k}}^i {\zeta_{q^l}}^j\). Since \(p^k\)
+and \(q^l\) are relatively prime, and \({\zeta_{p^k}}^i\) and
+\({\zeta_{q^l}}^j\) are primitive \(p^k\) th and \(q^l\) th roots of unity
+respectively, it follows that each term is a primitive $n$th root of
+unity. Now, each term must be a distinct root of unity. Otherwise,
+there are distinct pairs \((i,j)\) and \((i',j')\) such that \(iq^l+jp^k =
+i'q^l+j'p^k\), or \((i-i')q^l+(j-j')p^k = 0\). But because \(p^k\) and
+\(q^l\) are relatively prime, we must have \(p^k \mid i-i'\) which is
+impossible since \(0 < i,i' < p^k\).
+</p>
+
+<p>
+Since we have shown that each term is a distinct primitive $n$th root
+of unity, and there are \(\varphi(p^k)\varphi(q^l) = \varphi(p^kq^l)\)
+such terms, it follows that every primitive $n$th root of unity is in
+fact a term of the sum. In other words, \(a_n = a_{p^k}a_{q^l}\). If \(k
+= l = 1\), then \(a_n = (-1)^2\) as expected. If \(k \ge 2\) or \(l \ge 2\),
+then clearly \(a_n = 0\) from the second lemma. This same argument can
+be employed more generally when \(n = {p_1}^{k_1}{p_2}^{k_2} \cdots
+{p_r}^{k_r}\) by considering the product
+\(a_{n/{p_r}^{k_r}}a_{{p_r}^{k_r}}\) and using induction.
+</p>
+</div>
+</div>
+<div id="outline-container-org43e8169" class="outline-2">
+<h2 id="org43e8169">14.5.11: Primitive $n$th roots of unity as basis for \(\Q(\zeta_n)/\Q\)</h2>
+<div class="outline-text-2" id="text-org43e8169">
+<p>
+Prove that the primitive $n$th roots of unity form a basis over \(\Q\)
+for the cyclotomic field of $n$th roots of unity if and only if \(n\) is
+squarefree.
+</p>
+
+<p>
+(\(\implies\)): Suppose \(n\) is not squarefree. Then by <a href="#org9ac7e5b">14.5.6</a>, the trace
+of any primitive $n$th root of unity, which is a nontrivial linear
+combination of the primitive $n$th roots of unity, is 0. Thus they are
+not linearly independent and cannot form a basis.
+</p>
+
+<p>
+(\(\impliedby\)): Suppose \(n = pq\) for primes \(p,q\). Then
+\(\zeta_p,\cdots,{\zeta_p}^{p-1}\) and \(\zeta_q,\cdots,{\zeta_q}^{q-1}\)
+are bases for \(\Q(\zeta_p)\) and \(\Q(\zeta_q)\) respectively. Since
+\(\Q(\zeta_n)\) is the composite of \(\Q(\zeta_p)\) and \(\Q(\zeta_q)\), the
+products \({\zeta_p}^i{\zeta_q}^j\), each a primitive $n$th root of
+unity, form a spanning set of \(\Q(\zeta_n)\). Since there are
+\[\varphi(p)\varphi(q) = \varphi(n) = [\Q(\zeta_n):\Q]\] such
+products, they in fact form a basis for \(\Q(\zeta_n)/\Q\). Furthermore,
+each primitive $n$th root of unity appears in the basis. This argument
+can then be extended to the case that \(n = p_1p_2 \cdots p_r\) where
+\(p_1,p_2,\cdots,p_r\) are distinct primes, by considering the fields
+\(\Q(\zeta_{p_1p_2 \cdots p_{r-1}})\) and \(\Q(\zeta_{p_r})\), and then
+using induction.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc06361b" class="outline-2">
+<h2 id="orgc06361b">14.5.12: Diagonalizability of the Frobenius automorphism</h2>
+<div class="outline-text-2" id="text-orgc06361b">
+<p>
+Let \(\sigma_p\) denote the Frobenius automorphism \(x \mapsto x^p\) of
+the finite field \(\F_q\) of \(q = p^n\) elements. Viewing \(\F_q\) as a
+vector space \(V\) of dimension \(n\) over \(\F_p\) we can consider
+\(\sigma_p\) as a linear transformation of \(V\) to \(V\). Determine the
+characteristic polynomial of \(\sigma_p\) and prove that the linear
+transformation \(\sigma_p\) is diagonalizable over \(\F_p\) if and only if
+\(n \mid p-1\), and is diagonalizable over \(\overline{\F_p}\) if and only
+if \((n,p) = 1\).
+</p>
+
+<p>
+Let \(I\) be the identity transformation. Note that for all \(x \in
+\F_q\), \[x^{p^n}-x = ({\sigma_p}^n-I)(x) = 0.\] Since \(\sigma_p\)
+satisfies its own characteristic polynomial and it has degree \(n\), it
+follows that the characteristic polynomial is \(x^n-1\).
+</p>
+
+<p>
+To show that \(\sigma_p\) is diagonalizable over \(\F_p\) iff \(n \mid p-1\):
+</p>
+
+<p>
+(\(\impliedby\)): If \(n \mid p-1\), then \(x^n-1 \mid x^{p-1}-1\). Since
+the latter polynomial splits in \(\F_p\) and has distinct roots, the
+same is true for \(x^n-1\). In particular, there are \(n\) distinct
+eigenvalues in \(\F_p\) whose corresponding eigenspaces have dimension
+\(1\), so \(\sigma_p\) is diagonalizable over \(\F_p\).
+</p>
+
+<p>
+(\(\implies\)): Suppose \(\sigma_p\) is diagonalizable over \(\F_p\). Then
+\(x^n-1\) splits completely in \(\F_p\). It suffices to show that it is
+separable, so that \(x^n-1 \mid x^{p-1}-1\) which gives the
+conclusion. If \(x^n-1\) is not separable, then there is a multiple
+nonzero root \(\alpha \in \F_p\) such that the derivative
+\(n\alpha^{n-1}\) is 0. But \(\alpha^{n-1} \neq 0\), so it follows that \(n
+= kp\) for some positive integer \(k\). Thus \[x^n-1 = x^{kp}-1 =
+(x^k-1)^p = (x-1)^pg(x)^p\] for some polynomial \(g(x)\), which means
+the eigenvalue 1 has multiplicity \(\ge p\). But the eigenspace
+corresponding to \(1\) has at most dimension \(p-1\), because there are at
+most \(p-1\) nonzero roots to the polynomial \(x^p-x\). This contradicts
+the diagonalizability of \(\sigma_p\).
+</p>
+
+<p>
+To show that \(\sigma_p\) is diagonalizable over \(\overline{\F_p}\) iff
+\((n,p) = 1\):
+</p>
+
+<p>
+(\(\implies\)): If \((n,p) \neq 1\), then \(n = kp\) for some positive
+integer \(k\), so \(x^n-1 = (x-1)^pg(x)^p\) for some polynomial \(g(x)\). By
+using the same argument as in the forward implication above, we can
+see that \(\sigma_p\) is not diagonalizable over \(\overline{\F_p}\).
+</p>
+
+<p>
+(\(\impliedby\)): The derivative of the characteristic polynomial
+\(nx^{n-1}\) is guaranteed to be nonzero, as \(n\) is not a multiple of
+\(p\) and \(x^{n-1} \neq 0\) for all nonzero \(x\). Thus there are no
+multiple roots so the characteristic polynomial is separable, and
+furthermore it splits in \(\overline{\F_p}\). The same argument as in
+the backward implication above can then be employed to show that
+\(\sigma_p\) is diagonalizable over \(\overline{\F_p}\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf3b367e" class="outline-2">
+<h2 id="orgf3b367e">14.5.13: \(\Gal(\Q(\zeta_n)/\Q)\) and the Chinese Remainder Theorem</h2>
+<div class="outline-text-2" id="text-orgf3b367e">
+<p>
+Le \(n = {p_1}^{a_1}{p_2}^{a_2} \cdots {p_k}^{a_k}\) be the prime
+factorization of \(n\) and let \(\zeta_n\) be a primitive $n$th root of
+unity. For each \(i = 1,2, \cdots, k\) define \(d_i\) by \(n =
+{p_i}^{a_i}d_i\) and let \(\zeta_{{p_i}^{a_i}} = {\zeta_n}^{d_i}\), so
+that \(\zeta_{{p_i}^{a_i}}\) is a particular primitive \({p_i}^{a_i}\) th
+root of unity. Let \(\sigma_a \in \Gal(\Q(\zeta_n)/\Q)\) be the
+automorphism mapping \(\zeta_n\) to \({\zeta_n}^a\) for \(a\) relatively
+prime to \(n\).
+</p>
+
+<p>
+(a) Prove that for \(i = 1,2, \cdots, k\), \(\sigma_a\) maps
+\(\zeta_{{p_i}^{a_i}}\) to \({\zeta_{{p_i}^{a_i}}}^a\) and gives an
+automorphism of \(\Q(\zeta_{{p_i}^{a_i}})/\Q\) which depends only on \(a\)
+(mod \({p_i}^{a_i}\)), which we may denote \(\sigma_{a\ \text{(mod}\
+{p_i}^{a_i}\text{)}}\).
+</p>
+
+<p>
+The first statement is obvious. Now let \(a = d{p_i}^{a_i}+r\) for \(0
+\le r < {p_i}^{a_i}\). Since \(a\) is relatively prime to \(n\) and hence
+\({p_i}^{a_i}\), it follows that \(r = a-d{p_i}^{a_i}\) is relatively
+prime to \({p_i}^{a_i}\) as well. Thus \(\sigma_{a\ \text{(mod}\
+{p_i}^{a_i}\text{)}} = \sigma_{r\ \text{(mod}\ {p_i}^{a_i}\text{)}}\)
+is an automorphism of \(\Q(\zeta_{{p_i}^{a_i}})/\Q\).
+</p>
+
+<p>
+(b) Prove that the map \(\sigma_a \mapsto (\sigma_{a\ \text{(mod}\
+{p_1}^{a_1}\text{)}}, \cdots, \sigma_{a\ \text{(mod}\
+{p_k}^{a_k}\text{)}})\) is the isomorphism of Corollary 27
+corresponding to the Chinese Remainder Theorem for \((\Z/n\Z)^\times\).
+</p>
+
+<p>
+It can be easily seen that the map is a homomorphism. Since
+\(\Gal(\Q(\zeta_n)/\Q)\) is finite, it suffices to prove that the map is
+injective. Suppose \(a\) and \(b\) are relatively prime to \(n\), and that
+\(\sigma_{a\ \text{(mod}\ {p_i}^{a_i}\text{)}} = \sigma_{b\
+\text{(mod}\ {p_i}^{a_i}\text{)}}\) for all \(i = 1,2, \cdots, k\). Since
+\({p_i}^{a_i}, {p_j}^{a_j}\) are relatively prime for \(i \neq j\) and
+\({p_i}^{a_i} \mid a-b\) for all \(i\), we have \(n \mid a-b\). Thus \(a
+\equiv b\) (mod \(n\)), and so \(\sigma_a = \sigma_b\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgff905ca" class="outline-2">
+<h2 id="orgff905ca">14.6.11: Galois closure of non-Galois degree 4 extension</h2>
+<div class="outline-text-2" id="text-orgff905ca">
+<p>
+Let \(F\) be an extension of \(\Q\) of degree 4 that is not Galois over
+\(\Q\). Prove that the Galois closure of \(F\) has Galois group either
+\(S_4\), \(A_4\) or \(D_8\). Prove that the Galois group is dihedral if and
+only if \(F\) contains a quadratic extension of \(\Q\).
+</p>
+
+<p>
+Let \(L\) be the Galois closure of \(F\). Every finite extension of \(\Q\)
+is simple, so \(F = \Q(\theta)\) for some \(\theta\). The minimal
+polynomial \(m_\theta(x)\) is then irreducible (hence separable) of
+degree 4, so the splitting field \(K\) of \(m_\theta(x)\) contains \(F\) and
+is Galois over \(\Q\). By definition, \(L\) is contained in
+\(K\). Translated into group-theoretic terms, \(\Gal(L/K)\) must be a
+subgroup of a possible Galois group of a quartic, and its order must
+divide 4 and not be 4 itself (the only possibilities are 8, 12 and
+24). Thus the Galois group is either \(S_4\), \(A_4\) or \(D_8\).
+</p>
+
+<p>
+\(F\) contains a quadratic extension of \(\Q\) if and only if some index 4
+subgroup of \(\Gal(L/F)\) (corresponding to \(F\)) is contained in an
+index 2 subgroup (corresponding to the quadratic extension). Looking
+at the subgroup lattices of \(S_4\), \(A_4\) and \(D_8\), it can be seen
+that only \(D_8\) satisfies this condition, proving the second
+statement.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb3ef0e7" class="outline-2">
+<h2 id="orgb3ef0e7">14.6.12: Degree 4 extensions, biquadratics and quadratic extensions</h2>
+<div class="outline-text-2" id="text-orgb3ef0e7">
+<p>
+Prove that an extension \(F\) of \(\Q\) of degree 4 can be generated by
+the root of an irreducible biquadratic \(x^4+ax^2+b\) over \(\Q\) if and
+only if \(F\) contains a quadratic extension of \(\Q\).
+</p>
+
+<p>
+(\(\implies\)): Let \(F = Q(\alpha)\), where \(\alpha\) is a root of the
+irreducible biquadratic \(x^4+ax^2+b\). Then \(\alpha^2\) is a root of
+\(x^2+ax+b\), and \(Q(\alpha^2)\) is a quadratic extension: any
+factorization of \(x^2+ax+b\) in \(\Q[x]\) would give a factorization of
+\(x^4+ax^2+b\), so \(x^2+ax+b\) must be irreducible.
+</p>
+
+<p>
+(\(\impliedby\)): All quadratic extensions of a field \(F\) with
+\(\text{chr}(F) \neq 2\) are of the form \(F(\sqrt{D})\) for some \(D \in
+F\). Thus we can let the quadratic extension be \(\Q(\sqrt{D})\) and let
+\(F = \Q(\sqrt{D},\sqrt{D'}) = \Q(\sqrt{D'})\) where \(D \in \Q\) and \(D'
+\in \Q(\sqrt{D})\). Writing \(D' = a+b\sqrt{D}\) for some \(a,b \in \Q\),
+we can see that \(\sqrt{D'}\) is a root of the polynomial
+\(x^2-(a+b\sqrt{D}) = 0\). We can rewrite this expression to get a
+biquadratic over \(\Q\):
+</p>
+\begin{align*}
+x^2-(a+b\sqrt{D}) = 0 &\implies x^2-a = b\sqrt{D} \\
+&\implies (x^2-a)^2 = b^2D \\
+&\implies x^4-2ax^2+(a^2-b^2D) = 0.
+\end{align*}
+<p>
+Since \(F\) is of degree 4, this biquadratic is irreducible.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb0fe84b" class="outline-2">
+<h2 id="orgb0fe84b">14.6.13: Elementary test for the Galois group of a quartic polynomial</h2>
+<div class="outline-text-2" id="text-orgb0fe84b">
+<p>
+(a) Let \(\pm\alpha, \pm\beta\) denote the roots of the polynomial \(f(x)
+= x^4+ax^2+b \in \Z[x]\). Prove that \(f(x)\) is irreducible if and only
+if \(\alpha^2, \alpha \pm \beta\) are not elements of \(\Q\).
+</p>
+
+<p>
+(\(\implies\)): If \(f(x)\) is irreducible, then the factor
+\((x-\alpha)(x+\alpha) = x^2-\alpha^2\) is not in \(\Q[x]\), thus
+\(\alpha^2 \not\in \Q\). Now, \[f(x) =
+(x+\alpha)(x-\alpha)(x+\beta)(x-\beta) =
+x^4-(\alpha^2+\beta^2)x^2+\alpha^2\beta^2,\] so that \(\alpha^2+\beta^2
+\in \Q\). If \(\alpha+\beta \in \Q\), then \((\alpha+\beta)^2 =
+\alpha^2+\beta^2+2\alpha\beta \in \Q\) and so \(\alpha\beta \in \Q\). But
+then this would imply that \[(x+\alpha)(x+\beta) =
+x^2+(\alpha+\beta)x+\alpha\beta \in \Q[x],\] contradicting the
+irreducibility of \(f(x)\). The same argument works for \(\alpha-\beta\).
+</p>
+
+<p>
+(\(\impliedby\)): We proceed by showing that all products of the linear
+factors in \[f(x) = (x+\alpha)(x-\alpha)(x+\beta)(x-\beta)\] of degree
+\(< 4\) do not lie in \(\Q[x]\).
+</p>
+
+<p>
+Degree 1: \(\alpha^2 \not\in \Q\) implies \(\alpha \not\in \Q\) and by
+symmetry, \(\beta \not\in \Q\). Thus all linear factors do not lie in
+\(\Q[x]\). This covers all quadratic factors.
+</p>
+
+<p>
+Degree 2: \(\alpha^2,\beta^2 \not\in \Q\), so \((x-\alpha)(x+\alpha)\) and
+\((x+\beta)(x-\beta)\) are not in \(\Q[x]\). Furthermore, \((x \pm
+\alpha)(x \pm \beta)\) and \((x \pm \alpha)(x \mp \beta)\) are not in
+\(\Q[x]\) as \(\alpha \pm \beta \not\in \Q\). This covers all quadratic
+factors.
+</p>
+
+<p>
+Degree 3: Since \(\alpha^2\beta^2 \in \Q\) (as shown above) and
+\(\alpha,\beta \not\in \Q\), it follows that
+\(\pm\alpha^2\beta,\pm\alpha\beta^2 \not\in \Q\). Since these are the
+constant terms in \((x+\alpha)(x-\alpha)(x \pm \beta)\) and \((x \pm
+\alpha)(x+\beta)(x-\alpha)\), they do not lie in \(\Q[x]\).
+</p>
+
+<p>
+(b) Suppose \(f(x)\) is irreducible and let \(G\) be the Galois group of
+\(f(x)\). Prove that
+</p>
+
+<p>
+The following facts can be applied for all parts:
+</p>
+<ol class="org-ol">
+<li>The action of \(G\) on the roots is transitive, as \(f(x)\) is irreducible.</li>
+<li>Each automorphism \(\sigma\) is solely determined by its action on
+\(\alpha\) and \(\beta\), as \(\sigma(-\alpha)\) is simply
+\(-\sigma\alpha\) and likewise for \(\sigma(-\beta)\).</li>
+</ol>
+
+<p>
+For convenience, we shall label \(\alpha,-\alpha,\beta,-\beta\) as
+\(1,2,3,4\) respectively.
+</p>
+
+<p>
+(i) \(G \cong V_4\) if and only if \(b\) is a square in \(\Q\) if and only
+if \(\alpha\beta \in \Q\).
+</p>
+
+<p>
+Since \(b = \alpha^2\beta^2\) as shown in part (a), it suffices to show
+that \(G \cong V_4\) iff \(\alpha\beta \in \Q\).
+</p>
+
+<p>
+Each nonidentity element has order 2, and so only contains 2-cycles.
+By (1), there is an automorphism mapping 1 to 3, which implies 3 must
+map to 1, or otherwise there would be a non 2-cycle. By (2), this
+automorphism can be identified by the permutation \((1 3)(2
+4)\). Likewise, there is an automorphism corresponding to \((1 4)(2 3)\),
+so that the remaining nonidentity element is \((1 2)(3 4)\). Thus the
+forward implication is clear as \(\alpha\beta\) is fixed by all
+automorphisms.
+</p>
+
+<p>
+The reverse implication can be seen by taking all other possible
+Galois groups of quartics, and showing that in each case there is some
+permutation not fixing \(\alpha\beta\) (full proof omitted for brevity's
+sake).
+</p>
+
+<p>
+(ii) \(G \cong Z_4\) if and only if \(b(a^2-4b)\) is a square in \(\Q\) if
+and only if \(\Q(\alpha\beta) = \Q(\alpha^2)\).
+</p>
+
+<p>
+There is 1 element of order 2 and 2 elements of order 4. The
+automorphism mapping 1 to 2 must be of order 2, since it consists of
+2-cycles. So the automorphism mapping 1 to 3 (and thus 2 to 4) has
+order 4, meaning that 3 must map to 2. And likewise for the
+automorphism mapping 1 to 4. Thus \[G =
+\{1,(1324),(12)(34),(1423)\}.\]
+</p>
+
+<p>
+It can be verified that \(\sqrt{b^2(a-4b)} =
+\alpha\beta(\alpha^2-\beta^2)\) is fixed by every
+permutation. Furthermore, \(\alpha\beta\) and \(\alpha^2\) are fixed by
+the precisely the same permutations, meaning the extensions they
+generate are the same. This shows that if \(G \cong Z_4\), then
+\(\sqrt{b(a^2-4b)} \in \Q\) and \(\Q(\alpha\beta) = \Q(\alpha^2)\).
+</p>
+
+<p>
+It can furthermore be shown by manual computation (which will be
+omitted) that \(D_8\) is the only group satisfying these
+properties. This proves that if \(\Q(\alpha\beta) = \Q(\alpha^2)\) or
+\(\sqrt{b(a^2-4b)} \in \Q\) then \(G \cong Z_4\).
+</p>
+
+<p>
+(iii) \(G \cong D_8\) if and only if \(b\) and \(b(a^2-4b)\) are not squares
+in \(\Q\) if and only if \(\alpha\beta \not\in \Q(\alpha^2)\).
+</p>
+
+<p>
+\(D_8\) contains a subgroup isomorphic to \(Z_4 = \{1,r,r^2,r^3\}\) which
+is precisely \[\{1,(1324),(12)(34),(1423)\}\] as mentioned
+above. Since \((1324)\) is of order 4, we can let it be the generator
+\(r\). If we let \(s = (12)\), then it can be seen that each \(sr^i\) has
+order 2, and that \(rs = sr^3\), confirming that the permutation group
+is indeed \(D_8\). The full group is given by
+\[D_8 = \{1,(1324),(12)(34),(1423),(12),(13)(24),(34),(14)(23)\}.\]
+</p>
+
+<p>
+To prove that \(\sqrt{b},\sqrt{b(a^2-4b)} \not\in \Q\) simply check that
+they are not fixed by all permutations. To show that \(\alpha\beta
+\not\in \Q(\alpha^2)\) it suffices to show that the set of permutations
+fixing \(\alpha\beta\) is not a superset of the set of permutations
+fixing \(\alpha^2\). Finally show that \(D_8\) is the only group
+satisfying these 2 properties (computations are omitted as they are
+lengthy).
+</p>
+</div>
+</div>
+<div id="outline-container-org9cf9601" class="outline-2">
+<h2 id="org9cf9601">14.6.19: The field \(\Q(\sqrt{D})\) for a quartic</h2>
+<div class="outline-text-2" id="text-org9cf9601">
+<p>
+Let \(f(x)\) be an irreducible polynomial of degree 4 in \(\Q[x]\) with
+discriminant \(D\). Let \(K\) denote the splitting field of \(f(x)\), viewed
+as a subfield of the complex numbers \(\C\).
+</p>
+
+<p>
+(a) Prove that \(\Q(\sqrt{D}) \subset K\).
+</p>
+
+<p>
+This follows immediately from the definition of \(D\) as the product of
+the squares of the differences of the roots.
+</p>
+
+<p>
+(b) Let \(\tau\) denote complex conjugation and let \(\tau_K\) denote its
+restriction to \(K\). Prove that \(\tau_K\) is an element of \(\Gal(K/\Q)\)
+of order 1 or 2 depending on whether every element of \(K\) is real or
+not.
+</p>
+
+<p>
+\(\tau_K\) has order 1 iff it is the identity iff every element of \(K\)
+is real. Otherwise it clearly has order 2.
+</p>
+
+<p>
+(c) Prove that if \(D < 0\) then \(K\) cannot be cyclic of degree 4 over
+\(\Q\).
+</p>
+
+<p>
+The automorphism \(\tau_K\) has order 2, since \(K\) contains the complex
+element \(\sqrt{D}\). If \(\Gal(K/\Q) \cong Z_4\), then it has a unique
+order 2 element, which is then \(\tau_K\). Furthermore, the square of
+any order 4 generator of \(\Gal(K/\Q)\), namely a 4-cycle, must have
+cycle type \((2,2)\). This implies that \(\tau_K\) swaps pairs of roots
+\((\alpha,\alpha^*)\) and \((\beta,\beta^*)\).
+</p>
+
+<p>
+Expanding \(\sqrt{D}\) gives
+\[\sqrt{D} = (\alpha-\alpha^*)(\alpha-\beta)(\alpha-\beta^*)
+(\alpha^*-\beta)(\alpha^*-\beta^*)(\beta-\beta^*).\]
+Since \(\alpha-\alpha^*, \beta-\beta^* \in \Q\), and the pairs
+\((\alpha-\beta, \alpha^*-\beta^*), (\alpha-\beta^*, \alpha^*-\beta)\)
+are conjugate pairs, it follows that \(\sqrt{D} \in \Q\), a contradiction.
+</p>
+
+<p>
+(d) Prove generally that \(\Q(\sqrt{D})\) for squarefree \(D < 0\) is not
+a subfield of a cyclic quartic field.
+</p>
+
+<p>
+A cyclic quartic field \(K\) is Galois and hence the splitting field of
+some irreducible degree 4 polynomial \(f(x)\) with discriminant
+\(D'\). Since \(K\) contains the complex element \(\sqrt{D}\), similar
+arguments as in part (c) can be used. In particular, we can conclude
+that \(\sqrt{D'} \in \Q\), so that the Galois group is a subgroup of
+\(A_4\). But this is a contradiction since \(Z_4\) contains an odd
+element, namely a 4-cycle.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="made-with">Made with Emacs org-mode</p>
+<div class="contact">
+  <a href="https://github.com/greysome">Github</a> |
+  <a href="https://www.linkedin.com/in/way-yan-win-b3366a1b3/">Linkedin</a> |
+  <a href="mailto:wayyan.win@gmail.com">Gmail</a>
+</div>
+</div>
+</body>
+</html>
