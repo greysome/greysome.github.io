@@ -67,3 +67,15 @@ a:hover, a:active {
 a:visited {
     text-decoration: none;
 }
+
+li {
+    margin: 0% 3% 0% 0%;
+}
+
+.footnotes::before {
+    content: "Footnotes:";
+}
+
+.footnotes {
+    margin-top: 2em;
+}

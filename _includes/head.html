@@ -34,7 +34,7 @@ MathJax = {
 
 	    id: '\\mathop{\\rm id}', span: '\\mathop{\\rm span}', im: '\\mathop{\\rm im}', sgn: '\\mathop{\\rm sgn}',
 	    End: '\\mathop{\\rm End}', Gal: '\\mathop{\\rm Gal}', Hom: '\\mathop{\\rm Hom}', Inn: '\\mathop{\\rm Inn}',
-	    Out: '\\mathop{\\rm Out}', Spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
+	    Out: '\\mathop{\\rm Out}', spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
 	    Cn: '\\mathop{\\rm Cn}', Th: '\\mathop{\\rm Th}', Spec: '\\mathop{\\rm Spec}', halo: '\\mathop{\\rm halo}',
 	    st: '\\mathop{\\rm st}', diam: '\\mathop{\\rm diam}', mesh: '\\mathop{\\rm mesh}', osc: '\\mathop{\\rm osc}',
 	    Ber: '\\mathop{\\rm Ber}', inte: '\\mathop{\\rm int}', trdeg: '\\mathop{\\rm tr.deg}', BBeta: '\\mathop{\\rm Beta}',
@@ -44,6 +44,7 @@ MathJax = {
 
 	    qed: '\\square',
 	    re: '\\text{re}',
+	    hR: '{}^*\\R',
 	    normal: '\\triangleleft',
 	    normaleq: '\\trianglelefteq',
 	    Normal: '\\triangleright',
@@ -71,7 +72,10 @@ MathJax = {
         },
     },
     chtml: {
-	scale: 0.85
+	scale: 0.85,
+	linebreaks: {
+	    automatic: true
+	}
     }
 };
 </script>
