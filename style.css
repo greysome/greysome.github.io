@@ -48,10 +48,22 @@
 body {
     margin: 5% 10% 5% 10%;
     font-family: "Computer Modern", sans-serif;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .postdate {
     text-align: right;
     padding-right: 10px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    text-decoration: underline;
+}
+
+a:visited {
+    text-decoration: none;
 }

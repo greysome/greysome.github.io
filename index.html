@@ -10,4 +10,14 @@ title: wy's blog
             <td><a href="{{ post.url }}">{{ post.title }}</a></td>
         </tr>
     {% endfor %}
+</table><br>
+
+{% assign pdfs = site.static_files | where: "extname", ".pdf" %}
+<p>{{ pdfs.size }} {% if pdfs.size == 1 %}PDF writeup{% else %}PDF writeups{% endif %} total</p>
+<table>
+    {% for pdf in pdfs %}
+        <tr>
+            <td><a target="blank" href="{{ pdf.path }}">{{ pdf.name }}</a></td>
+        </tr>
+    {% endfor %}
 </table>
