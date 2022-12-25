@@ -35,8 +35,7 @@ would like to reiterate that identifying $p$-primary modules with
 tuples is possible because of the uniqueness of the decomposition
 (modulo the extra 0s).
 
-I will assume $n$ to be the greater of $m$ and $n$. Then what we want
-to prove is that
+From now I'll assume that $m=n$. Then what we want to prove is that
 
 $$(f_1,\ldots,f_n)\le(e_1,\ldots,e_n),\quad\text{i.e. $f_i\le e_i$ for all $i$.}$$
 
@@ -61,16 +60,19 @@ represented by the tuple $(e_1-k,\ldots,e_n-k)$[^2].
    nonzero summands is the dimension (as a vector space) over the
    field $D/(p)$.
 
-Going a step further, by identifying modules with tuples, we get the
-wonderful identity
+We can go a step further. By identifying modules with tuples, we have
+the identity $p^kM = p^kM/p^{k+1}M + p^{k+1}M$. By induction we thus
+have the wonderful expression
 
 $$M = M/pM + pM/p^2M + \ldots + p^{l-1}M/p^lM,\quad l=\max\,\{e_i\}.$$
 
-Now let $l'=\max\,\\{f_j\\}$; there exists $x\in M$ with $\ann(x+M')=(p^{l'})$. Then
+Now let $l'=\max\,\\{f_j\\}$; there exists $x\in M$ with
+$\ann(x+M')=(p^{l'})$. Then
 
 $$\ann(x+M')\supseteq \ann x\ge (p^l),$$
 
-and thus $l'\le l$. The rest of the proof boils down to the calculation
+and thus $l'\le l$[^3]. The rest of the proof boils down to the
+calculation
 
 $$\begin{align*}
 N &= N/pN + \ldots + p^{l'-1}N/p^{l'}N \\
@@ -124,3 +126,4 @@ reader that this implies the original proposition. $\qed$
 
 [^1]: It turns out that $m\le n$ always, but we don't know that at this juncture.
 [^2]: Here $a-b$ is defined as 0 if $a<b$, and the usual difference otherwise.
+[^3]: This is obvious in the case $D=\Z$: here $l$ denotes the maximum order of an element, and clearly passage to the quotient cannot increase the order.
