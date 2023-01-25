@@ -20,47 +20,50 @@ gives a criteria for a radical extension.
 Before proving the result for general solvable extensions, I focus on
 a simpler case.
 
-**Lemma.** For every prime $p$, every cyclotomic field $\Q(z_p)/\Q$
-  can be imbedded in a larger extension $K/\Q$ admitting a normalised
+**Lemma.** For every prime $p$, every cyclotomic field $F(z_p)/F$
+  can be imbedded in a larger extension $K/F$ admitting a normalised
   root tower.
 
-*Proof.* The Galois group $\Gal(\Q(z_p)/\Q) \cong \Z_{p-1}$ admits a
-series of normal subgroups
+*Proof.* The Galois group $\Gal(F(z_p)/F)$ is abelian and hence admits
+a series of normal subgroups
 
 $$1 = G_1\subset G_2\subset \cdots \subset G_k = G,$$
 
 where each $p_1=[G_{i+1}:G_i]$ is prime. This corresponds to a tower of
 simple extensions
 
-$$\Q\subset \Q(x_1)\subset \Q(x_1,x_2)\subset \cdots\subset \Q(x_1,\ldots,x_k) = \Q(z_p).$$
+$$F\subset F(x_1)\subset F(x_1,x_2)\subset \cdots\subset F(x_1,\ldots,x_k) = F(z_p).$$
 
 Although the degrees are all prime, the base fields of each extension
-$\Q(x_1,\ldots,x_{l+1})/\Q(x_1,\ldots,x_l)$ do not necessarily
+$F(x_1,\ldots,x_{l+1})/F(x_1,\ldots,x_l)$ do not necessarily
 contain the requisite roots of unity, and thus it may not be a
 radical extension. Thus we need to augment each base fields to
 construct our desired root tower.
 
-Firstly, we have $p_1=[\Q(x_1):\Q]<p$, and so by induction there
-exists a normalised root tower from $\Q$ to $F_1$ where $F_1\supset
-\Q(z_{p_1})$. Since $F_1$ contains the required $p_1$th roots of
+Firstly, we have $p_1=[F(x_1):F]<p$, and so by induction there
+exists a normalised root tower from $F$ to $F_1$ where $F_1\supset
+F(z_{p_1})$. Since $F_1$ contains the required $p_1$th roots of
 unity, we can take it to be the new base field and 'lift up' the
-extension $\Q(x_1)/\Q$ to obtain $F_1(x_1)/F_1$. Since $\Q(x_1)$ is
-normal, it is the splitting field of $x_1$'s minpoly $p(x)$ over $\Q$,
+extension $F(x_1)/F$ to obtain $F_1(x_1)/F_1$. Since $F(x_1)$ is
+normal, it is the splitting field of $x_1$'s minpoly $p(x)$ over $F$,
 and thus $F_1(x_1)$ is also the splitting field of $p(x)$ over
 $F_1$. Thus we can conclude by Jacobson that $F_1(x_1)/F_1$ is a
 radical extension, and consequently it has degree either 1 or
-$p$. Therefore, $F_1(x_1)/\Q$ admits a normalised root tower.
+$p$. Therefore, $F_1(x_1)/F$ admits a normalised root tower.
 
-Now we take $F_1(x_1)$ as the new base field in place of $\Q$, and
+Now we take $F_1(x_1)$ as the new base field in place of $F$, and
 likewise we have a root tower from $F_1(x_1)$ to $F_2$ with
-$F_2\supset \Q(z_{p_2})$. Going through the same motions we conclude
+$F_2\supset F(z_{p_2})$. Going through the same motions we conclude
 that $F_2(x_2)/F_2$ is a radical extension, so $F_2(x_2)/F_1(x_1)$ has
 a normalised root tower. We continue in this manner until all the
 $x_i$'s have been exhausted, and our desired extension has the form
 $F_n(x_n)$. Diagramatically, this process is represented by the
 following diagram:
 
-
+{% include figure.html src="normalised-root-tower.svg"
+alt="Diagram of proof"
+figno=1
+caption="" %}
 
 We are done. $\qed$
 
@@ -74,13 +77,13 @@ extensions with prime degrees, much like in the lemma. If $n>1$ then
 the argument is completely the same as in the lemma.
 
 If $n=1$, then $G$ has prime order $p$, and the splitting field is a
-simple extension $\Q(x)/\Q$. By the lemma we have that $\Q(z_p)/\Q$ is
-contained in some $K/\Q$ admitting a normalised root tower, and
+simple extension $F(x)/F$. By the lemma we have that $F(z_p)/F$ is
+contained in some $K/F$ admitting a normalised root tower, and
 $K(x)/K$ is a radical extension, so we are done. $\qed$
 
 One might wonder why we couldn't have proved the main result straight
 away without the lemma, via induction on the degree. The reason is
-that in the case $n=1$, the extension $\Q(x)/\Q$ has no proper
+that in the case $n=1$, the extension $F(x)/F$ has no proper
 nontrivial subextensions to perform the induction on.
 
 ### A bunch of computations
