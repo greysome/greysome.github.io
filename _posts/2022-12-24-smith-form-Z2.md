@@ -53,8 +53,6 @@ alt="Visualising Smith normal form for the lattice $({1\atop1}{1\atop-1})$"
 figno=1
 caption="$({1\atop1}{1\atop-1}$)" %}
 
-TODO WHY NO ARROWS IN IMAGE
-
 **Exercise:** Try this out with the matrix
   $({2\atop0}{0\atop3})$. (The Smith normal form is
   $({1\atop0}{0\atop6})$.)
