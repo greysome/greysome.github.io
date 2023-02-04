@@ -75,3 +75,19 @@ $$\psi\varphi: z\mapsto z^{kk'},\ b\mapsto (bz^{l'})(z^{k'l})=bz^{k'l+l'}.$$
 This corresponds to the transformation $x\mapsto kk'x+(k'l+l')$, which
 is also the composite of $x\mapsto kx+l$ and $x\mapsto k'x+l'$. This
 completes the proof. $\qed$
+
+### Update: 4 Feb 2023
+
+Here is a proof of the very first lemma that works for all fields $F$,
+taken from StackExchange. Suppose $x^p-a$ is reducible and $g(x)$ is a
+proper divisor. In a splitting field we have
+
+$$g(x) = (x-r_1)\cdots(x-r_k).$$
+
+Then $r=\prod_{i=1}^k r_i\in F$, and $r^p = r_1{}^p\cdots r_k{}^p =
+a^k$. Since $k<p$ we have that $p$ and $k$ are relatively prime, so
+there are integers $m,n$ such that $mp+nk=1$. Thus,
+
+$$(a^mr^n)^p = a^{mp}r^{np} = a^{mp+nk} = a.$$
+
+Thus $a^mr^n$ is a root of $x^p-a$ in $F$, as desired. $\qed$
