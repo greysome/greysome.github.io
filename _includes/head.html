@@ -6,8 +6,13 @@
         crossorigin="anonymous"></script>
 
 <script>
-MathJax = {
+  MathJax = {
+    loader: {
+	load: ['[custom]/xypic.js'],
+	paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    },
     tex: {
+	packages: {'[+]': ['xypic']},
 	tags: 'ams',
         inlineMath: [['$', '$']],
         displayMath: [['\\[', '\\]']],
@@ -47,7 +52,7 @@ MathJax = {
 
 	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
 
-	    nin: '\\not\\in', se: '\\subseteq', Se: '\\supseteq',
+	    nin: '\\not\\in', seq: '\\subseteq', Seq: '\\supseteq',
 	    inv: '{}^{-1}',
 	    ol: '\\overline',
 	    qed: '\\square',
