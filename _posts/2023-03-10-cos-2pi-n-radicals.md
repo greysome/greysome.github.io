@@ -79,8 +79,38 @@ $$n\neq2^ep_2\cdots p_k \overset{\small\text{2C,2B,2A}}\implies \cos(2\pi/n)\ \t
 
 ## The proofs
 
-*Proof of 1A.* TODO. (I thought I had a proof but I realised it was
- wrong, so I have nothing here.)
+*Proof of 1A.* If $\a$ is expressible in real radicals then $\a$ lies
+ in a tower
+
+ $$\eq{\label{eq:tower}\Q\s F_1\s F_2\s \cdots\s F_k,}$$
+
+ where $F_{i+1}=F_i(a_i)$ and $a_i{}^{n_i}\in F$ for some $n_i$. I'll
+ additionally assume WLOG that $a_i\nin F_i$ and $n_i$ is prime. Now,
+ the conjugates of $\a$ are the images of $\a$ under maps
+ $F_k\to\ol\Q$, and such maps can be constructed by building up
+ through the tower \eqref{eq:tower}. That is to say, if we have a map
+ $F_i\to\ol\Q$, then a map $F_{i+1}\to\ol\Q$ can be constructed by
+ sending $a_i$ to one of its conjugates over $F_i$, which has the form
+ $za_i$, $z$ an $n_i$th root of unity.
+
+ Since $F_k=\Q(a_1,\ldots,a_{k-1})$, we have
+ $\a=f(a_1,\ldots,a_{k-1})$ where $f$ is a rational function. Given
+ $\psi:F_k\to\ol\Q$, we have
+
+ $$\eq{\label{eq:f}\psi(\a)=f(z{}^{l_1}\,a_1,\ldots,z{}^{l_{k-1}}\,a_{k-1}),
+ \quad z\;\text{a large enough root of unity}.}$$
+
+ The rest of the proof is handwavy. If the expression for $\a$
+ involves other radicals besides square roots, that means some $n_i$
+ is odd, and so there is some $\psi$ sending $a_i$ to a conjugate
+ $z{}^{l_i}\,a_i$ not of the form $\pm a_i$, and so this conjugate is
+ complex. Furthermore if it is *necessary* that the radical expression
+ contains a non-square-root radical, then intuitively the variable
+ $x_i$ should play a nontrivial role in $f$. Then, it would be pretty
+ unlikely that with one of the inputs to the RHS of \eqref{eq:f}
+ complex, the LHS remains a real number. There would have to be some
+ miraculous cancelling out for that to happen. This contradicts the
+ hypothesis that $\a$ is totally real. $\qed$
 
 <br>
 
