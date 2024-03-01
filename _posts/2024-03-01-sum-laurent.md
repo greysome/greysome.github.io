@@ -50,7 +50,7 @@ by the residue theorem this is equal to
 
 $$\begin{equation}\label{eq1}\sum_{j=1}^n{x_j^{-m-1}\over\prod_{\substack{1\le k\le n\\ k\neq j}}(x_j-x_k)}\end{equation}$$
 
-On the other hand, we can rewrite
+The other way is to rewrite
 
 $$\begin{align*}
 f(z) &= z^{-n}\left(1\over 1-x_1/z\right)\cdots\left(1\over 1-x_n/z\right) \\
