@@ -113,9 +113,9 @@
 <h3>My First Encryption</h3>
 <p>Let $h(X)$ denote the SHA1 hash of the character $X$. Given the flag <strong>flag{??$\ldots$??}</strong>, the code computes the hash of each character and stores it in a list $L$, setting the key to be the first 4 elements $(h(\text{f})\ h(\text{l})\ h(\text{a})\ h(\text{g}))$. Then there is a loop where each element of $L$ is replaced by its XOR with every element of the key. Represented pictorially:</p>
 <p>$$\begin{matrix}
-L &amp; = &amp; h(\text{f}) &amp; h(\text l) &amp; h(\text a) &amp; h(\text g) &amp; h(\text {) &amp; h(\text?) &amp; h(\text?) &amp; \ldots \[5pt]
-&amp;   &amp;      &amp;      &amp;      &amp; \Big\downarrow \[5pt]
-C &amp; = &amp; h(\text{f})\oplus S &amp; h(\text l)\oplus S &amp; h(\text a)\oplus S &amp; h(\text g)\oplus S &amp; h(\text{)\oplus S &amp; h(\text ?)\oplus S &amp; h(\text ?)\oplus S &amp; \ldots
+L & = & h(\text{f}) & h(\text l) & h(\text a) & h(\text g) & h(\text \{) & h(\text?) & h(\text?) & \ldots \\[5pt]
+&   &      &      &      & \Big\downarrow \\[5pt]
+C & = & h(\text{f})\oplus S & h(\text l)\oplus S & h(\text a)\oplus S & h(\text g)\oplus S & h(\text\{)\oplus S & h(\text ?)\oplus S & h(\text ?)\oplus S & \ldots
 \end{matrix}$$</p>
 <p>where $S=h(\text f)\oplus h(\text l)\oplus h(\text a)\oplus h(\text g)$. We are given $C$, so the solution is rather straightforward:</p>
 <ol>

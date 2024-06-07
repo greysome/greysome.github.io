@@ -114,14 +114,14 @@ of the matrix (its inverse), can be determined by a small number of
 entries.</p>
 <p><em>Proof</em>. I'll illustrate the proof for a $3\times3$ matrix $M$; the general
 case is the same idea. Let</p>
-<p>$$M=\begin{pmatrix}a&amp;b&amp;c\d&amp;e&amp;f\g&amp;h&amp;i\end{pmatrix},\quad
-M\inv=\begin{pmatrix}a'&amp;d'&amp;g'\b'&amp;e'&amp;h'\c'&amp;f'&amp;i'\end{pmatrix}\biggm/|M|.$$</p>
+<p>$$M=\begin{pmatrix}a&b&c\\d&e&f\\g&h&i\end{pmatrix},\quad
+M\inv=\begin{pmatrix}a'&d'&g'\\b'&e'&h'\\c'&f'&i'\end{pmatrix}\biggm/|M|.$$</p>
 <p>Note the $(i,j)$ entry of the second matrix is the $(j,i)$ cofactor of
 $M$. For instance, $d'=-\det(b\ c,h\ i)$. The sum of each column can be
 expressed as a $3\times3$ determinant, as follows:</p>
-<p>$$a'+b'+c'=\begin{vmatrix}1&amp;1&amp;1\d&amp;e&amp;f\g&amp;h&amp;i\end{vmatrix},\quad
-d'+e'+f'=\begin{vmatrix}a&amp;b&amp;c\1&amp;1&amp;1\g&amp;h&amp;i\end{vmatrix},\quad
-g'+h'+i'=\begin{vmatrix}a&amp;b&amp;c\d&amp;e&amp;f\1&amp;1&amp;1\end{vmatrix}.$$</p>
+<p>$$a'+b'+c'=\begin{vmatrix}1&1&1\\d&e&f\\g&h&i\end{vmatrix},\quad
+d'+e'+f'=\begin{vmatrix}a&b&c\\1&1&1\\g&h&i\end{vmatrix},\quad
+g'+h'+i'=\begin{vmatrix}a&b&c\\d&e&f\\1&1&1\end{vmatrix}.$$</p>
 <p>The equalities hold via cofactor expansion along the rows of 1s. If
 $M$ has a row of 1s, then only one of the above sums is nonzero, and
 is in fact equal to $\det(M)$. Therefore, the sum of entries in

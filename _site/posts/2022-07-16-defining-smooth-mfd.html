@@ -133,23 +133,23 @@ and $x\in U\cap M$, then there exists a coordinate system around $x$
 <p>$$F(w_1,\ldots,w_k,y_1,\ldots,y_{n-k})=f(w_1,\ldots,w_k)+(0,\ldots,0,y_1,\ldots,y_{n-k})$$</p>
 <p>Note that $dF_x$ is just the $n\times n$ matrix</p>
 <p>$$\begin{pmatrix}
-&amp;\vphantom{A}&amp; \<br />
--&amp;df_x&amp;- \<br />
-&amp;\vphantom{A}&amp; \<br />
+&\vphantom{A}& \\
+-&df_x&- \\
+&\vphantom{A}& \\
 \hline
-1&amp;&amp; \<br />
-&amp;\ddots&amp; \<br />
-&amp;&amp;1
+1&& \\
+&\ddots& \\
+&&1
 \end{pmatrix},$$</p>
 <p>which has full rank. Then $F$ is a local diffeomorphism by the inverse
 function theorem and also $F(W\times0)=U\cap M$. For each $x\in U\cap
 M$ there is a unique $y\in W\times0$ such that $F(y)=x$. By taking a
 nbhd $W'\ni y$ such that $F|_{W'}$ is a diffeomorphism onto $F(W')$,
 we have the 'restricted' composite</p>
-<p>$${x\in W\mid (x,0)\in W'}\hookrightarrow W'\xrightarrow{F} F(W')$$</p>
+<p>$$\{x\in W\mid (x,0)\in W'\}\hookrightarrow W'\xrightarrow{F} F(W')$$</p>
 <p>(See Figure 1.) It is straightforward to verify that
 this is our desired coordinate system around $x$. The required inverse
-$F(W')\to{x\in W\mid (x,0)\in W'}$ is differentiable since it is
+$F(W')\to\{x\in W\mid (x,0)\in W'\}$ is differentiable since it is
 just $F^{-1}$ followed by projection onto the first $k$ components.</p>
 <p>{% include figure.html src="manifold-coord-system-deriv-full-rank.svg"
 alt="A coordinate system whose derivative has full rank"

@@ -195,8 +195,8 @@ optimisations can be made if we consider the multiplicative structure
 too. First, note that the multiplicative identity 1 must have additive
 order $d_1$ (the largest invariant factor). For if the order is say
 $n$ and it is $&lt; d_1$, then for each $r$ in the ring we have</p>
-<p>$$\underbrace{r+\ldots+r}<em>\text{$n$ times} =
-\underbrace{(1+\ldots+1)}</em>\text{$n$ times}\cdot r = 0r = 0,$$</p>
+<p>$$\underbrace{r+\ldots+r}_\text{$n$ times} =
+\underbrace{(1+\ldots+1)}_\text{$n$ times}\cdot r = 0r = 0,$$</p>
 <p>so every element has additive order $&lt; d_1$. But this cannot be true
 because the element $e_1$ has additive order $d_1$!</p>
 <p>The question is, which order $d_1$ element can 1 be? The answer is, we
@@ -222,8 +222,8 @@ $e_i$ and $e_j$ have additive orders $d_i$ and $d_j$
 respectively. Thus the additive order of the products $e_ie_j$ and
 $e_je_i$ must divide $(d_i,d_j)=d_j$. This implies that the products
 must belong in the subgroup</p>
-<p>$$\underbrace{\Z_{d_j}\oplus\cdots\oplus\Z_{d_j}}<em>\text{$j$ times}\oplus
-\Z</em>{d_{j+1}}\oplus\cdots\Z_{d_g} \le \bigoplus_i\Z_{d_i},$$</p>
+<p>$$\underbrace{\Z_{d_j}\oplus\cdots\oplus\Z_{d_j}}_\text{$j$ times}\oplus
+\Z_{d_{j+1}}\oplus\cdots\Z_{d_g} \le \bigoplus_i\Z_{d_i},$$</p>
 <p>which is precisely the subgroup of elements with order dividing
 $d_j$. In practise I don't think this is a significant optimization.</p>
 <h3>Addendum: classifying order $p$ and $p^2$ rings</h3>
@@ -253,8 +253,8 @@ are 3 possibilities depending on the behaviour of $p(x)=x^2-ax-b$:</p>
 <li>
 <p>$p(x)=(x-\alpha)^2$, in which csae there is an isomorphism</p>
 <p>$$\begin{matrix}
-\F_p[x]/(x^2) &amp; \to &amp; \F_p[x]/(x-\alpha)^2 \<br />
-\overline x &amp; \mapsto &amp; \overline{x-\alpha}
+\F_p[x]/(x^2) & \to & \F_p[x]/(x-\alpha)^2 \\
+\overline x & \mapsto & \overline{x-\alpha}
 \end{matrix}$$</p>
 </li>
 <li>

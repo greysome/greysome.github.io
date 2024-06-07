@@ -145,7 +145,7 @@ quotient $M^2/\sim$, where</p>
 $a-b$. We then define $+$, $\cdot$ and $&lt;$ in the natural way and
 check that it forms a discretely ordered commutative ring. On the
 other hand, given a discretely ordered commutative ring $R$, the
-subset ${x\in R\mid x\ge0}$ forms a model of $PA^-$. This justifies
+subset $\{x\in R\mid x\ge0\}$ forms a model of $PA^-$. This justifies
 calling $PA^-$ <em>the theory of non-negative parts of discretely
 ordered rings</em>. As we'll see, this correspondence is useful because it
 is often more convenient to construct both positive and negative
@@ -184,7 +184,7 @@ following proposition.</p>
 <p><em>Proof.</em> Let $p(X)\in\Z[X]^+$ and $a\in M\setminus\N$. I split $p(X)$
 into two polynomials $q(X),r(X)$, where $q(X)$ contains the positive
 monomials and $r(X)$ contains the negative ones. For instance,</p>
-<p>$$p(X)=X^3-4X^2-2X+1 \implies q(X)=X^3+1,;r(X)=4X^2+2X.$$</p>
+<p>$$p(X)=X^3-4X^2-2X+1 \implies q(X)=X^3+1,\;r(X)=4X^2+2X.$$</p>
 <p>If $p(X)$ has all positive coefficients then I set $q(x)=p(X)$ and
 $r(X)=0$. Now $q(a)$ and $r(a)$ are valid $\cL_A$-terms. Furthermore,
 we have $r(X)&lt;q(X)$ which implies $r(a)&lt;q(a)$; this follows from the
@@ -202,9 +202,9 @@ so we are forced to have $z'&gt;z$, and order is preserved. Next, we have</p>
 <p>$$(r+r')(a)+(z+z')=(q+q')(a)$$</p>
 <p>where $p(x)+p'(X)=(q+q')(X)-(r+r')(X)$, so addition is preserved. Lastly, by multiplying both equations and adding $r(a)r'(a)$ we get</p>
 <p>$$\begin{align*}
-q(a)q'(a)+r(a)r'(a) &amp;= r(a)r'(a)+r(a)r'(a)+r(a)z'+r'(a)z+zz' \<br />
-&amp;= r(a)(r'(a)+z')+r'(a)(r(a)+z)+zz' \<br />
-&amp;= r(a)q'(a)+r'(a)q(a)+zz',
+q(a)q'(a)+r(a)r'(a) &= r(a)r'(a)+r(a)r'(a)+r(a)z'+r'(a)z+zz' \\
+&= r(a)(r'(a)+z')+r'(a)(r(a)+z)+zz' \\
+&= r(a)q'(a)+r'(a)q(a)+zz',
 \end{align*}$$</p>
 <p>which matches up with the fact that</p>
 <p>$$\bigl(q(a)-r(a)\bigr)\bigl(q'(a)-r'(a)\bigr)=q(a)q'(a)+r(a)r'(a)-\bigl(q(a)r'(a)+q'(a)r(a)\bigr),$$</p>
@@ -288,12 +288,12 @@ M$ and $t(a_1,\ldots,a_n)$ be an $\cL_A$-term, and suppose there is
 some $b\in N$ such that $N\vDash b&lt;t(a_1,\ldots,a_n)\land
 \phi(b,a_1,\ldots,a_n)$. Then $b\in M$ because $M$ is an initial
 segment and so</p>
-<p>$${y\in N \mid y &lt; t(a_1,\ldots,a_n)} = {y\in M \mid y &lt; t(a_1,\ldots,a_n)}.$$</p>
+<p>$$\{y\in N \mid y &lt; t(a_1,\ldots,a_n)\} = \{y\in M \mid y &lt; t(a_1,\ldots,a_n)\}.$$</p>
 <p>Thus $M$ also satisfies that formula as desired. $\qed$</p>
 <p>One level up from $\Delta_0$, we have $\Sigma_1$ and $\Pi_1$ formulas,
 which are formulas of the form
-$\exists\overline{x},\phi(\overline{x},\overline{y})$ and
-$\forall\overline{x},\phi(\overline{x},\overline{y})$ where $\phi$ is
+$\exists\overline{x}\,\phi(\overline{x},\overline{y})$ and
+$\forall\overline{x}\,\phi(\overline{x},\overline{y})$ where $\phi$ is
 $\Delta_0$. In other words, $\Sigma_1$ formulas start with a sequence
 of unbounded existential formulas followed by a $\Delta_0$-formula,
 and similarly for $\Pi_1$. By convention, $\Delta_0$ formulas are
@@ -307,10 +307,10 @@ might notice huge parallels with the Borel hierarchy.</p>
 and similarly for the other types.</p>
 <p><strong>Corollary.</strong> $PA^-\vdash \Sigma_1\cap\Th\N$.</p>
 <p><em>Proof.</em> If $M\vDash PA^-$ then $\N\subseteq_c M$. Suppose
-$\N\vDash\exists x,\theta(x)$ where $\theta\in\Delta_0\cap\Th\N$. So
+$\N\vDash\exists x\,\theta(x)$ where $\theta\in\Delta_0\cap\Th\N$. So
 there is some $a\in\N$ such that $\N\vDash\theta(a)$. Clearly $a$
 also lies in $M$, and by the proposition we have $M\vDash\theta(a)$,
-so $M\vDash\exists x,\theta(x)$ as desired. $\qed$</p>
+so $M\vDash\exists x\,\theta(x)$ as desired. $\qed$</p>
 <p>So $PA^-$ can prove as a substantial amount of true sentences in $\N$,
 but not all of them as seen in the above examples. In fact, no
 reasonable extension of $PA^-$ can prove all of $\Th\N$ by Gödel's

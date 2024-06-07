@@ -121,10 +121,10 @@
 <p>The <code>encrypt()</code> function works by breaking the plaintext <code>pt</code> into blocks $B_0\ B_1\ \cdots\ B_n$ of 16 bytes, and computing the ciphered blocks</p>
 <p>$$\begin{align}\label{eq:1}
 \begin{split}
-C_0 &amp;= f(B_0\oplus\text{iv}), \<br />
-C_1 &amp;= f(B_1\oplus B_0\oplus C_0), \<br />
-C_2 &amp;= f(B_2\oplus B_1\oplus C_1), \<br />
-&amp;;;\vdots
+C_0 &= f(B_0\oplus\text{iv}), \\
+C_1 &= f(B_1\oplus B_0\oplus C_0), \\
+C_2 &= f(B_2\oplus B_1\oplus C_1), \\
+&\;\;\vdots
 \end{split}
 \end{align}$$</p>
 <p>Here $f$ refers to AES encryption of a single block. I usually require pictures to comprehend things, so I turned the equations into a diagram:</p>
@@ -146,10 +146,10 @@ C_2 &amp;= f(B_2\oplus B_1\oplus C_1), \<br />
 <p>On the other hand, <code>decrypt()</code> recovers the plaintext from the ciphertext <code>ct</code> $= C_0\ C_1\ \cdots\ C_n$:</p>
 <p>$$\begin{align}\label{eq:2}
 \begin{split}
-B_0 &amp;= f\inv(C_0)\oplus\text{iv}, \<br />
-B_1 &amp;= f\inv(C_1)\oplus B_0\oplus C_0, \<br />
-B_2 &amp;= f\inv(C_2)\oplus B_1\oplus C_1, \<br />
-&amp;;;\vdots
+B_0 &= f\inv(C_0)\oplus\text{iv}, \\
+B_1 &= f\inv(C_1)\oplus B_0\oplus C_0, \\
+B_2 &= f\inv(C_2)\oplus B_1\oplus C_1, \\
+&\;\;\vdots
 \end{split}
 \end{align}$$</p>
 <br>
@@ -208,21 +208,21 @@ Wow! Here's the flag: grey{00ps_n3v3r_m0d1fy_wh1l3_1t3r4t1ng}
 <h3>Filter plaintext (crypto)</h3>
 <p><em>Maybe this will work?</em> <a href="/resource/filter_plaintext.py">(code)</a></p>
 <p>As a sequel to the previous challenge, this is more involved. There are two ciphers $C$ and $C^+$. $C$ is the custom one used previously, except for a small change in the <code>decrypt()</code> functionality. $C^+$ is a normal AES-CBC cipher used to encrypt the flag. We have the ciphertext and iv for $C^+$, and its key is the md5 hash of the plaintext secret. Thus the challenge boils down to decrypting the encrypted secret, with which decrypting $C^+$ is trivial.</p>
-<p>The <code>decrypt()</code> function is similar to before, except there is no more buggy loop and it filters out any plaintext block appearing in the secret from the return value. Thus the strategy of spitting the encrypted secret $C_0\ C_1\ \cdots,$ back at the program doesn't work.</p>
+<p>The <code>decrypt()</code> function is similar to before, except there is no more buggy loop and it filters out any plaintext block appearing in the secret from the return value. Thus the strategy of spitting the encrypted secret $C_0\ C_1\ \cdots\,$ back at the program doesn't work.</p>
 <p>My next strategy is to input something of the form $K\ C_0\ C_1\ C_2\ \cdots$, where $K$ is some block. The idea is to pretend the decryption still starts at $C_0$, except through $K$ we have some control over the 'iv' (which is actually $K\oplus f\inv(K)\oplus\text{original iv}$).</p>
 <p>To me the most natural value for $K$ is the zero block $\bf0 = 00\ldots00$, because XORing with a zero block does nothing. Then the 'iv' is $D\oplus\text{iv}$ where $D=f\inv(\bf0)$, and using \eqref{eq:1} the decrypted blocks are</p>
 <p>$$\begin{align*}
 \begin{split}
-&amp;f\inv(C_0)\oplus D\oplus\text{iv} = B_0\oplus D, \<br />
-&amp;f\inv(C_1)\oplus C_0\oplus (B_0\oplus D) = B_1\oplus D, \<br />
-&amp;f\inv(C_2)\oplus C_1\oplus (B_1\oplus D) = B_2\oplus D, \<br />
-&amp;\qquad\qquad\qquad\vdots
+&f\inv(C_0)\oplus D\oplus\text{iv} = B_0\oplus D, \\
+&f\inv(C_1)\oplus C_0\oplus (B_0\oplus D) = B_1\oplus D, \\
+&f\inv(C_2)\oplus C_1\oplus (B_1\oplus D) = B_2\oplus D, \\
+&\qquad\qquad\qquad\vdots
 \end{split}
 \end{align*}$$</p>
 <p>Luckily, these blocks won't be filtered out of the result of <code>decrypt()</code>. So it remains to find $D$, which is equivalent to finding the iv since we know the 'fake iv' $D\oplus\text{iv}$ (it is the first block of the output). I had to play around a bit before figuring out how: we enter the input $\bf0\ \bf0$. Then the equations show that</p>
 <p>$$\begin{align*}
-\bf0 \quad&amp;\text{decrypts to}\quad D\oplus\text{iv}, \<br />
-\bf0 \quad&amp;\text{decrypts to}\quad D\oplus [\bf0\oplus (D\oplus\text{iv})] = \text{iv}
+\bf0 \quad&\text{decrypts to}\quad D\oplus\text{iv}, \\
+\bf0 \quad&\text{decrypts to}\quad D\oplus [\bf0\oplus (D\oplus\text{iv})] = \text{iv}
 \end{align*}$$</p>
 <p>Putting all of these steps together:</p>
 <pre><code>Encrypted secret: af4ae3bfba4943afc6cd89ec1f39d1cc1a4780b2a7284ca222016bcfdb164b1410c085bda95069f9806b6617ec51e9f447afd84d9e895ffeeda55981ba8b921a600327b6b94ccf8bde0f82a48b6654e4
@@ -287,7 +287,7 @@ block2+D = c40c7100c3be1a8d58c66a0b5a2c52ba,
 <p>where the $f_i$'s are substitutions. In fact, the next operation <code>sub_bytes</code> has the same effect on the block (we are now in the for loop), so the result after <code>add_round_key</code> then <code>sub_bytes</code> is also in the form $f_1(b_1) \cdots f_{16}(b_{16})$!</p>
 <p>The next operation is <code>shift_rows</code>, which essentially rearranges the bytes within the block. So the block now has the form</p>
 <p>$$\begin{equation}\label{eq:3}f_{\tau(1)}(b_{\tau(1)}) \cdots f_{\tau(16)}(b_{\tau(16)}),\end{equation}$$</p>
-<p>where $\tau$ is a permutation of ${1,\ldots,16}$. Here we arrive at the crux of the challenge with <code>mix_columns</code>. In the original implementation, this operation is a rather complicated one that cannot be expressed as a substitution or a rearrangement, and our abstractions would be insufficient. But now, <code>mix_columns</code> turns out to be yet another rearrangement, so the block ends up with the same form \eqref{eq:3}. In fact it remains so after another <code>add_round_key</code>, thus completing one round.</p>
+<p>where $\tau$ is a permutation of $\{1,\ldots,16\}$. Here we arrive at the crux of the challenge with <code>mix_columns</code>. In the original implementation, this operation is a rather complicated one that cannot be expressed as a substitution or a rearrangement, and our abstractions would be insufficient. But now, <code>mix_columns</code> turns out to be yet another rearrangement, so the block ends up with the same form \eqref{eq:3}. In fact it remains so after another <code>add_round_key</code>, thus completing one round.</p>
 <p>This form is so important we should give it a name: a <em>twisted substitution</em>. Thus we have shown that one round of encryption gives us a twisted substitution. It shouldn't be too hard to see that 10 rounds (and the remaining operations thereafter) also results in a twisted substitution. <em>This is big.</em> A twisted substitution means that each byte of the input block affects only one byte of the output; let's call it the <em>partner byte</em> (I really like making up names). To illustrate, if for example the first byte $b_1$ was changed to $c_1$, then the output has the form</p>
 <p>$$f_{\tau(1)}(b_{\tau(1)}) \cdots f_{\tau(i)}(c_{\tau(i)}) \cdots f_{\tau(16)}(b_{\tau(16)}),$$</p>
 <p>where $i$ is sent to 1. This differs from $f_{\tau(1)}(b_\tau(1)) \cdots f_{\tau(16)}(b_{\tau(16)})$ by only one byte!</p>
@@ -366,18 +366,18 @@ password: flag: grey{mix_column_is_important_in_AES_ExB3Hf9q9I3m}
 <p>The challenge is to distinguish between a true RNG and a fake RNG. We have to be correct 100 times in a row, so clearly blind guessing won't work. We'd have to figure out how this fake RNG really works.</p>
 <p>Firstly, $x$, $r$ and $k$ are randomly initialized as length 64 bit-strings, which can be thought of as elements of $\F_2^{64}$. Then $x$ is repeatedly updated $16\cdot8$ times according to the rule</p>
 <p>$$x\mapsto\begin{cases}
-Ax+r,&amp;i\equiv0\pmod3 \<br />
-Ax+k,&amp;i\equiv1\pmod3 \<br />
-Ax+r+k,&amp;i\equiv2\pmod3, \<br />
+Ax+r,&i\equiv0\pmod3 \\
+Ax+k,&i\equiv1\pmod3 \\
+Ax+r+k,&i\equiv2\pmod3, \\
 \end{cases}$$</p>
 <p>where all operations are carried out over $\F_2$. The components within the iterates of $x$ are summed up mod 2, and the sums (which are bits) are concatenated to form 16 bytes; this is our custom random value.</p>
 <p>Given a vector $v=(v_1,\dots,v_{64})\in\F_2^{64}$, we can define $s(v)=\sum_i v_i$, and so the output bits $b_1,\ldots,b_{128}$ satisfy the equations</p>
 <p>$$\begin{align}\label{eq:4}
 \begin{split}
-s(x) &amp;= b_1 \<br />
-s(Ax+r) &amp;= b_2 \<br />
-s\bigl(A(Ax+r)+k\bigr) &amp;= b_3 \<br />
-&amp;\vdots
+s(x) &= b_1 \\
+s(Ax+r) &= b_2 \\
+s\bigl(A(Ax+r)+k\bigr) &= b_3 \\
+&\vdots
 \end{split}
 \end{align}$$</p>
 <p>Crucially, each LHS can be expressed as a linear combination of variables</p>
@@ -803,8 +803,8 @@ grey{g1ad3rs_pha5erS_y0u_hAvE_jo1n3d_tH3_m4ze_eSc4p3rs!}</code></pre>
 <p>Recall that any waveform can be decomposed into sine waves of different frequencies, and the spectrum plot tells us the amplitude of each frequency. Since the given audio files consist of a sequence of sine wave chunks, one would expect their amplitudes would be greatest for the frequencies in the chunks. The plot supports this, showing 7 distinct peaks which mean there are 7 different frequencies. It is reasonable to label these with digits 0 to 6, in increasing order of frequency.</p>
 <p>We can then see that the following characters are coded by the given triplet of digits:</p>
 <p>$$\begin{align*}
-\text g&amp;\mapsto205,\ \text r\mapsto 222,\ \text a\mapsto 166,\ \text e\mapsto 203,\ \text y\mapsto 232, \<br />
-\text h&amp;\mapsto206,\ \text c\mapsto 201,\ \text t\mapsto 224,\ \text s\mapsto 223.
+\text g&\mapsto205,\ \text r\mapsto 222,\ \text a\mapsto 166,\ \text e\mapsto 203,\ \text y\mapsto 232, \\
+\text h&\mapsto206,\ \text c\mapsto 201,\ \text t\mapsto 224,\ \text s\mapsto 223.
 \end{align*}$$</p>
 <p>To me it is quite clear that the triplets are meant to interpreted as base 7 numbers of some kind. This is because <code>g</code> and <code>h</code> are adjacent letters and they have adjacent codes, and indeed <code>c=201</code> is two more than <code>a=166</code>. The most obvious possibility is that the base 7 numbers represent ASCII codes, which they do! With this knowledge, it remains to decode <code>flag.flac</code>.</p>
 <p>I did it manually which was a painstaking process and rather error-prone. Basically I would select each triplet of chunks one-by-one, and then use the spectrum plot to determine their frequencies. In hindsight a Python script might have saved some time, but it doesn't matter as I got the flag in the end.</p>

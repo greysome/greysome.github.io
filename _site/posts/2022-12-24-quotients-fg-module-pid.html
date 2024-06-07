@@ -156,16 +156,16 @@ field $D/(p)$.</p>
 <p>We can go a step further. By identifying modules with tuples, we have
 the identity $p^kM = p^kM/p^{k+1}M + p^{k+1}M$. By induction we thus
 have the wonderful expression</p>
-<p>$$M = M/pM + pM/p^2M + \ldots + p^{l-1}M/p^lM,\quad l=\max,{e_i}.$$</p>
-<p>Now let $l'=\max,\{f_j\}$; there exists $x\in M$ with
+<p>$$M = M/pM + pM/p^2M + \ldots + p^{l-1}M/p^lM,\quad l=\max\,\{e_i\}.$$</p>
+<p>Now let $l'=\max\,\\{f_j\\}$; there exists $x\in M$ with
 $\ann(x+M')=(p^{l'})$. Then</p>
 <p>$$\ann(x+M')\supseteq \ann x\ge (p^l),$$</p>
 <p>and thus $l'\le l$[^3]. The rest of the proof boils down to the
 calculation</p>
 <p>$$\begin{align*}
-N &amp;= N/pN + \ldots + p^{l'-1}N/p^{l'}N \<br />
-&amp;\le M/pM + \ldots + p^{l'-1}M/p^{l'}M + \ldots + p^{l-1}M/p^lM \<br />
-&amp;= M.
+N &= N/pN + \ldots + p^{l'-1}N/p^{l'}N \\
+&\le M/pM + \ldots + p^{l'-1}M/p^{l'}M + \ldots + p^{l-1}M/p^lM \\
+&= M.
 \end{align*}$$</p>
 <p>We just need to show the</p>
 <p><strong>Lemma.</strong> $p^kN/p^{k+1}N$ is a quotient of $p^kM/p^{k+1}M$. Thus</p>
@@ -175,16 +175,16 @@ N &amp;= N/pN + \ldots + p^{l'-1}N/p^{l'}N \<br />
 <p><em>Proof.</em> Suppose $N\cong M/M'$. We have the isomorphism $p^kN\cong
 p^kM/(p^kM\cap M')$ by applying the 1st iso theorem to the map</p>
 <p>$$\begin{matrix}
-p^kM &amp; \to &amp; p^kN \<br />
-m &amp; \mapsto &amp; \overline{m}.
+p^kM & \to & p^kN \\
+m & \mapsto & \overline{m}.
 \end{matrix}$$</p>
 <p>The rest is just spamming the isomorphism theorems:</p>
 <p>$$\begin{align*}
-p^kN/p^{k+1}N &amp;\cong {p^kM/(p^kM\cap M') \over p^{k+1}M/(p^{k+1}M\cap M')} \<br />
-&amp;\cong {p^kM/(p^kM\cap M') \over [p^{k+1}M+(p^kM\cap M')]/(p^kM\cap M')}
-\quad\text{(2nd iso theorem on $p^{k+1}M$ and $p^kM\cap M'$)}\<br />
-&amp;\cong {p^kM \over [p^{k+1}M+(p^kM\cap M')]} \<br />
-&amp;\cong {p^kM/p^{k+1}M \over [p^{k+1}M+(p^kM\cap M')]/p^{k+1}M}.\quad\qed \<br />
+p^kN/p^{k+1}N &\cong {p^kM/(p^kM\cap M') \over p^{k+1}M/(p^{k+1}M\cap M')} \\
+&\cong {p^kM/(p^kM\cap M') \over [p^{k+1}M+(p^kM\cap M')]/(p^kM\cap M')}
+\quad\text{(2nd iso theorem on $p^{k+1}M$ and $p^kM\cap M'$)}\\
+&\cong {p^kM \over [p^{k+1}M+(p^kM\cap M')]} \\
+&\cong {p^kM/p^{k+1}M \over [p^{k+1}M+(p^kM\cap M')]/p^{k+1}M}.\quad\qed \\
 \end{align*}$$</p>
 <p>This completes the proof for primary modules. In the general case,
 consider the decomposition of $M$ into primary components, $M\cong
@@ -194,8 +194,8 @@ multiplicities of each prime. For each $M'$, we have that</p>
 <p>but this is also isomorphic to the quotient</p>
 <p>$${p_2}^{l_2}\cdots{p_n}^{l_n}M / ({p_2}^{l_2}\cdots{p_n}^{l_n}M\cap M') \cong M_{p_1}/(M_{p_1}\cap M').$$</p>
 <p>Thus we can apply the previous part of the proof to conclude
-$(M/M')_{p_1}\le M_{p_1}$ as tuples. Similarly, $(M/M')_{p_k}\le
-M_{p_k}$ for each $k$, and a moment's reflection should convince the
+$(M/M')\_{p_1}\le M\_{p\_1}$ as tuples. Similarly, $(M/M')\_{p\_k}\le
+M\_{p\_k}$ for each $k$, and a moment's reflection should convince the
 reader that this implies the original proposition. $\qed$</p>
 <p>[^1]: It turns out that $m\le n$ always, but we don't know that at this juncture.
 [^2]: Here $a-b$ is defined as 0 if $a&lt;b$, and the usual difference otherwise.
