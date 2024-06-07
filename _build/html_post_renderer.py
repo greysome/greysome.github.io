@@ -11,6 +11,7 @@ from itertools import chain
 from urllib.parse import quote
 from mistletoe import block_token
 from mistletoe import span_token
+from mistletoe.latex_token import Math
 from mistletoe.block_token import HtmlBlock
 from mistletoe.span_token import SpanToken, EscapeSequence, HtmlSpan
 from mistletoe.html_renderer import HtmlRenderer
@@ -47,21 +48,8 @@ class HtmlPostRenderer(HtmlRenderer):
         process_html_tokens=True,
         **kwargs
     ):
-        """
-        Args:
-            extras (list): allows subclasses to add even more custom tokens.
-            html_escape_double_quotes (bool): whether to also escape double
-                quotes when HTML-escaping rendered text.
-            html_escape_single_quotes (bool): whether to also escape single
-                quotes when HTML-escaping rendered text.
-            process_html_tokens (bool): whether to include HTML tokens in the
-                processing. If `False`, HTML markup will be treated as plain
-                text: e.g. input ``<br>`` will be rendered as ``&lt;br&gt;``.
-            **kwargs: additional parameters to be passed to the ancestor's
-                constructor.
-        """
         self._suppress_ptag_stack = [False]
-        final_extras = chain((Figure,), (HtmlBlock, HtmlSpan) if process_html_tokens else (), extras)
+        final_extras = chain((Figure,Math), (HtmlBlock, HtmlSpan) if process_html_tokens else (), extras)
         super().__init__(*final_extras, **kwargs)
         # parse all Images as Figures
         del self.render_map['Image']
@@ -70,8 +58,28 @@ class HtmlPostRenderer(HtmlRenderer):
         self.html_escape_double_quotes = html_escape_double_quotes
         self.html_escape_single_quotes = html_escape_single_quotes
 
+
     def __exit__(self, *args):
         super().__exit__(*args)
+
+
+    def escape_html_text(self, s: str) -> str:
+        s = s.replace("<", "&lt;")
+        s = s.replace(">", "&gt;")
+        if self.html_escape_double_quotes:
+            s = s.replace('"', "&quot;")
+        if self.html_escape_single_quotes:
+            s = s.replace('\'', "&#x27;")
+        return s
+
+
+    def render_math(self, token):
+        """
+        Math tokens are added so that the parser leaves symbols
+        within math blocks alone, like & and \
+        """
+        return self.render_raw_text(token)
+
 
     def render_figure(self, token):
         self.figno += 1
@@ -90,6 +98,7 @@ class HtmlPostRenderer(HtmlRenderer):
   </tr>
 </table>
 '''
+
 
     def render_document(self, token: block_token.Document) -> str:
         self.footnotes.update(token.footnotes)
