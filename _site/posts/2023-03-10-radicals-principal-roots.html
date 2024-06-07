@@ -1,0 +1,157 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/style.css"/>
+
+<!-- Syntax highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+
+<!-- MathJAX -->
+<script>
+  MathJax = {
+    loader: {
+	load: ['[custom]/xypic.js'],
+	paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    },
+    tex: {
+	packages: {'[+]': ['xypic']},
+	tags: 'ams',
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+            A: '\\mathbb{A}', B: '\\mathbb{B}', C: '\\mathbb{C}', D: '\\mathbb{D}',
+            E: '\\mathbb{E}', F: '\\mathbb{F}', G: '\\mathbb{G}', H: '\\mathbb{H}',
+            I: '\\mathbb{I}', J: '\\mathbb{J}', K: '\\mathbb{K}', L: '\\mathbb{L}',
+            M: '\\mathbb{M}', N: '\\mathbb{N}', O: '\\mathbb{O}', P: '\\mathbb{P}',
+            Q: '\\mathbb{Q}', R: '\\mathbb{R}', S: '\\mathbb{S}', T: '\\mathbb{T}',
+            U: '\\mathbb{U}', V: '\\mathbb{V}', W: '\\mathbb{W}', X: '\\mathbb{X}',
+            Y: '\\mathbb{Y}', Z: '\\mathbb{Z}', RP: '\\mathbb{RP}', CP: '\\mathbb{CP}',
+
+	    cA: '\\mathcal{A}', cB: '\\mathcal{B}', cC: '\\mathcal{C}', cD: '\\mathcal{D}',
+            cE: '\\mathcal{E}', cF: '\\mathcal{F}', cG: '\\mathcal{G}', cH: '\\mathcal{H}',
+            cI: '\\mathcal{I}', cJ: '\\mathcal{J}', cK: '\\mathcal{K}', cL: '\\mathcal{L}',
+            cM: '\\mathcal{M}', cN: '\\mathcal{N}', cO: '\\mathcal{O}', cP: '\\mathcal{P}',
+            cQ: '\\mathcal{Q}', cR: '\\mathcal{R}', cS: '\\mathcal{S}', cT: '\\mathcal{T}',
+            cU: '\\mathcal{U}', cV: '\\mathcal{V}', cW: '\\mathcal{W}', cX: '\\mathcal{X}',
+            cY: '\\mathcal{Y}', cZ: '\\mathcal{Z}',
+
+	    fa: '\\mathfrak{a}', fb: '\\mathfrak{b}', fp: '\\mathfrak{p}', fm: '\\mathfrak{m}',
+	    fM: '\\mathfrak{M}',
+
+            bf: ['\\mathbf{#1}', 1], 
+	    x: '\\mathbf{x}', y: '\\mathbf{y}', w: '\\mathbf{w}', Bb: '\\mathbf{b}',
+	    i: '\\imath', j: '\\jmath', v: '\\mathbf{v}', w: '\\mathbf{w}',
+
+	    a: '\\alpha', b: '\\beta', g: '\\gamma', e: '\\epsilon', l: '\\lambda',
+
+	    id: '\\mathop{\\rm id}', span: '\\mathop{\\rm span}', im: '\\mathop{\\rm im}', sgn: '\\mathop{\\rm sgn}',
+	    End: '\\mathop{\\rm End}', Gal: '\\mathop{\\rm Gal}', Hom: '\\mathop{\\rm Hom}', Inn: '\\mathop{\\rm Inn}',
+	    Out: '\\mathop{\\rm Out}', spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
+	    Cn: '\\mathop{\\rm Cn}', Th: '\\mathop{\\rm Th}', Spec: '\\mathop{\\rm Spec}', halo: '\\mathop{\\rm halo}',
+	    st: '\\mathop{\\rm st}', inte: '\\mathop{\\rm int}', trdeg: '\\mathop{\\rm tr.deg}', rank: '\\mathop{\\rm rank}',
+	    nullity: '\\mathop{\\rm nullity}', Aut: '\\mathop{\\rm Aut}', ann: '\\mathop{\\rm ann}', max: '\\mathop{\\rm max}',
+	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
+
+	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
+
+  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+
+	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
+	    inv: '{}^{-1}',
+	    ol: '\\overline',
+	    qed: '\\blacksquare',
+	    hR: '{}^*\\R',
+	    normal: '\\triangleleft', Normal: '\\triangleright',
+	    normaleq: '\\trianglelefteq', Normaleq: '\\trianglerighteq',
+	    dlim: '\\varinjlim',
+	    invlim: '\\varprojlim',
+	    imp: '\\Rightarrow',
+	    impd: '\\Leftarrow',
+	    eq: ['\\begin{equation}#1\\end{equation}', 1],
+	    ZZ: ['\\Z/{#1}\\Z', 1],
+	    ZZs: ['(\\Z/{#1}\\Z)^*', 1],
+	    legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+	    d: '\\mathop{}\\!\\mathrm{d}',
+	    p: '\\partial',
+	    pp: ['{\\p #1\\over\\p #2}', 2],
+	    ppp: ['{\\p^2 #1\\over\\p #2\\p #3}', 3],
+	    angles: ['\\langle{#1}\\rangle', 1],
+	    norm: ['\\left\\Vert{#1}\\right\\Vert', 1],
+	    floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1],
+	    ceil: ['\\left\\lceil{#1}\\right\\rceil', 1],
+        },
+    },
+    chtml: {
+	scale: 0.85,
+	linebreaks: {
+	    automatic: true
+	}
+    }
+};
+</script>
+
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+<body>
+<a href="/index.html">&lt; Back</a> 
+<h1>Solvability by radicals and principal roots</h1>
+<p>I'll be working over the base field $\Q$. Let's say an element
+$<br />
+a\in\C$ is <em>expressible in radicals</em> if the extension $\Q(\a)$ lies
+within some root tower. That is, $\Q(\a)\s K$, where $K$ lies atop a
+tower</p>
+<p>$$\eq{
+\label{tower}\Q\s K_1\s K_2\s \cdots\s K_n = K,\quad
+K_{i+1}=K_i(d_i) \ \ \text{and}\ \ d_i{}^{n_i}=k_i\in K_i.
+}$$</p>
+<p>Note a polynomial over $\Q$ is solvable in radicals if its root are
+expressible in radicals.[^1] Something the reader should note about
+the definition is that $d_i$ can be chosen to be any of the $n_i$
+roots of $k_i$. Because there is another "pop-mathy" definition of
+expressibility in radicals that says $\a$ can be written as an
+expression involving whole numbers, the basic arithmetic operations,
+and $\sqrt[n]{-}$. Here $\sqrt[n]{-}$ refers to the <em>principal root</em>,
+which is the root with greatest real part out of all roots with
+nonnegative imaginary parts.</p>
+<p>[^1]: Not entirely trivial because for each root $\a$ the $K$ containining $\Q(\a)$ may differ, so one has to take the composite of all the $K$'s and show it still admits a root tower. Not hard though.</p>
+<p>This definition is basically saying that $\Q(\a)\s K$, where $K$ lies
+atop a tower of the form $\eqref{tower}$, where $K_{i+1}=K_i(d_i)$
+with $d_i{}^{n_i}=k_i\in K_i$ and $d_i$ is the principal root
+$\sqrt[n_i]{k_i}$. Clearly this definition is stronger than the
+first. To remove ambiguity, let's say $\a$ satisfying the latter
+definition is <em>expressible in principal roots</em>. Obviously a primitive
+$n$th root of unity is expressible in radicals, but it is not
+immediately clear that it is expressible in principal roots---we can't
+take $\sqrt[n]{1}$ which would just be 1.</p>
+<p>Actually the two definitions can be proven to be equivalent, that is
+expressible in radicals $\imp$ expressible in principal roots. In
+fact, it clearly suffices to show that every root of unity is
+expressible in principal roots.</p>
+<p><em>Proof.</em> Let $z_n$ denote a primitive $n$th root of unity. The Galois
+extension $\Q(z_n)/\Q$ has degree $\varphi(n)$ and is abelian hence
+solvable, so $\Q(z_n)$ factors as a tower of cyclic
+extensions. Since $\varphi(n)&lt;n$, by induction we can assume
+$z=z_{\varphi(n)}$ is expressible in principal roots; adjoin it to
+every field $F_i$ in the tower. Thus each extension in the tower
+$F_{i+1}(z)/F_i(z)$ is a radical extension: $F_{i+1}(z) =
+F_i(z,u_i)$ with $u_i{}^{d_i}\in F_i(z)$ and
+$d_i\mid\varphi(n)$. Each $u_i$ can be written as a product of some
+$d_i$th root of unity and a principal root of $F_i$, thus $u_i$ is
+expressible in principal roots. Thus $z_n\in\Q(z,u_1,\ldots,u_k)$ is
+expressible in principal roots as desired. $\qed$</p>
+</body>
+</html>
+        

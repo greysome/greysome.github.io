@@ -1,0 +1,291 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/style.css"/>
+
+<!-- Syntax highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+
+<!-- MathJAX -->
+<script>
+  MathJax = {
+    loader: {
+	load: ['[custom]/xypic.js'],
+	paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    },
+    tex: {
+	packages: {'[+]': ['xypic']},
+	tags: 'ams',
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+            A: '\\mathbb{A}', B: '\\mathbb{B}', C: '\\mathbb{C}', D: '\\mathbb{D}',
+            E: '\\mathbb{E}', F: '\\mathbb{F}', G: '\\mathbb{G}', H: '\\mathbb{H}',
+            I: '\\mathbb{I}', J: '\\mathbb{J}', K: '\\mathbb{K}', L: '\\mathbb{L}',
+            M: '\\mathbb{M}', N: '\\mathbb{N}', O: '\\mathbb{O}', P: '\\mathbb{P}',
+            Q: '\\mathbb{Q}', R: '\\mathbb{R}', S: '\\mathbb{S}', T: '\\mathbb{T}',
+            U: '\\mathbb{U}', V: '\\mathbb{V}', W: '\\mathbb{W}', X: '\\mathbb{X}',
+            Y: '\\mathbb{Y}', Z: '\\mathbb{Z}', RP: '\\mathbb{RP}', CP: '\\mathbb{CP}',
+
+	    cA: '\\mathcal{A}', cB: '\\mathcal{B}', cC: '\\mathcal{C}', cD: '\\mathcal{D}',
+            cE: '\\mathcal{E}', cF: '\\mathcal{F}', cG: '\\mathcal{G}', cH: '\\mathcal{H}',
+            cI: '\\mathcal{I}', cJ: '\\mathcal{J}', cK: '\\mathcal{K}', cL: '\\mathcal{L}',
+            cM: '\\mathcal{M}', cN: '\\mathcal{N}', cO: '\\mathcal{O}', cP: '\\mathcal{P}',
+            cQ: '\\mathcal{Q}', cR: '\\mathcal{R}', cS: '\\mathcal{S}', cT: '\\mathcal{T}',
+            cU: '\\mathcal{U}', cV: '\\mathcal{V}', cW: '\\mathcal{W}', cX: '\\mathcal{X}',
+            cY: '\\mathcal{Y}', cZ: '\\mathcal{Z}',
+
+	    fa: '\\mathfrak{a}', fb: '\\mathfrak{b}', fp: '\\mathfrak{p}', fm: '\\mathfrak{m}',
+	    fM: '\\mathfrak{M}',
+
+            bf: ['\\mathbf{#1}', 1], 
+	    x: '\\mathbf{x}', y: '\\mathbf{y}', w: '\\mathbf{w}', Bb: '\\mathbf{b}',
+	    i: '\\imath', j: '\\jmath', v: '\\mathbf{v}', w: '\\mathbf{w}',
+
+	    a: '\\alpha', b: '\\beta', g: '\\gamma', e: '\\epsilon', l: '\\lambda',
+
+	    id: '\\mathop{\\rm id}', span: '\\mathop{\\rm span}', im: '\\mathop{\\rm im}', sgn: '\\mathop{\\rm sgn}',
+	    End: '\\mathop{\\rm End}', Gal: '\\mathop{\\rm Gal}', Hom: '\\mathop{\\rm Hom}', Inn: '\\mathop{\\rm Inn}',
+	    Out: '\\mathop{\\rm Out}', spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
+	    Cn: '\\mathop{\\rm Cn}', Th: '\\mathop{\\rm Th}', Spec: '\\mathop{\\rm Spec}', halo: '\\mathop{\\rm halo}',
+	    st: '\\mathop{\\rm st}', inte: '\\mathop{\\rm int}', trdeg: '\\mathop{\\rm tr.deg}', rank: '\\mathop{\\rm rank}',
+	    nullity: '\\mathop{\\rm nullity}', Aut: '\\mathop{\\rm Aut}', ann: '\\mathop{\\rm ann}', max: '\\mathop{\\rm max}',
+	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
+
+	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
+
+  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+
+	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
+	    inv: '{}^{-1}',
+	    ol: '\\overline',
+	    qed: '\\blacksquare',
+	    hR: '{}^*\\R',
+	    normal: '\\triangleleft', Normal: '\\triangleright',
+	    normaleq: '\\trianglelefteq', Normaleq: '\\trianglerighteq',
+	    dlim: '\\varinjlim',
+	    invlim: '\\varprojlim',
+	    imp: '\\Rightarrow',
+	    impd: '\\Leftarrow',
+	    eq: ['\\begin{equation}#1\\end{equation}', 1],
+	    ZZ: ['\\Z/{#1}\\Z', 1],
+	    ZZs: ['(\\Z/{#1}\\Z)^*', 1],
+	    legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+	    d: '\\mathop{}\\!\\mathrm{d}',
+	    p: '\\partial',
+	    pp: ['{\\p #1\\over\\p #2}', 2],
+	    ppp: ['{\\p^2 #1\\over\\p #2\\p #3}', 3],
+	    angles: ['\\langle{#1}\\rangle', 1],
+	    norm: ['\\left\\Vert{#1}\\right\\Vert', 1],
+	    floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1],
+	    ceil: ['\\left\\lceil{#1}\\right\\rceil', 1],
+        },
+    },
+    chtml: {
+	scale: 0.85,
+	linebreaks: {
+	    automatic: true
+	}
+    }
+};
+</script>
+
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+<body>
+<a href="/index.html">&lt; Back</a> 
+<h1>Real Jordan form and complexification</h1>
+<p>First, a recap of the usual Jordan form. Consider a complex vector
+space $V$ and a linear map $\l$ on it, such that $V$ is a
+$\C[\l]$-module in the obvious way. Since $\C$ is algebraically
+closed, the elementary factors of $V$ have the form $(\l-\a)^k$, so</p>
+<p>$$V \cong \bigoplus_i \C[\l]/(\l-\a_i)^{k_i}.$$</p>
+<p>The point of Jordan form is that each $\l$-span
+$\C[\l]/(\l-\a_i)^{k_i}$ admits a basis</p>
+<p>$${1,\ \l-\a_i,, \ldots,\ (\l-\a_i)^{k_i-1}}$$</p>
+<p>that satisfies the simple relations</p>
+<p>$$\l(\l-\a_i)^k = \a_i(\l-\a_i)^k+(\l-\a_i)^{k+1}.$$</p>
+<p>Thus the action of $\l$ on this $\l$-span can be represented by the
+matrix</p>
+<p>$$\begin{pmatrix}
+1 &amp; \a_i &amp; &amp; &amp; \<br />
+&amp; 1 &amp; \a_i &amp; &amp; \<br />
+&amp; &amp; \ddots &amp; &amp; \<br />
+&amp; &amp; &amp; 1 &amp; \a_i \<br />
+&amp; &amp; &amp; &amp; 1
+\end{pmatrix}$$</p>
+<p>As a whole, the matrix of $\l$ can be represented as a direct sum of
+these Jordan blocks.</p>
+<p>It turns out that we can get something close to Jordan form when
+working purely in $\R$. So now suppose $V$ is a real vector space and
+the linear map $\l$ induces an $\R[\l]$-module structure. The key fact
+is that all irreducibles in $\R[\l]$ are either linears or
+quadratics. Therefore, in the elementary factor decomposition of $V$,
+each direct summand is either</p>
+<p>$$\R[\l]/(\l-\a)^k \quad\text{or}\quad \R[\l]/(\l^2-\a\l-\b)^k,
+\quad\text{$\l^2-\a\l-\b$ irreducible.}$$</p>
+<p>If the former, we already know from the above discussion that there is
+a nice matrix form on that $\l$-span. So it is the latter case that is
+new.</p>
+<p>This is where the magic of complexification comes in. Suppose $V$ is
+the $\l$-span $\R[\l]/(\l^2-\a\l-\b)^k$. The idea is that we make $V$
+into a complex vector space</p>
+<p>$$V^\C \cong \C[\l]/(\l^2-\a\l-\b)^k,$$</p>
+<p>and by CRT $V^\C$ splits into two 'nice' $\l$-spans $\C[\l]/(\l-\g)^k$
+and $\C[\l]/(\l-\ol\g)^k$, where $\g,\ol\gamma$ are the roots to
+$\l^2-\a\l-\b$. By the above discussion we have two nice sets of
+<em>complex</em> bases $\{\v_1,\ldots,\v_k\}$ and $\{\w_1,\ldots,\w_k\}$
+for each of the summands, which we then use to obtain a <em>real</em> basis
+$\{v_1',\ldots,v_{2k}'\}$ under which $\l$ has a nice matrix form.</p>
+<p>Usually $V^\C$ is straightaway defined as the scalar extension
+$\C\otimes_\R V$, but it might be more illuminating to list out the
+properties that we want $V^\C$ to satisfy, and then prove
+$\C\otimes_\R V$ is indeed a model (which I'll leave as an
+exercise). So, $V^\C$ should satisfy these very reasonable properties:</p>
+<ol>
+<li>
+<p>Elements of $V^\C$ can be written in the form $v+wi$ where $v,w\in
+V$. There is an embedding $V\hookrightarrow V^\C$ mapping $v\mapsto
+v+0i$.</p>
+</li>
+<li>
+<p>Addition is defined in the obious way. Scalar multiplication is
+defined by the formula</p>
+<p>$$(a+bi)(v+wi) = (av-bw)+(aw+bv)i, \quad a,b\in\R.$$</p>
+</li>
+<li>
+<p>A linear map $\l$ on $V$ extends to a map on $V^\C$ by the formula</p>
+<p>$$\l(v+wi) = \l v + (\l w)i.$$</p>
+</li>
+</ol>
+<p>Now we establish some basic facts about $V^\C$.</p>
+<p><strong>Proposition 1.</strong> A basis $\{v_1,\ldots,v_n\}$ is also a basis for
+$V^\C$.</p>
+<p><em>Proof.</em> If $\sum_k (a_k+b_ki)(v_k+0i) = 0$ then $(\sum_k a_kv_k) +
+(\sum_k b_kv_k)i = 0$, so $\sum_k a_kv_k=\sum_k b_kv_k=0$ and thus
+$a_k=b_k=0$ for all $k$. Thus linear independence is preserved.</p>
+<p>If $v,w\in V$ then $v=\sum_k a_kv_k$ and $w=\sum_k b_kv_k$, so</p>
+<p>$$\begin{align*}
+v+wi &amp;= \sum_k a_kv_k + \left(\sum_k b_kv_k\right)i \<br />
+&amp;= \sum_k a_kv_k + \left(\sum_k b_ki\cdot v_k\right) \<br />
+&amp;= \sum_k (a_k+b_ki)v_k,
+\end{align*}$$</p>
+<p>so $v_1,\ldots,v_n$ span $V^\C$ as well. $\qed$</p>
+<p><strong>Proposition 2.</strong> The extension of $\l:V\to V$ to $V^\C$ as defined
+above is automatically $\C$-linear. Furthermore it satisfies</p>
+<p>$$\ol{\l(v+wi)} = \l(\ol{v+wi}) = \l(v-wi).$$</p>
+<p><em>Proof.</em> Additivity is trivial. And we have</p>
+<p>$$\begin{align*}
+(a+bi)\l(v+wi) &amp;= (a+bi)\bigl(\l(v)+\l(w)i\bigr) \<br />
+&amp;= \bigl(a\l(v)-b\l(w)\bigr)+\bigl(a\l(w)+b\l(v)\bigr)i \<br />
+&amp;= \l(av-bw)+\l(aw+bv)i \<br />
+&amp;= \l\bigl((av-bw)+(aw+bv)i\bigr) \<br />
+&amp;= \l\bigl((a+bi)(v+wi)\bigr).
+\end{align*}$$</p>
+<p>As for the second claim, let $v_1,\ldots,v_n$ be a basis for
+$V$. Since elements of $V$ are self-conjugate we have</p>
+<p>$$\ol{\l v_i} = \l v_i = \l\ol{v_i}.$$</p>
+<p>By proposition 1, the $v_i$'s also form a basis of $V^\C$, so it
+suffices to prove that linear combinations preserve the equality
+between the first and third terms. This is pure calculation:</p>
+<p>$$\begin{align*}
+\ol{\l\left(\sum_k (a_k+b_ki)v_k\right)}
+&amp;= \ol{\sum_k (a_k+b_ki)\l v_i} \<br />
+&amp;= \sum_k \ol{a_k+b_ki}\cdot\ol{\l v_i} \<br />
+&amp;= \sum_k \ol{a_k+b_ki}\ \l\ol{v_i} \<br />
+&amp;= \l\left(\ol{\sum_k (a_k+b_ki)v_k}\right).\ \qed
+\end{align*}$$</p>
+<p>Proposition 1 is very important, because if $M$ is the matrix
+representing $\l$ in $V$, then we can also use $M$ to represent $\l$
+in $V^\C$! Thus, the characteristic polynomial of $\l$ in $V^\C$ is
+also $(\l^2-\a\l-\b)^k$, but this time it splits into linear
+factors. Therefore,</p>
+<p>$$V^\C \cong \C[\l]/(\l^2-\a\l-\b)^k \cong \C[\l]/(\l-\g)^k \oplus
+\C[\l]/(\l-\ol\g)^k.$$</p>
+<p>Put in words, the complexification of the real $\l$-span splits into
+two 'nice' complex $\l$-spans. Thus we have two separate (complex) bases
+$\{\v_1,\ldots,\v_n\}$ and $\{\w_1,\ldots,\w_n\}$ such that</p>
+<p>$$\begin{align*}
+\l \v_k &amp;= \g,\v_k + \v_{k+1}, \<br />
+\l \w_k &amp;= \ol\g,\w_k + \w_{k+1}.
+\end{align*}$$</p>
+<p>But conjugating the first equation yields</p>
+<p>$$\l\ol{\v_k} = \ol\gamma,\ol{\v_k} + \ol{\v_{k+1}},$$</p>
+<p>meaning that given the basis $\{\v_k\}$, we can in fact choose
+$\w_k=\ol{\v_k}$! Now define the real vectors</p>
+<p>$$v_k' = {1\over2}(\v_k+\ol{\v_k}),\quad w_k' = {1\over2}(\v_k-\ol{\v_k}).$$</p>
+<p>Note that $v_k'$ and $w_k'$ are simply the real and imaginary parts of
+$\v_k$. The corresponding relations matrix has the block form</p>
+<p>$$\begin{pmatrix}
+1/2 &amp; 1/2 &amp; &amp; \<br />
+1/2 &amp; -1/2 &amp; &amp; \<br />
+&amp; &amp; 1/2 &amp; 1/2 &amp; \<br />
+&amp; &amp; 1/2 &amp; -1/2 &amp; \<br />
+&amp;&amp;&amp;&amp; \ddots
+\end{pmatrix},$$</p>
+<p>which has nonzero determinant and is hence invertible. Thus the
+$v_k'$'s and $w_k'$'s together form a real basis for $V^\C$. Now let
+$\g=a+bi$. Since $\v_k = v_k'+w_k'i$, we can deduce the relations</p>
+<p>$$\begin{align*}
+\l v_k' &amp;= \Re \l \v_k \<br />
+&amp;= \Re(\g\v_i + \v_{k+1}) \<br />
+&amp;= \Re\bigl((a+bi)(v_k'+w_k'i)\bigr) + v_{k+1}' \<br />
+&amp;= av_k'-bw_k'+v_{k+1}'.
+\end{align*}$$</p>
+<p>Similarly,</p>
+<p>$$\l w_k' = bv_k'+aw_k'+w_{k+1}'.$$</p>
+<p>Thus the matrix of $\l$ wrt the $v_k'$'s and $w_k'$'s has the block
+form</p>
+<p>$$\begin{pmatrix}
+a &amp; -b &amp; 1 &amp; &amp;&amp;&amp;&amp;&amp;&amp; \<br />
+b &amp; a &amp; &amp; 1 &amp;&amp;&amp;&amp;&amp;&amp; \<br />
+&amp;&amp; a &amp; -b &amp; 1 &amp;&amp;&amp;&amp;&amp; \<br />
+&amp;&amp; b &amp; a &amp; &amp; 1 &amp;&amp;&amp;&amp; \<br />
+&amp;&amp;&amp;&amp; \ddots &amp;&amp;&amp;&amp;&amp; \<br />
+&amp;&amp;&amp;&amp;&amp;&amp; a &amp; -b &amp; 1 &amp; \<br />
+&amp;&amp;&amp;&amp;&amp;&amp; b &amp; a &amp; &amp; 1 \<br />
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; a &amp; -b \<br />
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; b &amp; a
+\end{pmatrix}$$</p>
+<p>I'll call this a <em>real Jordan block</em>. Thus, any linear map on a real
+vector space can be represented by a diagonal block matrix, where each
+block is either a usual Jordan block or a real Jordan block.</p>
+<h3>Addendum</h3>
+<p>I discovered a matrix form slightly different from the real Jordan
+block. This form is obtained by considering the basis</p>
+<p>$${p(\l), \l p(\l), p(\l)^2, \l p(\l)^2, \ldots}$$</p>
+<p>of $\R[\l]/p(\l)^k$, where $p(\l)=\l^2-\a\l-\b$ is an irreducible
+quadratic. Since</p>
+<p>$$\l^2 p(\l)^i = -\b\ p(\l)^i - \a\l p(\l)^i + p(\l)^{i+1},$$</p>
+<p>the matrix of $\l$ on this $\l$-span, wrt this basis, has the form</p>
+<p>$$\begin{pmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 &amp;&amp;&amp;&amp;&amp;&amp; \<br />
+-\b &amp; -\a &amp; 1 &amp; 0 &amp;&amp;&amp;&amp;&amp;&amp; \<br />
+&amp;&amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp;&amp;&amp;&amp; \<br />
+&amp;&amp; -\b &amp; -\a &amp; 1 &amp; 0 &amp;&amp;&amp;&amp; \<br />
+&amp;&amp;&amp;&amp; \ddots &amp;&amp;&amp;&amp;&amp; \<br />
+&amp;&amp;&amp;&amp;&amp;&amp; 0 &amp; 1 &amp; 0 &amp; 0 \<br />
+&amp;&amp;&amp;&amp;&amp;&amp; -\b &amp; -\a &amp; 1 &amp; 0 \<br />
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; 0 &amp; 1 \<br />
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; -\b &amp; -\a
+\end{pmatrix},$$</p>
+<p>composed of the subblocks</p>
+<p>$$\begin{pmatrix} 0 &amp; 1 \ -\b &amp; -\a\end{pmatrix}
+\quad\text{and}\quad
+\begin{pmatrix} 0 &amp; 0 \ 1 &amp; 0 \end{pmatrix}.$$</p>
+</body>
+</html>
+        

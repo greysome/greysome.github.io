@@ -1,0 +1,192 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/style.css"/>
+
+<!-- Syntax highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+
+<!-- MathJAX -->
+<script>
+  MathJax = {
+    loader: {
+	load: ['[custom]/xypic.js'],
+	paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    },
+    tex: {
+	packages: {'[+]': ['xypic']},
+	tags: 'ams',
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+            A: '\\mathbb{A}', B: '\\mathbb{B}', C: '\\mathbb{C}', D: '\\mathbb{D}',
+            E: '\\mathbb{E}', F: '\\mathbb{F}', G: '\\mathbb{G}', H: '\\mathbb{H}',
+            I: '\\mathbb{I}', J: '\\mathbb{J}', K: '\\mathbb{K}', L: '\\mathbb{L}',
+            M: '\\mathbb{M}', N: '\\mathbb{N}', O: '\\mathbb{O}', P: '\\mathbb{P}',
+            Q: '\\mathbb{Q}', R: '\\mathbb{R}', S: '\\mathbb{S}', T: '\\mathbb{T}',
+            U: '\\mathbb{U}', V: '\\mathbb{V}', W: '\\mathbb{W}', X: '\\mathbb{X}',
+            Y: '\\mathbb{Y}', Z: '\\mathbb{Z}', RP: '\\mathbb{RP}', CP: '\\mathbb{CP}',
+
+	    cA: '\\mathcal{A}', cB: '\\mathcal{B}', cC: '\\mathcal{C}', cD: '\\mathcal{D}',
+            cE: '\\mathcal{E}', cF: '\\mathcal{F}', cG: '\\mathcal{G}', cH: '\\mathcal{H}',
+            cI: '\\mathcal{I}', cJ: '\\mathcal{J}', cK: '\\mathcal{K}', cL: '\\mathcal{L}',
+            cM: '\\mathcal{M}', cN: '\\mathcal{N}', cO: '\\mathcal{O}', cP: '\\mathcal{P}',
+            cQ: '\\mathcal{Q}', cR: '\\mathcal{R}', cS: '\\mathcal{S}', cT: '\\mathcal{T}',
+            cU: '\\mathcal{U}', cV: '\\mathcal{V}', cW: '\\mathcal{W}', cX: '\\mathcal{X}',
+            cY: '\\mathcal{Y}', cZ: '\\mathcal{Z}',
+
+	    fa: '\\mathfrak{a}', fb: '\\mathfrak{b}', fp: '\\mathfrak{p}', fm: '\\mathfrak{m}',
+	    fM: '\\mathfrak{M}',
+
+            bf: ['\\mathbf{#1}', 1], 
+	    x: '\\mathbf{x}', y: '\\mathbf{y}', w: '\\mathbf{w}', Bb: '\\mathbf{b}',
+	    i: '\\imath', j: '\\jmath', v: '\\mathbf{v}', w: '\\mathbf{w}',
+
+	    a: '\\alpha', b: '\\beta', g: '\\gamma', e: '\\epsilon', l: '\\lambda',
+
+	    id: '\\mathop{\\rm id}', span: '\\mathop{\\rm span}', im: '\\mathop{\\rm im}', sgn: '\\mathop{\\rm sgn}',
+	    End: '\\mathop{\\rm End}', Gal: '\\mathop{\\rm Gal}', Hom: '\\mathop{\\rm Hom}', Inn: '\\mathop{\\rm Inn}',
+	    Out: '\\mathop{\\rm Out}', spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
+	    Cn: '\\mathop{\\rm Cn}', Th: '\\mathop{\\rm Th}', Spec: '\\mathop{\\rm Spec}', halo: '\\mathop{\\rm halo}',
+	    st: '\\mathop{\\rm st}', inte: '\\mathop{\\rm int}', trdeg: '\\mathop{\\rm tr.deg}', rank: '\\mathop{\\rm rank}',
+	    nullity: '\\mathop{\\rm nullity}', Aut: '\\mathop{\\rm Aut}', ann: '\\mathop{\\rm ann}', max: '\\mathop{\\rm max}',
+	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
+
+	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
+
+  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+
+	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
+	    inv: '{}^{-1}',
+	    ol: '\\overline',
+	    qed: '\\blacksquare',
+	    hR: '{}^*\\R',
+	    normal: '\\triangleleft', Normal: '\\triangleright',
+	    normaleq: '\\trianglelefteq', Normaleq: '\\trianglerighteq',
+	    dlim: '\\varinjlim',
+	    invlim: '\\varprojlim',
+	    imp: '\\Rightarrow',
+	    impd: '\\Leftarrow',
+	    eq: ['\\begin{equation}#1\\end{equation}', 1],
+	    ZZ: ['\\Z/{#1}\\Z', 1],
+	    ZZs: ['(\\Z/{#1}\\Z)^*', 1],
+	    legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+	    d: '\\mathop{}\\!\\mathrm{d}',
+	    p: '\\partial',
+	    pp: ['{\\p #1\\over\\p #2}', 2],
+	    ppp: ['{\\p^2 #1\\over\\p #2\\p #3}', 3],
+	    angles: ['\\langle{#1}\\rangle', 1],
+	    norm: ['\\left\\Vert{#1}\\right\\Vert', 1],
+	    floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1],
+	    ceil: ['\\left\\lceil{#1}\\right\\rceil', 1],
+        },
+    },
+    chtml: {
+	scale: 0.85,
+	linebreaks: {
+	    automatic: true
+	}
+    }
+};
+</script>
+
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+<body>
+<h1>wy's blog</h1>
+<p>33 posts</p>
+<table>
+    <tr><td class="postdate">Apr 24, 2024</td><td><a href="/posts/2024-04-24-grey-ctf-quals-2024.html">Grey Cat The Flags 2024 Qualifiers writeups
+</a></td></tr>
+<tr><td class="postdate">Mar 16, 2024</td><td><a href="/posts/2024-03-16-hackbash-solutions.html">Crypto solutions for Hackbash 2024
+</a></td></tr>
+<tr><td class="postdate">Mar 1, 2024</td><td><a href="/posts/2024-03-01-sum-laurent.html">A summation identity, via Laurent expansion
+</a></td></tr>
+<tr><td class="postdate">Dec 30, 2023</td><td><a href="/posts/2023-12-30-sum-matrix-inverse.html">An interesting result on the entries of a matrix inverse
+</a></td></tr>
+<tr><td class="postdate">Mar 10, 2023</td><td><a href="/posts/2023-03-10-cos-2pi-n-radicals.html">Expressing $\cos(2\pi/n)$ in radicals
+</a></td></tr>
+<tr><td class="postdate">Mar 10, 2023</td><td><a href="/posts/2023-03-10-radicals-principal-roots.html">Solvability by radicals and principal roots
+</a></td></tr>
+<tr><td class="postdate">Feb 7, 2023</td><td><a href="/posts/2023-02-07-extension-tn-un.html">The extension $\C(t^n,u^n)/\C(t,u)$, where $t^2+u^2=1$
+</a></td></tr>
+<tr><td class="postdate">Feb 5, 2023</td><td><a href="/posts/2023-02-05-galois-result.html">A result of Galois on prime degree polynomials
+</a></td></tr>
+<tr><td class="postdate">Feb 5, 2023</td><td><a href="/posts/2023-02-05-casus-irreducibilis.html">Casus irreducibilis for cubic polynomials
+</a></td></tr>
+<tr><td class="postdate">Feb 4, 2023</td><td><a href="/posts/2023-02-04-alternative-discriminant.html">An alternative discriminant
+</a></td></tr>
+<tr><td class="postdate">Jan 25, 2023</td><td><a href="/posts/2023-01-25-normalised-root-tower.html">Normalised root towers for solvable extensions of $\Q$
+</a></td></tr>
+<tr><td class="postdate">Jan 25, 2023</td><td><a href="/posts/2023-01-25-nilpotent-group.html">Nilpotent groups and central series
+</a></td></tr>
+<tr><td class="postdate">Jan 25, 2023</td><td><a href="/posts/2023-01-25-galoisgrp-xp-a.html">The Galois group of $x^p-a$
+</a></td></tr>
+<tr><td class="postdate">Jan 25, 2023</td><td><a href="/posts/2023-01-25-separable-polys.html">Separability and polynomials over char $p$
+</a></td></tr>
+<tr><td class="postdate">Jan 6, 2023</td><td><a href="/posts/2023-01-06-real-jordan.html">Real Jordan form and complexification
+</a></td></tr>
+<tr><td class="postdate">Jan 4, 2023</td><td><a href="/posts/2023-01-04-linear-map-module.html">Studying linear maps through $F[\l]$-modules
+</a></td></tr>
+<tr><td class="postdate">Dec 30, 2022</td><td><a href="/posts/2022-12-30-gen-finite-rings.html">Generating finite rings
+</a></td></tr>
+<tr><td class="postdate">Dec 25, 2022</td><td><a href="/posts/2022-12-25-fg-submodule-pid.html">Characterising submodules of finitely generated torsion modules over a PID
+</a></td></tr>
+<tr><td class="postdate">Dec 24, 2022</td><td><a href="/posts/2022-12-24-quotients-fg-module-pid.html">Characterising quotients of finitely generated torsion modules over a PID
+</a></td></tr>
+<tr><td class="postdate">Dec 24, 2022</td><td><a href="/posts/2022-12-24-smith-form-Z2.html">Visualising Smith normal form on $\Z^2$
+</a></td></tr>
+<tr><td class="postdate">Oct 6, 2022</td><td><a href="/posts/2022-10-06-quaternion-cross-product.html">Why quaternion multiplication resembles the cross product
+</a></td></tr>
+<tr><td class="postdate">Oct 3, 2022</td><td><a href="/posts/2022-10-03-crt-easy.html">A very easy way to remember the Chinese Remainder Theorem
+</a></td></tr>
+<tr><td class="postdate">Jul 16, 2022</td><td><a href="/posts/2022-07-16-defining-smooth-mfd.html">Defining smooth manifolds
+</a></td></tr>
+<tr><td class="postdate">Jul 11, 2022</td><td><a href="/posts/2022-07-11-pullback-chain.html">Computing pullbacks of $k$-forms over $k$-chains
+</a></td></tr>
+<tr><td class="postdate">Jul 10, 2022</td><td><a href="/posts/2022-07-10-linear-rr-simpler.html">A simpler way of solving linear recurrences
+</a></td></tr>
+<tr><td class="postdate">Jul 9, 2022</td><td><a href="/posts/2022-07-09-gripe-zorns.html">A small gripe on Zorn's lemma
+</a></td></tr>
+<tr><td class="postdate">Mar 20, 2022</td><td><a href="/posts/2022-03-20-boolean-ring.html">Boolean rings
+</a></td></tr>
+<tr><td class="postdate">Feb 20, 2022</td><td><a href="/posts/2022-02-20-kaye-ch2.html">The subtheory $PA^-$
+</a></td></tr>
+<tr><td class="postdate">Feb 19, 2022</td><td><a href="/posts/2022-02-19-kaye-ch1.html">Some remarks on $\Th\N$
+</a></td></tr>
+<tr><td class="postdate">Jan 2, 2022</td><td><a href="/posts/2022-01-02-filter-cover-compact.html">Equivalence of filter and cover compactness
+</a></td></tr>
+<tr><td class="postdate">Dec 30, 2021</td><td><a href="/posts/2021-12-30-ZZs-cyclic.html">$\ZZs{p^n}$ is cyclic
+</a></td></tr>
+<tr><td class="postdate">Nov 7, 2021</td><td><a href="/posts/2021-11-07-maximal-subgroup-Sn.html">Certain maximal subgroups of $S_n$
+</a></td></tr>
+<tr><td class="postdate">Jun 22, 2021</td><td><a href="/posts/2021-06-22-aut-Q8.html">Deriving $\Aut(Q_8)$
+</a></td></tr>
+
+</table><br>
+
+<p>5 writeups</p>
+<table>
+    <tr><td><a target="blank" href="/pdf/integer-harmonic-numbers.pdf">integer-harmonic-numbers.pdf</a></td></tr>
+<tr><td><a target="blank" href="/pdf/coinflip-game.pdf">coinflip-game.pdf</a></td></tr>
+<tr><td><a target="blank" href="/pdf/left-right-coset.pdf">left-right-coset.pdf</a></td></tr>
+<tr><td><a target="blank" href="/pdf/fibonacci-game.pdf">fibonacci-game.pdf</a></td></tr>
+<tr><td><a target="blank" href="/pdf/threepotent-twopotent.pdf">threepotent-twopotent.pdf</a></td></tr>
+
+</table>
+</body>
+</html>
+ 

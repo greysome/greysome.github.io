@@ -1,0 +1,320 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/style.css"/>
+
+<!-- Syntax highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+
+<!-- MathJAX -->
+<script>
+  MathJax = {
+    loader: {
+	load: ['[custom]/xypic.js'],
+	paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    },
+    tex: {
+	packages: {'[+]': ['xypic']},
+	tags: 'ams',
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+            A: '\\mathbb{A}', B: '\\mathbb{B}', C: '\\mathbb{C}', D: '\\mathbb{D}',
+            E: '\\mathbb{E}', F: '\\mathbb{F}', G: '\\mathbb{G}', H: '\\mathbb{H}',
+            I: '\\mathbb{I}', J: '\\mathbb{J}', K: '\\mathbb{K}', L: '\\mathbb{L}',
+            M: '\\mathbb{M}', N: '\\mathbb{N}', O: '\\mathbb{O}', P: '\\mathbb{P}',
+            Q: '\\mathbb{Q}', R: '\\mathbb{R}', S: '\\mathbb{S}', T: '\\mathbb{T}',
+            U: '\\mathbb{U}', V: '\\mathbb{V}', W: '\\mathbb{W}', X: '\\mathbb{X}',
+            Y: '\\mathbb{Y}', Z: '\\mathbb{Z}', RP: '\\mathbb{RP}', CP: '\\mathbb{CP}',
+
+	    cA: '\\mathcal{A}', cB: '\\mathcal{B}', cC: '\\mathcal{C}', cD: '\\mathcal{D}',
+            cE: '\\mathcal{E}', cF: '\\mathcal{F}', cG: '\\mathcal{G}', cH: '\\mathcal{H}',
+            cI: '\\mathcal{I}', cJ: '\\mathcal{J}', cK: '\\mathcal{K}', cL: '\\mathcal{L}',
+            cM: '\\mathcal{M}', cN: '\\mathcal{N}', cO: '\\mathcal{O}', cP: '\\mathcal{P}',
+            cQ: '\\mathcal{Q}', cR: '\\mathcal{R}', cS: '\\mathcal{S}', cT: '\\mathcal{T}',
+            cU: '\\mathcal{U}', cV: '\\mathcal{V}', cW: '\\mathcal{W}', cX: '\\mathcal{X}',
+            cY: '\\mathcal{Y}', cZ: '\\mathcal{Z}',
+
+	    fa: '\\mathfrak{a}', fb: '\\mathfrak{b}', fp: '\\mathfrak{p}', fm: '\\mathfrak{m}',
+	    fM: '\\mathfrak{M}',
+
+            bf: ['\\mathbf{#1}', 1], 
+	    x: '\\mathbf{x}', y: '\\mathbf{y}', w: '\\mathbf{w}', Bb: '\\mathbf{b}',
+	    i: '\\imath', j: '\\jmath', v: '\\mathbf{v}', w: '\\mathbf{w}',
+
+	    a: '\\alpha', b: '\\beta', g: '\\gamma', e: '\\epsilon', l: '\\lambda',
+
+	    id: '\\mathop{\\rm id}', span: '\\mathop{\\rm span}', im: '\\mathop{\\rm im}', sgn: '\\mathop{\\rm sgn}',
+	    End: '\\mathop{\\rm End}', Gal: '\\mathop{\\rm Gal}', Hom: '\\mathop{\\rm Hom}', Inn: '\\mathop{\\rm Inn}',
+	    Out: '\\mathop{\\rm Out}', spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
+	    Cn: '\\mathop{\\rm Cn}', Th: '\\mathop{\\rm Th}', Spec: '\\mathop{\\rm Spec}', halo: '\\mathop{\\rm halo}',
+	    st: '\\mathop{\\rm st}', inte: '\\mathop{\\rm int}', trdeg: '\\mathop{\\rm tr.deg}', rank: '\\mathop{\\rm rank}',
+	    nullity: '\\mathop{\\rm nullity}', Aut: '\\mathop{\\rm Aut}', ann: '\\mathop{\\rm ann}', max: '\\mathop{\\rm max}',
+	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
+
+	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
+
+  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+
+	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
+	    inv: '{}^{-1}',
+	    ol: '\\overline',
+	    qed: '\\blacksquare',
+	    hR: '{}^*\\R',
+	    normal: '\\triangleleft', Normal: '\\triangleright',
+	    normaleq: '\\trianglelefteq', Normaleq: '\\trianglerighteq',
+	    dlim: '\\varinjlim',
+	    invlim: '\\varprojlim',
+	    imp: '\\Rightarrow',
+	    impd: '\\Leftarrow',
+	    eq: ['\\begin{equation}#1\\end{equation}', 1],
+	    ZZ: ['\\Z/{#1}\\Z', 1],
+	    ZZs: ['(\\Z/{#1}\\Z)^*', 1],
+	    legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+	    d: '\\mathop{}\\!\\mathrm{d}',
+	    p: '\\partial',
+	    pp: ['{\\p #1\\over\\p #2}', 2],
+	    ppp: ['{\\p^2 #1\\over\\p #2\\p #3}', 3],
+	    angles: ['\\langle{#1}\\rangle', 1],
+	    norm: ['\\left\\Vert{#1}\\right\\Vert', 1],
+	    floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1],
+	    ceil: ['\\left\\lceil{#1}\\right\\rceil', 1],
+        },
+    },
+    chtml: {
+	scale: 0.85,
+	linebreaks: {
+	    automatic: true
+	}
+    }
+};
+</script>
+
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+<body>
+<a href="/index.html">&lt; Back</a> 
+<h1>The subtheory $PA^-$</h1>
+<p>This is a summary of ch2 of Kaye. In the previous entry I considered
+models for all of $\Th\N$. Now I consider a subtheory $PA^-$, which
+are essentially the Peano axioms without induction. To be specific,
+the axioms consist of:</p>
+<ol>
+<li>
+<p>Axioms for a commutative semiring with operations $+$ and $\cdot$
+(i.e. a commutative ring except additive inverses are not required)</p>
+</li>
+<li>
+<p>Axioms for a linear order $&lt;$</p>
+</li>
+<li>
+<p>$&lt;$ preserves $\cdot$ and $+$ : $\forall x,y,z(x&lt;y\to x+z&lt;y+z)$
+and $\forall x,y,z(0&lt;z\land x&lt;y\to x\cdot z&lt;y\cdot z)$</p>
+</li>
+<li>
+<p>$&lt;$ is a discrete order: $0&lt;1$, $\forall x(x&gt;0\to x\ge1)$ and
+$\forall x(x\ge 0)$</p>
+</li>
+<li>
+<p>Smaller elements can be subtracted from larger elements: $\forall
+x,y(x&lt;y\to \exists z(x+z=y))$. It can be proven using the other axioms
+that $z$ is unique.</p>
+</li>
+</ol>
+<p>Obviously $\N$ is a model. What is different from before is that now,
+we can construct lots of nonstandard models without appealing to
+compactness. Before I do so, let me point out a correspondence between
+models $M\vDash PA^-$ and discretely ordered commutative <em>rings</em>
+$R$ (with additive inverses). Given $M$, we can construct $R$ as the
+quotient $M^2/\sim$, where</p>
+<p>$$(a,b)\sim(c,d) \iff a+d=b+c.$$</p>
+<p>Think of $(a,b)$ as a formal representation of the difference
+$a-b$. We then define $+$, $\cdot$ and $&lt;$ in the natural way and
+check that it forms a discretely ordered commutative ring. On the
+other hand, given a discretely ordered commutative ring $R$, the
+subset ${x\in R\mid x\ge0}$ forms a model of $PA^-$. This justifies
+calling $PA^-$ <em>the theory of non-negative parts of discretely
+ordered rings</em>. As we'll see, this correspondence is useful because it
+is often more convenient to construct both positive and negative
+elements at once, then restrict our attention to non-negative
+elements.</p>
+<p>Also, one more remark: when defining $&lt;$ on an ordered ring it
+suffices to specify the positive elements, because $x&gt;y\iff x-y&gt;0$.</p>
+<h3>Some nonstandard models</h3>
+<p>Our first example involves the polynomial ring $\Z[X]$. I define a
+polynomial $p(X)$ to be positive iff its leading coefficient is
+positive. So $X^2-2X-1$ is positive, whereas $-X$ is not. Think of $X$
+as an infinitely large element, so the 'positiveness' of $X^2$
+outweighs the 'negativeness' of $-2X-1$. Anyway, we have a discrete
+order on $\Z[X]$, and we take the model to be the subset $\Z[X]^+$ of
+non-negative elements.</p>
+<p>A few remarks. First, if we had used $\N[X]$ instead of $\Z[X]^+$,
+then the last axiom in the above list won't be satisfied: we have
+$1&lt;X$ but there is no $z\in\N[X]$ satisfying $1+z=X$, Whereas in
+$\Z[X]^+$ we have $z=X-1$. This illustrates the importance of allowing
+polynomials with negative coefficients.</p>
+<p>Second, $\Z[X]^+$ does not satisfy $\Th\N$ because we have
+$\Z[X]^+\nvDash \exists x\forall y(2y\neq x\land 2y+1\neq x)$. To see
+this, let $x=X$ and observe that either $y$ is a standard natural in
+which case $2y&lt;2y+1&lt;X$, or the coefficient of some power $X^k$ in $y$
+is positive, in which case $2y+1&gt;2y&gt;X$. Therefore, $PA^-$ cannot prove
+all sentences in $\Th\N$.</p>
+<p>Third, the earlier remark that $X$ is an 'infinitely large' element
+actually holds some weight. Given a nonstandard model $M\vDash\Th\N$
+and $a\in M\setminus\N$, we can embed $\Z[X]^+$ as a substructure of
+$M$ by mapping $p(X)\mapsto p(a)$. If you're astute, you might notice
+this is not a valid definition: we can't just map $X-1$ to the element
+$a-1$ because $a-1$ is not even a valid $\cL_A$-term! A bit more work
+has to be done to make the definition work, which I do in the
+following proposition.</p>
+<p><strong>Proposition.</strong> $\Z[X]^+$ embeds as a substructure of $M$.</p>
+<p><em>Proof.</em> Let $p(X)\in\Z[X]^+$ and $a\in M\setminus\N$. I split $p(X)$
+into two polynomials $q(X),r(X)$, where $q(X)$ contains the positive
+monomials and $r(X)$ contains the negative ones. For instance,</p>
+<p>$$p(X)=X^3-4X^2-2X+1 \implies q(X)=X^3+1,;r(X)=4X^2+2X.$$</p>
+<p>If $p(X)$ has all positive coefficients then I set $q(x)=p(X)$ and
+$r(X)=0$. Now $q(a)$ and $r(a)$ are valid $\cL_A$-terms. Furthermore,
+we have $r(X)&lt;q(X)$ which implies $r(a)&lt;q(a)$; this follows from the
+inequality $a^k&gt;s(a)$ for all polynomials $s$ with degree
+$&lt;k$. Therefore, since $M\vDash PA^-$ there is a unique $z$ satisfying
+$r(a)+z=q(a)$. We map $p(X)$ to $z$.</p>
+<p>It remains to check that this map respects $&lt;$, $+$ and $\cdot$ for
+all polynomials. Note that respecting $&lt;$ automatically implies it is
+an embedding. Suppose $p(X)=q(X)-r(X)&lt;q'(X)-r'(X)=p'(X)$. Then we have</p>
+<p>$$r(a)+z=q(a) \quad\text{and}\quad r'(a)+z'=q'(a)$$</p>
+<p>where $p(X)\mapsto z$ and $p'(X)\mapsto z'$. Then</p>
+<p>$$q(a)+r'(a)+z'=r(a)+r'(a)+z+z'=q'(a)+r(a)+z.$$</p>
+<p>Observe that $q(X)+r'(X)&lt;q'(X)+r(X) \implies q(a)+r'(a)&lt;q'(a)+r(a)$,
+so we are forced to have $z'&gt;z$, and order is preserved. Next, we have</p>
+<p>$$(r+r')(a)+(z+z')=(q+q')(a)$$</p>
+<p>where $p(x)+p'(X)=(q+q')(X)-(r+r')(X)$, so addition is preserved. Lastly, by multiplying both equations and adding $r(a)r'(a)$ we get</p>
+<p>$$\begin{align*}
+q(a)q'(a)+r(a)r'(a) &amp;= r(a)r'(a)+r(a)r'(a)+r(a)z'+r'(a)z+zz' \<br />
+&amp;= r(a)(r'(a)+z')+r'(a)(r(a)+z)+zz' \<br />
+&amp;= r(a)q'(a)+r'(a)q(a)+zz',
+\end{align*}$$</p>
+<p>which matches up with the fact that</p>
+<p>$$\bigl(q(a)-r(a)\bigr)\bigl(q'(a)-r'(a)\bigr)=q(a)q'(a)+r(a)r'(a)-\bigl(q(a)r'(a)+q'(a)r(a)\bigr),$$</p>
+<p>so multiplication is preserved. $\qed$</p>
+<p>The second example is a general template for constructing models of
+$PA^-$ not satisfying certain sentences in $\Th\N$, which involves
+taking quotients of polynomial rings over $\Z$.</p>
+<ol>
+<li>
+<p>We construct a discrete order on $R=\Z[X,Y]/(X^2-2Y^2)$ so that the
+non-negative elements form a model of $PA^-$ satisfying $\exists
+x\exists y(x^2=2y^2)$, which is not in $\Th\N$.</p>
+<p>Let $P$ be the subset of $R$ consisting of polynomials with
+constant coefficient 0, along with 0. It is a rng (ring without
+1). There is a rng homomorphism $P\to\R$ which maps
+$X\mapsto\sqrt2$ and $Y\mapsto1$. By an analogue of the first
+isomorphism theorem, we have an embedding $P/(X^2-2Y^2)\to\R$. The
+order on $\R$ induces an order on $P/(X^2-2Y^2)$ which is dense.</p>
+<p>Then, we replace each point in $P/(X^2-2Y^2)$ with an ordered
+$\Z$-chain corresponding to some coset $\overline{p(X,Y)}+\Z$ with
+$\overline{p(X,Y)}\in P/(X^2-2Y^2)$, and this gives us a discrete
+order. Note that each coset can be identified with a subset of
+$R$, and they form a partition.</p>
+<p>This construction illustrates the general idea: we take any
+ordered ring satisfying some property that is not satisfied in
+$\N$, then 'expand' each point into a $\Z$-chain in order to turn
+it into a discrete order.</p>
+</li>
+<li>
+<p>This time let $R=\Z[X,Y,Z]/(XZ-Y^2)$. The significance of this ring
+is that $Y$ is irreducible but not prime, implying that the two
+formulas</p>
+<p>$$\text{prime}(x) = x&gt;1\land \forall y,z,w(xw=yz\to \exists v(xv=y\lor xv=z))$$</p>
+<p>and</p>
+<p>$$\text{irred}(x) = x&gt;1\land \forall u,v(uv=x\to u=x\lor v=x)$$</p>
+<p>are not equivalent in $PA^-$.</p>
+</li>
+</ol>
+<pre><code>
+</code></pre>
+<p>Define $P$ in the same manner as above, and define a rng
+homomorphism $\varphi:P\to\R$ mapping $x\mapsto e$,
+$y\mapsto\sqrt{e\pi}$ and $z\mapsto\pi$. It is crucial that there are
+no algebraic relations between the images apart from
+$\varphi(x)\varphi(z)=\varphi(y)^2$; also note that
+$\varphi(x)&lt;\varphi(y)&lt;\varphi(z)$. So we have an embedding
+$P/(XZ-Y^2)\to\R$ and the rest follows as above. Note that we might
+have different orders on $R$ depending on the choice of images of
+$\varphi$.</p>
+<h3>Basic properties of models of $PA^-$</h3>
+<p>Recall that if $M\vDash\Th\N$ then $\N$ is an initial segment of $M$
+(denoted $\N\subseteq_c M$). The same is true if $M\vDash PA^-$. The
+proof relies on showing for each $k\in\N$ that</p>
+<p>$$PA^-\vdash \forall x(x\le\underline{k}\to x=\underline0\lor
+x=\underline1\lor \ldots\lor x=\underline{k-1}).$$</p>
+<p>I'll omit the details of because it's boring and tedious. Analogously,
+every model $M\vDash PA^-$ has an end extension $N\vDash PA^-$,
+i.e. $M\subseteq_c N$. Namely, we take $N=R[X]^+$ where $R=M^2/\sim$
+is the discrete ordered ring induced by $M$, and there is a natural
+embedding $M\to R\to R[X]^+$. Note the special case $M=\N$ and $R=\Z$.</p>
+<p>Initial segments are related to a certain class of formulas called
+<em>$\Delta_0$ formulas</em>. They have the form $\exists x(x&lt;t\land
+\varphi(x))$ (abbreviated $\exists x&lt;t(\varphi(x))$) or $\forall
+x(x&lt;t\to \varphi(x))$ (abbreviated similarly), where $t$ is an
+$\cL_A$-term and $\varphi$ is quantifier-free. Such formulas are said
+to have <em>bounded quantifiers</em>, and their truth and falsity can
+be computed by simply checking all numbers up to $t$. The notion of
+$\Delta_0$ formulas being computable will be made precise in the
+following entry.</p>
+<p>If $M\subseteq N$ are $\cL_A$-structures, then there is a notion of
+$M$ being a <em>$\Delta_0$-elementary substructure</em>, denoted
+$M\prec_{\Delta_0} N$. There is also a variant of the Tarski-Vaught
+criterion but for $\Delta_0$ formulas. The reader can easily give a
+definition and prove the variant. Now this is where initial segments
+come in:</p>
+<p><em>Proposition.</em> If $M\subseteq_c N$ are
+$\cL_A$-structures, then $M\prec_{\Delta_0} N$. In particular we can
+take $M=\N$.</p>
+<p><em>Proof.</em> We verify the Tarski-Vaught criterion. Let $a_1,\ldots,a_n\in
+M$ and $t(a_1,\ldots,a_n)$ be an $\cL_A$-term, and suppose there is
+some $b\in N$ such that $N\vDash b&lt;t(a_1,\ldots,a_n)\land
+\phi(b,a_1,\ldots,a_n)$. Then $b\in M$ because $M$ is an initial
+segment and so</p>
+<p>$${y\in N \mid y &lt; t(a_1,\ldots,a_n)} = {y\in M \mid y &lt; t(a_1,\ldots,a_n)}.$$</p>
+<p>Thus $M$ also satisfies that formula as desired. $\qed$</p>
+<p>One level up from $\Delta_0$, we have $\Sigma_1$ and $\Pi_1$ formulas,
+which are formulas of the form
+$\exists\overline{x},\phi(\overline{x},\overline{y})$ and
+$\forall\overline{x},\phi(\overline{x},\overline{y})$ where $\phi$ is
+$\Delta_0$. In other words, $\Sigma_1$ formulas start with a sequence
+of unbounded existential formulas followed by a $\Delta_0$-formula,
+and similarly for $\Pi_1$. By convention, $\Delta_0$ formulas are
+considered to be also $\Sigma_1$ and $\Pi_1$.</p>
+<p>It is easily verified that $\Sigma_1$ and $\Pi_1$ are closed under
+conjunction and disjunction, the negation of $\Sigma_1$ is $\Pi_1$ and
+vice versa. In fact, $\Delta_0$, $\Sigma_1$ and $\Pi_1$ are part of a
+larger hierarchy called the <em>arithmetic hierarchy</em>. The reader
+might notice huge parallels with the Borel hierarchy.</p>
+<p>I will also use $\Sigma_1$ to denote the set of $\Sigma_1$ formulas,
+and similarly for the other types.</p>
+<p><strong>Corollary.</strong> $PA^-\vdash \Sigma_1\cap\Th\N$.</p>
+<p><em>Proof.</em> If $M\vDash PA^-$ then $\N\subseteq_c M$. Suppose
+$\N\vDash\exists x,\theta(x)$ where $\theta\in\Delta_0\cap\Th\N$. So
+there is some $a\in\N$ such that $\N\vDash\theta(a)$. Clearly $a$
+also lies in $M$, and by the proposition we have $M\vDash\theta(a)$,
+so $M\vDash\exists x,\theta(x)$ as desired. $\qed$</p>
+<p>So $PA^-$ can prove as a substantial amount of true sentences in $\N$,
+but not all of them as seen in the above examples. In fact, no
+reasonable extension of $PA^-$ can prove all of $\Th\N$ by Gödel's
+first incompleteness theorem, which is the subject of the next entry.</p>
+</body>
+</html>
+        

@@ -1,0 +1,191 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/style.css"/>
+
+<!-- Syntax highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+
+<!-- MathJAX -->
+<script>
+  MathJax = {
+    loader: {
+	load: ['[custom]/xypic.js'],
+	paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    },
+    tex: {
+	packages: {'[+]': ['xypic']},
+	tags: 'ams',
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+            A: '\\mathbb{A}', B: '\\mathbb{B}', C: '\\mathbb{C}', D: '\\mathbb{D}',
+            E: '\\mathbb{E}', F: '\\mathbb{F}', G: '\\mathbb{G}', H: '\\mathbb{H}',
+            I: '\\mathbb{I}', J: '\\mathbb{J}', K: '\\mathbb{K}', L: '\\mathbb{L}',
+            M: '\\mathbb{M}', N: '\\mathbb{N}', O: '\\mathbb{O}', P: '\\mathbb{P}',
+            Q: '\\mathbb{Q}', R: '\\mathbb{R}', S: '\\mathbb{S}', T: '\\mathbb{T}',
+            U: '\\mathbb{U}', V: '\\mathbb{V}', W: '\\mathbb{W}', X: '\\mathbb{X}',
+            Y: '\\mathbb{Y}', Z: '\\mathbb{Z}', RP: '\\mathbb{RP}', CP: '\\mathbb{CP}',
+
+	    cA: '\\mathcal{A}', cB: '\\mathcal{B}', cC: '\\mathcal{C}', cD: '\\mathcal{D}',
+            cE: '\\mathcal{E}', cF: '\\mathcal{F}', cG: '\\mathcal{G}', cH: '\\mathcal{H}',
+            cI: '\\mathcal{I}', cJ: '\\mathcal{J}', cK: '\\mathcal{K}', cL: '\\mathcal{L}',
+            cM: '\\mathcal{M}', cN: '\\mathcal{N}', cO: '\\mathcal{O}', cP: '\\mathcal{P}',
+            cQ: '\\mathcal{Q}', cR: '\\mathcal{R}', cS: '\\mathcal{S}', cT: '\\mathcal{T}',
+            cU: '\\mathcal{U}', cV: '\\mathcal{V}', cW: '\\mathcal{W}', cX: '\\mathcal{X}',
+            cY: '\\mathcal{Y}', cZ: '\\mathcal{Z}',
+
+	    fa: '\\mathfrak{a}', fb: '\\mathfrak{b}', fp: '\\mathfrak{p}', fm: '\\mathfrak{m}',
+	    fM: '\\mathfrak{M}',
+
+            bf: ['\\mathbf{#1}', 1], 
+	    x: '\\mathbf{x}', y: '\\mathbf{y}', w: '\\mathbf{w}', Bb: '\\mathbf{b}',
+	    i: '\\imath', j: '\\jmath', v: '\\mathbf{v}', w: '\\mathbf{w}',
+
+	    a: '\\alpha', b: '\\beta', g: '\\gamma', e: '\\epsilon', l: '\\lambda',
+
+	    id: '\\mathop{\\rm id}', span: '\\mathop{\\rm span}', im: '\\mathop{\\rm im}', sgn: '\\mathop{\\rm sgn}',
+	    End: '\\mathop{\\rm End}', Gal: '\\mathop{\\rm Gal}', Hom: '\\mathop{\\rm Hom}', Inn: '\\mathop{\\rm Inn}',
+	    Out: '\\mathop{\\rm Out}', spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
+	    Cn: '\\mathop{\\rm Cn}', Th: '\\mathop{\\rm Th}', Spec: '\\mathop{\\rm Spec}', halo: '\\mathop{\\rm halo}',
+	    st: '\\mathop{\\rm st}', inte: '\\mathop{\\rm int}', trdeg: '\\mathop{\\rm tr.deg}', rank: '\\mathop{\\rm rank}',
+	    nullity: '\\mathop{\\rm nullity}', Aut: '\\mathop{\\rm Aut}', ann: '\\mathop{\\rm ann}', max: '\\mathop{\\rm max}',
+	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
+
+	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
+
+  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+
+	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
+	    inv: '{}^{-1}',
+	    ol: '\\overline',
+	    qed: '\\blacksquare',
+	    hR: '{}^*\\R',
+	    normal: '\\triangleleft', Normal: '\\triangleright',
+	    normaleq: '\\trianglelefteq', Normaleq: '\\trianglerighteq',
+	    dlim: '\\varinjlim',
+	    invlim: '\\varprojlim',
+	    imp: '\\Rightarrow',
+	    impd: '\\Leftarrow',
+	    eq: ['\\begin{equation}#1\\end{equation}', 1],
+	    ZZ: ['\\Z/{#1}\\Z', 1],
+	    ZZs: ['(\\Z/{#1}\\Z)^*', 1],
+	    legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+	    d: '\\mathop{}\\!\\mathrm{d}',
+	    p: '\\partial',
+	    pp: ['{\\p #1\\over\\p #2}', 2],
+	    ppp: ['{\\p^2 #1\\over\\p #2\\p #3}', 3],
+	    angles: ['\\langle{#1}\\rangle', 1],
+	    norm: ['\\left\\Vert{#1}\\right\\Vert', 1],
+	    floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1],
+	    ceil: ['\\left\\lceil{#1}\\right\\rceil', 1],
+        },
+    },
+    chtml: {
+	scale: 0.85,
+	linebreaks: {
+	    automatic: true
+	}
+    }
+};
+</script>
+
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+<body>
+<a href="/index.html">&lt; Back</a> 
+<h1>Nilpotent groups and central series</h1>
+<p>A <em>central series</em> for a group $G$ is a sequence of normal subgroups</p>
+<p>$$1 = G_1 \subset G_2 \subset \cdots \subset G_n = G$$</p>
+<p>such that $G_{i+1}/G_i \subset Z(G/G_i)$. $G$ is <em>nilpotent</em> if it admits
+a central series. Recall that $G$ being solvable (i.e. admitting a
+normal series with abelian factors) is equivalent to a special normal
+series called the derived series $G \supset G' \supset G'' \supset \cdots$
+eventually reaching 1. Likewise, $G$ being nilpotent is equivalent to
+any one of two special central series terminating. The first is the
+<em>lower central series</em> $G^1\supset G^2\supset \cdots$, defined by</p>
+<p>$$G^1=G,\quad G^{i+1}=(G^i,G).$$</p>
+<p>To prove it is indeed a central series we need to prove three things:
+$G^i\normal G$, $G^{i+1}\subset G^i$ and $G^i/(G^i,G)\subset
+Z(G/(G^i,G))$. The first follows by induction: supposing $G^i\normal
+G$ we have</p>
+<p>$$g(G^i,G)g\inv \subset (gG^ig\inv, gGg\inv) \subset (G^i,G)\quad
+\text{for all $g\in G$}.$$</p>
+<p>The second fact follows from the first, because given $h\in G^i$ and
+$g\in G$ we have $gh\inv g\inv\in G^i$ and so</p>
+<p>$$(h,g) = h(gh\inv g\inv)\in G^i.$$</p>
+<p>The last follows from a more general observation which characterises
+subgroups of the form $(H,G)$. In fact, it generalises the
+characterisation of $G'$ as the smallest normal subgroup yielding an
+abelian quotient.</p>
+<p><strong>Proposition 1.</strong> Let $H,N\normal G$, and $H/N$ denote the image of
+$H$ under the projection $G\to G/N$. (Think of $G\Normal H$ as fixed
+and $N$ as varying.) Then</p>
+<p>$$H/N\subset Z(G/N) \iff (H,G)\subset N.$$</p>
+<p><em>Proof.</em> Note that $(H,G)\normal G$ has been shown above, in the
+context $H=G^i$. The proof is just definition-chasing:</p>
+<p>$$\begin{align*}
+H/N \subset Z(G/N) &amp;\iff (hN)(gN)=(gN)(hN)\ \text{for all $h\in H, g\in G$} \<br />
+&amp;\iff (hN,gN) = 1 \<br />
+&amp;\iff (h,g)\in N \<br />
+&amp;\iff (H,G)\subset N.\ \qed
+\end{align*}$$</p>
+<p>This result justifies the descriptor 'lower', since by the proposition
+$(G^i,G)$ is the smallest subgroup $N$ satisfying the property $G/N\subset
+Z(G/N)$. Next we have the <em>upper central series</em> $C_1\subset
+C_2\subset\cdots$, defined upwards by</p>
+<p>$$C_1=1,\quad C_{i+1}\ \text{is the unique subgroup $\supset C_i$ satisfying $C_{i+1}/C_i=Z(G/C_i)$}.$$</p>
+<p>In particular, $C_2=Z(G)$. It is quite easy to see why this series is
+given the descriptor 'upper'. The conditions $C_i\subset C_{i+1}$,
+$C_{i+1}/C_i\subset Z(G/C_i)$ are satisfied by definition, and we have
+$C_{i+1}\normal G$ since $C_{i+1}$ is the kernel of a certain map
+$G\to (G/C_i)/(C_{i+1}/C_i)$.</p>
+<p>I now prove that $G$ being nilpotent is equivalent to either the lower
+central series terminating at 1, or the upper central series
+terminating at $G$.</p>
+<p><strong>Proposition 2.</strong> $G$ nilpotent $\iff$ lower central series terminates.</p>
+<p><em>Proof.</em> Backward direction is trivial. As for the forward direction,
+let $G=G_1\supset G_2\supset \cdots \supset G_n=1$ be a central series. I'll show
+by induction that $G^i\subset G_i$ for all $i$. Suppose this is the case
+for some $i$. Then $G\supset G_i\supset G_{i+1}$ is a tower of normal
+subgroups satisfying $G_i/G_{i+1}\subset Z(G/G_{i+1})$, and so by
+Proposition 1 we have $G_{i+1}\supset(G_i,G)$, and by the induction
+hypothesis we can conclude $G_{i+1}\supset (G_i,G)\supset (G^i,G) =
+G^{i+1}$. $\qed$</p>
+<p><strong>Proposition 3.</strong> Lower central series terminates $\iff$ upper central series terminates.</p>
+<p><em>Proof.</em> Backward direction follows from Proposition 2. As for the
+forward direction, suppose $1=G^n\subset G^{n-1}\subset \cdots\subset G^1=G$ is
+the lower central series and $1=C_1\subset C_2\subset\cdots$ is the upper
+central series. I will show by induction that $C_i\supset
+G^{n-i}$. Suppose this is the case for $i$. Then consider the normal
+subgroups $G^{n-i-1},C_i\normal G$. Since $C_i\supset G^{n-i} =
+(G^{n-i-1},G)$, by Proposition 1 we have $G_{n-i-1}/C_i\subset Z(G/C_i) =
+C_{i+1}/C_i$ and so $G_{n-i-1}\subset \pi^{-1}(G^{n-i-1}/C_i)\subset
+C_{i+1}$, where $\pi$ is the projection onto $C_i$. $\qed$</p>
+<p>Finally, I outline the relationship between nilpotent and
+solvable. All nilpotent groups are solvable, because the lower central
+series terminates and $G^{(i)}\subset G^i$ for all $i$, so the derived
+series also terminates. However, not all solvable groups are
+nilpotent. In fact, any solvable group with trivial center will do,
+because the upper central series will never terminate. The simplest
+example is $S_3$. The center is the set of elements fixed by
+conjugation by every element, but by the behaviour of conjugation in
+symmetric groups, it shouldn't be hard to see that no such element
+exists. However, $S_3$ admits the normal series $S_3\Normal A_3\Normal
+1$ with abelian factors.</p>
+</body>
+</html>
+        

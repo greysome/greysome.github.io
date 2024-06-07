@@ -1,0 +1,180 @@
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="/style.css"/>
+
+<!-- Syntax highlighting -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+<!-- JQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
+        crossorigin="anonymous"></script>
+
+<!-- MathJAX -->
+<script>
+  MathJax = {
+    loader: {
+	load: ['[custom]/xypic.js'],
+	paths: {custom: 'https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/'}
+    },
+    tex: {
+	packages: {'[+]': ['xypic']},
+	tags: 'ams',
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$']],
+        macros: {
+            A: '\\mathbb{A}', B: '\\mathbb{B}', C: '\\mathbb{C}', D: '\\mathbb{D}',
+            E: '\\mathbb{E}', F: '\\mathbb{F}', G: '\\mathbb{G}', H: '\\mathbb{H}',
+            I: '\\mathbb{I}', J: '\\mathbb{J}', K: '\\mathbb{K}', L: '\\mathbb{L}',
+            M: '\\mathbb{M}', N: '\\mathbb{N}', O: '\\mathbb{O}', P: '\\mathbb{P}',
+            Q: '\\mathbb{Q}', R: '\\mathbb{R}', S: '\\mathbb{S}', T: '\\mathbb{T}',
+            U: '\\mathbb{U}', V: '\\mathbb{V}', W: '\\mathbb{W}', X: '\\mathbb{X}',
+            Y: '\\mathbb{Y}', Z: '\\mathbb{Z}', RP: '\\mathbb{RP}', CP: '\\mathbb{CP}',
+
+	    cA: '\\mathcal{A}', cB: '\\mathcal{B}', cC: '\\mathcal{C}', cD: '\\mathcal{D}',
+            cE: '\\mathcal{E}', cF: '\\mathcal{F}', cG: '\\mathcal{G}', cH: '\\mathcal{H}',
+            cI: '\\mathcal{I}', cJ: '\\mathcal{J}', cK: '\\mathcal{K}', cL: '\\mathcal{L}',
+            cM: '\\mathcal{M}', cN: '\\mathcal{N}', cO: '\\mathcal{O}', cP: '\\mathcal{P}',
+            cQ: '\\mathcal{Q}', cR: '\\mathcal{R}', cS: '\\mathcal{S}', cT: '\\mathcal{T}',
+            cU: '\\mathcal{U}', cV: '\\mathcal{V}', cW: '\\mathcal{W}', cX: '\\mathcal{X}',
+            cY: '\\mathcal{Y}', cZ: '\\mathcal{Z}',
+
+	    fa: '\\mathfrak{a}', fb: '\\mathfrak{b}', fp: '\\mathfrak{p}', fm: '\\mathfrak{m}',
+	    fM: '\\mathfrak{M}',
+
+            bf: ['\\mathbf{#1}', 1], 
+	    x: '\\mathbf{x}', y: '\\mathbf{y}', w: '\\mathbf{w}', Bb: '\\mathbf{b}',
+	    i: '\\imath', j: '\\jmath', v: '\\mathbf{v}', w: '\\mathbf{w}',
+
+	    a: '\\alpha', b: '\\beta', g: '\\gamma', e: '\\epsilon', l: '\\lambda',
+
+	    id: '\\mathop{\\rm id}', span: '\\mathop{\\rm span}', im: '\\mathop{\\rm im}', sgn: '\\mathop{\\rm sgn}',
+	    End: '\\mathop{\\rm End}', Gal: '\\mathop{\\rm Gal}', Hom: '\\mathop{\\rm Hom}', Inn: '\\mathop{\\rm Inn}',
+	    Out: '\\mathop{\\rm Out}', spec: '\\mathop{\\rm Spec}', colim: '\\mathop{\\rm colim}', Ob: '\\mathop{\\rm Ob}',
+	    Cn: '\\mathop{\\rm Cn}', Th: '\\mathop{\\rm Th}', Spec: '\\mathop{\\rm Spec}', halo: '\\mathop{\\rm halo}',
+	    st: '\\mathop{\\rm st}', inte: '\\mathop{\\rm int}', trdeg: '\\mathop{\\rm tr.deg}', rank: '\\mathop{\\rm rank}',
+	    nullity: '\\mathop{\\rm nullity}', Aut: '\\mathop{\\rm Aut}', ann: '\\mathop{\\rm ann}', max: '\\mathop{\\rm max}',
+	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
+
+	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
+
+  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+
+	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
+	    inv: '{}^{-1}',
+	    ol: '\\overline',
+	    qed: '\\blacksquare',
+	    hR: '{}^*\\R',
+	    normal: '\\triangleleft', Normal: '\\triangleright',
+	    normaleq: '\\trianglelefteq', Normaleq: '\\trianglerighteq',
+	    dlim: '\\varinjlim',
+	    invlim: '\\varprojlim',
+	    imp: '\\Rightarrow',
+	    impd: '\\Leftarrow',
+	    eq: ['\\begin{equation}#1\\end{equation}', 1],
+	    ZZ: ['\\Z/{#1}\\Z', 1],
+	    ZZs: ['(\\Z/{#1}\\Z)^*', 1],
+	    legendre: ['\\left(\\frac{#1}{#2}\\right)', 2],
+	    d: '\\mathop{}\\!\\mathrm{d}',
+	    p: '\\partial',
+	    pp: ['{\\p #1\\over\\p #2}', 2],
+	    ppp: ['{\\p^2 #1\\over\\p #2\\p #3}', 3],
+	    angles: ['\\langle{#1}\\rangle', 1],
+	    norm: ['\\left\\Vert{#1}\\right\\Vert', 1],
+	    floor: ['\\left\\lfloor{#1}\\right\\rfloor', 1],
+	    ceil: ['\\left\\lceil{#1}\\right\\rceil', 1],
+        },
+    },
+    chtml: {
+	scale: 0.85,
+	linebreaks: {
+	    automatic: true
+	}
+    }
+};
+</script>
+
+<script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+
+</head>
+<body>
+<a href="/index.html">&lt; Back</a> 
+<h1>Equivalence of filter and cover compactness</h1>
+<p>A space $X$ is <em>filter compact</em> iff every nonempty filter has at least
+one cluster point. I'll show that this is equivalent to the usual
+definition of compactness which I'll cover <em>cover
+compactness</em>. Annoyingly I couldn't find any proof online so I had to
+come up with the following proof myself.</p>
+<p><strong>Theorem.</strong> $X$ is filter compact $\iff$ $X$ is cover compact.</p>
+<p><em>Proof.</em> ($\impd$): Suppose $X$ is not filter compact. That means
+there is a nonempty filter $F$ such that every $x\in X$ has a nbhd
+$U_x$ which is disjoint from some $S_x\in F$. The $U_x$'s form an open
+cover of $X$ and assuming cover compactness, there is a subcover
+$\{U_i\}_{i\in I}$ indexed by the finite set $I$. Then, the finite
+intersection</p>
+<p>$$\bigcap_{i\in I} S_i$$</p>
+<p>is nonempty since $F$ is nonempty. But at the same time, this
+intersection is disjoint from all $U_i$'s, contradicting the claim
+that $\{U_i\}_{i\in I}$ covers $X$.</p>
+<p>($\imp$): Suppose $X$ is not cover compact. So there is an open cover
+$\{U_i\}_{i\in I}$ with no finite subcover. To give an overview, I
+construct an increasing ordinal-indexed sequence of opens whose union
+is $X$, and then consider the filter generated by the complements.</p>
+<p>By well-ordering the index set $I$, we can assume it is some ordinal
+$\gamma$. Then, for all $\beta\le\gamma$, define</p>
+<p>$$V_\beta := \bigcup_{\alpha&lt;\beta} U_\alpha.$$</p>
+<p>Each $V_\beta$ is open in $X$, and they form an increasing sequence.</p>
+<p>Now, let $\kappa$ be the least ordinal such that $V_\kappa=X$. I want $\kappa$ to satisfy two conditions:</p>
+<ol>
+<li>$\kappa$ is a limit ordinal</li>
+<li>$\kappa\ge\omega$.</li>
+</ol>
+<p>The second condition is automatically satisfied because ${U_i}$ has
+no finite subcover. The first condition may not be true in general:
+for instance, if $X=(0,1]$ and the open cover consists of intervals
+$(1/n,3/4)$ and $(1/2,1]$, then one might have the sequence</p>
+<p>$$\begin{matrix}
+\beta &amp; 1 &amp; 2 &amp; 3 &amp; \ldots &amp; \omega &amp; \omega+1 \<br />
+V_\beta &amp; (1/2,,3/4) &amp; (1/3,,3/4) &amp; (1/4,,3/4) &amp; \ldots &amp; (0,,3/4) &amp; (0,,1],
+\end{matrix}$$</p>
+<p>where $\kappa=\omega+1$. Luckily, we can circumvent this issue: write
+$\kappa=\kappa'+n$ where $\kappa'$ is a limit ordinal and $n$ is
+finite, then form a new increasing sequence of opens by moving the
+last $n$ opens to the front:</p>
+<p>$$V'<em>\beta := \left(\bigcup</em>{\kappa'&lt;\alpha\le\kappa} U_\alpha\right)
+\cup \left(\bigcup_{\alpha&lt;\beta} V_\alpha\right).$$</p>
+<p>It can be seen that $\kappa'$ is the least ordinal satisfying
+$V'_{\kappa'}=X$. For instance, the sequence above is transformed into</p>
+<p>$$\begin{matrix}
+\beta &amp; 1 &amp; 2 &amp; 3 &amp; \ldots &amp; \omega \<br />
+V_\beta &amp; (1/2,,1] &amp; (1/3,,1] &amp; (1/4,,1] &amp; \ldots &amp; (0,,1].
+\end{matrix}$$</p>
+<p>Let ${V_\beta}$ be our increasing sequence of opens whose
+corresponding ordinal $\kappa$ satisfies the two conditions
+above. Now, define $F$ to be the filter generated by the complements
+$V_\beta^c$ where $\beta&lt;\kappa$. Note that the complements form a
+nested decreasing sequence and none of them are empty by definition of
+$\kappa$, so they satisfy the finite intersection property and thus
+$F$ is nonempty.</p>
+<p>Lastly, we show that $F$ has no cluster point. We have</p>
+<p>$$X = V_\kappa = \bigcup_{\alpha&lt;\kappa} V_\alpha,$$</p>
+<p>where the second equality holds because $\kappa$ is a limit ordinal. For instance, if $\kappa=\omega+1$ then</p>
+<p>$$\begin{align*}
+V_\kappa &amp;= \left(\bigcup_{n\in\N} U_n\right) \cup U_\omega, \quad\text{whereas} \<br />
+\bigcup_{\alpha&lt;\kappa} V_\alpha &amp;= \bigcup_{n\in\N} U_n.
+\end{align*}$$</p>
+<p>Therefore every $x\in X$ is contained in some $V_\alpha$ where
+$\alpha&lt;\kappa$, so $x$ is disjoint from $V_\alpha^c\in F$. But
+$V_\alpha^c$ is closed so some nbhd of $x$ is also disjoint from
+$V_\alpha^c$, therefore $x$ is not a cluster point of $F$. $\qed$</p>
+</body>
+</html>
+        
