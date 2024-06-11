@@ -61,6 +61,7 @@ class HtmlPostRenderer(HtmlRenderer):
         del self.render_map['Image']
         # for use in Figures
         self.figno = 0
+        self.footnotes = []
         
 
     def render_math(self, token):
@@ -75,7 +76,8 @@ class HtmlPostRenderer(HtmlRenderer):
         content = ''
         for child in token.children:
             content += self.render(child)
-        return f'<p class="footnote">{token.ref}. {content} <a id="footnote-{token.ref}" href="#footnoteref-{token.ref}">back</a></p>'
+        self.footnotes.append(f'{token.ref}. {content} <a id="footnote-{token.ref}" href="#footnoteref-{token.ref}">back</a>')
+        return ''
 
 
     def render_foot_reference(self, token):
@@ -105,6 +107,10 @@ f'''
     def render_document(self, token: block_token.Document) -> str:
         head = open('../head.html', 'r').read()
         body = '\n'.join([self.render(child) for child in token.children])
+        body += '\n<div class="footnote">'
+        for footnote in self.footnotes:
+            body += footnote + '<br>'
+        body += '\n</div>\n'
         return \
 f'''
 <html>

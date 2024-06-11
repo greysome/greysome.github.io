@@ -34,11 +34,6 @@ li {
     margin: 0% 3% 0% 0%;
 }
 
-.footnotes::before {
-    content: "Footnotes:";
-    font-weight: bold;
-}
-
 .footnote {
     margin-top: 3em;
     font-size: 80%;
