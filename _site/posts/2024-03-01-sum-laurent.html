@@ -111,23 +111,23 @@
 <p><strong>Claim.</strong> Given $n$ variables $x_1,\ldots,x_n$, the following identity holds:</p>
 <p>$$\sum_{j=1}^n{x_j^r\over\prod_{\substack{1\le k\le n\\ k\neq j}}(x_j-x_k)} =
 \begin{cases}
-0,& 0\le r&lt;n-1\\
-1,& r=n-1\\
-\sum x_j,& r=n.
+0,&amp; 0\le r&lt;n-1\\
+1,&amp; r=n-1\\
+\sum x_j,&amp; r=n.
 \end{cases}$$</p>
 <p>For example, when $n=3$ and the variables $a,b,c$ are used in place of $x_1,x_2,x_3$, we have the following identities</p>
 <p>$$\begin{align*}
-{1\over(a-b)(a-c)} + {1\over(b-a)(b-c)} + {1\over(c-a)(c-b)} &= 0, \\[5pt]
-{a\over(a-b)(a-c)} + {b\over(b-a)(b-c)} + {c\over(c-a)(c-b)} &= 0, \\[5pt]
-{a^2\over(a-b)(a-c)} + {b^2\over(b-a)(b-c)} + {c^2\over(c-a)(c-b)} &= 1, \\[5pt]
-{a^3\over(a-b)(a-c)} + {b^3\over(b-a)(b-c)} + {c^3\over(c-a)(c-b)} &= a+b+c.
+{1\over(a-b)(a-c)} + {1\over(b-a)(b-c)} + {1\over(c-a)(c-b)} &amp;= 0, \\[5pt]
+{a\over(a-b)(a-c)} + {b\over(b-a)(b-c)} + {c\over(c-a)(c-b)} &amp;= 0, \\[5pt]
+{a^2\over(a-b)(a-c)} + {b^2\over(b-a)(b-c)} + {c^2\over(c-a)(c-b)} &amp;= 1, \\[5pt]
+{a^3\over(a-b)(a-c)} + {b^3\over(b-a)(b-c)} + {c^3\over(c-a)(c-b)} &amp;= a+b+c.
 \end{align*}$$</p>
 <p>This appears as problem 1.2.3.33 of TAOCP, and it can be used as a lemma. For instance, one way to evaluate the Vandermonde determinant</p>
 <p>$$\begin{vmatrix}
-1 & x_1 & \cdots & x_1^{n-1} \\
-1 & x_2 & \cdots & x_2^{n-1} \\
-\vdots & \vdots & \ddots & \vdots \\
-1 & x_n & \cdots & x_n^{n-1}
+1 &amp; x_1 &amp; \cdots &amp; x_1^{n-1} \\
+1 &amp; x_2 &amp; \cdots &amp; x_2^{n-1} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+1 &amp; x_n &amp; \cdots &amp; x_n^{n-1}
 \end{vmatrix}$$</p>
 <p>is via cofactor expansion along the last column, which yields the sum in the claim with $r=n-1$, times a factor of $\prod_{i&lt;j}(x_i-x_j)$.</p>
 <h3>The proof</h3>
@@ -143,9 +143,9 @@ by the residue theorem this is equal to</p>
 <p>$$\begin{equation}\label{eq1}\sum_{j=1}^n{x_j^{-m-1}\over\prod_{\substack{1\le k\le n\\ k\neq j}}(x_j-x_k)}\end{equation}$$</p>
 <p>The other way is to rewrite</p>
 <p>$$\begin{align*}
-f(z) &= z^{-n}\left(1\over 1-x_1/z\right)\cdots\left(1\over 1-x_n/z\right) \\
-&= z^{-n}\left(1+{x_1\over z}+{x_1^2\over z^2}+\cdots\right) \cdots \left(1+{x_n\over z}+{x_n^2\over z^2}+\cdots\right) \\
-&= z^{-n} + z^{-n-1} \sum x_j + z^{-n-2} \sum(\text{degree 2 monomials}) + \cdots
+f(z) &amp;= z^{-n}\left(1\over 1-x_1/z\right)\cdots\left(1\over 1-x_n/z\right) \\
+&amp;= z^{-n}\left(1+{x_1\over z}+{x_1^2\over z^2}+\cdots\right) \cdots \left(1+{x_n\over z}+{x_n^2\over z^2}+\cdots\right) \\
+&amp;= z^{-n} + z^{-n-1} \sum x_j + z^{-n-2} \sum(\text{degree 2 monomials}) + \cdots
 \end{align*}$$</p>
 <p>Since Laurent expansions are unique, we see that $a_{-n-k}$ is also
 equal to the sum of the degree $k$ monomials (true for both positive
@@ -171,4 +171,3 @@ different, because to show that Laurent expansions are unique also
 involves this term-by-term integration argument.</p>
 </body>
 </html>
-        

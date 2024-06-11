@@ -58,10 +58,7 @@ $x_i$'s have been exhausted, and our desired extension has the form
 $F_n(x_n)$. Diagramatically, this process is represented by the
 following diagram:
 
-{% include figure.html src="normalised-root-tower.svg"
-alt="Diagram of proof"
-figno=1
-caption="" %}
+![Diagram of proof](normalised-root-tower.svg "" 100%)
 
 We are done. $\qed$
 

@@ -35,10 +35,7 @@ orbits. Since $S_{n_1}\times S_{n_2}$ (and thus $K$) also contains
 transpositions within orbits, it follows that $K$ contains all
 transpositions and so $K=S_n$. $\qed$
 
-{% include figure.html src="orbit-conjugation.svg"
-alt=""
-figno=1
-caption="How to obtain $h$" %}
+![](orbit-conjugation.svg "How to obtain $h$" 100%)
 
 As an example, the intransitive maximal subgroups of $S_6$ are
 $S_2\times S_4$ and $S_5$.

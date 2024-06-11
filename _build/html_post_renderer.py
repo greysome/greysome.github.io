@@ -2,7 +2,7 @@
 Convert my .md posts to HTML.
 
 I extended HtmlRenderer with my own custom functionality, namely a new
-Figure token and a custom preamble.
+Figure token, footnotes and a custom preamble.
 """
 
 import re

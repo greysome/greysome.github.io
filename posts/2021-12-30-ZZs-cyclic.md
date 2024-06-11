@@ -9,12 +9,7 @@ $p^{n-1}$, as shown in Figure 1. This is possible because
 
 $$(x,p^n)=1 \iff (x,p^{n-1})=1 \iff (x\,\%\,p^{n-1}, p^{n-1})=1.$$
 
-{% include figure.html src="mod27-mulgroup.svg"
-alt="$\ZZs{27}$"
-figno=1
-caption="The elements of $\ZZs{27}$, arranged in rows mod 9. Note that
-the first row consists of the elements of $\ZZs{p^{n-1}}$ and there
-are $p$ rows." %}
+![$\ZZs{27}$](mod27-mulgroup.svg "The elements of $\ZZs{27}$, arranged in rows mod 9. Note that the first row consists of the elements of $\ZZs{p^{n-1}}$ and there are $p$ rows." 50%)
 
 Observe that the map sending $x\in\ZZs{p^n}$ to its column represents
 a group homomorphism 
@@ -96,10 +91,7 @@ $$\{\text{$p$-elements in $\ZZs{p^n}$}\} =
 
 These sets are illustrated in Figure 2.
 
-{% include figure.html src="mod27-mulgroup-pelements.svg"
-alt="The $p$-elements of $\ZZs{27}$"
-figno=2
-caption="If $\ZZs{27}$ is not cyclic, then the 3-elements of $\ZZs{27}$ are precisely the elements which share the same column as 1, 4 or 7, which are the 3-elements in $\ZZs{9}$." %}
+![The $p$-elements of $\ZZs{27}$"](mod27-mulgroup-pelements.svg "If $\ZZs{27}$ is not cyclic, then the 3-elements of $\ZZs{27}$ are precisely the elements which share the same column as 1, 4 or 7, which are the 3-elements in $\ZZs{9}$." 50%)
 
 To complete the contradiction, I show that a certain element $a$ lies
 in the latter set, but not the former set. This special element is

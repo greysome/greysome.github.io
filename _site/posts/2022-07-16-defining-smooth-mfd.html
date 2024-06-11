@@ -111,7 +111,7 @@
 <p>Recall the definition of a <em>topological</em> manifold $M\subset\R^n$:
 every $x\in M$ has a nbhd $U\cap M$ that is homeomorphic to an open
 subset $W\subset\R^k$. It is tempting to define smooth manifolds by
-replacing 'homeomorphic' by 'diffeomorphic'[^1], but upon
+replacing 'homeomorphic' by 'diffeomorphic'<sup><a id="footnoteref-1" href="#footnote-1">1</a></sup>, but upon
 closer inspection this doesn't make sense: it is meaningless to talk
 about whether a map $g:U\cap M\to W$ is differentiable because the
 domain is generally not open in $\R^n$.</p>
@@ -133,13 +133,13 @@ and $x\in U\cap M$, then there exists a coordinate system around $x$
 <p>$$F(w_1,\ldots,w_k,y_1,\ldots,y_{n-k})=f(w_1,\ldots,w_k)+(0,\ldots,0,y_1,\ldots,y_{n-k})$$</p>
 <p>Note that $dF_x$ is just the $n\times n$ matrix</p>
 <p>$$\begin{pmatrix}
-&\vphantom{A}& \\
--&df_x&- \\
-&\vphantom{A}& \\
+&amp;\vphantom{A}&amp; \\
+-&amp;df_x&amp;- \\
+&amp;\vphantom{A}&amp; \\
 \hline
-1&& \\
-&\ddots& \\
-&&1
+1&amp;&amp; \\
+&amp;\ddots&amp; \\
+&amp;&amp;1
 \end{pmatrix},$$</p>
 <p>which has full rank. Then $F$ is a local diffeomorphism by the inverse
 function theorem and also $F(W\times0)=U\cap M$. For each $x\in U\cap
@@ -151,9 +151,21 @@ we have the 'restricted' composite</p>
 this is our desired coordinate system around $x$. The required inverse
 $F(W')\to\{x\in W\mid (x,0)\in W'\}$ is differentiable since it is
 just $F^{-1}$ followed by projection onto the first $k$ components.</p>
-<p>{% include figure.html src="manifold-coord-system-deriv-full-rank.svg"
-alt="A coordinate system whose derivative has full rank"
-figno=1 %}</p>
+<p>
+<table style="margin-left:auto; margin-right:auto">
+  <tr>
+    <td style="text-align:center">
+      <img src="/resource/manifold-coord-system-deriv-full-rank.svg"
+           alt="A coordinate system whose derivative has full rank"
+           style="width: 100%; height: auto"
+           class="img-responsive" />
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center;"><p>Figure 1. </p></td>
+  </tr>
+</table>
+</p>
 <h3>Immersed manifolds</h3>
 <p>The proof of the converse required that the image of $f$ is an open
 subset of $M$. If we drop this condition (while still requiring that
@@ -168,10 +180,21 @@ components. Accordingly, there is no coordinate system $g$ around $x$,
 because that would imply the existence of an open subset $U\subset\R$
 and a point $x\in U$ such that every nbhd intersects two connected
 components of $U$, which is impossible.</p>
-<p>{% include figure.html src="immersed-manifold.svg"
-alt="Immersed manifold"
-figno=2 %}</p>
-<p>[^1]: For convenience I'll use diffeomorphic to refer to smoothly diffeomorphic.</p>
+<p>
+<table style="margin-left:auto; margin-right:auto">
+  <tr>
+    <td style="text-align:center">
+      <img src="/resource/immersed-manifold.svg"
+           alt="Immersed manifold"
+           style="width: 100%; height: auto"
+           class="img-responsive" />
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center;"><p>Figure 2. An immersed manifold</p></td>
+  </tr>
+</table>
+</p>
+<p><p class="footnote">1. For convenience I'll use diffeomorphic to refer to smoothly diffeomorphic. <a id="footnote-1" href="#footnoteref-1">back</a></p></p>
 </body>
 </html>
-        

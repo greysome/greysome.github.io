@@ -1,6 +1,5 @@
 # Defining smooth manifolds
 
-
 Recall the definition of a *topological* manifold $M\subset\R^n$:
 every $x\in M$ has a nbhd $U\cap M$ that is homeomorphic to an open
 subset $W\subset\R^k$. It is tempting to define smooth manifolds by
@@ -55,9 +54,7 @@ this is our desired coordinate system around $x$. The required inverse
 $F(W')\to\{x\in W\mid (x,0)\in W'\}$ is differentiable since it is
 just $F^{-1}$ followed by projection onto the first $k$ components.
 
-{% include figure.html src="manifold-coord-system-deriv-full-rank.svg"
-alt="A coordinate system whose derivative has full rank"
-figno=1 %}
+![A coordinate system whose derivative has full rank](manifold-coord-system-deriv-full-rank.svg "" 100%)
 
 ### Immersed manifolds
 
@@ -76,8 +73,6 @@ because that would imply the existence of an open subset $U\subset\R$
 and a point $x\in U$ such that every nbhd intersects two connected
 components of $U$, which is impossible.
 
-{% include figure.html src="immersed-manifold.svg"
-alt="Immersed manifold"
-figno=2 %}
+![Immersed manifold](immersed-manifold.svg "An immersed manifold" 100%)
 
 [^1]: For convenience I'll use diffeomorphic to refer to smoothly diffeomorphic.

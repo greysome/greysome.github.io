@@ -121,11 +121,11 @@ $\C[\l]/(\l-\a_i)^{k_i}$ admits a basis</p>
 <p>Thus the action of $\l$ on this $\l$-span can be represented by the
 matrix</p>
 <p>$$\begin{pmatrix}
-1 & \a_i & & & \\
-& 1 & \a_i & & \\
-& & \ddots & & \\
-& & & 1 & \a_i \\
-& & & & 1
+1 &amp; \a_i &amp; &amp; &amp; \\
+&amp; 1 &amp; \a_i &amp; &amp; \\
+&amp; &amp; \ddots &amp; &amp; \\
+&amp; &amp; &amp; 1 &amp; \a_i \\
+&amp; &amp; &amp; &amp; 1
 \end{pmatrix}$$</p>
 <p>As a whole, the matrix of $\l$ can be represented as a direct sum of
 these Jordan blocks.</p>
@@ -179,9 +179,9 @@ $V^\C$.</p>
 $a_k=b_k=0$ for all $k$. Thus linear independence is preserved.</p>
 <p>If $v,w\in V$ then $v=\sum_k a_kv_k$ and $w=\sum_k b_kv_k$, so</p>
 <p>$$\begin{align*}
-v+wi &= \sum_k a_kv_k + \left(\sum_k b_kv_k\right)i \\
-&= \sum_k a_kv_k + \left(\sum_k b_ki\cdot v_k\right) \\
-&= \sum_k (a_k+b_ki)v_k,
+v+wi &amp;= \sum_k a_kv_k + \left(\sum_k b_kv_k\right)i \\
+&amp;= \sum_k a_kv_k + \left(\sum_k b_ki\cdot v_k\right) \\
+&amp;= \sum_k (a_k+b_ki)v_k,
 \end{align*}$$</p>
 <p>so $v_1,\ldots,v_n$ span $V^\C$ as well. $\qed$</p>
 <p><strong>Proposition 2.</strong> The extension of $\l:V\to V$ to $V^\C$ as defined
@@ -189,11 +189,11 @@ above is automatically $\C$-linear. Furthermore it satisfies</p>
 <p>$$\ol{\l(v+wi)} = \l(\ol{v+wi}) = \l(v-wi).$$</p>
 <p><em>Proof.</em> Additivity is trivial. And we have</p>
 <p>$$\begin{align*}
-(a+bi)\l(v+wi) &= (a+bi)\bigl(\l(v)+\l(w)i\bigr) \\
-&= \bigl(a\l(v)-b\l(w)\bigr)+\bigl(a\l(w)+b\l(v)\bigr)i \\
-&= \l(av-bw)+\l(aw+bv)i \\
-&= \l\bigl((av-bw)+(aw+bv)i\bigr) \\
-&= \l\bigl((a+bi)(v+wi)\bigr).
+(a+bi)\l(v+wi) &amp;= (a+bi)\bigl(\l(v)+\l(w)i\bigr) \\
+&amp;= \bigl(a\l(v)-b\l(w)\bigr)+\bigl(a\l(w)+b\l(v)\bigr)i \\
+&amp;= \l(av-bw)+\l(aw+bv)i \\
+&amp;= \l\bigl((av-bw)+(aw+bv)i\bigr) \\
+&amp;= \l\bigl((a+bi)(v+wi)\bigr).
 \end{align*}$$</p>
 <p>As for the second claim, let $v_1,\ldots,v_n$ be a basis for
 $V$. Since elements of $V$ are self-conjugate we have</p>
@@ -203,10 +203,10 @@ suffices to prove that linear combinations preserve the equality
 between the first and third terms. This is pure calculation:</p>
 <p>$$\begin{align*}
 \ol{\l\left(\sum_k (a_k+b_ki)v_k\right)}
-&= \ol{\sum_k (a_k+b_ki)\l v_i} \\
-&= \sum_k \ol{a_k+b_ki}\cdot\ol{\l v_i} \\
-&= \sum_k \ol{a_k+b_ki}\ \l\ol{v_i} \\
-&= \l\left(\ol{\sum_k (a_k+b_ki)v_k}\right).\ \qed
+&amp;= \ol{\sum_k (a_k+b_ki)\l v_i} \\
+&amp;= \sum_k \ol{a_k+b_ki}\cdot\ol{\l v_i} \\
+&amp;= \sum_k \ol{a_k+b_ki}\ \l\ol{v_i} \\
+&amp;= \l\left(\ol{\sum_k (a_k+b_ki)v_k}\right).\ \qed
 \end{align*}$$</p>
 <p>Proposition 1 is very important, because if $M$ is the matrix
 representing $\l$ in $V$, then we can also use $M$ to represent $\l$
@@ -219,8 +219,8 @@ factors. Therefore,</p>
 two 'nice' complex $\l$-spans. Thus we have two separate (complex) bases
 $\\{\v_1,\ldots,\v_n\\}$ and $\\{\w_1,\ldots,\w_n\\}$ such that</p>
 <p>$$\begin{align*}
-\l \v_k &= \g\,\v_k + \v_{k+1}, \\
-\l \w_k &= \ol\g\,\w_k + \w_{k+1}.
+\l \v_k &amp;= \g\,\v_k + \v_{k+1}, \\
+\l \w_k &amp;= \ol\g\,\w_k + \w_{k+1}.
 \end{align*}$$</p>
 <p>But conjugating the first equation yields</p>
 <p>$$\l\ol{\v_k} = \ol\gamma\,\ol{\v_k} + \ol{\v_{k+1}},$$</p>
@@ -230,35 +230,35 @@ $\w_k=\ol{\v_k}$! Now define the real vectors</p>
 <p>Note that $v_k'$ and $w_k'$ are simply the real and imaginary parts of
 $\v_k$. The corresponding relations matrix has the block form</p>
 <p>$$\begin{pmatrix}
-1/2 & 1/2 & & \\
-1/2 & -1/2 & & \\
-& & 1/2 & 1/2 & \\
-& & 1/2 & -1/2 & \\
-&&&& \ddots
+1/2 &amp; 1/2 &amp; &amp; \\
+1/2 &amp; -1/2 &amp; &amp; \\
+&amp; &amp; 1/2 &amp; 1/2 &amp; \\
+&amp; &amp; 1/2 &amp; -1/2 &amp; \\
+&amp;&amp;&amp;&amp; \ddots
 \end{pmatrix},$$</p>
 <p>which has nonzero determinant and is hence invertible. Thus the
 $v_k'$'s and $w_k'$'s together form a real basis for $V^\C$. Now let
 $\g=a+bi$. Since $\v_k = v_k'+w_k'i$, we can deduce the relations</p>
 <p>$$\begin{align*}
-\l v_k' &= \Re \l \v_k \\
-&= \Re(\g\v_i + \v_{k+1}) \\
-&= \Re\bigl((a+bi)(v_k'+w_k'i)\bigr) + v_{k+1}' \\
-&= av_k'-bw_k'+v_{k+1}'.
+\l v_k' &amp;= \Re \l \v_k \\
+&amp;= \Re(\g\v_i + \v_{k+1}) \\
+&amp;= \Re\bigl((a+bi)(v_k'+w_k'i)\bigr) + v_{k+1}' \\
+&amp;= av_k'-bw_k'+v_{k+1}'.
 \end{align*}$$</p>
 <p>Similarly,</p>
 <p>$$\l w_k' = bv_k'+aw_k'+w_{k+1}'.$$</p>
 <p>Thus the matrix of $\l$ wrt the $v_k'$'s and $w_k'$'s has the block
 form</p>
 <p>$$\begin{pmatrix}
-a & -b & 1 & &&&&&& \\
-b & a & & 1 &&&&&& \\
-&& a & -b & 1 &&&&& \\
-&& b & a & & 1 &&&& \\
-&&&& \ddots &&&&& \\
-&&&&&& a & -b & 1 & \\
-&&&&&& b & a & & 1 \\
-&&&&&&&& a & -b \\
-&&&&&&&& b & a
+a &amp; -b &amp; 1 &amp; &amp;&amp;&amp;&amp;&amp;&amp; \\
+b &amp; a &amp; &amp; 1 &amp;&amp;&amp;&amp;&amp;&amp; \\
+&amp;&amp; a &amp; -b &amp; 1 &amp;&amp;&amp;&amp;&amp; \\
+&amp;&amp; b &amp; a &amp; &amp; 1 &amp;&amp;&amp;&amp; \\
+&amp;&amp;&amp;&amp; \ddots &amp;&amp;&amp;&amp;&amp; \\
+&amp;&amp;&amp;&amp;&amp;&amp; a &amp; -b &amp; 1 &amp; \\
+&amp;&amp;&amp;&amp;&amp;&amp; b &amp; a &amp; &amp; 1 \\
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; a &amp; -b \\
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; b &amp; a
 \end{pmatrix}$$</p>
 <p>I'll call this a <em>real Jordan block</em>. Thus, any linear map on a real
 vector space can be represented by a diagonal block matrix, where each
@@ -272,20 +272,19 @@ quadratic. Since</p>
 <p>$$\l^2 p(\l)^i = -\b\ p(\l)^i - \a\l p(\l)^i + p(\l)^{i+1},$$</p>
 <p>the matrix of $\l$ on this $\l$-span, wrt this basis, has the form</p>
 <p>$$\begin{pmatrix}
-0 & 1 & 0 & 0 &&&&&& \\
--\b & -\a & 1 & 0 &&&&&& \\
-&& 0 & 1 & 0 & 0 &&&& \\
-&& -\b & -\a & 1 & 0 &&&& \\
-&&&& \ddots &&&&& \\
-&&&&&& 0 & 1 & 0 & 0 \\
-&&&&&& -\b & -\a & 1 & 0 \\
-&&&&&&&& 0 & 1 \\
-&&&&&&&& -\b & -\a
+0 &amp; 1 &amp; 0 &amp; 0 &amp;&amp;&amp;&amp;&amp;&amp; \\
+-\b &amp; -\a &amp; 1 &amp; 0 &amp;&amp;&amp;&amp;&amp;&amp; \\
+&amp;&amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp;&amp;&amp;&amp; \\
+&amp;&amp; -\b &amp; -\a &amp; 1 &amp; 0 &amp;&amp;&amp;&amp; \\
+&amp;&amp;&amp;&amp; \ddots &amp;&amp;&amp;&amp;&amp; \\
+&amp;&amp;&amp;&amp;&amp;&amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+&amp;&amp;&amp;&amp;&amp;&amp; -\b &amp; -\a &amp; 1 &amp; 0 \\
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; 0 &amp; 1 \\
+&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp; -\b &amp; -\a
 \end{pmatrix},$$</p>
 <p>composed of the subblocks</p>
-<p>$$\begin{pmatrix} 0 & 1 \\ -\b & -\a\end{pmatrix}
+<p>$$\begin{pmatrix} 0 &amp; 1 \\ -\b &amp; -\a\end{pmatrix}
 \quad\text{and}\quad
-\begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.$$</p>
+\begin{pmatrix} 0 &amp; 0 \\ 1 &amp; 0 \end{pmatrix}.$$</p>
 </body>
 </html>
-        
