@@ -12,9 +12,10 @@ from urllib.parse import quote
 from mistletoe import block_token
 from mistletoe import span_token
 from mistletoe.latex_token import Math
-from mistletoe.block_token import HtmlBlock
-from mistletoe.span_token import SpanToken, EscapeSequence, HtmlSpan
+from mistletoe.block_token import Footnote
+from mistletoe.span_token import SpanToken, HtmlSpan
 from mistletoe.html_renderer import HtmlRenderer
+
 
 class Figure(SpanToken):
     """
@@ -22,56 +23,45 @@ class Figure(SpanToken):
     """
     alt_text = '!\[([^\]]*)\]'
     src = r'(.*?)'
-    caption = r'"(.*[^"])"'
+    caption = r'"([^"]*)"'
     scale = r'(([0-9]*)\%)?'
     pattern = re.compile(rf'{alt_text}\({src}\s*{caption}\s*{scale}\s*\)')
 
     def __init__(self, match):
-        self.alt = EscapeSequence.strip(match.group(1))
-        self.src = EscapeSequence.strip(match.group(2).strip())
-        self.caption = EscapeSequence.strip(match.group(3))
+        self.alt = match.group(1)
+        self.src = match.group(2)
+        self.caption = match.group(3)
         if match.group(5):
-            self.scale = EscapeSequence.strip(match.group(5))
+            self.scale = match.group(5)
         else:
             self.scale = '100'
-        self.dest_type = getattr(match, "dest_type", None)
-        self.label = getattr(match, "label", None)
-        self.title_delimiter = getattr(match, "title_delimiter", None)
+
+
+class FootReference(SpanToken):
+    pattern = re.compile(rf'\[\^(.*?)\]')
+
+    def __init__(self, match):
+        self.ref = match.group(1)
+
+
+class Footnote(SpanToken):
+    pattern = re.compile(rf'^\[\^(.*?)\]:\s(.*)$')
+    parse_group = 2
+    parse_inner = True
+
+    def __init__(self, match):
+        self.ref = match.group(1)
+        self.content = match.group(2)
 
 
 class HtmlPostRenderer(HtmlRenderer):
-    def __init__(
-        self,
-        *extras,
-        html_escape_double_quotes=False,
-        html_escape_single_quotes=False,
-        process_html_tokens=True,
-        **kwargs
-    ):
-        self._suppress_ptag_stack = [False]
-        final_extras = chain((Figure,Math), (HtmlBlock, HtmlSpan) if process_html_tokens else (), extras)
-        super().__init__(*final_extras, **kwargs)
+    def __init__(self):
+        super().__init__(Math, Figure, FootReference, Footnote)
         # parse all Images as Figures
         del self.render_map['Image']
         # for use in Figures
         self.figno = 0
-        self.html_escape_double_quotes = html_escape_double_quotes
-        self.html_escape_single_quotes = html_escape_single_quotes
-
-
-    def __exit__(self, *args):
-        super().__exit__(*args)
-
-
-    def escape_html_text(self, s: str) -> str:
-        s = s.replace("<", "&lt;")
-        s = s.replace(">", "&gt;")
-        if self.html_escape_double_quotes:
-            s = s.replace('"', "&quot;")
-        if self.html_escape_single_quotes:
-            s = s.replace('\'', "&#x27;")
-        return s
-
+        
 
     def render_math(self, token):
         """
@@ -81,9 +71,21 @@ class HtmlPostRenderer(HtmlRenderer):
         return self.render_raw_text(token)
 
 
+    def render_footnote(self, token):
+        content = ''
+        for child in token.children:
+            content += self.render(child)
+        return f'<p class="footnote">{token.ref}. {content} <a id="footnote-{token.ref}" href="#footnoteref-{token.ref}">back</a></p>'
+
+
+    def render_foot_reference(self, token):
+        return f'<sup><a id="footnoteref-{token.ref}" href="#footnote-{token.ref}">{token.ref}</a></sup>'
+
+
     def render_figure(self, token):
         self.figno += 1
-        return f'''
+        return \
+f'''
 <table style="margin-left:auto; margin-right:auto">
   <tr>
     <td style="text-align:center">
@@ -101,10 +103,10 @@ class HtmlPostRenderer(HtmlRenderer):
 
 
     def render_document(self, token: block_token.Document) -> str:
-        self.footnotes.update(token.footnotes)
         head = open('../head.html', 'r').read()
         body = '\n'.join([self.render(child) for child in token.children])
-        return f'''
+        return \
+f'''
 <html>
 <head>
 {head}
@@ -114,4 +116,4 @@ class HtmlPostRenderer(HtmlRenderer):
 {body}
 </body>
 </html>
-        '''
+'''

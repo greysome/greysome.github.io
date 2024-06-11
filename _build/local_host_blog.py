@@ -11,7 +11,6 @@ def page_not_found(e):
 
 @app.route('/')
 def root():
-    print(SITE_DIR, path, filename)
     return send_from_directory(SITE_DIR, 'index.html')
 
 @app.route('/<filename>')
