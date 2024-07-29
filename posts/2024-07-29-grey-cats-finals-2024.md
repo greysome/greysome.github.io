@@ -217,7 +217,7 @@ def derive_iv(swaps):
     return bytes(iv)
 ```
 
-We can find a set of $a_i'$ by only changing a few $a_i$. Suppose $x=a_0$, $y=a_x$, $z=a_y$, which means 0 is swapped with $x$, $x$ is swapped with $y$, and $y$ is swapped with $z$. I need to assume that $x,y<128$, because otherwise the swaps $(x\ y)$ and $(y\ z)$ only occur *after* the partial $S'$, and we can only influence the swaps that happen before. Furthermore, assume that no other swaps touch $0$, $x$, $y$ or $z$, so these four values are permuted among themselves (as a consequence I also require $z>=128$). (These assumptions mean that I need the program to generate multiple signatures until a one with 'good' swaps is found.)
+We can find a set of $a_i'$ by only changing a few $a_i$. Suppose $x=a_0$, $y=a_x$, $z=a_y$, which means 0 is swapped with $x$, $x$ is swapped with $y$, and $y$ is swapped with $z$. I need to assume that $x,y<128$, because otherwise the swaps $(x\ y)$ and $(y\ z)$ only occur *after* the partial $S'$, and we can only influence the swaps that happen before. Furthermore, assume that no other swaps touch $0$, $x$, $y$ or $z$, so these four values are permuted among themselves (as a consequence I also require $z\ge128$). These assumptions mean that I need the program to generate multiple signatures until a one with 'good' swaps is found.
 
 If $x<y$, then in (left-to-right) cycle notation the permutation of $\{0,x,y,z\}$ is
 
