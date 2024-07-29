@@ -107,7 +107,7 @@
 </head>
 <body>
 <a href="/index.html">&lt; Back</a> 
-<h1>A simpler way of solving linear recurrences</h1>
+<h1 id="a-simpler-way-of-solving-linear-recurrences">A simpler way of solving linear recurrences</h1>
 <p>The standard method involves diagonalisation and Jordan normal form
 (in the separable and non-separable case respectively). However a
 problem sent by a friend in Discord prompted me to figure out a less
@@ -129,7 +129,7 @@ is linear.) To solve the recurrence, we will find a convenient basis
 $B$ of initial conditions whose solutions have a nice closed form, so
 that by passage through $T$, every solution is a linear combination of
 these closed forms.</p>
-<h3>Separable case</h3>
+<h3 id="separable-case">Separable case</h3>
 <p>Let $\lambda_1,\ldots,\lambda_k$ be the $k$ distinct roots of the charpoly</p>
 <p>$$p(\lambda)=\lambda^k-c_{k-1}\lambda^{k-1}-\ldots-c_0.$$</p>
 <p>For each $\lambda_i$ we can generate the initial condition
@@ -149,7 +149,7 @@ Vandermonde matrix</p>
 <p>I love this proof more than the diagonalisation proof because it makes
 the role of the charpoly transparent: their roots just happen to
 provide the simplest closed-form solutions.</p>
-<h3>Non-separable case</h3>
+<h3 id="non-separable-case">Non-separable case</h3>
 <p>Let $\lambda_1,\ldots,\lambda_l$ be the roots with multiplicities
 $m_1,\ldots,m_l$. Unfortunately the $l$ initial conditions
 $(1,\lambda_i,\ldots,\lambda_i^{k-1})$ are not enough to form a basis,

@@ -107,7 +107,7 @@
 </head>
 <body>
 <a href="/index.html">&lt; Back</a> 
-<h1>$\ZZs{p^n}$ is cyclic</h1>
+<h1 id="-zzs-p-n-is-cyclic">$\ZZs{p^n}$ is cyclic</h1>
 <p>A few days back someone in the math Discord mentioned that $\ZZs{p^n}$
 is cyclic for all primes $&gt;2$, so I took it upon myself to prove it.</p>
 <p>My first idea was to arrange the elements of $\ZZs{p^n}$ in a grid mod
@@ -139,11 +139,11 @@ with order</p>
 <p>In the larger group $\ZZs{p^n}$, the power $x^k$ may not equal 1, but
 it is guaranteed to lie in $H$, which is the first column. This
 follows from the fact that $\phi$ is a homomorphism.</p>
-<h4>Case 1</h4>
+<h4 id="case-1">Case 1</h4>
 <p>If $x^k\neq1$, then $x^k\in H$ has order $p$, so $x$ has order
 $pk=|\ZZs{p^n}|$. Therefore $x$ is also a generator for $\ZZs{p^n}$
 and this immediately concludes it is cyclic.</p>
-<h4>Case 2</h4>
+<h4 id="case-2">Case 2</h4>
 <p>If $x^k=1$, then $x$ generates an order $k$ subgroup
 $K\le\ZZs{p^n}$. Since $H=\ker\phi$, $K$ is isomorphic to
 $\im\,\phi=\ZZs{p^{n-1}}$ and $H,K$ intersect trivially, we have a

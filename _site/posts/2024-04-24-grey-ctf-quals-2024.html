@@ -107,15 +107,17 @@
 </head>
 <body>
 <a href="/index.html">&lt; Back</a> 
-<h1>Grey Cat The Flags 2024 Qualifiers writeups</h1>
-<ol start="3">
+<h1 id="grey-cat-the-flags-2024-qualifiers-writeups">Grey Cat The Flags 2024 Qualifiers writeups</h1>
+<ol>
+<li><a href="#filter-ciphertext-crypto">Filter ciphertext (crypto)</a></li>
+<li><a href="#filter-plaintext-crypto">Filter plaintext (crypto)</a></li>
 <li><a href="#aes-crypto">AES (crypto)</a></li>
 <li><a href="#prg-crypto">PRG (crypto)</a></li>
 <li><a href="#verilog-count-misc">Verilog count (misc)</a></li>
 <li><a href="#maze-runner-misc">Maze runner (misc)</a></li>
 <li><a href="#tones-misc">Tones (misc)</a></li>
 </ol>
-<h3>Filter ciphertext (crypto)</h3>
+<h3 id="filter-ciphertext-crypto">Filter ciphertext (crypto)</h3>
 <p><em>I rolled my own crypto. What could go wrong?</em> <a href="/resource/filter_ciphertext.py">(code)</a></p>
 <p>Before breaking the program, I try to understand how it works exactly. After all, being good at crypto requires the ability to comprehend <a href="https://eprint.iacr.org/2022/196">man-made horrors</a>.</p>
 <p>The <code>encrypt()</code> function works by breaking the plaintext <code>pt</code> into blocks $B_0\ B_1\ \cdots\ B_n$ of 16 bytes, and computing the ciphered blocks</p>
@@ -205,7 +207,7 @@ Wow! Here's the flag: grey{00ps_n3v3r_m0d1fy_wh1l3_1t3r4t1ng}
     
     return ret
 </code></pre>
-<h3>Filter plaintext (crypto)</h3>
+<h3 id="filter-plaintext-crypto">Filter plaintext (crypto)</h3>
 <p><em>Maybe this will work?</em> <a href="/resource/filter_plaintext.py">(code)</a></p>
 <p>As a sequel to the previous challenge, this is more involved. There are two ciphers $C$ and $C^+$. $C$ is the custom one used previously, except for a small change in the <code>decrypt()</code> functionality. $C^+$ is a normal AES-CBC cipher used to encrypt the flag. We have the ciphertext and iv for $C^+$, and its key is the md5 hash of the plaintext secret. Thus the challenge boils down to decrypting the encrypted secret, with which decrypting $C^+$ is trivial.</p>
 <p>The <code>decrypt()</code> function is similar to before, except there is no more buggy loop and it filters out any plaintext block appearing in the secret from the return value. Thus the strategy of spitting the encrypted secret $C_0\ C_1\ \cdots\,$ back at the program doesn't work.</p>
@@ -246,7 +248,7 @@ block2+D = c40c7100c3be1a8d58c66a0b5a2c52ba,
 </code></pre>
 <p>and we use its md5 hash along with the given iv to initialize an AES-CBC cipher and decrypt <code>ct</code>.</p>
 <p><code>grey{pcbc_d3crypt10n_0r4cl3_3p1c_f41l}</code></p>
-<h3>AES (crypto)</h3>
+<h3 id="aes-crypto">AES (crypto)</h3>
 <p><a href="/resource/dist-aes/aes.py">(AES code)</a> <a href="/resource/dist-aes/server.py">(server code)</a></p>
 <p>To obtain the flag, we need to enter the correct password by decrypting the given ciphertext $c_p$. The password is encrypted using a custom implementation of AES, and we are given a 4096-byte (= 256-block) encryption oracle.</p>
 <p>In <code>aes.py</code> there is a link to the original implementation. This is useful because we can simply compare the two files to see where changes were made. In this case, the change is in <code>mix_single_column()</code>:</p>
@@ -361,7 +363,7 @@ r.interactive()</code></pre>
 [*] Switching to interactive mode
 password: flag: grey{mix_column_is_important_in_AES_ExB3Hf9q9I3m}
 </code></pre>
-<h3>PRG (crypto)</h3>
+<h3 id="prg-crypto">PRG (crypto)</h3>
 <p><a href="/resource/dist-prg/server.py">(Server code)</a> <a href="/resource/dist-prg/param.py">(Parameter)</a></p>
 <p>The challenge is to distinguish between a true RNG and a fake RNG. We have to be correct 100 times in a row, so clearly blind guessing won't work. We'd have to figure out how this fake RNG really works.</p>
 <p>Firstly, $x$, $r$ and $k$ are randomly initialized as length 64 bit-strings, which can be thought of as elements of $\F_2^{64}$. Then $x$ is repeatedly updated $16\cdot8$ times according to the rule</p>
@@ -459,7 +461,7 @@ b'0\n'
 ...
 b"What's your guess? (0/1): Congrats! Here is your flag: grey{Not_so_easy_to_construct_a_secure_PRG_LaQSqprzmTjBZs8ygMkGuw}\n"</code></pre>
 <p>Fun fact: the hardest part of this challenge was getting pwntools and sage working together, because I didn't setup my Python environments properly. This is a good learning lesson.</p>
-<h3>Verilog count (misc)</h3>
+<h3 id="verilog-count-misc">Verilog count (misc)</h3>
 <p><em>I want to count from 0</em></p>
 <p>The distribution provided came with the following files:</p>
 <pre><code class="text">.:
@@ -572,7 +574,7 @@ base64 encoded input: bW9kdWxlIGNvdW50ZXIgKAogICAgaW5wdXQgd2lyZSBjbGssCiAgICBvdX
 Received Verilog code!
 Congratulations! Flag: grey{c0un71n6_w17h_r1pp13_4ddr5}</code></pre>
 <p>Ripple adder? What's that?</p>
-<h3>Maze runner (misc)</h3>
+<h3 id="maze-runner-misc">Maze runner (misc)</h3>
 <p><em>The maze trials were just the start. As a master of mazes, you find yourself still confined in a maze. At least you've got some superpowers this time...</em>  <code>nc challs.nusgreyhats.org 31112</code></p>
 <p>Connecting to that port, we are greeted with this:</p>
 <pre><code class="text">LEVEL 1:
@@ -730,7 +732,7 @@ while True:
 Congratulations! You've made it out of the maze! Your determination, courage, and problem-solving skills have led you to freedom. Now, embrace the next chapter of your journey with the same resilience and bravery. The maze may be behind you, but the adventure continues!
 
 grey{g1ad3rs_pha5erS_y0u_hAvE_jo1n3d_tH3_m4ze_eSc4p3rs!}</code></pre>
-<h3>Tones (misc)</h3>
+<h3 id="tones-misc">Tones (misc)</h3>
 <p><em>What kind of music is this? Warning: Audio file may be loud!</em> <a href="/resource/dist-tones.zip">(.zip distribution)</a></p>
 <p>The zip distribution contained the following files:</p>
 <pre><code class="text">flag.flac  graycats.flac  grayhats.flac  greycats.flac  greyhats.flac</code></pre>

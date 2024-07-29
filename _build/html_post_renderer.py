@@ -62,6 +62,31 @@ class HtmlPostRenderer(HtmlRenderer):
         # for use in Figures
         self.figno = 0
         self.footnotes = []
+
+
+    # Turns a heading like "My Heading 1!" into "my-heading-1"
+    def _create_id(self, heading):
+        _id = ''
+        nonalnum_start = True
+        for c in heading:
+            if c.isalnum():
+                nonalnum_start = True
+                _id += c.lower()
+            elif nonalnum_start:
+                _id += '-'
+                nonalnum_start = False
+        if _id[-1] == '-':
+            return _id[:-1]
+        return _id
+    
+
+    def render_heading(self, token: block_token.Heading) -> str:
+        level = token.level
+        inner = self.render_inner(token)
+        heading = ''.join(child.content for child in token.children)
+        print(heading)
+        _id = self._create_id(heading)
+        return f'<h{level} id="{_id}">{inner}</h{level}>'
         
 
     def render_math(self, token):

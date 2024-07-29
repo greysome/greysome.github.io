@@ -107,10 +107,10 @@
 </head>
 <body>
 <a href="/index.html">&lt; Back</a> 
-<h1>Crypto solutions for Hackbash 2024</h1>
-<h3>Mahjong Cipher</h3>
+<h1 id="crypto-solutions-for-hackbash-2024">Crypto solutions for Hackbash 2024</h1>
+<h3 id="mahjong-cipher">Mahjong Cipher</h3>
 <p>A pictoral substitution cipher followed by another substitution cipher.</p>
-<h3>My First Encryption</h3>
+<h3 id="my-first-encryption">My First Encryption</h3>
 <p>Let $h(X)$ denote the SHA1 hash of the character $X$. Given the flag <strong>flag{??$\ldots$??}</strong>, the code computes the hash of each character and stores it in a list $L$, setting the key to be the first 4 elements $(h(\text{f})\ h(\text{l})\ h(\text{a})\ h(\text{g}))$. Then there is a loop where each element of $L$ is replaced by its XOR with every element of the key. Represented pictorially:</p>
 <p>$$\begin{matrix}
 L &amp; = &amp; h(\text{f}) &amp; h(\text l) &amp; h(\text a) &amp; h(\text g) &amp; h(\text \{) &amp; h(\text?) &amp; h(\text?) &amp; \ldots \\[5pt]
@@ -122,7 +122,7 @@ C &amp; = &amp; h(\text{f})\oplus S &amp; h(\text l)\oplus S &amp; h(\text a)\op
 <li>Compute a table of $h(X)\oplus S$ for all possible characters $X$ (at most 256 of them)</li>
 <li>For each character $h(\text ?)\oplus S$ in $C$, match it against the table to find $\text ?$.</li>
 </ol>
-<h3>Anti-Fermat</h3>
+<h3 id="anti-fermat">Anti-Fermat</h3>
 <p>An RSA decryption challenge.</p>
 <ol>
 <li>
@@ -143,11 +143,11 @@ C &amp; = &amp; h(\text{f})\oplus S &amp; h(\text l)\oplus S &amp; h(\text a)\op
 <p>Thus there are technically many possibilities for $m$ given a computed modular square root $r'$: for instance we could have (1) $r'-m=cp$ and $r'+m=dq$ for some $c,d$, or (2) $r'-m=cq$ and $r'+m=dp$ for some $c,d$, or (3) $r'-m\equiv 0$ mod $n$ or (4) $r'+m\equiv0$ mod $n$. Fortunately the solution turned out to fall under either case 3 or 4, I don't remember exactly which.)</p>
 </li>
 </ol>
-<h3>XOR key</h3>
+<h3 id="xor-key">XOR key</h3>
 <p>We are given a 10000-byte long ciphertext $C_1\ldots C_{10000}$, which was encrypted by XORing a random byte sequence $B_1\ldots B_{10000}$ containing the flag with a 30-byte key $K_1\ldots K_{30}$ repeated cyclically. (Note the $B$'s and $K$'s are unknown.) So for instance, $C_1=B_1\oplus K_1$, $C_2=B_2\oplus K_2$ and $C_{31}=B_{31}\oplus K_1$. Rearranging, we get 10000 equations of the form</p>
 <p>$$K_{k\ \text{mod}\ 30} = B_k\oplus C_k.$$</p>
 <p>Now, we use the fact that each $B_k$ is within a small range of printable characters (let's say there are $n$ of them). Thus in the above equation, $K_{k\ \text{mod}\ 30}$ is actually narrowed down to $n$ possibilities. Then, we use the fact that each $K_i$ appears in at least $\floor{10000/30}=333$ equations; taking all of them into consideration at once, we see that the set of possiblities for $K_i$ is the intersection of 333 $n$-element sets. Computing the intersection for each byte of the key, we happily find that all of them have exactly one element, meaning the key is determined exactly. The flag is then obtained by XORing the ciphertext with the key repeated (since XOR is symmetric).</p>
-<h3>Bleichenbacher's attack</h3>
+<h3 id="bleichenbacher-s-attack">Bleichenbacher's attack</h3>
 <p>I'm just going to re-explain Jules' write-up in my own words. Recall the set of valid RSA decrypts is a range of integers $[0,n)$, because we are exponentiating the ciphered message $c$, and then taking <em>mod $n$</em>. The set of decrypts with <em>valid padding</em> (which I'll just call valid) is a subrange $[0,k)$ where $0&lt;k&lt;n$---in this case these correspond to the messages starting with a zero byte. We are also given an oracle that takes in any integer $x$, and tells us if $mx$ mod $n$ is valid (this is done by sending the encrypted message $cx^e$ mod $n$, which is decrypted to $(cx^e)^d\equiv mx$ mod $n$).</p>
 <p>Now suppose $m&lt;n$. If $x&gt;0$ is the smallest integer such that $mx$ mod $n$ is invalid and $m(x+1)$ mod $n$ is valid, then we can pretty easily conclude that $mx&lt;n\le m(x+1)$, therefore $t=n/m$ lies in $(x,x+1]$. Thus we have determined the integral part of $t$, and we shall find its decimal part via binary search.</p>
 <p>Doubling the inequality we have $m(2x)&lt;2n\le m(2x+2)$, and we can split into two cases $m(2x)&lt;2n\le m(2x+1)$ and $m(2x+1)&lt;2n\le m(2x+2)$, which can be rewritten as</p>
@@ -172,7 +172,7 @@ C &amp; = &amp; h(\text{f})\oplus S &amp; h(\text l)\oplus S &amp; h(\text a)\op
 <li>Many iterations of the binary search are required. Thus one should use pwntools to script the interaction with the oracle. (Also debugging on a local version is always helpful!)</li>
 <li>Don't use standard floats to represent the current approximation to $t$, it does not afford enough precision. And we absolutely need the precision because the flag occurs among the least significant digits of $m$. I used gmpy2 multi-precision floats (with precision 10000) and it worked fine.</li>
 </ol>
-<h3>Easier Padding Oracle</h3>
+<h3 id="easier-padding-oracle">Easier Padding Oracle</h3>
 <p>This is straightforward once one understands the theory behind AES-CBC padding oracle. Recall the following equation governing AES-CBC decryption:</p>
 <p>$$T_{i+16} = C_i\oplus f(C_{i+16}),$$</p>
 <p>where $C$ and $T$ are ciphertext and plaintext respectively, $f$ is the block cipher encryption, and 16 is the block size. If we change $C_i$ to $C_i'$ such that the plaintext $T'$ has valid padding, then most likely $T_{i+16}'=(17-i)\ \text{mod}\ 16$. For instance, if setting $C_{14}$ to $C_{14}'$ gives valid padding, then most likely the block containing $T_{30}'$ has the form</p>
@@ -182,7 +182,7 @@ C &amp; = &amp; h(\text{f})\oplus S &amp; h(\text l)\oplus S &amp; h(\text a)\op
 <p>and subbing it into the previous equation allows us to recover $T_{i+16}$:</p>
 <p>$$T_{i+16} = C_i\oplus C_i'\oplus \bigl((17-i)\ \text{mod}\ 16\bigr).$$</p>
 <p>The flag is obtained simply by applying this formula to each line of the attached text file.</p>
-<h3>AES-CBC</h3>
+<h3 id="aes-cbc">AES-CBC</h3>
 <p>Didn't solve this lol</p>
 <div class="footnote">
 </div>

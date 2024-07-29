@@ -23,4 +23,4 @@ def serve_static_in_dir(path, filename):
 
 if __name__ == '__main__':
     os.chdir(os.path.dirname(__file__))
-    app.run(debug=True)
+    app.run(port=8000, debug=True)
