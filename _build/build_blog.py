@@ -9,6 +9,7 @@ from html_post_renderer import HtmlPostRenderer
 SITE_DIR = '../_site'
 
 def write_index_html():
+    # POSTS -------------------------------------------------------------------------------
     post_entries = ''
     num_posts = 0
     posts = []
@@ -32,32 +33,30 @@ def write_index_html():
         post_entries += f'<td><a href="/posts/{filename[:-3]}.html">{title}</a></td></tr>\n'
         posts_heading = str(num_posts) + (' posts' if num_posts > 1 else ' post')
 
+
+    # WRITEUPS -------------------------------------------------------------------------------
     writeup_entries = ''
     num_writeups = 0
     for filename in os.listdir('../writeups'):
-        if not filename.endswith('.pdf'): continue
+        if not filename.endswith('.pdf') and not filename.endswith('.txt'):
+            continue
         num_writeups += 1
-        writeup_entries += f'<tr><td><a target="blank" href="/pdf/{filename}">{filename}</a></td></tr>\n'
+        writeup_entries += f'<tr><td><a target="blank" href="/writeups/{filename}">{filename}</a></td></tr>\n'
     writeups_heading = str(num_writeups) + (' writeups' if num_writeups > 1 else ' writeup')
 
     head = open('../head.html', 'r').read()
     content = f'''
 <html>
-<head>
-{head}
-</head>
-<body>
-<h1>wy's blog</h1>
-<p>{posts_heading}</p>
-<table>
-    {post_entries}
-</table><br>
-
-<p>{writeups_heading}</p>
-<table>
-    {writeup_entries}
-</table>
-</body>
+  <head>{head}</head>
+  <body>
+    <h1>wy's blog</h1>
+    
+    <p>{posts_heading}</p>
+    <table>{post_entries}</table><br>
+    
+   <p>{writeups_heading}</p>
+    <table>{writeup_entries}</table>
+  </body>
 </html>
  '''
     with open(f'{SITE_DIR}/index.html', 'w') as f:
@@ -94,12 +93,15 @@ if __name__ == '__main__':
         shutil.rmtree(f'{SITE_DIR}')
     except FileNotFoundError:
         print(f'{SITE_DIR} doesn\'t exist yet')
-    pathlib.Path(f'{SITE_DIR}').mkdir(parents=True, exist_ok=True)
-    pathlib.Path(f'{SITE_DIR}/posts').mkdir(parents=True, exist_ok=True)
 
+    # Create site directory
+    pathlib.Path(f'{SITE_DIR}').mkdir(parents=True, exist_ok=True)
+    # Create site/posts
+    pathlib.Path(f'{SITE_DIR}/posts').mkdir(parents=True, exist_ok=True)
     for filename in os.listdir('../posts'):
         if filename.endswith('.md'):
             render_post(filename)
-
-    write_index_html()
+    # Create site/resources, site/writeups and other files
     copy_static_files()
+    # Write home page
+    write_index_html()

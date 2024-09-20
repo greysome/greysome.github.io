@@ -278,7 +278,7 @@ def derive_iv(swaps):
         S[i], S[k] = S[k], S[i]
     return bytes(iv)
 </code></pre>
-<p>We can find a set of $a_i'$ by only changing a few $a_i$. Suppose $x=a_0$, $y=a_x$, $z=a_y$, which means 0 is swapped with $x$, $x$ is swapped with $y$, and $y$ is swapped with $z$. I need to assume that $x,y&lt;128$, because otherwise the swaps $(x\ y)$ and $(y\ z)$ only occur <em>after</em> the partial $S'$, and we can only influence the swaps that happen before. Furthermore, assume that no other swaps touch $0$, $x$, $y$ or $z$, so these four values are permuted among themselves (as a consequence I also require $z&gt;=128$). (These assumptions mean that I need the program to generate multiple signatures until a one with 'good' swaps is found.)</p>
+<p>We can find a set of $a_i'$ by only changing a few $a_i$. Suppose $x=a_0$, $y=a_x$, $z=a_y$, which means 0 is swapped with $x$, $x$ is swapped with $y$, and $y$ is swapped with $z$. I need to assume that $x,y&lt;128$, because otherwise the swaps $(x\ y)$ and $(y\ z)$ only occur <em>after</em> the partial $S'$, and we can only influence the swaps that happen before. Furthermore, assume that no other swaps touch $0$, $x$, $y$ or $z$, so these four values are permuted among themselves (as a consequence I also require $z\ge128$). These assumptions mean that I need the program to generate multiple signatures until a one with 'good' swaps is found.</p>
 <p>If $x&lt;y$, then in (left-to-right) cycle notation the permutation of $\{0,x,y,z\}$ is</p>
 <p>$$(0\ x)(x\ y)(y\ z) = (0\ z\ y\ x).$$</p>
 <p>Now note that $(0\ z\ y\ x)$ is also equal to $(0\ x)(x\ z)(y\ x)$, which means we can set $a_0'=x$, $a_x'=z$ and $a_y'=x$ (and all other $a_i'$ to $a_i$). On the other hand if $x\ge y$ then the permutation is</p>

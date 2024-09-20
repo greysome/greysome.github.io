@@ -1,0 +1,455 @@
+1.2.1-13
+--------------------
+
+A3. T <= 3(n-r-1)+2
+A4/A5. T <= 3(n-r)
+A6. T <= 3(n-r)+1
+
+The idea is that each execution of E2 causes r to decrease by at least
+1 (because the previous r is the current d, and the new r is the
+remainder when dividing by d).
+
+
+
+
+1.2.2-25
+--------------------
+
+We have to show two things:
+1. The algorithm terminates.
+2. It computes an approximation to log(x).
+
+I'll first show 2 by proving that if we allow infinite precision and
+let the algorithm run forever, it will compute log(x) to arbitrary
+precision. What the algorithm essentially does is greedily find a
+representation of x as an infinite product of numbers 2^k/(2^k-1)
+(possibly with repetition); then by taking logs and summing up the
+precomputed values log(2^k/(2^k-1)) we obtain log(x) exactly. The
+first few numbers of this form are
+
+2/1 4/3 8/7 16/15 32/31 64/63 128/127 256/255 512/511 1024/1023 ... -> 1.
+
+With infinite precision, a right shift by n bits is the same as
+division by 2^n. What step L3 does then is to find the smallest k such
+that
+
+x-z = x-x/2^k = x*(2^k-1)/2^k > 1, i.e. x > 2^k/(2^k-1).
+
+In other words, 2^k/(2^k-1) is the largest number of that form less
+than x. Then we subtract z from x (i.e. divide 2^k/(2^k-1)) and rerun
+step L3 on it to obtain (2^k1-1)/2^k1, and so on. This gives us an
+infinite product representation of x.
+
+The infinite product does converge to x, because the sequence of x's
+converge to 1. (To rigorously prove it, suppose xn is the nth term and
+kn is the k we get for xn at L3. It can be shown that kn is
+nondecreasing and approaches infinity, and since xn <
+2^(kn-1)/(2^(kn-1)-1) it approaches 1.)
+
+--
+
+With finite precision, the algorithm terminates because:
+1. There are finitely many representable values between 1 and 2.
+2. x-z is always strictly less than x.
+
+1 is obvious and I leave it up to the reader to verify 2. This
+concludes the exercise.
+
+
+
+
+1.2.2-27
+--------------------
+
+From the question Knuth defines
+
+x/10^n (1-\d) <= x0' <= x/10^n (1+\e),
+(xk')^2 (1-\d) <= yk <= (xk')^2 (1+\e).
+
+Let's compute the upper bound for xk' step by step:
+
+x0' <= x(1+\e) / 10^n
+(x0')^2 <= x^2(1+\e)^2 / 10^(2n)
+y0 <= x^2(1+\e)^3 / 10^(2n)
+
+Since
+
+x1' = y0/10 if y0 > 10, y0 otherwise
+
+we have
+
+x1' <= x^2(1+\e)^3 / 10^(2n+b1)
+
+Similarly,
+
+x2' <= x^4(1+\e)^7 / 10^(4n+2b1+b2)
+x3' <= x^8(1+\e)^15 / 10^(8n+4b1+2b2+b3)
+...
+
+In general,
+
+{10^(log'x) * xk'^(1/2^k)}^(2^k)
+= 10^{2^k(n+b1/2+b2/4+...+bk/2^k)} xk'
+<= x^(2^k) (1+\e)^{x^(2^(k+1)-1)}
+<= x^(2^k) (1+\e)^{x^(2^(k+1))}
+
+so
+
+10^(log'x) <= x(1+\e)^2 / xk'^(1/2^k) <= x(1+\e)^2
+
+taking logarithms of both sides yields
+
+log'x <= log10(x) + 2log10(1+\e).
+
+As for the lower bound, we obtain by similar means
+
+10^(log'x) >= x(1+\d)^2 / xk'^(1/2^k),
+
+and note that 1 <= xk < 10 implies 1/10^(1/2^k) < 1/xk'^(1/2^k) <= 1, so
+
+log'x > log10(x) + 2log10(1+\d) - 1/2^k
+
+as desired. Note how we made crucial use of the fact that xk is
+bounded.
+
+--
+
+Now let's specialise to the example in the text. Numbers are rounded
+to 3 decimal places. Furthermore, all numbers in the computation lie
+in [1,10), so we can compute
+
+1+\e = (maximum amount a number can be scaled up by rounding to 3 decimal places)
+= 1.001 / 1.0005
+\approx 1.0005
+
+1-\d = (maximum amount a number can be scaled down by rounding to 3 decimal places)
+= 1.000 / 1.0005
+\approx 0.9995.
+
+The upper error is
+
+2log10(1+\e) \approx 0.000434,
+
+and after many steps the lower error is around
+
+2log10(1-\d) \approx -0.000434.
+
+This matches with Knuth's figure of 0.00044 for the error.
+
+
+
+
+
+1.2.2-29
+--------------------
+
+(a) Derivative of b*log_b(x) = b*ln(x)/ln(b) wrt b is
+
+ln(x)(ln(b)-1 / ln(b)^2);
+
+stationary point occurs when b = e.
+
+(b) Since 2 < e < 3, it suffices to see which of 2*log_2(x) and
+3*log_3(x) is smaller. But we have
+
+3*log_3(x) = 3*log_2(x)/log_2(3) \approx 1.893*log_2(x) < log_2(x),
+
+so b*log_b(x) is minimum at the integral value b=3.
+
+(c) Suppose n is the minimum point. Then for all b we have
+
+(b+1)*log_b(x) = (b+1)*log_n(x)/log_n(b) >= (n+1)log_n(x)
+=> b+1 >= (n+1)log_n(b)
+=> n^(b+1) >= b^(n+1).
+
+We can verify that this is the case for n=4:
+
+b=2: 4^3 >= 2^5
+b=3: 4^4 >= 3^5
+
+What about the other b's? We return to calculus, using the fact that
+the derivative
+
+ln(x)/ln(b)^2 * (ln(b) - (b+1)/b)
+
+is positive for b>=4 (whereas it isn't for b=2,3). This is because
+ln(4) >= 5/4, and ln(b)-(b+1)/b is increasing (since ln(b) is
+increasing and (b+1)/b is decreasing).
+
+
+
+
+1.2.3-16
+--------------------
+
+\sum_{j=0}^n jx^j is the sum of the terms in the following triangle:
+
+x
+x^2 x^2
+x^3 x^3 x^3
+x^4 x^4 x^4 x^4
+x^5 x^5 x^5 x^5 x^5
+...
+x^n x^n x^n x^n x^n ... x^n
+
+The columns are geometric progressions, whose respective sums are
+x(x^n-1 / x-1),
+x^2(x^(n-1)-1 / x-1),
+x^3(x^(n-2)-1 / x-1),
+...
+
+The sum of these terms is
+\sum_{i=1}^n x^i(x^(n-i+1)-1 / x-1)
+= 1/(x-1) [nx^(n+1) - \sum_{i=1}^n x^n]
+= 1/(x-1) [nx^(n+1) - x(x^n-1 / x-1)]
+= 1/(x-1)^2 [nx^(n+1)(x-1) - x(x^n-1)]
+= 1/(x-1)^2 [nx^(n+2) - nx^(n+1) - x^(n+1) + x]
+= 1/(x-1)^2 [nx^(n+2) - (n+1)x^(n+1) + x]
+
+
+
+
+1.2.3-29
+--------------------
+
+I will abbreviate the sum
+
+\sum_{i=0}^n \sum_{j=0}^i \sum_{k=0}^j a_ia_ja_k
+
+as
+
+(0in 0ji 0kj) a_ia_ja_k, or (0in 0ji 0kj) for short.
+
+Let S be the above sum. Considering the 3! = 6 different ways to
+interchange order of summation, we have
+
+6S = (0in 0ji 0kj) + (0in 0ki kji) + (0jn jin 0kj)
+   + (0jn 0kj jin) + (0kn kin kji) + (0kn kjn jin)
+
+   (relabelling summand variables so they appear in the order ijk)
+   = (0in 0ji 0kj) + (0in 0ji jki) + (0in ijn 0ki)
+   + (0in 0ji ikn) + (0in ijn ikj) + (0in ijn jkn)
+
+   = (0in 0ji) [(0kj) + (jki) + (ikn)]
+   + (0in ijn) [(0ki) + (ikj) + (jkn)]
+
+   (swapg i and j in the first term and interchange order of summation)
+   = 2 (0in ijn) [(0ki) + (ikj) + (jkn)]
+
+The term is a sum over all i,j,k satisfying
+1. 0<=i<=j<=n
+2. 0<=k<=i or i<=k<=j or j<=k<=n, where the k=i and k=j cases are counted twice
+
+Thus we can rewrite it as
+
+2 [(0kn) (0jin) a_ia_ja_k + (0ijn) (a_i^2 a_j + a_i a_j^2)],
+
+and the first sum can be simplified as
+
+(0kn) (0ijn) a_ia_ja_k
+= [(0kn) a_k] [(0ijn) a_ia_j]
+= 1/2 [S1(S1^2 + S2)],
+
+where Sk = (0in) a_i^k. Now letting the second sum be T, we have
+
+2T = (0in) (ijn) (a_i^2 a_j + a_i a_j^2)
+   + (0jn) (0ij) (a_i^2 a_j + a_i a_j^2)
+
+   = (0in) (ijn) (a_i^2 a_j + a_i a_j^2)
+   + (0in) (0ji) (a_i^2 a_j + a_i a_j^2)
+   (since the summand is symmetric under the swap (ij))
+
+   = (0in) [(0jn) (a_i^2 a_j + a_i a_j^2) + 2 a_i^3]
+   (the previous term is a sum over all 0<=i<=n and 0<=j<=n,
+    with j=i counted twice)
+
+   = (0in 0jn) a_i^2 a_j + (0in 0jn) a_i a_j^2 + 2 (0in) a_i^3
+   = 2*S1*S2 + 2*S3.
+
+Thus
+
+6S = S1(S1^2 + S2) + 2*S1*S2 + 2*S3
+   = S1^3 + 3*S1*S2 + 2*S3.
+
+
+
+
+1.2.4-36
+--------------------
+
+sum_{k=1}^n floor(k/2)
+= sum_{k=1}^n k/2 - sum_{k=1}^n (k/2 mod 1)
+= n(n+1)/4 - (1/2 + 0 + 1/2 + ...)
+= n^2/4 + n/4 - ceil(n/2)/2
+= (n^2 - [n odd]) / 4
+
+Now since (n^2-[n odd])/4 <= n^2/4 < (n^2-[n odd])/4 + 1, it is equal
+to floor(n^2/4) as desired.
+
+sum_{k=1}^n ceil(k/2)
+= sum_{k=1}^n floor(k+1 / 2)
+= floor((n+1)^2 / 4)
+
+Knuth's expression is ceil(n(n+2)/4), but they are equal because
+1. n(n+2)/4 and (n+1)^2/4 differ by less than 1
+2. Either n(n+2) or (n+1)^2 is divisible by 4 and so one of the
+expressions is an integer, in other words there is an integer between
+n(n+2)/4 and (n+1)^2/4.
+
+
+
+
+1.2.4-37
+--------------------
+
+sum_{k=1}^n floor((mk+x)/n)
+= sum (mk+x / n) - sum [(mk+x / n) mod 1]
+= m(n-1)/2 + x - 1/n sum (mk+x mod n) (*)
+
+Let's first consider sum (mk mod n). The multiples of m generate an
+additive subgroup of Z/nZ where the gap between successive elements
+is d=(m,n). Thus it has n/d elements, and because we are taking n
+multiples, the total sum is
+
+d * (0 + d + 2d + ... + (n/d-1)d)
+= d^2 * 1/2 n/d (n/d-1)
+= nd(n/d-1)/2
+= n(n-d)/2
+
+Letting x' = x mod d, we then have
+
+sum (mk+x mod n)
+= d * (x' + (d+x') + (2d+x') + ... + ((n/d-1)d+x'))
+= n(n-d)/2 + d(n/d)x'
+= n[(n-d)/2 + (x mod d)].
+
+Thus, we can continue from (*):
+
+...
+= m(n-1)/2 + x - (n-d)/2 - (x mod d)
+= (m-1)(n-1)/2 + (d-1)/2 + x - x mod d
+= (m-1)(n-1)/2 + (d-1)/2 + d floor(x/d).
+
+
+
+
+1.2.4-42
+--------------------
+
+Part (a) is very easy to prove.
+
+sum_{k=1}^n floor(log_b(k))
+= n log_b(n) - sum_{k=1}^{n-1} k[floor(log_b(k+1)) - floor(log_b(k))]
+
+Note that the bracketed term in the sum is 1 if k+1 is a power of b,
+and 0 otherwise. Thus the sum can be simplified to
+
+sum_{2<=b^l<n} (b^l-1)
+= b + b^2 + ... + b^floor(log_b(x)) - floor(log_b(x)).
+
+Putting it back into the previous expression we get
+
+(n+1)log_b(n) - b(b^floor(log_b(x))-1 / b-1),
+
+as desired.
+
+
+
+
+1.2.4-48
+--------------------
+
+(a). floor(m+n-1 / n) = ceil(m/n) is not necessarily true for n<0
+(e.g. n=-1). To prove it for n>0 it suffices to show that
+
+1. (m+n-1)/n - m/n < 1 (clearly true)
+
+2. There is always an integer between m/n and (m+n-1)/n, i.e. there is
+always a multiple of n between m and m+n-1. This is clearly true as
+well.
+
+
+
+(b). By (a) the LHS can be rewritten ceil(n-floor(n/25) / 3). Then we
+want to prove the equality
+
+ceil(25n-25floor(n/25) / 75) = floor(24n+72 / 75),
+
+where the denominators are made equal. We use the same method as
+(a). Firstly, the difference is
+
+1/75 (n-25floor(n/25) - 72),
+
+and since 0 <= n-25floor(n/25) < 24 we have the bounds
+
+-72/75 <= 1/75 (n-25floor(n/25) - 72) < -48/75,
+
+and in particular the difference is always less than 1. Next, we want
+to show that there always exists a multiple of 75 between
+
+25n-25floor(n/25) = 24n + n-25floor(n/25) and 24n+72.
+
+It suffices to compare their residues mod 75, so it suffices to check
+this for n=0 to 74. In fact, it suffices to check n=0 to 24, because
+24(25k+l) = 24l mod 75. But in the end I still needed to verify this
+via brute force.
+
+Actually Knuth's solution is a lot cleaner, as he derives the equality
+simply by repeatedly applying previously proven formulas.
+
+
+
+
+
+1.2.6-54
+--------------------
+
+The ij-entry of Pascal's triangle as a matrix is C(i,j).
+I claim that the ij-entry of the inverse is (-1)^{i+j}C(i,j).
+
+For the ij-entry of their product is
+
+\sum_k (-1)^{k+j} C(i,k) C(k,j)
+= C(i,j) \sum_k (-1)^{k+j} C(i-j,k-j)  (Eq 20)
+= C(i,j) \sum_k' (-1)^l C(i-j,l)
+= C(i,j) (1-1)^{i-j}  (Binomial theorem)
+= [i=j]
+
+
+
+
+1.2.6-56
+--------------------
+
+I list out the coefficients C(n,1), C(n,2) and C(n,3) as n varies:
+
+n  C(n,1) C(n,2) C(n,3)
+0       0      0      0
+1       1      0      0
+2       2      1      0
+3       3      3      1
+4       4      6      4
+5       5     10     10
+6       6     15     20
+7       7     21     35
+...   ...    ...    ...
+
+Suppose we have a number k = C(i,1)+C(j,2)+C(k,3) = (i,j,k) where
+i<j<k. Then the easiest way to represent k+1 would be (i+1,j,k), which
+would work if i+1<j. But if i+1=j then this is not a valid
+representation, though we can try out an alternative representation
+(0,j+1,k) via the addition formula. Again this works only if j+1<k,
+and if j+1=k we need to use yet another alternate representation
+(0,1,k+1).
+
+We just described an algorithm for determining the representation of
+k+1 given the representation of k. And obviously the representation of
+0 is (0,1,2), so we are done. For completeness I'll list out the
+representations of some small numbers:
+
+ 0 = 0+0+0,   1 = 0+0+1,   2 = 0+1+1,   3 = 1+1+1,
+ 4 = 0+0+4,   5 = 0+1+4,   6 = 1+1+4,   7 = 0+3+4,
+ 8 = 1+3+4,   9 = 2+3+4,  10 = 0+0+10, 11 = 0+1+10,
+12 = 1+1+10, 13 = 0+3+10, 14 = 1+3+10, 15 = 2+3+10,
+16 = 0+6+10, 17 = 1+6+10, 18 = 2+6+10, 19 = 3+6+10,
+20 = 0+0+20, 21 = 0+1+20, 22 = 1+1+20, 23 = 0+3+20

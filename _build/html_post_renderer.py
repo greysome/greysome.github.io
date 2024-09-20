@@ -84,7 +84,6 @@ class HtmlPostRenderer(HtmlRenderer):
         level = token.level
         inner = self.render_inner(token)
         heading = ''.join(child.content for child in token.children)
-        print(heading)
         _id = self._create_id(heading)
         return f'<h{level} id="{_id}">{inner}</h{level}>'
         
