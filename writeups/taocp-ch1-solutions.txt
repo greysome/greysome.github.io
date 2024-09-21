@@ -401,6 +401,683 @@ simply by repeatedly applying previously proven formulas.
 
 
 
+1.2.5-24
+--------------------
+
+Firstly, we have 1+x <= e^x for all real x, with equality at x=0. This
+can be seen in two ways: firstly, one can use the Maclaurin series
+
+e^x = 1 + x + (x^2/2) + (x^3/6) + ...
+
+to immediately conclude that e^x > 1+x for x>0. Another way is to look
+at derivatives: note that e^x>1 for x>0 and e^x<1 for x<0, where e^x
+and 1 are the derivatives of e^x and 1+x respectively.
+
+Subbing in x=1/k and -1/k in the inequality 1+x<= e^x gives the
+following bounds for e^(1/k):
+
+(k+1 / k) <= e^(1/k) <= (k / k-1).
+
+A consequence of this is that
+
+(n / n-k)
+= (n / n-1)(n-1 / n-2)...(n-k+1 / n-k)
+<= e^[(1 / n-1) + ... + (1 / n-k)].
+
+Therefore,
+n^n / n!
+= (n / n-1)...(n / n-(n-1))
+<= e^(n-1).
+
+Similarly,
+
+(n / n-k) >= e^[(1/n) + ... + (1 / n-k+1)],
+
+and so n^(n+1)/n! >= e^(n-1).
+
+(This time the inequality for k=n-1 is applied twice.)
+
+
+
+
+
+1.2.6-10
+--------------------
+
+(a). Let p be a prime write n=ap+b where 0<=b<p. Then the numerator of (n p)
+is the product
+
+(ap + b) (ap + b-1) ... (ap + b-(p-1))
+
+Exactly one of these terms is divisible by p, namely ap. On the other
+hand the denominator is p!, so we can divide p from both numerator and
+denominator. By Wilson's theorem, the new denominator is -1 mod p, and
+the new numerator is a(p-1)! = -a mod p. Thus (n p) = -a/-1 = a mod p.
+
+
+(b). If p is prime and 1<=k<=p-1, then the numerator of (p k) is 0 mod
+p since one of the terms is p, while the denominator is nonzero mod p
+since none of the terms are divisible by p. Thus (p k) = 0 mod p.
+
+
+(c). The numerator of (p-1 k) is (p-1)(p-2)...(p-k) which is equal to
+(-1)^k k! mod p. On the other hand, the denominator is k! mod p, so
+(p-1 k) = (-1)^k mod p.
+
+
+(d). Trivial since (p k) | (p+1 k).
+
+--
+
+(e). Write (n k) in terms of numerator and denominator:
+
+(n k) = n(n-1)...(n-(k-1)) / k(k-1)...1
+
+The number of multiples of p in numerator and denominator are
+
+floor(n/p) - floor((n-k)/p)    and    floor(k/p)    respectively.
+
+The first case is when n mod p < k mod p. Then we have
+
+floor((n-k)/p) = floor(n/p) - floor(k/p) - 1
+
+and so
+
+floor(n/p) - floor((n-k)/p) = floor(k/p) + 1.
+
+Thus there are more multiples of p in numerator than denominator, and
+so (n k) = 0 mod p.
+
+On the other hand, n mod p < k mod p implies (n mod p  k mod p) = 0 by
+definition, so
+
+(floor(n/p) floor(k/p)) (n mod p  k mod p) = 0 mod p.
+
+The second case is where n mod p >= k mod p. Using (17 7) mod 3 as an
+example, write the numerator and denominator out as follows:
+
+   17 16             7
+15 14 13   and   6 5 4     (multiples of 3 in the left column)
+12 11            3 2 1.
+
+We can divide off p from the first column, which preserves the value of
+(n k) mod p.
+
+  17 16             7
+5 14 13   and   2 5 4
+4 11            1 2 1.
+
+In the right matrix, the top row is congruent to (k mod p)! while the
+first column is floor(k/p)!. As for the remaining submatrix
+
+5 4
+2 1,
+
+each row is congruent to -1 by Wilson's theorem, so overall the
+denominator is congruent to
+
+(1)  (-1)^floor(k/p) (k mod p)! floor(k/p)! mod p.
+
+What about the numerator i.e. the left matrix? Similarly, the top row
+is congruent to (n mod p)! while the first column is
+
+floor(n/p)! floor((n-k)/p)!.
+
+The remaining contributions come from the matrix
+
+14 13
+11.
+
+We know that the topmost (floor(n/p) - floor((n-k)/p) - 1) rows are
+congruent to -1.
+
+As for the bottommost row, we can first fill in the missing entries,
+then divide by the entries we added. Using this approach, the bottom
+row is congruent to (-1)/(n-k mod p)! mod p. Overall, the numerator is
+congruent to
+
+sgn{floor(n/p) - floor((n-k)/p)}   *   (n mod p)! * floor(n/p)!
+     /    ((n-k) mod p)! * floor((n-k)/p)!
+mod p.
+
+Since n mod p >= k mod p, we have
+
+floor((n-k)/p) = floor(n/p) - floor(k/p)
+and
+(n-k) mod p = nmod p - kmod p.
+
+So this expression can be further simplified to
+
+(2)  sgn{floor(k/p)} * (n mod p)! * floor(n/p)!
+        /    (n mod p - k mod p)! * (floor(n/p) - floor(k/p))!
+
+Taking the quotient (2)/(1) gives us
+
+(n k) = (n mod p  k mod p) (floor(n/p) floor(k/p))   mod p,
+
+as desired.
+
+--
+
+(f). Follows easily from (e).
+
+
+
+
+
+1.2.6-11
+--------------------
+
+Let mu(k) be the multiplicity of the prime factor p in the factorial
+k!, and s(k) be the sum of digits in k! under the p-ary number
+system. It was proven in a previous exercise that
+
+mu(k) = (k-s(k))/(p-1).
+
+Now since (a+b a) = (a+b)! / a!b!, we have
+
+mu((a+b a)) = mu(a+b) - mu(a) - mu(b) = (s(a)+s(b)-s(a+b)) / (p-1).
+
+Now consider the numbers a=17 and b=16, which are written as (1,2,2)
+and (1,2,1) respectively in the 3-ary number system. I will
+demonstrate adding a to b:
+
+(1,2,2)+(1,2,1)
+= (2,4,3)  (digit sum = s(a)+s(b) = 9)
+= (3,1,3)  (carry; digit sum = s(a)+s(b)-(3-1) = 7)
+= (1,0,1,3)  (carry; digit sum = s(a)+s(b)-2(3-1) = 5)
+= (1,0,2,0)  (carry; digit sum = s(a)+s(b)-3(3-1) = 3)
+
+Note how each carry decreases the digit sum by p-1. Thus
+
+number of carries = s(a)+s(b)-s(a+b) / p-1.
+
+
+
+
+
+1.2.6-12
+--------------------
+
+Mod 2, every (n k) can be written as a product of (a b)'s, where a,b
+in {0,1}. For instance, we have
+
+14 = 1*2^3 + 1*2^2 + 1*2^1 + 0*2^0
+and
+7  = 0*2^3 + 1*2^2 + 1*2^1 + 1*2^0,
+
+so
+
+(14 7) = (1 0)(1 1)(1 1)(0 1) mod 2.
+
+Out of the four possibilities for (a b), only (0 1) = 0. So we want to
+prevent (0 1) from appearing in the RHS for all 0<=k<=n. That only
+happens when n has the form
+
+2^0 + 2^1 + 2^2 + ... + 2^k
+
+The first few such values are 1, 3, 7, 15.
+
+
+
+
+
+1.2.6-16
+--------------------
+
+By symmetry, (k+n-2 n-1) = (k+n-2 k-1). Now we have
+
+(-1)^n (-n k-1)
+= (-1)^n       (-n)(-n-1)...(-n-(k-2)) / (k-1)(k-2)...1
+= (-1)^(n+k-1) n(n+1)...(n+k-2) / (k-1)(k-2)...1
+= (-1)^(n+k-1) (n+k-2 k-1).
+
+Similarly, we have
+(-1)^k (-k n-1) = (-1)^(n+k-1)(n+k-2 k-1).
+
+
+
+
+
+1.2.6-18
+--------------------
+
+(r+s choose r-m+n)
+= sum(k)  (r (r-m+n)-k) (s k)
+= sum(k') (r (r-m+n)-(n+k')) (s n+k')
+= sum(k') (r r-m-k') (s n+k')
+= sum(k') (r m+k') (s n+k').
+
+
+
+
+
+1.2.6-19
+--------------------
+
+The first, third and fourth steps are probably wrong because the
+identities (19) and (22) require that s be an integer, which it
+isn't necessarily. This might be why induction on r is needed; I
+haven't checked the answer key yet. Regardless the general idea should
+be to bring k down from the upper index to the lower index, so we
+can exploit previous summation identities.
+
+sum(k) (r k) (s+k n) (-1)^(r-k)
+= sum(k) (r k) (-n-1 s+k-n) (-1)^((s+k-n)+(r-k))   by (19)
+= (-1)^(r+s-n) * sum(k) (r k) (-n-1 s-n+k)
+= (-1)^(r+s-n) * (r-n-1 r+s-n)    by (22)
+= (s n-r)   by (19).
+
+
+
+
+
+1.2.6-20
+--------------------
+
+sum(k=0 to r) (r-k m) (s k-t) (-1)^(k-t)
+= sum(k=0 to r) (-m-1 r-k-m) (s k-t) (-1)^((r-k-m)+(k-t))    by (19)
+= (-1)^(r-m-t) * sum(k-t=-t to r-t) (-m-1 r-m-t-(k-t)) (s k-t)
+= (-1)^(r-m-t) * (s-m-1 r-m-t)   by (21)
+= (s-m-1 r-m-t)   by (17).
+
+Note the application of (21) is legitimate since k-t runs from -t
+to r-t, and in particular it runs from 0 to r-m-t. We also have
+sum(k=0 to r) (r-k m) (s+k n)
+= sum(k=0 to r) (r-k m) (-n-1 k-(n-s)) (-1)^(k-(n-s))
+= (r-(n-s)-(-n-1)  r-(n-s)-m)   by (24)
+= (r+s+1 r-n+s-m)
+= (r+s+1 m+n+1)   by symmetry.
+
+
+
+
+
+1.2.6-21
+--------------------
+
+For reference, the equation in question is
+
+sum(k=0 to r) (r-k m)(s+k n) = (r+s+1 m+n+1),
+
+where n, s, m and r are nonnegative integers and n >= s. If n, m and r
+are fixed, then LHS and RHS agree for only n+1 values of s since n >=
+s >= 0. But LHS is a sum of degree n polynomials and hence a degree n
+polynomial itself, while RHS is a degree m+n+1 polynomial. Thus there
+is insufficient proof that LHS and RHS agree on all points.
+
+
+
+
+
+
+1.2.6-22
+--------------------
+
+Mildly funny story behind this question: I tried bashing it out for a
+week until I gave up and peeked at the solution. Then I realised it
+made use of material I hadn't even gone through yet!
+
+For reference, the equation is
+
+sum(k>=0) (r-tk k) (n-1-r+tk n-k) (r / r-tk) = (r+s-tn n),
+
+where n is an integer. The key trick is to use the inversion identity
+(34):
+
+(sum(k>=0) (r-tk k) (n-1-r+tk n-k) (r / r-tk)
+= sum(k>=0) [ (r/n!)(n k) *
+     prod(0<j<k) (r-tk-j) * prod(0<=j<n-k) (n-1-r+tk-j) ]
+= (r/n!) * sum(k>=0) [ (n k) (-1)^(n-k)
+     prod(0<j<k) (-tk+r-j) * prod(0<=j<n-k) (-tk+j+r+1-n) ]
+= (r/n!) * sum(k>=0) [ (n k)(-1)^(n-k) * (deg n-1 polynomial in k) ]
+= 0   by (34).
+
+
+
+
+
+1.2.6-23
+--------------------
+
+For reference, the equation is
+
+sum(k>=0) (r-tk k) (s-t(n-k) n-k) (r / r-tk) = (r+s-tn n).
+
+This is a straightforward application of the addition formula:
+
+sum(k>=0) (r-tk k) ((s+1)-t(n-k)  n-k) (r / r-tk)
+= sum(k>=0) (r-tk k) (s-t(n-k) n-k) (r / r-tk) +
+  sum(k>=0) (r-tk k) (s-t(n-k) (n-1)-k) (r / r-tk)
+  by addition formula
+= (r+s-tn n) +
+    sum(k>=0) (r-tk k) . ((s-t)-t((n-1)-k)  (n-1)-k) . (r / r-tk)
+= (r+s-tn n) + (r+(s-t)-t(n-1)  n-1)
+= (r+s-tn n) + (r+s-tn n-1)
+= (r+(s+1)-tn n)   by addition formula.
+
+
+
+
+
+1.2.6-24
+--------------------
+
+I don't get this problem. How is the identity true for all r, s and t
+and all integer n, purely from that `inductive step' and the base case
+s=n-1-r+nt alone?  Regardless, note that (26) is a *massive*
+generalisation of (21) with the extra terms tk and t(n-k).
+
+
+
+
+
+1.2.6-30
+--------------------
+
+For reference, Example 3 is the sum
+
+sum(k) (n+k m+2k) (2k k) (-1)^k / k+1
+
+where m and n are positive integers. To transform it into a form
+suitable for (26), one only needs to compare the denominator k+1 with
+the corresponding expresion r-tk. This suggests t=-1 and r=1 --- the
+actual substitutions made are t=1 and r=-1, so the derivation is
+smoother. The second clue is to transform the lower indices m+2k and k
+into something resembling n-k and k. The last clue is to get rid of
+the (-1)^k via (17).
+
+sum(k) (n+k m+2k) (2k k) (-1)^k / k+1
+= sum(k) (n+k n-m-k) (-k-1 k) / k+1
+  by symmetry and (17)
+= sum(k) (-1-k k) . ((2n-m)-((n-m)-k)  (n-m)-k) . -1 / -1-k
+  [r'=-1, t'=1, s'=2n-m, n'=n-m]
+= (n-1 n-m)   by (26)
+= (n-1 m-1).
+
+
+
+
+
+1.2.6-31
+--------------------
+
+sum(k) (m-r+s k) (n+r-s n-k) (r+k m+n)
+= sum(j,k) (m-r+s k) (k j) (n+r-s n-k) (r m+n-j)
+  by hint
+= sum(j,k) (m-r+s j) (m-r+s-j k-j) (n+r-s n-k) (r m+n-j)
+  by (20)
+= sum(j) ( (m-r+s j) (r m+n-j)
+           sum(k) (m-r+s-j k-j) (n+r-s n-j-(k-j)) )
+= sum(j) (m-r+s j) (r m+n-j) (m+n-j n-j)
+  by (21)
+= sum(j) (m-r+s j) (r m+n-j) (m+n-j m)
+  by symmetry
+= sum(j) (m-r+s j) (r m) (r-m n-j)
+  by (20)
+= (r m)(s n) by (21).
+
+
+
+
+
+1.2.6-33
+--------------------
+
+(I write x^k` to denote a rising power.)
+
+Proceed by induction. Base case is trivially true, so suppose identity
+holds for n. Then we have
+
+(x+y)^(n+1)`
+=(x+y+n) sum(k) (n k) x^k` y^(n-k)`.
+
+Note that by the identity
+
+x x^k` = x^(k+1)` - k x^k`,
+we have
+
+x sum(k) (n k) x^k` y^(n-k)`
+= sum(k) (n k) x^(k+1)` y^(n-k)` - k sum(k) (n k) x^k` y^(n-k)`
+
+and similarly
+y sum(k) (n k) x^k` y^(n-k)`
+= sum(k) (n k) x^(k+1)` y^(n-k+1)` - (n-k) sum(k) (n k) x^k` y^(n-k)`
+
+Thus
+
+(x+y+n) sum(k) (n k) x^k` y^(n-k)`
+= sum(k) (n k) x^(k+1)` y^(n-k)`
+  + sum(k) (n k) x^k` y^(n-k+1)`.
+
+Transforming the sum index and applying the addition formula
+simplifies it to
+
+sum(k) (n+1 k) x^k` y^(n-k)`.
+
+as desired.
+
+
+
+
+
+1.2.6-35
+--------------------
+
+(I write x^k@ to denote a falling power.)
+
+The Stirling numbers of the first kind have a nice
+interpretation. Recall they are defined by the formula
+
+x(x+1)...(x+n-1)
+= [n n]x^n + [n n-1]x^(n-1) + ... + [n 0].
+
+From this obtain a formula for the kth coefficient:
+
+[n k] = sum(a1,...,a(n-k)) a1...a(n-k),
+
+where the ai's are distinct numbers in {1,...,n-1}.
+
+Every possible set of ai's in {1,...,n} falls under two types: those
+that contain n and those that don't. The identity
+
+[n+1 k] = n[n k] + [n k-1]
+
+easily follows from this fact.
+
+As for Stirling numbers of the second kind, a more manual approach is
+used. Recall that they are defined by the formula
+
+x^n = sum(k) {n k} x^k@
+
+Multiplying through by x gives
+
+x^(n+1)
+= sum(k) {n k} x * x^k@
+= sum(k) {n k} [x^(k+1)@ + k x^k@]
+= sum(k) {n k} x^(k+1)@  +  sum(k) {n k} k x^k@
+= sum(k') {n k'-1} x^k'@ +  sum(k) {n k} k x^k@
+= sum(k) [{n k-1} + k{n k}] x^k@
+
+At the same time we have
+
+x^(n+1) = sum(k) {n+1 k} x^k@
+
+by definition, so
+
+{n+1 k} = k{n k} + {n k-1}.
+
+
+
+
+
+
+1.2.6-36
+--------------------
+
+sum(k)(n k) is equal to 2^n, the total number of subsets of
+{1,...,n}. The alternating sum (sum(k) (-1)^k (n k)) can be evaluated
+using the addition formula:
+
+sum(k) (n k)(-1)^k
+= sum(k) [(n-1 k) + (n-1 k-1)] (-1)^k
+= sum(k) (n-1 k)(-1)^k + sum(k) (n-1 k-1)(-1)^k
+= sum(k) (n-1 k)(-1)^k + sum(k') (n-1 k')(-1)^(k'+1)
+= 0.
+
+Note that the result is also immediate for even n due to symmetry.
+
+
+
+
+
+1.2.6-37
+--------------------
+
+sum(k even)(n k)
+= 1/2 [sum(k)(n k) + sum(k)(-1)^k(n k)]
+= 2^(n-1).
+
+
+
+
+
+1.2.6-40
+--------------------
+
+(a). Follows easily by substituting t=1-u.
+
+(b). This is analogous to the addition formula for binomial
+coefficients. Also follows easily by elementary manipulations.
+
+(c). I prove the equivalent statement
+
+B(x+1,y) = x/y B(x,y+1)
+
+using integration by parts:
+
+B(x+1,y)
+= int(0 to 1) t^x (1-t)^(y-1) dt
+= (-(1/y) 1^x (1-1)^y)
+  - (-(1/y) 0^x (1-0)^y)
+  + (x/y) * int(0 to 1) t^(x-1) (1-t)^y dt
+= x/y B(x,y+1).
+
+
+
+
+
+1.2.6-41
+--------------------
+
+For reference,
+
+Gamma_m(x) = m^x m! / x(x+1)(x+2)...(x+m)
+
+and
+
+B(x,y+1) = (y / x+y) B(x,y).
+
+The statement Gamma_m(x) = m^x B(x,m+1) follows immediately by
+repeated application of the latter formula.
+
+
+(a). Note that
+
+B(x,y) / B(x,y+m+1) = (x+y / y) * (x+y+1 / y+1) ... (x+y+m / y+m).
+
+The RHS is also easily seen to be the latter expression.
+
+
+(b). Since (a) holds for all m, the limit
+
+lim(m->infty) (Gamma_m(y) m^x / Gamma_m(x+y)) * B(x,y+m+1)
+
+exists. It is equal to
+
+Gamma(y)/Gamma(x+y) lim(m->infty) m^x B(x,m+1),
+
+which in turn is equal to Gamma(x)Gamma(y)/Gamma(x+y). Note how y+m+1
+was substituted for m+1, because both approach infty as m->infty.
+
+
+
+
+
+Motivation for 1.2.6-40,41: Beta distribution
+--------------------
+
+The Beta distribution Beta(a,b) is parametrised by positive reals
+a,b. It is supported on [0,1] and its pdf is given by
+
+x^(a-1)(1-x)^(b-1) / B(a,b).
+
+Suppose you have a (possibly unfair) coin, and you want to determine
+the probability p of landing heads based on a sample of heads and
+tails. Using the Bayesian approach, we can model p by the prior
+distribution Beta(a,b). The specific values of a and b depend on our
+prior assumptions: if we initially assume that the coin is fair, we
+might set a=b=1. This yields a bell-shaped distribution symmetric
+about x=0.5. We could also set a=b=2 instead, which will also yield a
+symmetric distribution, but with lower variance.
+
+If we assume instead that the coin is skewed towards heads, we set
+a>b. In general, a and b represent the `initial number' of heads and
+tails to factor into the prior.
+
+By Bayes' theorem, we then calculate the posterior distribution after
+a sample of m heads and n tails. It turns out to be another Beta
+distribution Beta(a+m,b+n)! This statement has a very nice
+interpretation: we are factoring in m extra heads and n extra tails
+into the distribution after the sample. Since the prior and posterior
+distributions are of the same type, we say that Beta(a,b) is a
+conjugate prior.
+
+
+
+
+
+1.2.6-42
+--------------------
+
+This is a trivial matter of replacing the factorials with Gamma's:
+
+r!/ k!(r-k)!
+= Gamma(r+2) / (r+1)Gamma(k+1)Gamma(r-k+1)
+= B(k+1,r-k+1) / r+1.
+
+
+
+
+
+1.2.6-43
+--------------------
+
+Follows from the integral definition of B(x,y), and using a trig
+substitution.
+
+
+
+
+
+1.2.6-46
+--------------------
+
+Follows directly from Stirling's approximation and some basic algebra.
+
+
+
+
+
+1.2.6-48
+--------------------
+
+Follows from induction on n.
+
+
+
+
+
 1.2.6-54
 --------------------
 
@@ -453,3 +1130,104 @@ representations of some small numbers:
 12 = 1+1+10, 13 = 0+3+10, 14 = 1+3+10, 15 = 2+3+10,
 16 = 0+6+10, 17 = 1+6+10, 18 = 2+6+10, 19 = 3+6+10,
 20 = 0+0+20, 21 = 0+1+20, 22 = 1+1+20, 23 = 0+3+20
+
+
+
+
+
+1.2.6-60
+--------------------
+
+Let <n k> to denote the number of k-combinations out of n-objects with
+repetitions. First, it helps to look at small values of k:
+
+1. Clearly there are only (n 1)=n 1-combinations.
+
+2. There are (n 2)+(n 1) 2-combinations. Either the 2-combination has
+two distinct elements (like ab) so there are (n 2) of them, or they
+are the same element repeated twice (like aa), so there are (n 1) of
+them.
+
+3. There are (n 3)+2(n 2)+(n 1) 3-combinations. The first and last
+terms handle the cases where the 3-combination has 3 distinct
+elements, or is the same element repeated thrice. The interesting bit
+is when there are 2 distinct elements, like a and b. When a and b are
+given, we can form 2 distinct 3-combinations, namely aab and abb. So
+that gives us 2(n 2) distinct 3-combinations with 2 distinct elements.
+
+By now, a clear pattern should emerge: the coefficients appearing in
+<n k> are binomial coefficients themselves! Now let's derive <n k> in
+general.
+
+Let Aki be the number of distinct k-combinations we can form given i
+letters a,b,..., such that each letter appears at least once.  We can
+check that it satisfies the following relations:
+
+Ak1 = 1,  Aki = 0 for k<i,
+Aki = A(k-1)(i-1) + A(k-2)(i-1) + ... + A1(i-1) for k>=i.
+
+These relations are enough to establish that Aki = (k-1 i-1). Thus
+
+<n k>
+= sum(1<=i<=n) Aki (n i)
+= sum(1<=i<=n) (k-1 k-i)(n i)
+= (n+k-1 k).
+
+--
+
+Side note: there's an alternative solution using a bijection. Given n
+boxes, you can allocate k identical balls into the boxes to obtain a
+configuration. For example, with n=4 and k=3 we might have the
+configuration
+
+oo _ _ o
+
+which corresponds to aad. Each configuration is identical to putting
+n-1 separators between each of the k balls:
+
+oo | | | o
+
+There are n+k-1 separators and objects in total, corresponding to
+n+k-1 slots. At each slot, one can insert either a separator or an
+object, yielding (n+k-1)! permutations. But since all separators and
+all objects are identical, the true number of configurations is
+(n+k-1)! / (n-1)!k! = (n+k-1 k).
+1.2.6-64
+--------------------
+
+To establish that {n m} is the number of m-subset partitions of
+{1,...,n}, we handle the boundary conditions first:
+
+{n 1} = {n n} = 1, {n 0} = 0.
+
+Now, each partition of {1,...,n+1} into m subsets fall under two
+cases: either {n+1} is a subset by itself, or it is contained in a
+larger set in the partition. The former case gives us {n m-1}
+partitions. As for the latter case, note that every m-subset partition
+of {1,...,n} induces m possible partitions of {1,...,m+1} by adding
+n+1 to any one of the m partition sets. Thus this contributes
+m{n m} partitions. This establishes that the relation
+
+{n+1 m} = m{n m} + {n m-1}.
+
+
+
+
+
+1.2.6-67
+--------------------
+
+Using the inequality
+
+k! >= k^k / e^(k-1)
+
+which was proved in 1.2.5-24, we get
+
+(n k)
+= n(n-1)...(n-k+1) / k!
+<= n^k e^(k-1) / k^k
+< (ne/k)^k.
+
+
+
+
