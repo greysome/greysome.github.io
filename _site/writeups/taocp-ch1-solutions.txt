@@ -63,14 +63,14 @@ concludes the exercise.
 
 From the question Knuth defines
 
-x/10^n (1-\d) <= x0' <= x/10^n (1+\e),
-(xk')^2 (1-\d) <= yk <= (xk')^2 (1+\e).
+x/10^n (1-d) <= x0' <= x/10^n (1+e),
+(xk')^2 (1-d) <= yk <= (xk')^2 (1+e).
 
 Let's compute the upper bound for xk' step by step:
 
-x0' <= x(1+\e) / 10^n
-(x0')^2 <= x^2(1+\e)^2 / 10^(2n)
-y0 <= x^2(1+\e)^3 / 10^(2n)
+x0' <= x(1+e) / 10^n
+(x0')^2 <= x^2(1+e)^2 / 10^(2n)
+y0 <= x^2(1+e)^3 / 10^(2n)
 
 Since
 
@@ -78,36 +78,36 @@ x1' = y0/10 if y0 > 10, y0 otherwise
 
 we have
 
-x1' <= x^2(1+\e)^3 / 10^(2n+b1)
+x1' <= x^2(1+e)^3 / 10^(2n+b1)
 
 Similarly,
 
-x2' <= x^4(1+\e)^7 / 10^(4n+2b1+b2)
-x3' <= x^8(1+\e)^15 / 10^(8n+4b1+2b2+b3)
+x2' <= x^4(1+e)^7 / 10^(4n+2b1+b2)
+x3' <= x^8(1+e)^15 / 10^(8n+4b1+2b2+b3)
 ...
 
 In general,
 
 {10^(log'x) * xk'^(1/2^k)}^(2^k)
 = 10^{2^k(n+b1/2+b2/4+...+bk/2^k)} xk'
-<= x^(2^k) (1+\e)^{x^(2^(k+1)-1)}
-<= x^(2^k) (1+\e)^{x^(2^(k+1))}
+<= x^(2^k) (1+e)^{x^(2^(k+1)-1)}
+<= x^(2^k) (1+e)^{x^(2^(k+1))}
 
 so
 
-10^(log'x) <= x(1+\e)^2 / xk'^(1/2^k) <= x(1+\e)^2
+10^(log'x) <= x(1+e)^2 / xk'^(1/2^k) <= x(1+e)^2
 
 taking logarithms of both sides yields
 
-log'x <= log10(x) + 2log10(1+\e).
+log'x <= log10(x) + 2log10(1+e).
 
 As for the lower bound, we obtain by similar means
 
-10^(log'x) >= x(1+\d)^2 / xk'^(1/2^k),
+10^(log'x) >= x(1+d)^2 / xk'^(1/2^k),
 
 and note that 1 <= xk < 10 implies 1/10^(1/2^k) < 1/xk'^(1/2^k) <= 1, so
 
-log'x > log10(x) + 2log10(1+\d) - 1/2^k
+log'x > log10(x) + 2log10(1+d) - 1/2^k
 
 as desired. Note how we made crucial use of the fact that xk is
 bounded.
@@ -118,21 +118,21 @@ Now let's specialise to the example in the text. Numbers are rounded
 to 3 decimal places. Furthermore, all numbers in the computation lie
 in [1,10), so we can compute
 
-1+\e = (maximum amount a number can be scaled up by rounding to 3 decimal places)
+1+e = (maximum amount a number can be scaled up by rounding to 3 decimal places)
 = 1.001 / 1.0005
-\approx 1.0005
+~~ 1.0005
 
-1-\d = (maximum amount a number can be scaled down by rounding to 3 decimal places)
+1-d = (maximum amount a number can be scaled down by rounding to 3 decimal places)
 = 1.000 / 1.0005
-\approx 0.9995.
+~~ 0.9995.
 
 The upper error is
 
-2log10(1+\e) \approx 0.000434,
+2log10(1+e) ~~ 0.000434,
 
 and after many steps the lower error is around
 
-2log10(1-\d) \approx -0.000434.
+2log10(1-d) ~~ -0.000434.
 
 This matches with Knuth's figure of 0.00044 for the error.
 
@@ -152,7 +152,7 @@ stationary point occurs when b = e.
 (b) Since 2 < e < 3, it suffices to see which of 2*log_2(x) and
 3*log_3(x) is smaller. But we have
 
-3*log_3(x) = 3*log_2(x)/log_2(3) \approx 1.893*log_2(x) < log_2(x),
+3*log_3(x) = 3*log_2(x)/log_2(3) ~~ 1.893*log_2(x) < log_2(x),
 
 so b*log_b(x) is minimum at the integral value b=3.
 
@@ -182,7 +182,7 @@ increasing and (b+1)/b is decreasing).
 1.2.3-16
 --------------------
 
-\sum_{j=0}^n jx^j is the sum of the terms in the following triangle:
+sum_{j=0}^n jx^j is the sum of the terms in the following triangle:
 
 x
 x^2 x^2
@@ -199,8 +199,8 @@ x^3(x^(n-2)-1 / x-1),
 ...
 
 The sum of these terms is
-\sum_{i=1}^n x^i(x^(n-i+1)-1 / x-1)
-= 1/(x-1) [nx^(n+1) - \sum_{i=1}^n x^n]
+sum_{i=1}^n x^i(x^(n-i+1)-1 / x-1)
+= 1/(x-1) [nx^(n+1) - sum_{i=1}^n x^n]
 = 1/(x-1) [nx^(n+1) - x(x^n-1 / x-1)]
 = 1/(x-1)^2 [nx^(n+1)(x-1) - x(x^n-1)]
 = 1/(x-1)^2 [nx^(n+2) - nx^(n+1) - x^(n+1) + x]
@@ -214,7 +214,7 @@ The sum of these terms is
 
 I will abbreviate the sum
 
-\sum_{i=0}^n \sum_{j=0}^i \sum_{k=0}^j a_ia_ja_k
+sum_{i=0}^n sum_{j=0}^i sum_{k=0}^j a_ia_ja_k
 
 as
 
@@ -1050,34 +1050,6 @@ r!/ k!(r-k)!
 
 
 
-1.2.6-43
---------------------
-
-Follows from the integral definition of B(x,y), and using a trig
-substitution.
-
-
-
-
-
-1.2.6-46
---------------------
-
-Follows directly from Stirling's approximation and some basic algebra.
-
-
-
-
-
-1.2.6-48
---------------------
-
-Follows from induction on n.
-
-
-
-
-
 1.2.6-54
 --------------------
 
@@ -1086,9 +1058,9 @@ I claim that the ij-entry of the inverse is (-1)^{i+j}C(i,j).
 
 For the ij-entry of their product is
 
-\sum_k (-1)^{k+j} C(i,k) C(k,j)
-= C(i,j) \sum_k (-1)^{k+j} C(i-j,k-j)  (Eq 20)
-= C(i,j) \sum_k' (-1)^l C(i-j,l)
+sum_k (-1)^{k+j} C(i,k) C(k,j)
+= C(i,j) sum_k (-1)^{k+j} C(i-j,k-j)  (Eq 20)
+= C(i,j) sum_k' (-1)^l C(i-j,l)
 = C(i,j) (1-1)^{i-j}  (Binomial theorem)
 = [i=j]
 
@@ -1192,6 +1164,11 @@ n+k-1 slots. At each slot, one can insert either a separator or an
 object, yielding (n+k-1)! permutations. But since all separators and
 all objects are identical, the true number of configurations is
 (n+k-1)! / (n-1)!k! = (n+k-1 k).
+
+
+
+
+
 1.2.6-64
 --------------------
 
@@ -1231,3 +1208,209 @@ which was proved in 1.2.5-24, we get
 
 
 
+
+1.2.7-3
+--------------------
+
+H(m,r) <= 1 + (1 - 2^(m(1-r))) / (1 - 2^(1-r)),
+thus
+H(infty,r) <= 1 + 1/(1-2^(1-r)).
+
+
+
+
+
+1.2.7-5
+--------------------
+
+True to the spirit of the exercise, I will rawdog the computation
+without using any calculator or computer program.
+
+Let n=10^4 and recall that
+
+Hn = ln n + gamma + 1/(2n) + 1/(12n^2) - 1/(120n^4) - e,   0 < e < 1/(252n^6)
+
+We can ignore e and 1/(120n^4) because
+1/(252n^6) < 1/(120n^4) < 1/(10^18)
+is well within the allowance of 15 decimal places. Now to do the
+actual computation (using 20 decimal places just to be safe):
+
+ln 10          2.30258 50929 94045 68401
+             *                         4
+             ---------------------------
+ln 10000       9.21034 03719 76182 73604
+gamma        + 0.57721 56649 01532 86060
+             ---------------------------
+	       9.78755 60368 77715 59664
+1/(2n)       + 0.00005 00000 00000 00000
+             ---------------------------
+	       9.78760 60368 77715 59664
+1/(12n^2)    - 0.00000 00008 33333 33333
+             ---------------------------
+H10000         9.78760 60360 44382 26331.
+
+
+
+
+
+1.2.7-6
+--------------------
+
+One can directly apply the formulas
+
+[n+1 2] = n[n 2] + [n 1],  [n 1] = (n-1)!;
+
+but I'll instead derive the solution using Knuth's definition
+
+(x-0)(x-1)...(x-n) = [n+1 n+1]x^n - [n+1 n]x^(n-1) + ... +- [n+1 2]x^2 -+ [n+1 1]x +- [n+1 0].
+
+Comparing coeffs, we see that [n+1 2] is the sum over products of size
+n-1 subsets of {0,1,...,n}. This is equal to the sum over products of
+size n-1 subsets of {1,...,n}, which is equal to
+
+sum_(1<=k<=n) n!/k.
+
+Thus Hn = [n+1 2]/n! as expected.
+
+
+
+
+
+1.2.7-7
+--------------------
+
+(a) By symmetry and induction we only need to prove that T(m+1,n) <= T(m,n).
+
+Indeed, the difference of RHS and LHS is
+
+1/(mn+1) + 1/(mn+2) + ... + 1/(m+1)n   - 1/(m+1)
+>= n * 1/(m+1)n - 1/(m+1)
+= 0.
+
+The maximum value of T(m,n) is T(1,1)=1. There is no minimum value,
+but I believe the limit of T(m,n) as m,n->infty is gamma, because for
+suff. large m,n we have
+
+Hm approx log m + gamma,
+Hn approx log n + gamma,
+H(mn) approx log m + log n + gamma.
+
+
+
+
+
+1.2.7-9
+--------------------
+
+Expand (n k) = (n k-1) + (n-1 k-1) and observe that a lot of
+cancellation happens. The answer should be -1/n.
+
+
+
+
+
+1.2.7-12
+--------------------
+
+1/2^1000 is 0 up to 1000*log10(2) ~~ 300 places.
+
+Thus summing 1/2^1000 + 1/3^1000 + ... will clearly have no impact on
+the 100th decimal place. So H(infty,1000) = 1.000..0 up to 100 decimal
+places.
+
+
+
+
+
+1.2.7-13
+--------------------
+
+Write (n k) = (n k-1) + (n-1 k-1).
+
+
+
+
+
+1.2.7-15
+--------------------
+
+Write (k1n) for sum(k=1 to n). Then
+
+(k1n) Hk^2
+= (k1n)(l1k) [1/l (m1k) 1/m]
+= (l1n) [1/l (kln)(m1k) 1/m]
+(the magic happens here!)
+= (l1n) [1/l * (m1n) (k max(l,m) n) 1/m]
+= (l1n) [(m1l)(kln) 1/m + (m l+1 n)(kmn) 1/m] / l
+= (l1n) [(n-l+1)Hl + (n+1)(Hn-Hl) - (n-l)] / l
+= ...  (straightforward simplifications)
+= (n+1) Hn^2 - (2n+1) Hn + 2n.
+
+
+
+
+
+1.2.6-18
+--------------------
+
+From numerical computations I have observed that the 2-valuation of
+sum(i=1 to 2n-1 odd) 1/i  (*)
+is equal to 2*(2-valuation of n), and we just need to prove this.
+
+Let n=m*2^k where m is odd. I will use the notation a !! b to denote
+the product a(a+2)...(b-2)b, where n and m are both odd. Define
+
+P(l) = prod(1<=i<=2^(k+1)-1 odd) l*2^(k+1)+i
+S(l) = sum(1<=i<=2^(k+1)-1 odd) P(l) / (l*2^(k+1)+i)
+= sum(i<=i<=2^(k+1)-1 odd) prod(j, j!=i) l*2^(k+1)+j.
+
+Multiplying (*) through by (2n-1)!!, the resulting numerator is
+S(0) prod(0<=l<m, l!=0) P(l)
++ S(1) prod(0<=l<m, l!=1) P(l)
+...
++ S(m-1) prod(0<=l<m, l!=m-1) P(l)  (**)
+
+The 2-valuation remains the same if we were to express (*) as a
+simplified fraction, because the denominator (2n-1)!! is odd. Thus it
+suffices to prove the 2-valuation of (**) is 2k.
+
+My argument proceeded by establishing three facts:
+1. S(0) = 2^(2k) mod 2^(2k+1).
+2. P(l) = P(0) = odd mod 2^(2k+1).
+3. S(l) = S(0) mod 2^(2k+1).
+
+Thus for odd m, (**) is equal to
+m P(0)^(l-1) S(0) = 2^(2k) mod 2^(2k+1),
+which implies (**) is divisible by 2^(2k) but not 2^(2k+1), as
+desired.
+
+---
+
+The proof for 1 was kindly provided by a friend on Discord; it had the
+clever idea of rewriting
+
+S(0)
+= P(0) sum(1<=i<=2^(k+1)-1 odd) 1/i
+= P(0) sum(1<=i<=2^k-1 odd) 1/i + 1/(2^(k+1)-i)
+= P(0) 2^(k+1) sum(1<=i<=2^k-1 odd) 1 / i(2^(k+1)-i),
+
+and then using proving the sum is 2^(k-1) mod 2^k (where inverses are
+taken in the multiplicative group of Z/2^kZ).
+
+The idea for 2 is to expand
+(l*2^(k+1) + 1) ... (l*2^(k+1) + 2^(k+1)-1)
+as a polynomial in l*2^(k+1), and then observe that (l*2^(k+1))^2 and
+higher powers are killed mod 2^(2k+1). Thus it is equal to
+
+P(0) + l*2^(k+1) S(0)
+= odd + l*2^(k+1) 2^(2k)
+= odd mod 2^(2k+1).
+
+3 uses the same basic idea: each term of S(l) (recall it is P(l) with
+one factor missing) is expanded as a polynomial in l*2^(k+1), and
+summing results mod 2^(2k+1) gives
+
+S(0) + l*2^(k+1) sum(1<i<=2^(k+1)-1 odd) sum(1<=j<=2^(k+1)-1 odd, j!=i) P(0)/ij
+
+I show via a tedious argument that the double sum is 0 mod 2^k, thus
+the whole thing is S(0) mod 2^(2k+1).
