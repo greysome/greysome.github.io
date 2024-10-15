@@ -1350,15 +1350,14 @@ Write (k1n) for sum(k=1 to n). Then
 
 
 
-1.2.6-18
+1.2.7-18
 --------------------
 
 From numerical computations I have observed that the 2-valuation of
 sum(i=1 to 2n-1 odd) 1/i  (*)
 is equal to 2*(2-valuation of n), and we just need to prove this.
 
-Let n=m*2^k where m is odd. I will use the notation a !! b to denote
-the product a(a+2)...(b-2)b, where n and m are both odd. Define
+Let n=m*2^k where m is odd. Define
 
 P(l) = prod(1<=i<=2^(k+1)-1 odd) l*2^(k+1)+i
 S(l) = sum(1<=i<=2^(k+1)-1 odd) P(l) / (l*2^(k+1)+i)
@@ -1391,11 +1390,13 @@ clever idea of rewriting
 
 S(0)
 = P(0) sum(1<=i<=2^(k+1)-1 odd) 1/i
-= P(0) sum(1<=i<=2^k-1 odd) 1/i + 1/(2^(k+1)-i)
-= P(0) 2^(k+1) sum(1<=i<=2^k-1 odd) 1 / i(2^(k+1)-i),
+= P(0) sum(1<=i<=2^k-1 odd) [1/i + 1/(2^(k+1)-i)]
+= P(0) 2^(k+1) sum(1<=i<=2^k-1 odd) 1/i(2^(k+1)-i),
 
-and then using proving the sum is 2^(k-1) mod 2^k (where inverses are
-taken in the multiplicative group of Z/2^kZ).
+Mod 2^k, the sum simplifies to -sum(i)1/i^2, where 1/i^2 is now viewed
+as the inverse of i^2 in (Z/2^kZ)*. This is equal to sum(i)i^2 by a
+bijection of the terms, and by induction this sum is 2^(k-1) mod
+2^k. Multiplying by P(0) 2^(k+1) gives 2^(2k) mod 2^(2k+1).
 
 The idea for 2 is to expand
 (l*2^(k+1) + 1) ... (l*2^(k+1) + 2^(k+1)-1)
@@ -1414,3 +1415,59 @@ S(0) + l*2^(k+1) sum(1<i<=2^(k+1)-1 odd) sum(1<=j<=2^(k+1)-1 odd, j!=i) P(0)/ij
 
 I show via a tedious argument that the double sum is 0 mod 2^k, thus
 the whole thing is S(0) mod 2^(2k+1).
+
+
+
+
+
+1.2.7-19
+--------------------
+See integer-harmonic-numbers.pdf
+
+
+
+
+
+1.2.7-21
+--------------------
+
+Let the sum be Sn. Then
+
+Sn
+= sum(i+j<=n+1) 1/(ij)
+= sum(i+j<=n) 1/(ij) + sum(i+j=n+1) i/(ij)
+= sum(k=1 to n-1) Hk/(n-k) + sum(k=1 to n) 1/k(n+1-k)
+= S(n-1) + 1/(n+1) sum(k=1 to n)[1/k + 1/(n+1-k)]
+= S(n-1) + 2Hn/(n+1).
+
+Thus
+Sn
+= 2 sum(k=1 to n) Hk/(k+1)
+= 2 sum(k=1 to n) [H(k+1) - 1/(k+1)] / (k+1)
+...
+= H(n+1)^2 - H(n+1,2).
+
+
+
+
+
+1.2.7-22
+--------------------
+
+Let the sum be Sn. Then
+
+Sn
+= sum(k=0 to n) Hk H(n-k)
+= sum(k=1 to n-1) Hk H(n-k)
+= sum(k=1 to n-1) Hk H(n-k-1) + sum(k=1 to n-1) Hk / n-k
+= S(n-1) + 2 sum(k=1 to n-1) Hk/(k+1)   (from previous exercise)
+
+Thus
+Sn
+= 2 sum(k=1 to n) sum(l=1 to k-1) Hl/(l+1)
+= 2 sum(l=1 to n-1) sum(k=l+1 to n) Hl/(l+1)
+= 2 sum(l=1 to n-1) (n+1 - (l+1))/(l+1) Hl
+= 2(n+1) sum(l=1 to n-1) Hl/(l+1)   -   2 sum(l=1 to n-1) Hl
+...
+= (n+1)(Hn^2 - H(n,2)) - 2(nH[n-1] + 1 - n)
+= (n+1)(Hn^2 - H(n,2)) - 2n(H[n] - 1).
