@@ -1717,7 +1717,42 @@ And so on.
 1.2.8-32
 --------------------
 
-TODO
+I will treat r as a remainder, i.e. 0<r<n. We can express F(mn+r) in
+terms of F(mn-r) mod Fn:
+
+F(mn+r)
+= Fr F(mn+1) + F(r-1) F(mn)
+= Fr F(mn+1)
+= Fr F(mn-1)
+= Fr [Fr F(mn-r) + F(r-1) F(mn-r-1)]
+= [F(r+1)F(r-1) - (-1)^r] F(mn-r) + FrF(r-1)F(mn-r-1)
+(determinant identity)
+= (-1)^(r+1) F(mn-r) + F(r+1)F(r-1)F(mn-r) + FrF(r-1)F(mn-r-1)
+= (-1)^(r+1) F(mn-r) + F(r-1) [F(r+1)F(mn-r) + FrF(mn-r-1)]
+= (-1)^(r+1) F(mn-r) + F(r-1) Fmn
+= (-1)^(r+1) F(mn-r).
+
+Then, by repeatedly subbing n-r for r (noting that 0<n-r<n still), we
+can derive the residues for m=1,2,3,...:
+
+F(n+r) = (-1)^(r+1) F(n-r)
+
+F(2n+r)
+= (-1)^(r+1) F(n+(n-r))
+= (-1)^(r+1) (-1)^(n-r+1) F(n-(n-r))
+= (-1)^n Fr
+
+F(3n+r)
+= (-1)^(r+1) F(2n+(n-r))
+= (-1)^(r+1) (-1)^n F(n-r)
+= (-1)^(n+r+1) F(n-r)
+
+F(4n+r)
+= (-1)^(r+1) F(3n+(n-r))
+= (-1)^(r+1) (-1)^(n+(n-r)+1) F(n-(n-r))
+= Fr
+
+and so on.
 
 
 
@@ -1771,7 +1806,10 @@ argument.
 1.2.8-36
 --------------------
 
-TODO
+The kth letter of Sn is the last letter of Sl where Fl is the smallest
+digit in the Zeckendorf representation of k. (This can be seen by
+recursively writing Sn=S(n-1)S(n-2).) The last letter of Sl is `a` if
+l odd and `b` if l even.
 
 
 
@@ -1780,7 +1818,24 @@ TODO
 1.2.8-40
 --------------------
 
-TODO
+I show by induction on n that f(n)=m whenever Fm<n<=F(m+1). The
+generic situation can be visualised as follows:
+
+0           k                    n-k          n
+|           o                     o           |
+... -- --- ----- -------- ------------- --------------------- 
+                 F(m-2)   F(m-1)        Fm 
+
+By the induction hypothesis, we know that the horizontal line Fl
+(i.e. numbers from Fl+1 to F(l+1)) maps to l; for the last line, we
+only consider up to n. The problem of minimizing max(1+f(k), 2+f(n-k))
+across all k, can be reframed as a problem of "nudging" both dots onto
+short lines.
+
+Let {k,n-k}={c,d}, and let C,D be the lines that they lie on. We have
+min(C,D) >= m-2, otherwise n=c+d is too small. This gives a lower
+bound of m on the min. Furthermore, the lower bound is attained with
+k=Fm, since n-k<=F(m-1) and thus max(1+f(k),2+f(n-k)) = m.
 
 
 
@@ -1897,3 +1952,122 @@ The first semi-invariant of e^(tM1) is M1 and the rest are 0. As for
 H, its semi-invariants can be expressed in terms of the central
 moments by the same complicated formula, with Mi replaced by mi, and
 m1 = 0.
+
+
+
+
+
+1.2.10-17
+--------------------
+
+c. Let m, v denote mean and variance.
+
+m(gf) = g'(f(1)) f'(1) = mf mg
+
+v(gf) - mf mg + (mf mg)^2
+= g''(f(1)) f'(1)^2 + g'(f(1)) f''(1)
+= (vg - mg + mg^2) mf^2 + mg (vf - mf + mf^2),
+
+thus
+v(gf) = vg mf^2 + mg vf.
+
+
+
+
+
+1.2.10-19
+--------------------
+
+If ak is a left-to-right maximum, then 1 ... k-1 maps into 1 ... ak-1
+under a. Thus no element of ak+1 ... n maps into 1 ... k-1 under b, so
+it must map into k+1 ... n. Thus b(ak) = k is a right-to-left minimum.
+
+
+
+
+
+1.2.10-20
+--------------------
+
+max{ai-bi} is equal to max{ai-bi, bi-ai}.
+
+mL calculates max{ai-bi}. For if k is not a left-to-right maximum,
+then there exist some left-to-right maximum l<k with al>=ak and
+bl<=bk, thus al-bl>=ak-bk. Likewise, mR calculates max{bi-ai}.
+
+
+
+
+
+1.2.10-21
+--------------------
+
+From the tail inequality we have
+
+Pr(X >= n(p+e))
+<= [x^-(p+e) (q+px)]^n
+= [q/x^(p+e) + p/x^(e-q)]^n
+= f(x)^n
+
+We can ditch the nth power, so that exp(-e^2/2q) is now our desired
+upper bound. Observe that the case e>q is trivial since f(x)->0 as
+x->infinity. If e<q, then f(x) decreases to a minimum (dominated by
+the 1/x^(p+e) term) and then increases without bound (dominated by
+1/x^(e-q)). It is sensible to choose x that gives the minimum value,
+which turns out to be
+
+x = q(p+e)/p(q-e).
+
+The corresponding minimum value is
+
+(p/(p+e))^(p+e) (q/(q-e))^(q-e)   (*)
+
+We have
+
+(p+e) ln(1 - e/(p+e))
+= (p+e) (-e/(p+e) - e^2/2(p+e)^2 - ...)
+<= -e
+
+and
+
+(q-e) ln(q/(q-e))
+<= (q-e) (e/q + e^2/2q^2 + ...)
+= e + (1/2-1/1) e^2/q + (1/3-1/2) e^3/q^2 + ...
+<= e - e^2/2q
+
+Thus (*) <= exp(-e^2/2q).
+
+Lastly if e=q, then f(x) continuously decreases to p, and fortunately
+p < exp(-e^2/2q) = exp((p-1)/2) for 0<=p<1.
+
+
+
+
+
+1.2.10-22
+--------------------
+
+a. Pr(X >= mu*r)
+<= x^(-mu*r) prod(qi+pi*x)
+
+The sum of qi+pi*x is n+mu(x-1), thus by AM-GM the expression is
+
+<= x^(-mu*r) (1 + mu(x-1)/n)^n
+<= x^(-mu*r) e^mu(x-1)
+
+Setting x=r gives the desired bound. Pr(X <= mu*r) is handled in
+exactly the same way.
+
+
+c. P(X >= mu*r)
+<= x^(-mu*r) (1+x)^n
+<= x^(-mu*r) e^(nx).
+
+Set x=3, and note that e^(nx) is a constant.
+
+
+
+
+
+1.2.10-23
+--------------------
