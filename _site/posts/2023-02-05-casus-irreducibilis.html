@@ -1,7 +1,7 @@
 
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="/style.css"/>
 
@@ -10,11 +10,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script>hljs.highlightAll();</script>
-
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
-        crossorigin="anonymous"></script>
 
 <!-- MathJAX -->
 <script>
@@ -63,8 +58,7 @@
 	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
 
 	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
-
-  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+	    and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
 
 	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
 	    inv: '{}^{-1}',
@@ -104,10 +98,12 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
 
-</head>
-<body>
-<a href="/index.html">&lt; Back</a> 
-<h1 id="casus-irreducibilis-for-cubic-polynomials">Casus irreducibilis for cubic polynomials</h1>
+  </head>
+
+  <body>
+    <a href="/index.html">&lt; Back</a> 
+
+    <h1 id="casus-irreducibilis-for-cubic-polynomials">Casus irreducibilis for cubic polynomials</h1>
 <p>Cardano's formulas gives us the roots of a cubic in terms of
 radicals. For a depressed cubic $x^3+px+q$, these roots are</p>
 <p>$$\begin{equation}
@@ -134,12 +130,12 @@ $G_f=A_3$.</p>
 <p><strong>Lemma.</strong> If $r$ is real and $r^p\in F$ for $p$ a prime, then $F(r)$
 does not contain a splitting field of $f(x)$ over $F$. Furthermore,
 $f(x)$ remains irreducible over $F(r)$.</p>
-<p><em>Proof.</em> I proved in [this other entry]({% post_url
-2023-01-25-galoisgrp-xp-a %}) that $x^p-r^p$ is either irreducible or
-has a root in $F$. Thus $[F(r):F]=1$ or $p$.  Supposing that $F(r)$
-contains a splitting field $E$, we can eliminate the first possibility
-and by degree considerations also conclude that $p=3$, so that
-$F(r)=E$. But this means $F(r)/F$ is normal, so it contains the
+<p><em>Proof.</em> I proved in <a href="2023-01-25-galoisgrp-xp-a.html">this other
+entry</a> that $x^p-r^p$ is either
+irreducible or has a root in $F$. Thus $[F(r):F]=1$ or $p$.  Supposing
+that $F(r)$ contains a splitting field $E$, we can eliminate the first
+possibility and by degree considerations also conclude that $p=3$, so
+that $F(r)=E$. But this means $F(r)/F$ is normal, so it contains the
 conjugates $\omega r$, $\omega^2r$, where $\omega$ is a primitive 3rd
 root of unity. So $F(r)\not\subset\R$, implying $r$ is not
 real. Lastly, $f(x)$ must be irreducible over $F(r)$, otherwise $F(r)$
@@ -163,5 +159,5 @@ contain a splitting field. $\qed$</p>
 <div class="footnote">
 </div>
 
-</body>
+  </body>
 </html>

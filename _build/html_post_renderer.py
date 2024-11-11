@@ -138,12 +138,14 @@ f'''
         return \
 f'''
 <html>
-<head>
-{head}
-</head>
-<body>
-<a href="/index.html">&lt; Back</a> 
-{body}
-</body>
+  <head>
+    {head}
+  </head>
+
+  <body>
+    <a href="/index.html">&lt; Back</a> 
+
+    {body}
+  </body>
 </html>
 '''

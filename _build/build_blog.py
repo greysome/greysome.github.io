@@ -7,6 +7,7 @@ from mistletoe import Document
 from html_post_renderer import HtmlPostRenderer
 
 SITE_DIR = '../_site'
+head_html = open('../head.html', 'r').read()
 
 def write_index_html():
     # POSTS -------------------------------------------------------------------------------
@@ -44,23 +45,47 @@ def write_index_html():
         writeup_entries += f'<tr><td><a target="blank" href="/writeups/{filename}">{filename}</a></td></tr>\n'
     writeups_heading = str(num_writeups) + (' writeups' if num_writeups > 1 else ' writeup')
 
-    head = open('../head.html', 'r').read()
     content = f'''
 <html>
-  <head>{head}</head>
+  <head>{head_html}</head>
   <body>
     <h1>wy's blog</h1>
     
     <p>{posts_heading}</p>
-    <table>{post_entries}</table><br>
+    <table>
+      {post_entries}
+    </table>
+
+    <br>
     
-   <p>{writeups_heading}</p>
-    <table>{writeup_entries}</table>
+    <p>{writeups_heading}</p>
+    <table>
+      {writeup_entries}
+    </table>
+
+    <br>
+
+    <p>Tell me something nice <a href="comments.html">here</a> ☺</p>
   </body>
 </html>
  '''
     with open(f'{SITE_DIR}/index.html', 'w') as f:
         print(f'Writing {SITE_DIR}/index.html')
+        f.write(content)
+
+
+def write_comments_html():
+    comments_body_html = open('../comments_body.html', 'r').read()
+    content = f'''
+<html>
+  <head>{head_html}</head>
+  <body>
+    {comments_body_html}
+  </body>
+</html>
+ '''
+    with open(f'{SITE_DIR}/comments.html', 'w') as f:
+        print(f'Writing {SITE_DIR}/comments.html')
         f.write(content)
 
 
@@ -103,5 +128,6 @@ if __name__ == '__main__':
             render_post(filename)
     # Create site/resources, site/writeups and other files
     copy_static_files()
-    # Write home page
+    # Write home pages
     write_index_html()
+    write_comments_html()

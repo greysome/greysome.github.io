@@ -34,12 +34,12 @@ $G_f=A_3$.
   does not contain a splitting field of $f(x)$ over $F$. Furthermore,
   $f(x)$ remains irreducible over $F(r)$.
 
-*Proof.* I proved in [this other entry]({% post_url
-2023-01-25-galoisgrp-xp-a %}) that $x^p-r^p$ is either irreducible or
-has a root in $F$. Thus $[F(r):F]=1$ or $p$.  Supposing that $F(r)$
-contains a splitting field $E$, we can eliminate the first possibility
-and by degree considerations also conclude that $p=3$, so that
-$F(r)=E$. But this means $F(r)/F$ is normal, so it contains the
+*Proof.* I proved in [this other
+entry](2023-01-25-galoisgrp-xp-a.html) that $x^p-r^p$ is either
+irreducible or has a root in $F$. Thus $[F(r):F]=1$ or $p$.  Supposing
+that $F(r)$ contains a splitting field $E$, we can eliminate the first
+possibility and by degree considerations also conclude that $p=3$, so
+that $F(r)=E$. But this means $F(r)/F$ is normal, so it contains the
 conjugates $\omega r$, $\omega^2r$, where $\omega$ is a primitive 3rd
 root of unity. So $F(r)\not\subset\R$, implying $r$ is not
 real. Lastly, $f(x)$ must be irreducible over $F(r)$, otherwise $F(r)$

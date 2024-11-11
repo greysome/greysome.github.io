@@ -2,11 +2,11 @@
 
 
 The problem of expressing $\cos(2\pi/n)$ in radicals (or in the terms
-of [this other entry]({% post_url 2023-03-10-radicals-principal-roots
-%}), expressing it in principal roots) is an interesting one. Actually
-it is easily seen to be possible for all $n$: $e^{2\pi i/n}$ is
-obviously expressible in radicals hence by the previous entry is
-expressible in principal roots. Thus
+of [this other entry](2023-03-10-radicals-principal-roots.html),
+expressing it in principal roots) is an interesting one. Actually it
+is easily seen to be possible for all $n$: $e^{2\pi i/n}$ is obviously
+expressible in radicals hence by the previous entry is expressible in
+principal roots. Thus
 
 $$\cos(2\pi/n)={e^{2\pi i/n}+(e^{2\pi i/n})^{-1} \over 2}$$
 

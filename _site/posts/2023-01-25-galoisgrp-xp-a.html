@@ -1,7 +1,7 @@
 
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" href="/style.css"/>
 
@@ -10,11 +10,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
 <script>hljs.highlightAll();</script>
-
-<!-- JQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2"
-        crossorigin="anonymous"></script>
 
 <!-- MathJAX -->
 <script>
@@ -63,8 +58,7 @@
 	    min: '\\mathop{\\rm min}', Re: '\\mathop{\\rm Re}', Im: '\\mathop{\\rm Im}', char: '\\mathop{\\rm char}',
 
 	    Set: '\\mathbf{Set}', Top: '\\mathbf{Top}', HTop: '\\mathbf{HTop}', Grp: '\\mathbf{Grp}', Ab: '\\mathbf{Ab}',
-
-  and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
+	    and: '\\quad\\text{and}\\quad', or: '\\quad\\text{or}\\quad',
 
 	    nin: '\\not\\in', s: '\\subset', seq: '\\subseteq', ss: '\\supset', Seq: '\\supseteq',
 	    inv: '{}^{-1}',
@@ -104,10 +98,12 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>
 
-</head>
-<body>
-<a href="/index.html">&lt; Back</a> 
-<h1 id="the-galois-group-of-x-p-a">The Galois group of $x^p-a$</h1>
+  </head>
+
+  <body>
+    <a href="/index.html">&lt; Back</a> 
+
+    <h1 id="the-galois-group-of-x-p-a">The Galois group of $x^p-a$</h1>
 <p><strong>Proposition.</strong> Let $f(x)=x^p-a$ where $a\in\Q$ and $f$ is
 irreducible.  Its Galois group is isomorphic to the group of
 transformations of $\F_p$ of the form $y\mapsto ky+l$ where
@@ -134,11 +130,11 @@ $\eta(z)=z^l$ where $l\neq1$. Setting $n=-k(l-1)^{-1}$, we have</p>
 <p>$$\eta(bz^n) = bz^{k-k(l-1)^{-1}l} = bz^{-k(l-1)^{-1}} = bz^n.$$</p>
 <p>Thus $bz^n$ is fixed by $\Gal(\Q(z)/\Q))$, and so is a root of $x^p-a$
 lying in $\Q$. $\qed$</p>
-<p>It turns out that the lemma generalises to all fields $F$, but I haven't
-been able to prove it in general, the problem being that
-$\Gal(F(z)/F)$ may not be cyclic. (Though, the proof for $p=\char F$ has
-been done in [this other entry]({% post_url 2023-01-25-separable-polys
-%}).) Nevertheless the lemma as stated suffices for our purposes.</p>
+<p>It turns out that the lemma generalises to all fields $F$, but I
+haven't been able to prove it in general, the problem being that
+$\Gal(F(z)/F)$ may not be cyclic. (Though, the proof for $p=\char F$
+has been done in <a href="2023-01-25-separable-poly.html">this other entry</a>.)
+Nevertheless the lemma as stated suffices for our purposes.</p>
 <p>Back to the main result. The splitting field of $x^p-a$ can be
 expressed as a tower</p>
 <p>$$\Q \subset \Q(z) \subset \Q(z,b),$$</p>
@@ -175,5 +171,5 @@ there are integers $m,n$ such that $mp+nk=1$. Thus,</p>
 <div class="footnote">
 </div>
 
-</body>
+  </body>
 </html>

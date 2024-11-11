@@ -36,11 +36,11 @@ Before embarking on the proof, I first prove a lemma.
  Thus $bz^n$ is fixed by $\Gal(\Q(z)/\Q))$, and so is a root of $x^p-a$
  lying in $\Q$. $\qed$
 
-It turns out that the lemma generalises to all fields $F$, but I haven't
-been able to prove it in general, the problem being that
-$\Gal(F(z)/F)$ may not be cyclic. (Though, the proof for $p=\char F$ has
-been done in [this other entry]({% post_url 2023-01-25-separable-polys
-%}).) Nevertheless the lemma as stated suffices for our purposes.
+It turns out that the lemma generalises to all fields $F$, but I
+haven't been able to prove it in general, the problem being that
+$\Gal(F(z)/F)$ may not be cyclic. (Though, the proof for $p=\char F$
+has been done in [this other entry](2023-01-25-separable-poly.html).)
+Nevertheless the lemma as stated suffices for our purposes.
 
 Back to the main result. The splitting field of $x^p-a$ can be
 expressed as a tower
