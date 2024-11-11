@@ -10,7 +10,7 @@ request.onload = function() {
 	console.error(this);
 	return;
     }
-    let response = JSON.parse(this.response);
+    let response = JSON.parse(this.response).reverse();
     console.log(response);
     for (var i = 0; i < response.length; i++) {
 	document.getElementById('comments-list').appendChild(
