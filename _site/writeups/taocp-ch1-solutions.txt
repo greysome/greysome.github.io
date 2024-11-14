@@ -2069,8 +2069,33 @@ Set x=3, and note that e^(nx) is a constant.
 
 
 
-1.2.10-23
+1.2.11.3-7
 --------------------
+
+e^-u (1+u/x)^x
+= exp(-1/2 u^2/x + 1/3 u^3/x^2 - 1/4 u^4/x^3 + ...)   (*)
+
+Expanding out the exp gives us a sum of terms of the form
+const * u^i/x^j.
+Integrating wrt u gives a sum of terms of the form
+const * u^(i+1)/x^j,
+which is O(x^-2) whenever j - (i+1)/4 >= 2, or 4j-i>=9.
+
+Thus (*) expanded out to terms O(x^-2) is
+
+= 1
++ 1/1  (- 1/2  u^2/x   + 1/3 u^3/x^2 - 1/4 u^4/x^3)
++ 1/2  (+ 1/4  u^4/x^2 - 2/6 u^5/x^3              )
++ 1/6  (- 1/8  u^6/x^3                            )
++ 1/24 (+ 1/16 u^8/x^4                            );
+
+integrating gives
+
+= yx^(-1/4)
++ 1/1  (- 1/6   y^3 x^(-1/4) + 1/12 y^4 x^-1     - 1/20 y^5 x^(-7/4))
++ 1/2  (+ 1/20  y^5 x^(-3/4) - 2/36 y^6 x^(-6/4)                    )
++ 1/6  (- 1/56  y^7 x^(-5/4)                                        )
++ 1/24 (+ 1/144 y^9 x^(-7/4)                                        ).
 
 
 
@@ -2079,19 +2104,24 @@ Set x=3, and note that e^(nx) is a constant.
 1.2.11.3-8
 --------------------
 
+The solution given is rather advanced and I have not digested
+it. However, if we assume that r<=1/2, there is an easy argument
+generalising the previous exercise.
 
+A term u^i/x^j in the expansion of (*) is O(x^-s) whenever j - r(i+1)
+>= s. Thus, u^(k+1)/x^l = O(x^r) whenever u^k/x^l is obtained by a
+product of terms u^(i+1)/x^i. This is because k=l+p where p<=l,
+implying that
 
+l-r(k+1) >= l-r(2l+1) = l(1-2r) - r >= -r  (since r<=1/2).
 
+For each term in (*) containing u^(m+1)/x^m (the first omitted term in
+(*)) as a factor, it has the form u^(m+k+1)/x^(m+l), which is
+O(u^(m+1)/x^m * x^r) = O(x^-a),
+where
+a = m-r(m+1)-r = m(1-r)-2r >= s.
 
-1.2.11.3-8
---------------------
-
-
-
-
-
-1.2.11.3-11
---------------------
+Thus the terms u^(m+1)/x^m and beyond are not needed in the expansion.
 
 
 
@@ -2099,3 +2129,48 @@ Set x=3, and note that e^(nx) is a constant.
 
 1.2.11.3-16
 --------------------
+
+This question was extremely annoying because 1.2.6-(53) doesn't make
+sense when n<0 (since 0^n is undefined). Thus the sum has to be split
+up in such a way that this case doesn't occur.
+
+Recall the notation x^n` for falling powers.
+
+sum(k) (-1)^k (n k) k^(n-1) Q(k)
+                                                   | note how n was used instead of k
+  						   v to reduce the dependence
+
+= sum(k=0 to n) (-1)^k (n k) k^(n-1) * [sum(l=1 to n) k^l`/k^l]
+
+= sum(k=0 to n) (-1)^k (n k) k^(n-1) * [sum(l=1 to n-1) k^l`/k^l  +  n!/n^n * [k=n]]
+
+= sum(k=0 to n) (-1)^k (n k) k^(n-1) * [sum(l=1 to n-1, m=0 to l) (-1)^m [l m] k^(m-l)]
++ (-1)^n (n n) n^(n-1) n!/n^n
+
+= (-1)^n (n-1)!                                                           v note how this is always >=0
++ sum(l=1 to n-1, m=0 to l) (-1)^m [l m] * [sum(k=0 to n) (-1)^k (n k) k^(n-1-(l-m)]
+
+= (-1)^n (n-1)!                                v always 0
++ sum(l=1 to n-1, m=0 to l) (-1)^m [l m] * n! {n-1-(l-m) n}
+
+= (-1)^n (n-1)!
+
+
+
+
+
+1.2.11.3-19
+--------------------
+
+Let I(a,b,n) = int(a to b) e^(-nx) f(x) dx.
+
+On one hand,
+|I(0,r,n)| <= M * Gamma(a+1) / n^(a+1),
+which decays polynomially in n.
+
+On the other hand,
+|I(r,infty,n+1)| <= e^(-r) |I(r,infty,n)|,
+thus I(r,infty,n) decays exponentially in n.
+
+Therefore, for large n, I(0,infty,n) is dominated by I(0,r,n) which is
+O(n^-(a+1)).
