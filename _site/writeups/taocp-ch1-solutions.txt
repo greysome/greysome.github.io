@@ -1363,15 +1363,13 @@ Write (n k) = (n k-1) + (n-1 k-1).
 1.2.7-15
 --------------------
 
-Write (k1n) for sum(k=1 to n). Then
-
-(k1n) Hk^2
-= (k1n)(l1k) [1/l (m1k) 1/m]
-= (l1n) [1/l (kln)(m1k) 1/m]
+(1kn) Hk^2
+= (1kn)(1lk) [1/l (1mk) 1/m]
+= (1ln) [1/l (lkn)(1mk) 1/m]
 (the magic happens here!)
-= (l1n) [1/l * (m1n) (k max(l,m) n) 1/m]
-= (l1n) [(m1l)(kln) 1/m + (m l+1 n)(kmn) 1/m] / l
-= (l1n) [(n-l+1)Hl + (n+1)(Hn-Hl) - (n-l)] / l
+= (1ln) [1/l * (1mn) (max(l,m) k n) 1/m]
+= (1ln) [(1ml)(lkn) 1/m + (l+1 m n)(mkn) 1/m] / l
+= (1ln) [(n-l+1)Hl + (n+1)(Hn-Hl) - (n-l)] / l
 = ...  (straightforward simplifications)
 = (n+1) Hn^2 - (2n+1) Hn + 2n.
 
@@ -1621,13 +1619,13 @@ quadratic relation. Solving for cos(pi/5) gives phi/2.
 1.2.8-21
 --------------------
 
-Let S be sum(k0n) Fk x^k. Summing by parts:
+Let S be sum(0kn) Fk x^k. Summing by parts:
 
 S
-= sum(k0n) (F(k+2)-F(k+1)) x^k
-= [F(n+2)x^(n+1) - F1 x^0] - sum(k0n) F(k+2) (x^(k+1) - x^k)   (*)
+= sum(0kn) (F(k+2)-F(k+1)) x^k
+= [F(n+2)x^(n+1) - F1 x^0] - sum(0kn) F(k+2) (x^(k+1) - x^k)   (*)
 
-Now, sum(k0n) F(k+2) x^(k+1) is equal to
+Now, sum(0kn) F(k+2) x^(k+1) is equal to
 
 1/x * [S - F0 - F1 x + F(n+1)x^(n+1) + F(n+2)x^(n+2)]
 = S/x - 1 + F(n+1)x^n + F(n+2)x^(n+1),
@@ -1650,13 +1648,13 @@ This formula is only applicable when x^2+x-1!=0, i.e. when x is
 neither 1/phi or 1/phihat. In these cases, we can evaluate the sum
 using Binet's formula:
 
-sum(k0n) Fk/phi^k
-= 1/sqrt(5) sum(k0n) 1+r^k  (r=phihat/phi)
+sum(0kn) Fk/phi^k
+= 1/sqrt(5) sum(0kn) 1+r^k  (r=phihat/phi)
 = 1/sqrt(5) (n+1 + (r^(n+1)-1 / r-1)).
 
 Similarly,
 
-sum(k0n) Fk/phihat^k
+sum(0kn) Fk/phihat^k
 = 1/sqrt(5) ((s^(n+1)-1 / s-1) + n+1)  (s=phi/phihat).
 
 This is different from Knuth's solution, but I believe my solution is
@@ -1873,7 +1871,7 @@ k=Fm, since n-k<=F(m-1) and thus max(1+f(k),2+f(n-k)) = m.
 1.2.9-15
 --------------------
 
-sum(n) sum(k0n) (n-k k)z^k w^n
+sum(n) sum(0kn) (n-k k)z^k w^n
 = sum(k) z^k sum(n>=k) (n-k k) w^n
 = sum(k) z^k w^k sum(n>=0) (n k) w^n
 = sum(k) z^k w^(2k) sum(n>=0) (n k) w^(n-k)
@@ -1892,7 +1890,7 @@ the partial fraction decomposition is different:
 
 Thus Gn(-1/4)
 = [w^n] 1/(1-w/2)^2
-= sum(k0n) (1/2)^k (1/2)^(n-k)
+= sum(0kn) (1/2)^k (1/2)^(n-k)
 = (n+1) / 2^n.
 
 
@@ -2167,15 +2165,15 @@ sum(k) (-1)^k (n k) k^(n-1) Q(k)
                                          | note how n was used instead of k
             				 v to reduce the dependence
 
-= sum(k0n) (-1)^k (n k) k^(n-1) * [sum(1ln) k^l`/k^l]
+= sum(0kn) (-1)^k (n k) k^(n-1) * [sum(1ln) k^l`/k^l]
 
-= sum(k0n) (-1)^k (n k) k^(n-1) * [sum(1ln) k^l`/k^l  +  n!/n^n * [k=n]]
+= sum(0kn) (-1)^k (n k) k^(n-1) * [sum(1ln) k^l`/k^l  +  n!/n^n * [k=n]]
 
-= sum(k0n) (-1)^k (n k) k^(n-1) * [sum(1 l n-1, m0l) (-1)^m [l m] k^(m-l)]
+= sum(0kn) (-1)^k (n k) k^(n-1) * [sum(1 l n-1, m0l) (-1)^m [l m] k^(m-l)]
 + (-1)^n (n n) n^(n-1) n!/n^n
 
 = (-1)^n (n-1)!                                              v note how this is always >=0
-+ sum(1 l n-1, m0l) (-1)^m [l m] * [sum(k0n) (-1)^k (n k) k^(n-1-(l-m)]
++ sum(1 l n-1, m0l) (-1)^m [l m] * [sum(0kn) (-1)^k (n k) k^(n-1-(l-m)]
 
 = (-1)^n (n-1)!                        v always 0
 + sum(1 l n-1, m0l) (-1)^m [l m] * n! {n-1-(l-m) n}
@@ -2238,3 +2236,253 @@ On the other hand, the remainder is either 1 or b+1, so rX is either
 The exercise has rX initially equal to `- 1234 0 3 1`. The quotient is
 617b^2+1+1/2+1/2b, which has integer part 617b^2+1. Thus rA is
 `+ 0 617 0 1`; the remainder is b+1 so rX is `- 0 0 0 1 1`.
+
+
+
+
+
+1.3.3-13
+--------------------
+
+1.3.3-14
+--------------------
+
+1.3.3-18
+--------------------
+
+Gnm(z) = sum(0 j n/m) (z/m - 1)^j / j!
+
+1.3.3-28
+--------------------
+
+1.3.3-30
+--------------------
+
+1.3.3-32
+--------------------
+
+1.4.1-6
+--------------------
+
+MOVE	STJ	EXIT
+	ST6	OLDI6		save old value of rI6
+	LD6	EXIT(0:2)	rI6<-rJ
+	LDA	0,6(4:4)	rA<-F
+	LDX	0,6(3:3)	rX<-I
+	LD6	OLDI6		restore rI6, so that it can be used in the calculation of M if I=6
+	JXZ	1F		I=0?
+	INCX	24		set rX to appropriate STx opcode
+	STX	*+1(5:5)	set opcode of next instruction
+	NOP	*+1(0:2)	set A field of next instruction
+	ENTA	*		rA <- Ith index register
+	JMP	*+2
+1H	ENTA	0
+	LD6	EXIT(0:2)	rI6<-rJ
+	ADD	0,6(0:2)	rA+=A, thus rA<-M now
+	LD6	0,6(4:4)	rI6<-F, to use as a counter
+GO	STA	*+1(0:2)	set A field
+	LDX	*		rX<-CONTENTS(M)
+	STX	0,1		CONTENTS(rI1)<-rX
+	INCA	1		increment source addr
+	INC1	1		increment dest addr
+	DEC6	1		decrement counter
+	J6P	GO		continue looping?
+EXIT	JMP	*
+
+
+
+
+
+1.4.3.1-2
+--------------------
+
+Knuth's solution decides to shift one byte at a time. I decide to do
+all the shifting at once. (Same for MOVE moving one word at a time.)
+
+SHIFT	DEC3	5
+	J3P	FERROR
+	LDA	AREG
+	LDX	XREG
+	INC3	5
+	ST3	*+1(4:4)
+	SLA	0,5
+	STA	AREG(1:5)
+	STX	XREG(1:5)
+	JMP	CYCLE
+
+
+
+
+
+1.4.3.1-3
+--------------------
+
+MOVE	J5N	MEMERROR
+	CMP5	=BEGIN=
+	JGE	MEMERROR
+	ST5	2F(0:2)
+	ST3	2F(4:4)
+	LD1	I1REG
+2H	MOVE	0(0)
+	ST1	I1REG
+	JMP	CYCLE
+
+
+
+
+
+1.4.3.1-6,7
+--------------------
+
+CARDREAD	EQU	16
+PRINTER	EQU	18
+FIVEK	CON	5000
+HALF7500	CON	3750
+BEGIN 	STZ	OVTOG
+	STZ	COMPI
+	ENT6	0
+	ENT4	0
+CYCLE   LDA	OPTABLE,4(4:4)	Get execution time of previous instruction.
+	STA	7F(0:2)
+	STA	8F(0:2)
+DECIN	LDA	INTIME
+	LDX	INTIME
+7H	DECA	*		Update timer for card reader.
+	CMPX	FIVEK		If old timer >= 5000 and
+	JL	2F
+	CMPA	FIVEK		  new timer < 5000,
+	JGE	2F
+	LDX	INADDR
+	STX	*+1(0:2)
+	IN	*(CARDREAD)	  finally execute the IN.
+	JBUS	*(CARDREAD)
+2H	JANN	*+2		Make sure timer is not negative.
+	ENTA	0
+	STA	INTIME
+DECOUT	LDA	OUTTIME
+	LDX	OUTTIME
+8H	DECA	*		Update timer for line printer.
+	LD1	PRINTEROP
+	J1NP	3F		IF current printer operator = IOC:
+	CMPX	FIVEK
+	JL	2F		if old timer >= 5000 and
+	CMPA	FIVEK
+	JGE	2F		  new timer < 5000,
+	IOC	0(PRINTER)	  finally execute the IOC.
+	JBUS	0(PRINTER)
+	JMP	2F
+3H	CMPX	HALF7500	ELSE:
+	JL	2F		if old timer >= 3750 and
+	CMPA	HALF7500
+	JGE	2F		  new timer < 3750,
+	LDX	OUTADDR
+	STX	*+1(0:2)
+	OUT	*(PRINTER)	  finally execute the OUT.
+	JBUS	*(PRINTER)
+2H	JANN	*+2		Make sure timer is not negative.
+	ENTA	0
+	STA	OUTTIME
+	JMP	*+2
+	LDA	CLOCK
+TIME	INCA	0
+
+...
+
+OVTOG	CON	0
+CLOCK	CON	0
+INTIME	CON	-1		IO timers (for 1.4.3.1-6)
+OUTTIME	CON	-1
+PRINTEROP	CON	0	0 for OUT, 1 for IOC
+INADDR	CON	0		Addresses for IO operators
+OUTADDR	CON	0
+
+...
+
+JRED	LDA	=*+16=		Unfortunately =JRED1= isn't actually valid MIXAL.
+	STA	4H(0:2)		JRED uses the same field checking code as JBUS,
+	STA	5H(0:2)		  but after that it jumps to different code.
+JBUS 	DEC3	CARDREAD	We are updating rI3, but we know that the
+	J3Z	2F		  remaining commands in this cycle won't use it.
+	DEC3	2
+	J3Z	3F
+	JMP	FERROR
+2H	LDA	INTIME
+4H	JMP	*+2
+3H	LDA	OUTTIME
+5H	JMP	*+1
+JBUS1	ST3	*+1(4:4)
+	JBUS	JMP(0)		If the device is still busy, jump anyway.
+	JANP	CYCLE		If the simulated timer for the device is not done,
+	JMP	JMP		  do the jump.
+JRED1	ST3	*+1(4:4)
+	JAP	CYCLE		If the simulated timer is done,
+	JRED	JMP		  and device is ready, jump.
+	JMP	CYCLE
+IN	JMP	MEMORY
+	DEC3	CARDREAD
+	J3Z	2F
+	JMP	FERROR
+2H 	STZ	INTIME		Reset simulated timer.
+	LDA	CLOCK
+	ADD	=5000=		Reading a new card takes 10000u; do transmission 5000u later.
+	STA	INTIME		Begin the input timer.
+	ST5	INADDR
+	JMP	CYCLE
+OUT	JMP	MEMORY
+	DEC3	PRINTER
+	J3Z	2F
+	JMP	FERROR
+2H	STZ	OUTTIME
+	LDA	CLOCK
+	ADD	=7500=		Printing a new line takes 7500u; do transmission 3750u later.
+	STA	OUTTIME		Begin the output timer.
+	ST5	OUTADDR
+	ENTA	0
+	STA	PRINTEROP	Set PRINTEROP.
+	JMP	CYCLE
+IOC	DEC3	PRINTER
+	J3Z	2F
+	JMP	FERROR
+2H	JBUS	*(PRINTER)	Wait till device is free.
+	LDA	CLOCK
+	ADD	=5000=		Skipping to a new page takes 10000u; do transmission 5000u later.
+	STA	OUTTIME		Begin the output timer.
+	ENTA	1
+	STA	PRINTEROP	Set PRINTEROP.
+	JMP	CYCLE
+
+
+
+
+
+1.4.3.2-1
+--------------------
+
+...
+INST1	ENTA	*
+	JMP	CYCLE
+LEAVE	LDA	JORIG(0:2)
+	DECA	1		Compute (original rJ) - 1
+	STA	6F(0:2)
+	STA	7F(0:2)
+	STA	8F(0:2)
+	STA	9F(0:2)
+6H	LDA	*		Load the instruction at that address
+	STA	OLDINSTR	Store it, for later restoration
+	LDA	NEWINSTR
+7H	STA	*		Replace instruction with "JMP AFTER" (to set the desired rJ)
+8H	JMP	*
+AFTER	LDA	OLDINSTR
+9H	STA	*		Restore the original instruction
+	LDA	AREG
+LEAVEX	JSJ	*		rJ has already been updated; don't touch it
+NEWINSTR	JMP	AFTER
+AREG	CON	0
+	END	BEGIN
+
+
+
+
+
+1.4.3.2-5
+--------------------
