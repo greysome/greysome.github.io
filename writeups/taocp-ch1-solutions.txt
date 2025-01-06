@@ -1,3 +1,6 @@
+Here are my solutions to selected exercises, when I feel like I need
+to explain things my own way.
+
 Notes on notation:
 - \sum_{i=a}^b is abbreviated sum(aib) or sum(a i b). (It is meant to be read as sum(a<=i<=b).)
   Multiple summations are written sum(aib cjd ...).
@@ -10,8 +13,7 @@ Notes on notation:
 
 
 
-1.2.1-13
---------------------
+1.2.1-13 --------------------
 
 A3. T <= 3(n-r-1)+2
 A4/A5. T <= 3(n-r)
@@ -24,8 +26,7 @@ remainder when dividing by d).
 
 
 
-1.2.2-25
---------------------
+1.2.2-25 --------------------
 
 We have to show two things:
 1. The algorithm terminates.
@@ -70,8 +71,7 @@ concludes the exercise.
 
 
 
-1.2.2-27
---------------------
+1.2.2-27 --------------------
 
 From the question Knuth defines
 
@@ -152,8 +152,7 @@ This almost matches with Knuth's figure of 0.00044.
 
 
 
-1.2.2-29
---------------------
+1.2.2-29 --------------------
 
 (a) Derivative of b*log_b(x) = b*ln(x)/ln(b) wrt b is
 
@@ -191,8 +190,7 @@ increasing and (b+1)/b is decreasing).
 
 
 
-1.2.3-16
---------------------
+1.2.3-16 --------------------
 
 sum(0jn) jx^j
 = sum(0jn) sum(1ij) x^j
@@ -206,8 +204,7 @@ sum(0jn) jx^j
 
 
 
-1.2.3-29
---------------------
+1.2.3-29 --------------------
 
 To minimise clutter I will omit the "sum" from the ensuing notation.
 
@@ -265,8 +262,7 @@ Thus
 
 
 
-1.2.4-36
---------------------
+1.2.4-36 --------------------
 
 sum(1kn) floor(k/2)
 = sum(1kn) k/2  -  sum(1kn) (k/2 mod 1)
@@ -291,8 +287,7 @@ n(n+2)/4 and (n+1)^2/4.
 
 
 
-1.2.4-37
---------------------
+1.2.4-37 --------------------
 
 sum(1kn) floor((mk+x)/n)
 = sum(1kn) (mk+x / n)  -  sum(1kn) [(mk+x / n) mod 1]
@@ -326,8 +321,7 @@ Thus, we can continue from (*):
 
 
 
-1.2.4-42
---------------------
+1.2.4-42 --------------------
 
 Part (a) is very easy to prove.
 
@@ -349,8 +343,7 @@ as desired.
 
 
 
-1.2.4-48
---------------------
+1.2.4-48 --------------------
 
 (a). floor(m+n-1 / n) = ceil(m/n) is not necessarily true for n<0
 (e.g. n=-1). To prove it for n>0 it suffices to show that
@@ -394,8 +387,7 @@ simply by repeatedly applying previously proven formulas.
 
 
 
-1.2.5-24
---------------------
+1.2.5-24 --------------------
 
 Firstly, we have 1+x <= e^x for all real x, with equality at x=0. This
 can be seen in two ways: firstly, one can use the Maclaurin series
@@ -434,8 +426,7 @@ and so n^(n+1)/n! >= e^(n-1).
 
 
 
-1.2.6-10
---------------------
+1.2.6-10 --------------------
 
 (a). Let p be a prime write n=ap+b where 0<=b<p. Then the numerator of (n p)
 is the product
@@ -558,8 +549,7 @@ as desired.
 
 
 
-1.2.6-11
---------------------
+1.2.6-11 --------------------
 
 Let mu(k) be the multiplicity of the prime factor p in the factorial
 k!, and s(k) be the sum of digits in k! under the p-ary number
@@ -589,8 +579,7 @@ number of carries = s(a)+s(b)-s(a+b) / p-1.
 
 
 
-1.2.6-12
---------------------
+1.2.6-12 --------------------
 
 Mod 2, every (n k) can be written as a product of (a b)'s, where a,b
 in {0,1}. For instance, we have
@@ -615,8 +604,7 @@ The first few such values are 1, 3, 7, 15.
 
 
 
-1.2.6-16
---------------------
+1.2.6-16 --------------------
 
 By symmetry, (k+n-2 n-1) = (k+n-2 k-1). Now we have
 
@@ -632,8 +620,7 @@ Similarly, we have
 
 
 
-1.2.6-18
---------------------
+1.2.6-18 --------------------
 
 (r+s choose r-m+n)
 = sum(k)  (r (r-m+n)-k) (s k)
@@ -645,8 +632,7 @@ Similarly, we have
 
 
 
-1.2.6-19
---------------------
+1.2.6-19 --------------------
 
 The first, third and fourth steps are probably wrong because the
 identities (19) and (22) require that s be an integer, which it
@@ -665,8 +651,7 @@ sum(k) (r k) (s+k n) (-1)^(r-k)
 
 
 
-1.2.6-20
---------------------
+1.2.6-20 --------------------
 
 sum(0kr) (r-k m) (s k-t) (-1)^(k-t)
 = sum(0kr) (-m-1 r-k-m) (s k-t) (-1)^((r-k-m)+(k-t))    by (19)
@@ -686,8 +671,7 @@ sum(0kr) (r-k m) (s+k n)
 
 
 
-1.2.6-21
---------------------
+1.2.6-21 --------------------
 
 For reference, the equation in question is
 
@@ -704,8 +688,7 @@ is insufficient proof that LHS and RHS agree on all points.
 
 
 
-1.2.6-22
---------------------
+1.2.6-22 --------------------
 
 Mildly funny story behind this question: I tried bashing it out for a
 week until I gave up and peeked at the solution. Then I realised it
@@ -730,8 +713,7 @@ where n is an integer. The key trick is to use the inversion identity
 
 
 
-1.2.6-23
---------------------
+1.2.6-23 --------------------
 
 For reference, the equation is
 
@@ -753,8 +735,7 @@ sum(k>=0) (r-tk k) ((s+1)-t(n-k)  n-k) (r / r-tk)
 
 
 
-1.2.6-24
---------------------
+1.2.6-24 --------------------
 
 I don't get this exercise. How is the identity true for all r, s and t
 and all integer n, purely from that 'inductive step' and the base case
@@ -765,8 +746,7 @@ generalisation of (21) with the extra terms tk and t(n-k).
 
 
 
-1.2.6-30
---------------------
+1.2.6-30 --------------------
 
 For reference, Example 3 is the sum
 
@@ -792,8 +772,7 @@ sum(k) (n+k m+2k) (2k k) (-1)^k / k+1
 
 
 
-1.2.6-31
---------------------
+1.2.6-31 --------------------
 
 sum(k) (m-r+s k) (n+r-s n-k) (r+k m+n)
 = sum(j,k) (m-r+s k) (k j) (n+r-s n-k) (r m+n-j)
@@ -814,8 +793,7 @@ sum(k) (m-r+s k) (n+r-s n-k) (r+k m+n)
 
 
 
-1.2.6-33
---------------------
+1.2.6-33 --------------------
 
 Proceed by induction. Base case is trivially true, so suppose identity
 holds for n. Then we have
@@ -852,8 +830,7 @@ as desired.
 
 
 
-1.2.6-35
---------------------
+1.2.6-35 --------------------
 
 The Stirling numbers of the first kind have a nice
 interpretation. Recall they are defined by the formula
@@ -901,8 +878,7 @@ by definition, so
 
 
 
-1.2.6-36
---------------------
+1.2.6-36 --------------------
 
 sum(k)(n k) is equal to 2^n, the total number of subsets of
 {1,...,n}. The alternating sum (sum(k) (-1)^k (n k)) can be evaluated
@@ -920,8 +896,7 @@ Note that the result is also immediate for even n due to symmetry.
 
 
 
-1.2.6-37
---------------------
+1.2.6-37 --------------------
 
 sum(k even)(n k)
 = 1/2 [sum(k)(n k) + sum(k)(-1)^k(n k)]
@@ -931,8 +906,7 @@ sum(k even)(n k)
 
 
 
-1.2.6-40
---------------------
+1.2.6-40 --------------------
 
 (a). Follows easily by substituting t=1-u.
 
@@ -956,8 +930,7 @@ B(x+1,y)
 
 
 
-1.2.6-41
---------------------
+1.2.6-41 --------------------
 
 For reference,
 
@@ -993,8 +966,7 @@ was substituted for m+1, because both approach infty as m->infty.
 
 
 
-Motivation for 1.2.6-40,41: Beta distribution
---------------------
+Motivation for 1.2.6-40,41: Beta distribution --------------------
 
 The Beta distribution Beta(a,b) is parametrised by positive reals
 a,b. It is supported on [0,1] and its pdf is given by
@@ -1026,8 +998,7 @@ conjugate prior.
 
 
 
-1.2.6-42
---------------------
+1.2.6-42 --------------------
 
 This is a trivial matter of replacing the factorials with Gamma's:
 
@@ -1039,8 +1010,7 @@ r!/ k!(r-k)!
 
 
 
-1.2.6-50
---------------------
+1.2.6-50 --------------------
 
 When n=0, the sum evaluates to 1.
 
@@ -1058,8 +1028,7 @@ sum(0kn) (n k) x (x-kz)^(k-1) (-x+kz)^(n-k)
 
 
 
-1.2.6-51
---------------------
+1.2.6-51 --------------------
 
 sum(0kn) (n k) x (x-kz)^(k-1) (y+kz)^(n-k)
 = sum(0kn) (n k) x (x-kz)^(k-1) * (x+y + -x+kz)^(n-k)
@@ -1073,14 +1042,13 @@ sum(0kn) (n k) x (x-kz)^(k-1) (y+kz)^(n-k)
 = sum(0ln, 0kl)     ...
 = sum(0ln) (n l) (x+y)^(n-l) * [sum(0kl) (l k) x (x-kz)^(k-1) (-x+kz)^(l-k)]
                                (= [l=0] by previous exercise)
-= (x+y)^n.	
+= (x+y)^n.
 
 
 
 
 
-1.2.6-54
---------------------
+1.2.6-54 --------------------
 
 The ij-entry of Pascal's triangle as a matrix is C(i,j).
 I claim that the ij-entry of the inverse is (-1)^{i+j}C(i,j).
@@ -1096,8 +1064,7 @@ sum(k) (-1)^{k+j} C(i,k) C(k,j)
 
 
 
-1.2.6-56
---------------------
+1.2.6-56 --------------------
 
 I list out the coefficients C(n,1), C(n,2) and C(n,3) as n varies:
 
@@ -1136,8 +1103,7 @@ representations of some small numbers:
 
 
 
-1.2.6-60
---------------------
+1.2.6-60 --------------------
 
 Let <n k> to denote the number of k-combinations out of n-objects with
 repetitions. First, it helps to look at small values of k:
@@ -1198,8 +1164,7 @@ all objects are identical, the true number of configurations is
 
 
 
-1.2.6-64
---------------------
+1.2.6-64 --------------------
 
 To establish that {n m} is the number of m-subset partitions of
 {1,...,n}, we handle the boundary conditions first:
@@ -1220,8 +1185,7 @@ m{n m} partitions. This establishes that the relation
 
 
 
-1.2.6-67
---------------------
+1.2.6-67 --------------------
 
 Using the inequality
 
@@ -1238,8 +1202,7 @@ which was proved in 1.2.5-24, we get
 
 
 
-1.2.7-3
---------------------
+1.2.7-3 --------------------
 
 H(m,r) <= 1 + (1 - 2^(m(1-r))) / (1 - 2^(1-r)),
 thus
@@ -1249,8 +1212,7 @@ H(infty,r) <= 1 + 1/(1-2^(1-r)).
 
 
 
-1.2.7-5
---------------------
+1.2.7-5 --------------------
 
 True to the spirit of the exercise, I will rawdog the computation
 without using any calculator or computer program.
@@ -1282,8 +1244,7 @@ H10000         9.78760 60360 44382 26331.
 
 
 
-1.2.7-6
---------------------
+1.2.7-6 --------------------
 
 One can directly apply the formulas
 
@@ -1305,8 +1266,7 @@ Thus Hn = [n+1 2]/n! as expected.
 
 
 
-1.2.7-7
---------------------
+1.2.7-7 --------------------
 
 (a) By symmetry and induction we only need to prove that T(m+1,n) <= T(m,n).
 
@@ -1328,8 +1288,7 @@ H(mn) approx log m + log n + gamma.
 
 
 
-1.2.7-9
---------------------
+1.2.7-9 --------------------
 
 Expand (n k) = (n k-1) + (n-1 k-1) and observe that a lot of
 cancellation happens. The answer should be -1/n.
@@ -1338,8 +1297,7 @@ cancellation happens. The answer should be -1/n.
 
 
 
-1.2.7-12
---------------------
+1.2.7-12 --------------------
 
 1/2^1000 is 0 up to 1000*log10(2) ~~ 300 places.
 
@@ -1351,8 +1309,7 @@ places.
 
 
 
-1.2.7-13
---------------------
+1.2.7-13 --------------------
 
 Write (n k) = (n k-1) + (n-1 k-1).
 
@@ -1360,8 +1317,7 @@ Write (n k) = (n k-1) + (n-1 k-1).
 
 
 
-1.2.7-15
---------------------
+1.2.7-15 --------------------
 
 (1kn) Hk^2
 = (1kn)(1lk) [1/l (1mk) 1/m]
@@ -1377,8 +1333,7 @@ Write (n k) = (n k-1) + (n-1 k-1).
 
 
 
-1.2.7-18
---------------------
+1.2.7-18 --------------------
 
 From numerical computations I have observed that the 2-valuation of
 sum(1 i 2n-1 odd) 1/i  (*)
@@ -1447,16 +1402,14 @@ the whole thing is S(0) mod 2^(2k+1).
 
 
 
-1.2.7-19
---------------------
+1.2.7-19 --------------------
 See integer-harmonic-numbers.pdf
 
 
 
 
 
-1.2.7-21
---------------------
+1.2.7-21 --------------------
 
 Let the sum be Sn. Then
 
@@ -1478,8 +1431,7 @@ Sn
 
 
 
-1.2.7-22
---------------------
+1.2.7-22 --------------------
 
 Let the sum be Sn. Then
 
@@ -1504,8 +1456,7 @@ Sn
 
 
 
-1.2.8-15
---------------------
+1.2.8-15 --------------------
 
 I'll show a systematic way to derive a closed form for an, which can
 also be applied to bn and cn. Then it is easy to express cn in terms
@@ -1560,8 +1511,7 @@ as desired.
 
 
 
-1.2.8-17
---------------------
+1.2.8-17 --------------------
 
 Start with the identities
 
@@ -1589,8 +1539,7 @@ and the desired identity follows by taking determinants.
 
 
 
-1.2.8-18
---------------------
+1.2.8-18 --------------------
 
 Apply 1.2.7-17 with m=-n and k=1. (A rather surprising result!)
 
@@ -1598,8 +1547,7 @@ Apply 1.2.7-17 with m=-n and k=1. (A rather surprising result!)
 
 
 
-1.2.8-19
---------------------
+1.2.8-19 --------------------
 
 Use the double-angle formula
 
@@ -1616,8 +1564,7 @@ quadratic relation. Solving for cos(pi/5) gives phi/2.
 
 
 
-1.2.8-21
---------------------
+1.2.8-21 --------------------
 
 Let S be sum(0kn) Fk x^k. Summing by parts:
 
@@ -1664,8 +1611,7 @@ valid because it's a simple closed form.
 
 
 
-1.2.8-22
---------------------
+1.2.8-22 --------------------
 
 The induction argument used to prove this can be easily
 visualised. Imagine listing out nth Fibonacci numbers in a row
@@ -1702,8 +1648,7 @@ terms, thus the weighted sum is always a Fibonacci number.
 
 
 
-1.2.8-23
---------------------
+1.2.8-23 --------------------
 
 I use the same argument as 1.2.8-12. For n=1 we have
 
@@ -1741,8 +1686,7 @@ And so on.
 
 
 
-1.2.8-32
---------------------
+1.2.8-32 --------------------
 
 I will treat r as a remainder, i.e. 0<r<n. We can express F(mn+r) in
 terms of F(mn-r) mod Fn:
@@ -1785,8 +1729,7 @@ and so on.
 
 
 
-1.2.8-35
---------------------
+1.2.8-35 --------------------
 
 Let x be a number. We can construct a representation in the phi number
 system as follows:
@@ -1830,8 +1773,7 @@ argument.
 
 
 
-1.2.8-36
---------------------
+1.2.8-36 --------------------
 
 The kth letter of Sn is the last letter of Sl where Fl is the smallest
 digit in the Zeckendorf representation of k. (This can be seen by
@@ -1842,8 +1784,7 @@ l odd and `b` if l even.
 
 
 
-1.2.8-40
---------------------
+1.2.8-40 --------------------
 
 I show by induction on n that f(n)=m whenever Fm<n<=F(m+1). The
 generic situation can be visualised as follows:
@@ -1868,8 +1809,7 @@ k=Fm, since n-k<=F(m-1) and thus max(1+f(k),2+f(n-k)) = m.
 
 
 
-1.2.9-15
---------------------
+1.2.9-15 --------------------
 
 sum(n) sum(0kn) (n-k k)z^k w^n
 = sum(k) z^k sum(n>=k) (n-k k) w^n
@@ -1897,8 +1837,7 @@ Thus Gn(-1/4)
 
 
 
-1.2.9-24
---------------------
+1.2.9-24 --------------------
 
 Let an=[z^n]G(z), with a(-1)=1. Then
 
@@ -1925,8 +1864,7 @@ Let an=[z^n]G(z), with a(-1)=1. Then
 
 
 
-1.2.10-7
---------------------
+1.2.10-7 --------------------
 
 For each sequence S of X[1] X[2] ... X[n], we can extract the
 subsequence S' formed by the first occurrences of each of the m
@@ -1939,8 +1877,7 @@ Ss. Thus the probability of A being k (for the sequence S) is p_mk =
 
 
 
-1.2.10-9
---------------------
+1.2.10-9 --------------------
 
 {n m} is the number of ways to partition n objects into m
 subsets. Multiplying by (M m)m! (the number of ways to label the
@@ -1950,8 +1887,7 @@ subsets in each partition) gives the answer.
 
 
 
-1.2.10-12
---------------------
+1.2.10-12 --------------------
 
 Note that
 
@@ -1984,8 +1920,7 @@ m1 = 0.
 
 
 
-1.2.10-17
---------------------
+1.2.10-17 --------------------
 
 c. Let m, v denote mean and variance.
 
@@ -2002,8 +1937,7 @@ v(gf) = vg mf^2 + mg vf.
 
 
 
-1.2.10-19
---------------------
+1.2.10-19 --------------------
 
 If ak is a left-to-right maximum, then 1 ... k-1 maps into 1 ... ak-1
 under a. Thus no element of ak+1 ... n maps into 1 ... k-1 under b, so
@@ -2013,8 +1947,7 @@ it must map into k+1 ... n. Thus b(ak) = k is a right-to-left minimum.
 
 
 
-1.2.10-20
---------------------
+1.2.10-20 --------------------
 
 max{ai-bi} is equal to max{ai-bi, bi-ai}.
 
@@ -2026,8 +1959,7 @@ bl<=bk, thus al-bl>=ak-bk. Likewise, mR calculates max{bi-ai}.
 
 
 
-1.2.10-21
---------------------
+1.2.10-21 --------------------
 
 From the tail inequality we have
 
@@ -2071,8 +2003,7 @@ p < exp(-e^2/2q) = exp((p-1)/2) for 0<=p<1.
 
 
 
-1.2.10-22
---------------------
+1.2.10-22 --------------------
 
 a. Pr(X >= mu*r)
 <= x^(-mu*r) prod(qi+pi*x)
@@ -2096,8 +2027,7 @@ Set x=3, and note that e^(nx) is a constant.
 
 
 
-1.2.11.3-7
---------------------
+1.2.11.3-7 --------------------
 
 e^-u (1+u/x)^x
 = exp(-1/2 u^2/x + 1/3 u^3/x^2 - 1/4 u^4/x^3 + ...)   (*)
@@ -2128,8 +2058,7 @@ integrating gives
 
 
 
-1.2.11.3-8
---------------------
+1.2.11.3-8 --------------------
 
 The solution given is rather advanced and I have not digested
 it. However, if we assume that r<=1/2, there is an easy argument
@@ -2154,8 +2083,7 @@ Thus the terms u^(m+1)/x^m and beyond are not needed in the expansion.
 
 
 
-1.2.11.3-16
---------------------
+1.2.11.3-16 --------------------
 
 This question was extremely annoying because 1.2.6-(53) doesn't make
 sense when n<0 (since 0^n is undefined). Thus the sum has to be split
@@ -2184,8 +2112,7 @@ sum(k) (-1)^k (n k) k^(n-1) Q(k)
 
 
 
-1.2.11.3-19
---------------------
+1.2.11.3-19 --------------------
 
 Let I(a,b,n) = int(a to b) e^(-nx) f(x) dx.
 
@@ -2204,8 +2131,7 @@ O(n^-(a+1)).
 
 
 
-1.3.1-8
---------------------
+1.3.1-8 --------------------
 
 I will first explain the division example in the text, then use the
 method to solve the exercise.
@@ -2241,248 +2167,351 @@ The exercise has rX initially equal to `- 1234 0 3 1`. The quotient is
 
 
 
-1.3.3-13
---------------------
+1.3.3-13 --------------------
 
-1.3.3-14
---------------------
+The array storing the perm pi can be visualised as a directed graph
+whose edges are labelled + or -. Initially, all edges are - and they
+form cycles. Since Algorithm J modifies each cycle separately, we
+assume WLOG that the perm is a single cycle.
 
-1.3.3-18
---------------------
+Algorithm J progressively creates + edges such that the following
+properties are preserved:
 
-Gnm(z) = sum(0 j n/m) (z/m - 1)^j / j!
+        +
+a. If A -> B is an edge then B = pi(A).
 
-1.3.3-28
---------------------
+b. If there is a chain of + edges followed by an - edge,
 
-1.3.3-30
---------------------
+      +         +      +     -
+   An -> A(n-1) -> ... -> A0 -> B,
 
-1.3.3-32
---------------------
+   then B = pi^(n+1)(A). Note that n=0 is a special case.
 
-1.4.1-6
---------------------
-
-MOVE	STJ	EXIT
-	ST6	OLDI6		save old value of rI6
-	LD6	EXIT(0:2)	rI6<-rJ
-	LDA	0,6(4:4)	rA<-F
-	LDX	0,6(3:3)	rX<-I
-	LD6	OLDI6		restore rI6, so that it can be used in the calculation of M if I=6
-	JXZ	1F		I=0?
-	INCX	24		set rX to appropriate STx opcode
-	STX	*+1(5:5)	set opcode of next instruction
-	NOP	*+1(0:2)	set A field of next instruction
-	ENTA	*		rA <- Ith index register
-	JMP	*+2
-1H	ENTA	0
-	LD6	EXIT(0:2)	rI6<-rJ
-	ADD	0,6(0:2)	rA+=A, thus rA<-M now
-	LD6	0,6(4:4)	rI6<-F, to use as a counter
-GO	STA	*+1(0:2)	set A field
-	LDX	*		rX<-CONTENTS(M)
-	STX	0,1		CONTENTS(rI1)<-rX
-	INCA	1		increment source addr
-	INC1	1		increment dest addr
-	DEC6	1		decrement counter
-	J6P	GO		continue looping?
-EXIT	JMP	*
+        -                                       -
+c. If A -> B, there exists some C and an edge B -> C.
+   (It is possibly equal to A or B.)
 
 
+The + edges are created in this manner:
 
+1. Choose a node A that wasn't chosen previously. By the following
+   steps, A will be guaranteed to be the first element An of a chain in
+   property (a).
 
+2. Traverse the chain of + edges to find the node A0.
+   (This is step 3 of Algorithm J.)
 
-1.4.3.1-2
---------------------
+                       -
+3. There is an edge A0 -> B. By property (c) there also exists an edge
 
-Knuth's solution decides to shift one byte at a time. I decide to do
-all the shifting at once. (Same for MOVE moving one word at a time.)
+     -
+   B -> C. Replace the edges
 
-SHIFT	DEC3	5
-	J3P	FERROR
-	LDA	AREG
-	LDX	XREG
-	INC3	5
-	ST3	*+1(4:4)
-	SLA	0,5
-	STA	AREG(1:5)
-	STX	XREG(1:5)
-	JMP	CYCLE
+      +         +      +     -    -
+   An -> A(n-1) -> ... -> A0 -> B -> C
 
+   with
+                                -
+                             ________.
+                            /        |
+      +         +      +   /         v
+   An -> A(n-1) -> ... -> A0    B    C.
+    ^                          /
+    |_________________________/
+                +
 
+   (This is step 4.)
 
+   In effect, one of the + chain's has been extended. It is a
+   straightforward verification that the three properties are indeed
+   preserved.
 
+   (Also note that in Step 1, Algorithm J chooses the nodes in a
+   specific order, namely in decreasing order of their numerical
+   value. In fact that there is nothing special about this order, and
+   it is consistent with the steps I've given.)
 
-1.4.3.1-3
---------------------
+4. When there is one - edge left, the cycle will look like
 
-MOVE	J5N	MEMERROR
-	CMP5	=BEGIN=
-	JGE	MEMERROR
-	ST5	2F(0:2)
-	ST3	2F(4:4)
-	LD1	I1REG
-2H	MOVE	0(0)
-	ST1	I1REG
-	JMP	CYCLE
+                            __
+      +         +      +   |  |
+   An -> A(n-1) -> ... -> A0  | -
+                           ^  |
+			   |__|
+
+   Replace the - edge with a + edge from A0 to An. Then the inversion
+   of the cycle is complete.
 
 
 
 
 
-1.4.3.1-6,7
---------------------
+1.3.3-18 --------------------
 
-CARDREAD	EQU	16
-PRINTER	EQU	18
-FIVEK	CON	5000
-HALF7500	CON	3750
-BEGIN 	STZ	OVTOG
-	STZ	COMPI
-	ENT6	0
+Let Pnkm = n! p(nkm), the number of perms with exactly k m-cycles. Then
+
+Pnkm = (n km) (km!) / m^k k! * P(n-km)0m,  (*)
+
+because we can choose the km elements involved in the cycles and
+permute them subject to two symmetries (permutations of the k cycles
+and cyclic permutations within the cycles), then we have to ensure
+that the remaining n-km elements don't form any m-cycles.
+
+The quantity Pn0m can be found via inclusion-exclusion. If Sc is the
+set of perms containing the m-cycle c, then
+
+                          (n-km)! if ci's are disjoint
+S(c1) cap ... cap S(ck) =
+                          0       otherwise
+
+Thus,
+
+sum(i1<...<ik) |S(c(i1)) cap ... cap S(c(ik))|
+= (n-km)! #(disjoint k-tuples of m-element sets) (m-1)!^k
+= (n-km)! 1/k! n!/m!(n-m)! ... (n-(k-1)m)!/m!(n-km)! (m-1)!^k
+(a lot of terms cancel out)
+= n!/k!m^k.
+
+Thus
+
+Pn0m = n!(1 - 1/m + 1/2m^2 - 1/6m^3 + ... +- 1/l!m^l),   l = floor(n/m).
+
+Plugging in P(n-km)0m into (*) above, we have
+
+Pnkm = n!/k!m^k * sum(0 l floor(n/m)-k) (-1)^l/l!m^l.
+
+Copying the derivation of (27), we find that
+
+         sum(0 l floor(n/m)) (z/m-1)^l/l!  if m>=n,
+Gnm(z) =
+         0                                 otherwise.
+
+indeed the kth coefficient is
+
+sum(k l floor(n/m)) (-1)^(l-k)(l k) / l!m^k
+= sum(k l floor(n/m)) (-1)^(l-k) / k!(l-k)!m^k
+= 1/k!m^k [1 - 1/m + ... +- 1 / (floor(n/m)-k)! m^(floor(n/m)-k)].
+
+Now, observe that
+
+Gnm'(z)
+= 1/m sum(0 l floor(n/m)-1) (z/m-1)^l/l!
+= 1/m sum(0 l floor(n-m / m)) (z/m-1)^l/l!
+= 1/m G(n-m)m(z),
+
+therefore we can deduce
+
+          0   if m<n
+Gnm'(1) =
+          1/m otherwise
+
+
+           0     if m<2n
+Gnm''(1) =
+           1/m^2 otherwise.
+
+The first equation gives us the mean, and the variance can be deduced
+from both equations to be
+
+           0         if m<n,
+variance = (m-1)/m^2 if n<=m<2n,
+           1/m       if m>2n.
+
+
+
+
+
+1.3.3-28 --------------------
+
+Form a circle with the n men. Rotate it m-1 steps to map the 1st
+executed man to the 1st position; this is the perm
+(n n-1 ... 1)^(m-1).
+Now keep that man fixed, and rotate the remaining circle m-1 steps to
+map the 2nd man to the 2nd position; this is the perm
+(n n-1 ... 2)^(m-1).
+Repeat this until everyone is dead.
+
+
+
+
+
+1.3.3-30 --------------------
+
+Clearly the fixed element cannot be an even number. Thus it suffices
+to study the behaviour of the perfect shuffle permutation f on odd
+numbers.
+
+1 -> n+1, 3 -> n+2, ..., 2n-1 -> 2n.
+
+From 1.3.3-29 we know that the Josephus perm can be deduced from
+this. In particular, the (2k-1)th man is executed at time f^d(2k-1)/2,
+where d is the smallest number with f^d(2k-1) even. Thus the fixed
+elements correspond to k such that f^d(2k-1) = 4k-2 for some d. To
+solve this equation, we can extend f to the linear function
+
+F(x) = n + (x+1)/2  on [1,2n).
+
+(F and f do not agree on even numbers, but we are not going to
+evaluate F on even numbers anyway; they are the "destination" telling
+us when the man is executed.) Then a little algebra shows that
+
+f^d(x) = 2x  simplifies to  x = (2^d-1)(2n+1) / 2^(d+1)-1.
+
+
+
+
+
+1.3.3-32 --------------------
+
+The main observation is that if pi contains two cycles
+
+   ________                _________
+  |        \              |         \
+  v         \             v          \
+... -> a -> ...   and   ... -> b -> ...
+
+then (a b)pi looks like the single cycle
+
+   ___________
+  |           \
+  v            \
+... -> a -  -> ...
+          \/
+	  /\
+... -> b -  -> ...
+  ^            /
+  |___________/
+
+
+Thus to make pi a single cycle, we just have to apply the
+transposition (a a+1) whenever a and a+1 lie in different cycles. A
+permutation of the form rho is sufficient for that.
+
+
+
+
+
+1.4.3.2-5 --------------------
+
+Let the two tracing routines be S and T. S will be tracing the
+instructions of T, with the additional twist that the instructions of
+S are themselves being traced by T. So T will be the "top-level"
+tracing routine. We know that at each iteration of the tracing loop in
+S, an instruction from T will be executed. But since S is traced by T,
+that instruction is in reality being executed within T. Thus we run
+into the same issue as 1.4.3.2-4: a tracing routine executing an
+instruction from itself that clobbers its own memory, resulting in an
+infinite loop.
+
+
+
+
+
+1.4.4-16 --------------------
+
+As a concrete example, I wrote a program that negates 100 blocks from
+tape unit 0 and outputs to tape unit 1.
+
+* Registers:
+* NEXTP is ahead of NEXTG by rI6 buffers
+* NEXTR is ahead of NEXTP by rI5 buffers
+* NEXTG is ahead of NEXTR by rI4 buffers
+* rI2 is number of words processed in the buffer NEXTG
+* rI1 keeps track of number of blocks input so far
+U	EQU	0
+V	EQU	1
+BEGIN	IN	BUF1(U)		Read the first block.
+	JBUS	*(U)
+	ENT6	1
+	ENT5	3
 	ENT4	0
-CYCLE   LDA	OPTABLE,4(4:4)	Get execution time of previous instruction.
-	STA	7F(0:2)
-	STA	8F(0:2)
-DECIN	LDA	INTIME
-	LDX	INTIME
-7H	DECA	*		Update timer for card reader.
-	CMPX	FIVEK		If old timer >= 5000 and
-	JL	2F
-	CMPA	FIVEK		  new timer < 5000,
-	JGE	2F
-	LDX	INADDR
-	STX	*+1(0:2)
-	IN	*(CARDREAD)	  finally execute the IN.
-	JBUS	*(CARDREAD)
-2H	JANN	*+2		Make sure timer is not negative.
-	ENTA	0
-	STA	INTIME
-DECOUT	LDA	OUTTIME
-	LDX	OUTTIME
-8H	DECA	*		Update timer for line printer.
-	LD1	PRINTEROP
-	J1NP	3F		IF current printer operator = IOC:
-	CMPX	FIVEK
-	JL	2F		if old timer >= 5000 and
-	CMPA	FIVEK
-	JGE	2F		  new timer < 5000,
-	IOC	0(PRINTER)	  finally execute the IOC.
-	JBUS	0(PRINTER)
-	JMP	2F
-3H	CMPX	HALF7500	ELSE:
-	JL	2F		if old timer >= 3750 and
-	CMPA	HALF7500
-	JGE	2F		  new timer < 3750,
-	LDX	OUTADDR
-	STX	*+1(0:2)
-	OUT	*(PRINTER)	  finally execute the OUT.
-	JBUS	*(PRINTER)
-2H	JANN	*+2		Make sure timer is not negative.
-	ENTA	0
-	STA	OUTTIME
-	JMP	*+2
-	LDA	CLOCK
-TIME	INCA	0
-
-...
-
-OVTOG	CON	0
-CLOCK	CON	0
-INTIME	CON	-1		IO timers (for 1.4.3.1-6)
-OUTTIME	CON	-1
-PRINTEROP	CON	0	0 for OUT, 1 for IOC
-INADDR	CON	0		Addresses for IO operators
-OUTADDR	CON	0
-
-...
-
-JRED	LDA	=*+16=		Unfortunately =JRED1= isn't actually valid MIXAL.
-	STA	4H(0:2)		JRED uses the same field checking code as JBUS,
-	STA	5H(0:2)		  but after that it jumps to different code.
-JBUS 	DEC3	CARDREAD	We are updating rI3, but we know that the
-	J3Z	2F		  remaining commands in this cycle won't use it.
-	DEC3	2
-	J3Z	3F
-	JMP	FERROR
-2H	LDA	INTIME
-4H	JMP	*+2
-3H	LDA	OUTTIME
-5H	JMP	*+1
-JBUS1	ST3	*+1(4:4)
-	JBUS	JMP(0)		If the device is still busy, jump anyway.
-	JANP	CYCLE		If the simulated timer for the device is not done,
-	JMP	JMP		  do the jump.
-JRED1	ST3	*+1(4:4)
-	JAP	CYCLE		If the simulated timer is done,
-	JRED	JMP		  and device is ready, jump.
-	JMP	CYCLE
-IN	JMP	MEMORY
-	DEC3	CARDREAD
-	J3Z	2F
-	JMP	FERROR
-2H 	STZ	INTIME		Reset simulated timer.
-	LDA	CLOCK
-	ADD	=5000=		Reading a new card takes 10000u; do transmission 5000u later.
-	STA	INTIME		Begin the input timer.
-	ST5	INADDR
-	JMP	CYCLE
-OUT	JMP	MEMORY
-	DEC3	PRINTER
-	J3Z	2F
-	JMP	FERROR
-2H	STZ	OUTTIME
-	LDA	CLOCK
-	ADD	=7500=		Printing a new line takes 7500u; do transmission 3750u later.
-	STA	OUTTIME		Begin the output timer.
-	ST5	OUTADDR
-	ENTA	0
-	STA	PRINTEROP	Set PRINTEROP.
-	JMP	CYCLE
-IOC	DEC3	PRINTER
-	J3Z	2F
-	JMP	FERROR
-2H	JBUS	*(PRINTER)	Wait till device is free.
-	LDA	CLOCK
-	ADD	=5000=		Skipping to a new page takes 10000u; do transmission 5000u later.
-	STA	OUTTIME		Begin the output timer.
-	ENTA	1
-	STA	PRINTEROP	Set PRINTEROP.
-	JMP	CYCLE
-
-
-
-
-
-1.4.3.2-1
---------------------
-
-...
-INST1	ENTA	*
-	JMP	CYCLE
-LEAVE	LDA	JORIG(0:2)
-	DECA	1		Compute (original rJ) - 1
-	STA	6F(0:2)
-	STA	7F(0:2)
-	STA	8F(0:2)
-	STA	9F(0:2)
-6H	LDA	*		Load the instruction at that address
-	STA	OLDINSTR	Store it, for later restoration
-	LDA	NEWINSTR
-7H	STA	*		Replace instruction with "JMP AFTER" (to set the desired rJ)
-8H	JMP	*
-AFTER	LDA	OLDINSTR
-9H	STA	*		Restore the original instruction
-	LDA	AREG
-LEAVEX	JSJ	*		rJ has already been updated; don't touch it
-NEWINSTR	JMP	AFTER
-AREG	CON	0
+	ENT1	99
+COMP1	JMP	ASSIGN
+	LDA	NEXTG
+	STA	1F(0:2)
+	STA	2F(0:2)
+	ENT2	99
+1H	LDAN	*,2		Negate the word.
+2H	STA	*,2
+	DEC2	1
+	JRED	COMPIN(U)
+	JRED	COMPOUT(V)
+	J2NN	1B		Done with block?
+	JMP	RELEASE
+	JMP	COMP1
+*
+ASSIGN	STJ	8F
+	J6NZ	8F		Has computation caught up to input?
+	JRED	COMPIN(U)	If yes, do input instead.
+	JMP	*-2
+8H	JMP	*		Otherwise, then we will continue computing.
+*
+RELEASE STJ	7F
+	DEC6	1		Update pointer distances.
+	INC4	1
+	LD3	NEXTG		Advance NEXTG.
+	LD3	100,3
+	ST3	NEXTG
+7H	JMP	*
+*
+1H	JMP	INCOMP
+IN1	J1Z	3F		Have all blocks been read?
+	J5NZ	2F		Has input caught up to output?
+3H	JRED	INOUT(V)	If yes to either, do output instead.
+	JMP	1B
+2H	LD3	NEXTP
+	ST3	4F(0:2)
+4H	IN	*(U)		Read a block.
+	JMP	INCOMP
+	DEC5	1		Update pointer distances.
+	INC6	1
+	LD3	NEXTP
+	LD3	100,3		Advance NEXTP.
+	ST3	NEXTP
+	DEC1	1		A block has been read.
+	JMP	1B
+*
+1H	JMP	OUTCOMP
+OUT1 	J1NZ	*+4		If all blocks have been read
+	J6NZ	*+3		  and computed,
+	J4NZ	*+2		  and outputted,
+DONE	HLT	0		  we are done.
+	J4NZ	2F		Has output caught up to computation?
+	JMP	1B		If yes, do computation instead.
+2H	LD3	NEXTR
+	ST3	4F(0:2)
+4H	OUT	*(V)		Output a block.
+	JMP	OUTCOMP
+	DEC4	1		Update pointer distances.
+	INC5	1
+	LD3	NEXTR
+	LD3	100,3		Advance NEXTR.
+	ST3	NEXTR
+	JMP	1B
+* Coroutine linkage
+INCOMP	STJ	INX
+COMPX	JMP	COMP1
+OUTCOMP	STJ	OUTX
+	JMP	COMPX
+COMPIN	STJ	COMPX
+INX	JMP	IN1
+OUTIN	STJ	OUTX
+	JMP	INX
+COMPOUT	STJ	COMPX
+OUTX	JMP	OUT1
+INOUT	STJ	INX
+	JMP	OUTX
+* Constants
+ONE	CON	1
+BUF1	ORIG	*+100
+	CON	*+1
+BUF2	ORIG	*+100
+	CON	*+1
+BUF3	ORIG	*+100
+	CON	*+1
+BUF4	ORIG	*+100
+	CON	BUF1
+NEXTP	CON	BUF2
+NEXTG	CON	BUF1
+NEXTR	CON	BUF1
 	END	BEGIN
-
-
-
-
-
-1.4.3.2-5
---------------------
