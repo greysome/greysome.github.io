@@ -2167,6 +2167,32 @@ The exercise has rX initially equal to `- 1234 0 3 1`. The quotient is
 
 
 
+1.3.2-11 --------------------
+
+I'll only elaborate on one part of the solution, namely the
+observation that the value of a saddle point A is unique. (Of course
+Knuth gives a proof, but I want to present my own.) Suppose B is
+another saddle point. If B lies on the row and column as A, then the
+claim is clearly true. Otherwise, we have the following arrangement:
+
+    .     .
+    .     .
+... b ... B ...
+    .     .
+    .     .
+    .     .
+... A ... a ...
+    .     .
+    .     .
+
+By repeatedly applying either the minimum or maximum condition of
+a saddle point, we have
+B <= b <= A <= a <= B.
+
+
+
+
+
 1.3.3-13 --------------------
 
 The array storing the perm pi can be visualised as a directed graph

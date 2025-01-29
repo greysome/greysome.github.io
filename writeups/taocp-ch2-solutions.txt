@@ -1,0 +1,48 @@
+The same introductory remarks as taocp-ch1-solutions.txt apply.
+
+
+
+
+
+2.2.1-8 --------------------
+
+If n>=5, then any permutation starting with n13... works. If n1 can be
+output from the deque, that means right before n is output (when all n
+elements are in the deque), either
+
+1. n and 1 appear at both ends of the deque, or
+2. n1.. in the left end or ..1n in the right end.
+
+Thus the only possible arrangements are
+123..n   n..321   n123..   ..321n,
+and in each case 3 is stuck in the middle after n1 is output.
+
+
+
+
+
+2.2.2-9 --------------------
+
+Let xk be the stack of the kth insertion. The basic observation is
+that the number of moves caused by this insertion is equal to the
+number of previous insertion whose stack is > xk.
+
+Let Xk be the random variable denoting the number of moves caused by
+the kth insertion. We have
+
+E(total moves)
+= sum(1km) E(Xk)
+= sum(1km) sum(1in) E(Xk|k=i) P(k=i)
+= sum(1km) sum(1in) [(n-i)/n * (k-1)] 1/n
+                     ^ expected number of values > i if sampled uniformly k times from 1 to n
+= 1/n [sum(1km) (k-1)] [sum(1in) 1-i/n]
+= 1/n (m 2) (n - 1/n * n(n+1)/2)
+= 1/2 (1-1/n) (m 2).
+
+
+
+
+
+2.2.2-10 --------------------
+
+The method of 2.2.2-9 is easily adapted.

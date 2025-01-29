@@ -190,22 +190,23 @@ single number (check out 1.3.3–10). Nevertheless, 1.3.3 also
 contained juicy material on the theory of permuations like the
 Josephus problem; the mathematically-inclined reader might also find
 1.3.3–22 and 37 intriguing.</p>
-<p>Following permutations, Knuth finally gets down to talking about
-programming. The choice of topics is rather outdated and hardly
-suitable for a beginner, but I've learnt a lot from it. While
-discussing subroutines, Knuth provides exact expressions for the time
-and space savings of using subroutines over copy-pasting the same code
-in multiple places. This is certainly useless knowledge, but I very
-much appreciate Knuth for showing that such analysis <em>can</em> be done. It
-was also here that I learnt about coroutines for the first
-time. Instead of having a method call a submethod which runs some code
-and then returns back to that method, we could have two or more
-methods continuously calling each other. It's a notion that I find
-easier expressed in assembly than a higher-level language. After
-coroutines, Knuth goes through the implementation of a simulator and
-tracing routine for MIX, written in MIX itself. It's not as scary as
-it sounds, and some of the exercises gleefully embrace its meta nature
-(what if we had a tracing routine trace <em>itself</em>?)</p>
+<p>Following permutations, Knuth discusses some programming
+constructs. Once again his penchant for precision shows: Knuth
+provides exact expressions for the time and space savings of using
+subroutines over copy-pasting the same code in multiple places. This
+is mostly useless knowledge, but I very much appreciate Knuth for
+showing that such analysis <em>can</em> be done. It was also here that I
+learnt about coroutines for the first time. Instead of having a method
+call a submethod which runs some code and then returns back to that
+method, we could have two or more methods continuously calling each
+other. It's a notion that I find easier expressed in assembly than a
+higher-level
+language. (<a href="https://github.com/greysome/mixstuff/blob/main/taocp/ch1/neg100blocks/neg100blocks.mixal">Here's</a>
+one of my solutions that involves three coroutines.)</p>
+<p>After coroutines, Knuth goes through the implementation of a simulator
+and tracing routine for MIX, written in MIX itself. It's not as scary
+as it sounds, and some of the exercises gleefully embrace its meta
+nature (what if we had a tracing routine trace <em>itself</em>?)</p>
 <br>
 <p>In order to run Knuth's MIX examples and work on the programming
 exercises, I wrote my own MIX "<a href="https://github.com/greysome/mmmmmix">software
@@ -220,13 +221,11 @@ to view execution counts and times (so I can confirm that DIV
 instruction in line 19 of Program P was executed 9538 times), as well
 as custom simulations of I/O delays, to add a touch of realism to
 1.4.4 "Input and Output". Also I can't resist sharing this: I've added
-to Knuth's MIX simulator the ability to load MIX programs from punched
-cards (which are actually just text files with a slightly extended MIX
-character encoding). So if you desire, you can relive some of the joy
-of programming in the old days. (To prove my simulator works, <a href="https://github.com/greysome/mmmmmix/blob/main/examples/mixsim/aoc1/aoc1-program.cards">Day 1
-of Advent of Code
-2024</a>
-can be solved using punched cards.)</p>
+to Knuth's MIX simulator the ability to load MIX programs from
+<a href="https://github.com/greysome/mixstuff/">punched cards</a> (which are
+actually just text files with a slightly extended MIX character
+encoding). So if you desire, you can relive some of the joy of
+programming in the old days.</p>
 <br>
 <p>And that's my journey through Chapter 1! I plan to continue with
 Chapter 2, though I'll be busier with university work. For the
