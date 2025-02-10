@@ -46,3 +46,142 @@ E(total moves)
 2.2.2-10 --------------------
 
 The method of 2.2.2-9 is easily adapted.
+
+
+
+
+
+2.2.2-11 --------------------
+
+Similar to 2.2.2-9,
+
+E(total moves)
+= sum(1km) E(Xk)
+= sum(1km) sum(1in) E(Xk|k=i) P(k=i)
+= sum(1km) sum(1in) sum(1lk) E(Xk|k=i, lth occurrence of i) P(lth occurrence of i) P(k=i)
+                                                                                   ^ 1/n
+
+We have
+
+P(lth occurrence of i)
+= P(l-1 occurrences of i in x1,...,x(k-1))
+= (k-1 l-1) (n-1)^(k-l) / n^(k-1)
+
+and
+
+E(Xk|k=i, lth occurrence of i)
+= (n-i)(k-t)/(n-1) if t>T, 0 otherwise.
+
+Plugging these in, the inner most sum
+
+sum(1lk) E(Xk|k=i, lth occurrence of i) P(lth occurrence of i)
+
+evaluates to
+
+0 if k=1,
+
+(n-i)/n^(k-1) sum(t+1 l k) (k-1 l-1) (k-l) (n-1)^(k-l-1)
+= (n-i)/n^(k-1) sum(t+1 l k) (k-2 l-1) (k-1) (n-1)^(k-2-(l-1))
+= (n-i)(k-1)/n^(k-1) sum(t l k-1) (k-2 l) (n-1)^(k-2-l)
+otherwise.
+
+Denote the final sum by A(k-2); it represents the number of
+(k-2)-tuples of {1,...,n} with >= t occurrences of a given number;
+A1=0 as well. Apparently there is no simpler closed form.
+
+Finally, the big sum evaluates to
+
+1/n sum(1in) sum(2km) (n-i)(k-1)/n^(k-1) A(k-2)
+= [sum(1in) (1-i/n)] [sum(2km) A(k-2) k-1 / n^(k-1)].
+= (n-1)/2 [sum(2km) A(k-2) k-1 / n^(k-1)].
+
+In the special case t=0, we have A(k-2)=n^(k-2), thus the expressionq
+evaluates to
+
+(n-1)/2 sum(2km) k-1 / n
+= 1/2(1-1/n) sum(1 k m-1) k
+= 1/2(1-1/n) (m 2),
+
+which is the solution to 2.2.2-9.
+
+
+
+
+
+2.2.2-12 --------------------
+
+If n is even, the expectation is equal to 2^-n times
+
+n/2 (n n/2) + 2 sum(0 k n/2-1) (n-k)(n k)
+= n/2 (n n/2) + 2 sum(0 k n/2-1) n(n-1 k)   (recall (n n-k) = n/(n-k) (n-1 n-k-1))
+= n/2 (n n/2) + 2n sum(0 k n/2-1) (n-1 k)   (sum over left half of (n-1)th row of Pascal's triangle)
+= n/2 (n n/2) + 2^(n-1) n.
+= n (n-1 n/2-1) + 2^(n-1) n.
+= n (n-1 n/2) + 2^(n-1) n.
+
+If n is odd, the expectation is equal to 2^-n times
+
+2 sum(0 k (n-1)/2) (n-k) (n k)
+= 2n sum(0 k (n-1)/2) (n-1 k)  (sum over left half of (n-1)th row, including middle term)
+= 2n 1/2 [2^(n-1) + (n-1 (n-1)/2)]
+= n 2^(n-1) + n (n-1 (n-1)/2)
+
+In general, the answer is
+
+n/2 + n 2^-n (n-1 floor(n/2)),
+
+the difference from n/2 grows with n, since (n n/2) ~ sqrt(2) 2^n/sqrt(pi n).
+
+
+
+
+
+2.2.2-16 --------------------
+
+I was initially tempted to say yes: perhaps we could use the circular
+queue idea. However, there are complications with the idea. Suppose at
+some point, a certain amount of memory is allocated for the queue
+(which implies an allocation of memory to the other structure, say a
+stack). If the stack is full but the F and R pointers of the queue are
+well off the end of the list, then we would be wasting a lot of space:
+
+[  F...R               ][......................]
+
+One might say, we could dynamically adjust the size of the queue so
+that this doesn't happen. But that leads to more complications: if the
+stack is always empty, do we let the queue grow to the right (thus
+leaving less room for the stack to grow in the future), or do we force
+it to wrap around at some point? Without an idea of the distribution
+of insertions and deletions, it is hard to decide on an efficient
+allocation scheme a priori.
+
+
+
+
+
+2.2.2-18 --------------------
+
+The idea is to spread out the cost of each expensive repacking
+operation across the subsequent run of insertions and deletions. Let
+bji denotes the fraction of memory used by stack i during the jth
+repacking operation; thus if the repacking occurred on move k, then ak
+= sum(i)bji. After the repacking, stack i is allowed to grow by
+
+A(1-ak)N/n + (1-A)(1-ak)N * bji/ak    (where A=0.1 in Knuth's description of Algorithm R).
+
+Therefore, the minimum number of moves to the next repacking is equal
+to the minimum of these quantities, which is at least
+A(1-ak)N/n. Thus, the cost of the jth repacking operation (which is C
+ak N), is at most
+
+C/A n sum(k l k'-1) al N / (1-al)N,
+
+where the jth and (j+1)th repackings occur at moves k and k'. Summing
+over all repackings, and taking into account the cost of each
+insertion/deletion, we get the desired bound
+
+O(m + n sum(1km) ai/(1-ai)).
+
+(Pedantry: the repacking operation also includes costs from iterating
+through the stacks to find which ones to move upward/downward, and
+this contributes at most O(nm), which can be subsumed in the sum.)
