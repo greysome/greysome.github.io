@@ -185,3 +185,112 @@ O(m + n sum(1km) ai/(1-ai)).
 (Pedantry: the repacking operation also includes costs from iterating
 through the stacks to find which ones to move upward/downward, and
 this contributes at most O(nm), which can be subsumed in the sum.)
+
+
+
+
+
+2.2.3-21 --------------------
+
+The situation is easy to visualise if we draw an arrow for each
+relation j<k (repeated relations means multiple arrows connecting two
+nodes): topological sort repeatedly removes nodes with no arrows
+pointing to it.
+
+Repeated relations are fine, they just take longer to process. However
+if there is a loop, then every node has an arrow pointing to it and
+the algorithm can't continue.
+
+
+
+
+
+2.2.4-9 --------------------
+
+A general observation: if P and Q point inside the same circular list,
+then Algorithm A will behave as intended as long as P doesn't fall
+behind Q:
+
+- Each new term that is added, is added behind Q and thus behind P. So
+  as we continuously advance P, it never "sees" the new terms and so
+  they are never processed more than once.
+
+- Addition of coefficients may happen at P, but we would advance P
+  immediately anyway so we never read from the "dirty" node.
+
+- Similarly, removal of zero terms works fine if P is *ahead* of Q by
+  at least one node.
+
+With these remarks, we can deduce:
+
+P=Q in Algorithm A is ok. Note that no zero terms are created.
+
+P=M in Algorithm M is ok because that list is never modified.
+
+
+P=Q in Algorithm M results in t*poly(Q) getting added to poly(Q) for
+each term t in poly(M), because each term in t*poly(Q) is >= some term
+in poly(Q), thus each term is processed exactly once. Thus if
+poly(M)=t1+...+tn then the effective result is the series of
+assignments
+
+poly(Q) <- poly(Q) + t1*poly(Q),
+poly(Q) <- poly(Q) + t2*poly(Q),
+...
+poly(Q) <- poly(Q) + tn*poly(Q),
+
+or equivalently
+
+poly(Q) <- (1+t1)...(1+tn) poly(Q).
+
+
+Q=M in Algorithm M is ok, because for each term t in poly(M), every
+term of t*poly(P) is > t, so they all get added behind M. The
+exception is when poly(P) contains a constant term, but the constant
+term is already the last node in P, so we don't ever read from the
+dirty node.
+
+
+
+
+
+2.2.4-10,11 --------------------
+
+My implementation below, which takes (24p+27)u where p is the number
+of terms in poly(P). Not quite as good as Knuth's (21p+31)u but still
+an improvement over (27p+13)u with Program A.
+
+* Steps:
+* 1. Set P1<-P, Q0<=AVAIL, COEF(Q0)<-COEF(P1), ABC(Q0)<-ABC(P1), Q<-Q0.
+* 2. P1<-LINK(P1). If P1=sentinel, set LINK(Q)<-Q0 and terminate.
+* 3. Set Q1<-Q, Q<=AVAIL, COEF(Q)<-COEF(P1), ABC(Q)<-ABC(P),
+*    LINK(Q1)<-Q, and goto 2.
+* Registers:
+* rI2=Q0, rI3=Q, rI4=Q1, rI5=P1, rI6=tmp
+COPY	STJ	9F		2
+	ENT5	0,1		1	P1 <- P.
+	LD2	AVAIL		2	Q0 <= AVAIL.
+	J2Z	OVERFLOW	1
+	LD6	1,2(LINK)	2
+	ST6	AVAIL		2
+	LDA	0,5		2	COEF(Q0) <- COEF(P1).
+	STA	0,2		2
+	LDA	1,5(ABC)	2	ABC(Q0) <- ABC(PQ).
+	STA	1,2(ABC)	2
+	ENT3	0,2		1	Q <- Q0.
+2H	LD5	1,5(LINK)	2(p+1)	P1 <- LINK(P1).
+	LDA	1,5(ABC)	2(p+1)
+	JANN	3F		p+1	P1 = sentinel?
+	ST2	1,3(LINK)	2	LINK(Q) <- Q0.
+9H	JMP	*		1
+3H	ENT4	0,3		p	Q1 <- Q.
+	LD3	AVAIL		2p	Q <= AVAIL.
+	J3Z	OVERFLOW	p
+	LD6	1,3(LINK)	2p
+	ST6	AVAIL		2p
+	LDA	0,5		2p	COEF(Q) <- COEF(P1).
+	STA	0,3		2p
+	LDA	1,5(ABC)	2p	ABC(Q) <- ABC(P1).
+	STA	1,3(ABC)	2p
+	ST3	1,4(LINK)	2p	LINK(Q1) <- Q.
+	JMP	2B		p
