@@ -272,6 +272,13 @@ exercises in 1.3.1 and 1.3.2 will quickly acquaint you with its
 nuances.</p>
 </li>
 </ol>
+<br>
+<p>Addendum: I got a 0x$1.00 check for spotting an error in
+1.4.3.1 "Interpretive Routines", page 211. Knuth claims that "the
+coding for operation codes 5, 6 and 7 has been left as an exercise",
+but actually opcode 5 (SPEC) was not! I only discovered the error
+after attempting to implement the emulator myself: the provided code
+did not handle HLT, thus it was unusuable in that state.</p>
 <div class="footnote">
 </div>
 

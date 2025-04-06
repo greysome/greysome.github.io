@@ -294,3 +294,209 @@ COPY	STJ	9F		2
 	STA	1,3(ABC)	2p
 	ST3	1,4(LINK)	2p	LINK(Q1) <- Q.
 	JMP	2B		p
+
+
+
+
+
+2.2.6-15 --------------------
+
+In hindsight I made a poor choice of register assignments, because I
+was left with no index registers to temporarily store PTR[J]. This
+made S6 and S8 particularly awkward, as I had to resort to
+self-modifying instruction shenanigans, e.g. storing PTR[J] into rX
+and then storing rX into the next instruction's A-field which loads
+ROW(PTR[J]).
+
+If I were to rewrite this, I would store the row index I in memory
+because it is rarely needed; thus freeing up rI1. (This was
+essentially what Knuth did.)
+
+* PIVOTSTEP
+* Input: rI5=PIVOT. It is assumed that the BASECOL/BASEROW/PTR tables exist.
+* Registers: rI1=I,X, rI2=J, rI3=P0, rI4=Q0, rI5=P1, rI6=P
+ROW	EQU	0:3
+UP	EQU	4:5
+COL	EQU	0:3
+LEFT	EQU	4:5
+I0	CON	0
+J0	CON	0
+ALPHA	CON	0
+PIVOTSTEP	STJ	9F
+* rI5,rI6 are used as temp registers in the initialization step
+S1 	LD6	0,5(ROW)	ROW(PIVOT)
+	ST6	I0		  -> I0.
+	LD3	BASEROW,6	P0 <- LOC(BASEROW[I0]).
+	LD6	1,5(COL)	COL(PIVOT)
+	ST6	J0		  -> J0.
+	LD4	BASECOL,6	Q0 <- LOC(BASECOL[J0]).
+	LDA	2,5		VAL(PIVOT)
+	STA	ALPHA	  	  -> ALPHA.
+	ENTA	=1.0=		1.0
+	STA	2,5		  -> VAL(PIVOT).
+S2	LD3	1,3(LEFT)	P0 <- LEFT(P0).
+	LD2	1,3(COL)	J <- COL(P0).
+	J2N	S3		J < 0?
+	LDA	BASECOL,2	LOC(BASECOL[J])
+	STA	PTR,2		  -> PTR[J].
+	LDA	2,3		VAL(P0)
+	FDIV	ALPHA	  	  / ALPHA
+	STA	2,3		  -> VAL(P0).
+	JMP	S2
+S3	LD4	0,4(UP)		Q0 <- UP(Q0).
+	LD1	0,4(ROW)	I <- ROW(Q0).
+9H	J1N	*		I < 0? (then terminate)
+	CMP1	I0		I = I0? (then repeat S3)
+	JE	S3
+	LD6	BASEROW,1	P <- LOC(BASEROW[I]).
+	LD5	1,6(LEFT)	P1 <- LEFT(P).
+S4	LD3	1,3(LEFT)	P0 <- LEFT(P0).
+	LD2	1,3(COL)	J <- COL(P0).
+	J2NN	1F		J < 0?
+	LDAN	2,4		- VAL(Q0)
+	FDIV	ALPHA	  	  / ALPHA
+	STA	2,4		  -> VAL(Q0).
+	JMP	S3
+1H	CMP2	J0		J = J0? (then repeat S4)
+	JE	S4
+S5	LDA	1,5(COL)	Decrement COL(P1)
+	DECA	0,2		  by J.
+	JAZ	S7		If we matched pivot row's column, then pivot.
+	JANP	S6		If we overshot, then insert.
+	ENT6	0,5		Otherwise, we advance our column. P <- P1.
+	LD5	1,6(LEFT)	P1 <- LEFT(P).
+	JMP	S5
+S6	LDX	PTR,2		rX <- PTR[J].
+	STX	2F(0:2)
+	STX	*+1(0:2)
+	LDX	*(UP)		rX <- UP(PTR[J])
+	STX	*+1(0:2)
+	LDA	*(ROW)		rA <- ROW(UP(PTR[J])).
+	DECA	0,1
+	JANP	*+3		ROW(UP(PTR[J])) > I?
+0H	STX	PTR,2		PTR[J] <- UP(PTR[J]).
+	JMP	S6
+	ST1	0F(0:2)		Temporary make rI1 point to new node X <= AVAIL.
+	ST1	1F(0:2)
+	LD1	AVAIL
+	LDA	0,1(UP)		UP(AVAIL) points to the next node in the allocation list.
+	STA	AVAIL
+	ENTA	=0.0=		0.0
+	STA	2,1		  -> VAL(X).
+0H	ENTA	*
+	STA	0,1(ROW)	ROW(X) <- I.
+	ST2	1,1(COL)	COL(X) <- J.
+	ST5	1,1(LEFT)	LEFT(X) <- P1.
+	STX	0,1(UP)		UP(X) <- UP(PTR[J]).
+	ST1	1,6(LEFT)	LEFT(P) <- X.
+2H	ST1	*(UP)		UP(PTR[J]) <- X.
+	ENT5	0,1		P1 <- X.
+1H	ENT1	*		Restore I1.
+S7	LDAN	2,3		- VAL(P0)
+	FMUL	2,4		  * VAL(Q0)
+	FADD	2,5		  + VAL(P1)
+	STA	2,5		  -> VAL(P1).
+	JAZ	S8		VAL(P1) = 0?
+	ST5	PTR,2		PTR[J] <- P1.
+	ENT6	0,5		P <- P1.
+	LD5	1,6(LEFT)	P1 <- LEFT(P).
+	JMP	S4
+S8	LDA	PTR,2		rA <- PTR[J].
+	STA	*+1(0:2)
+	LDA	*(UP)		rA <- UP(PTR[J]).
+	STA	0F(0:2)
+	DECA	0,5		rA <- rA - P1.
+	JAZ	*+4		UP(PTR[J]) = P1?
+0H	ENTA	*		UP(PTR[J])
+	STA	PTR,2		  -> PTR[J].
+	JMP	S8
+	LDX	0,5(UP)		UP(P1)
+	LDA	PTR,2
+	STA	*+1(0:2)
+	STX	*(UP)		  -> UP(PTR[J]).
+	LDA	1,5(LEFT)	LEFT(P1)
+	STA	1,6(LEFT)	  -> LEFT(P).
+	LDA	AVAIL
+	STA	0,5(UP)
+	ST5	AVAIL		AVAIL <= P1.
+	LD5	1,6(LEFT)	P1 <- LEFT(P).
+	JMP	S4
+
+
+
+
+
+2.2.6-16 --------------------
+
+The following algorithm copies the nodes of the original matrix and
+populates the tables NEWROW and NEWCOL, which play the same role as
+BASEROW and BASECOL. An auxiliary table PTR is also utilised. Suppose
+the size of the matrix is M x N.
+
+C1. [Initialize list heads]
+    For 1<=I<=M, pop X<=AVAIL and set COL(X)<-(-1), NEWROW[I]<-X.
+    For 1<=J<=N, pop X<=AVAIL and set ROW(X)<-(-1), NEWCOL[J]<-X, PTR[J]<-X.
+    Set I=M.
+
+C2. [Initialize row]
+    Set P<-LEFT(BASEROW[I]), Y0<-NEWROW[I].
+
+C3. [Check end of row]
+    If P!=BASEROW[I], then go to step C4.
+    Else, set LEFT[Y0]<-NEWROW[I]. If I=1 then go to C5, else
+    decrement I and go back to C2.
+
+C4. [Traverse row]
+    Set X<-NODE(P), I<-ROW(X), J<-COL(X).
+    Then pop Y<=AVAIL and set ROW(Y)<-I, COL(Y)<-J,
+    LEFT(Y0)<-Y, Y0<-Y, UP(PTR[J])<-Y, PTR[J]<-Y.
+    Go back to C3.
+
+C5. [Update final UP links]
+    For 1<=J<=N, set UP(PTR[J])<-NEWCOL[J]. Then terminate.
+
+
+
+
+
+2.2.6-17 --------------------
+
+The structure is quite similar to 2.2.6-16 in my use of Y0 and PTR.
+
+The following algorithm multiples two matrices A, B with list heads
+specified by AROW/ACOL and BROW/BCOL. It creates a new matrix C and
+populates the newly created list heads in tables CROW/CCOL. An
+auxiliary table PTR is also utilised. Suppose A is M x N and B is N x
+K.
+
+M1. [Initialize list heads]
+    For 1<=I<=M, pop X<=AVAIL and set COL(X)<-(-1), CROW[I]<-X.
+    For 1<=J<=K, pop X<=AVAIL and set ROW(X)<-(-1), CCOL[J]<-X, PTR[J]<-X.
+    Set I=M.
+
+M2. [Initialize row]
+    If I<1, then skip to M8. Otherwise, set Y0<-NEWROW[I], J<-K.
+
+M3. [Initialize column]
+    If J<1, then skip to M7. Otherwise, set P<-LEFT(AROW[I]),
+    Q<-UP(BCOL[J]), S<-0.
+
+M4. [Find matching pair]
+    If P=AROW[I], goto step M6.
+    Otherwise, repeatedly set Q<-UP(Q) zero or more times until
+    ROW(Q)<=COL(P).
+
+M5. [Add to sum]
+    If ROW(Q)=COL(P), set S<-S+VAL(P)*VAL(Q).
+    In all cases, set P<-LEFT(P) and repeat M4.
+
+M6. [Create new node]
+    If S!=0, pop Y<=AVAIL and set ROW(Y)<-I, COL(Y)<-J,
+    LEFT(Y0)<-Y, Y0<-Y, UP(PTR[J])<-Y, PTR[J]<-Y.
+    In all cases, decrement J and go back to M3.
+
+M7. [Update final LEFT link in row]
+    Set LEFT(Y0)<-CROW[I], decrement I and go back to M2.
+
+M8. [Update final UP links in columns]
+    For 1<=J<=K, set UP(PTR[J])<-CCOL[J]. Then terminate.
