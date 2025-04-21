@@ -500,3 +500,155 @@ M7. [Update final LEFT link in row]
 
 M8. [Update final UP links in columns]
     For 1<=J<=K, set UP(PTR[J])<-CCOL[J]. Then terminate.
+
+
+
+
+
+2.3.1-29 --------------------
+
+For a vertex v in a tree, let PATH(v) denote the sequence of Ls and Rs
+from the root to v. I will show that PATH(P)=PATH(Q) at all times;
+this suffices to show equivalence of the copied tree since
+INFO(Q)<-INFO(P) in Step C3.
+
+The PATHs only change in step C5. The previous steps C2,C4 ensure that
+P and Q have the same set of direct children (as a subset of
+{L,R}). If P has a child, then P*,Q* are either both the left or both
+the right child of P,Q, and since PATH(P)=PATH(Q) by induction we have
+PATH(P*)=PATH(Q*).
+
+If P does not have a child, then
+P* = RLINK(*...*P) (k times), Q* = RLINK(*...*Q) (l times).
+
+In fact k = l, because the pairs *P,*Q; **P,**Q; ... all have the same
+set of direct children by induction. Since PATH(*...*P) = PATH(*...*Q)
+by induction, it follows that PATH(P*)=PATH(Q*).
+
+
+
+
+
+2.3.2-6 --------------------
+
+Consider the nontrivial binary tree
+
+T =     u
+      /   \
+     v     w
+    / \   / \
+   A   B C   D
+
+where A,B,C,D are subtrees. Treating this as a tree, the corresponding
+representation is
+
+         u
+     	/
+       v
+     /   \
+    A     \
+   / \     w
+ ..   B   /
+     /   C
+   ..   / \
+      ..   D
+          /
+	..
+
+Let pre(A) be the preorder sequence of nodes in the subtree A using
+the first representation, and pre'(A) be the preorder sequence using
+the second representation. Define in(A), post(A) and its primed
+variants similarly. Then,
+
+pre(T)   = u v pre(A)  pre(B)  w pre(C)  pre(D)
+pre'(T)  = u v pre'(A) pre'(B) w pre'(C) pre'(D)
+
+in(T)    = in(A)   v       in(B) u       in(C)   w in(D)
+in'(T)   = in'(A)  in'(B)  v     in'(C)  in'(D)  w u
+
+post(T)  = post(A) post(B) v     post(C) post(D) w u
+post'(T) = (no simple description)
+
+By induction, it can thus be seen that pre(T) = pre'(T) and in'(T) =
+post(T).
+
+
+
+
+
+2.3.2-18 --------------------
+
+We iterate through all the PARENT relations j -> k in descending order
+of j. The relations that have been processed so far induce a forest,
+and the LLINKs and RLINKs will reflect the preorder sequences of its
+top-level trees.
+
+Updating the LLINKs and RLINKs after each relation is somewhat
+straightforward. Suppose we are about to process j -> k; let F be the
+forest induced only by the edges already processed (so if j -> k is
+the first edge, then F consists of n singleton trees). We note two
+facts about F:
+
+1. j is the root of the top-level tree T containing it.
+   Otherwise, j,k would lie in the same top-level tree. But that means
+   j -> k must have been processed already.
+
+2. j is less than all the other children of k.
+   This is simply because we are traversing the relations j -> k in
+   descending order of j.
+
+Thus the situation could be visualised as follows:
+
+       ...
+        |
+     PARENT(k)
+    /   |      \
+  ..    k       ..
+  A   / | \      B
+     j  .. ..
+    / \   C
+  ..   ..
+     T
+
+Before j -> k is processed, the preorder sequence of the top-level
+tree containing k has the form
+
+... PARENT(k) A k C B ...
+
+After processing, it has the form
+
+... PARENT(k) A k T C B ...
+
+Thus, we only need to update 4 links: two between k and the first node
+in the preorder sequence of T (which is j), and two between C and the
+last node in the preorder sequence. Note that because the lists are
+circular, the last node is simply LLINK(j).
+
+
+
+
+
+2.3.2-20 --------------------
+
+The forward implication is obvious. As for the reverse, we first note
+that u and v are in the same tree of the forest, because both orders
+list out the trees from left to right.
+
+Now, recall that preorder of a tree A is:
+root(A), preorder(left(A)), preorder(right(A))
+
+Since u precedes v, there is some A such that u and v are in different
+components of this recursive definition, i.e.
+
+A1. u = root(A),  v in left(A);
+A2. u = root(A),  v in right(A); or
+A3. u in left(A), v in right(A).
+
+Similarly, since u follows v in postorder we have for some B,
+
+B1. v in left(B),  u = root(B);
+B2. v in right(B), u = root(B); or
+B3. v in left(B),  u in right(B).
+
+The only compatible pairs of scenarios are A1,B1 and A2,B2, which both
+imply u is a proper ancestor of v.
