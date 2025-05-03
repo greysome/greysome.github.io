@@ -8,6 +8,7 @@ from html_post_renderer import HtmlPostRenderer
 
 SITE_DIR = '../_site'
 head_html = open('../head.html', 'r').read()
+aboutme_html = open('../aboutme.html', 'r').read()
 
 def write_index_html():
     # POSTS -------------------------------------------------------------------------------
@@ -49,16 +50,20 @@ def write_index_html():
 <html>
   <head>{head_html}</head>
   <body>
-    <h1>wy's blog</h1>
-    
-    <p>{posts_heading}</p>
+    <h1><span style="color: #777777">greysome</span>'s page</h1>
+
+    {aboutme_html}
+
+    <br>
+
+    <h3>{posts_heading}</h3>
     <table>
       {post_entries}
     </table>
 
     <br>
-    
-    <p>{writeups_heading}</p>
+
+    <h3>{writeups_heading}</h3>
     <table>
       {writeup_entries}
     </table>
