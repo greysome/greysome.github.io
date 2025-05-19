@@ -505,6 +505,41 @@ M8. [Update final UP links in columns]
 
 
 
+2.3.1-19 --------------------
+
+We can find P$ using only right threads:
+
+R1. Set Q<-P, then set Q<-RLINK(Q) zero or more times until RTAG(Q)=1.
+    Then set Q<-RLINK(Q).
+
+R2. If LLINK(Q)=P, then return the inorder successor of Q.
+    Otherwise, P is a right child. Set Q<-LLINK(Q), and then
+    Q<-RLINK(Q) one or more times until RLINK(Q)=P, then return Q.
+
+(Conceptually, the path from the root to P has the form ...LR^n where
+n may be 0. Removing this suffix gives another node Q, which R1
+finds.)
+
+
+Symmetrically, we can find P$ using only left threads:
+
+L1. Set R<-P, then set R<-LLINK(R) zero or more times until LTAG(R)=1.
+    Then set R<-LLINK(R).
+
+L2. If RLINK(R)=P, then return R.
+    Otherwise, P is a left child. Set R<-RLINK(R), and then
+    R<-LLINK(R) one or more times until LLINK(R)=P, then return
+    the inorder successor of R.
+
+
+If the tree is threaded both ways, then we can actually run both
+algorithms simultaneously (by updating both Q and R in the same step)
+and then stop when one of them returns.
+
+
+
+
+
 2.3.1-29 --------------------
 
 For a vertex v in a tree, let PATH(v) denote the sequence of Ls and Rs
@@ -772,3 +807,215 @@ B3. v in left(B),  u in right(B).
 
 The only compatible pairs of scenarios are A1,B1 and A2,B2, which both
 imply u is a proper ancestor of v.
+
+
+
+
+
+2.3.4.2-16 -----------------
+
+Recall how a balanced digraph can be formed from a game of solitaire
+clock: the vertices are the 13 piles, and there is an edge i->j if a
+face j card is in pile i. Given some initial configuration, there is a
+walk (starting from pile 13) that is completely dictated by the rules
+of the game. The game is won iff the walk forms an Eulerian trail,
+which is equivalent to the set of last exits from all piles != 13
+forming an oriented tree. Eulerian trails are cycles, so the game
+would always end at pile 13.
+
+Conversely if the set of last exits don't form an oriented tree
+(i.e. the game is lost), then the game also ends at pile 13; this
+observation is important for the next problem. Suppose for a
+contradiction that it ends at pile i != 13. This means that all edges
+out of i are already taken, in particular the last exit from i. But
+since the graph is balanced, all edges going into i must have been
+already taken when the last exit is taken. Thus, it is impossible to
+revisit i afterwards.
+
+
+
+
+
+2.3.4.2-17 -----------------
+
+The clever solution is to observe that there is a correspondence
+between starting configurations (which can be thought of shuffles of a
+deck) and the sequence of cards picked (which can also be thought of
+as shuffles). For example, every winning configuration uniquely
+specifies a sequence of 52 cards. On the other hand, if the
+configuration causes the game to end with k cards left, then a partial
+sequence of 52-k cards is determined, and we can consider all
+configurations that determine this exact sequence of cards. There are
+exactly k! of them (because we can arbitrarily shuffle the k uncovered
+cards), and there are also k! ways to extend the partial sequence.
+
+Therefore, the probability of ending the game with k cards left is the
+probability that in a random shuffle, the kth last card is the last
+King appearing in that shuffle (the last card is always a King, as
+shown in the solution to the previous problem). This is equal to
+
+(51-k 3) 4! 48! / 52!.
+
+
+
+
+
+2.3.4.2-22 --------------------
+
+An interesting consequence of this formula is that in a connected,
+balanced, directed graph, the number of oriented subtrees rooted at Vi
+is the same regardless of Vi.
+
+I tried proving this more directly but my attempts didn't work out,
+which is weird because I thought it should be an easy result. All I
+know is that we can turn an oriented tree rooted at Vi into an
+oriented tree rooted at Vj, by adding some edge from Vi such that a
+oriented cycle is formed containing both Vi and Vj, and then removing
+the edge from Vj.
+
+
+
+
+
+2.3.4.2-26 --------------------
+
+This problem is actually not that hard if some reasonable-sounding
+results are taken by faith.
+
+a. (This was surprisingly annoying to prove.) Suppose xA = x for some
+nonzero x, and assume x has nonnegative components x1,...,xn. The sum
+of components of xA is x1+...+x(n-1), which forces xn=0. But
+regardless of x, there is some k (namely, the length of the shortest
+walk to End) such that the last component of xA^k is nonzero.
+
+Thus x must have some negative components --- we can reorder the
+components (as well as the rows and columns of A) such that x1,...,xk
+are nonnegative and -x(k+1),...,-xn are negative. Thus
+
+xA
+= (x1,...,xk,0...,0) A  -  (0...,0,x(k+1),...,xn) A
+= (a1,...,ak,....,an)   -  (b1,...,b(k+1),...,bn)
+= (x1,...,xk,....,xn).
+
+Summing up the first k components of the last equality gives
+
+(a1-b1)+...+(ak-bk) = x1+...+xk,
+
+so a1+...+ak >= x1+...+xk. But at the same time,
+
+a1+...+ak <= a1+...+an <= x1+...+xk,
+
+therefore a(k+1)=...an=0, and b1=...=bk=0 which implies ai=xi for
+1<=i<=k. Thus (x1,...,xk,0,...,0) is fixed under A, but we already
+showed that this leads to a contradiction.
+
+--
+
+b. I take it for granted that
+
+(I-A)^-1 = I + A + A^2 + ...,  where the RHS exists.
+
+The (1j)th entry of A^k is equal to E[Xk], where Xk is the average
+number of times Vj appears on the kth step (supposing the walk starts
+at V1). Then, assuming linearity of expectation for infinite sums, we
+have
+
+average # times that Vj appears on walk (starting from V1)
+= E[X1+X2+...]
+= E[X1] + E[X2] + ...
+= (1j)th entry of (I-A)^-1.
+
+--
+
+c. The quantity in (b) can be rewritten as
+
+P(Vj does not appear in walk) * 0
++ P(Vj appears in walk) E[# that Vj appears on walk | Vj appears in walk).
+
+The expectation is in fact equal to the average number of times that
+Vj appears on a walk starting from Vj, which is equal to the (jj)th
+entry of (I-A)^-1. Dividing that away gives the desired probability
+P(Vj appears in walk).
+
+--
+
+d. Let Sk denote the event of a walk starting at Vj, returning to Vj
+after k steps, and let its probability be pk. Assuming an infinite
+version of the inclusion-exclusion principle, we can derive
+P(union of S's).
+
+Observe that if k1<...<kl, then
+
+P(S(k1) cap ... cap S(kl)) = p(k1) p(k2-k1) ... p(kl-k(l-1)),
+
+and the sum over all length-l increasing chains of indices is equal to
+the sum of
+
+sum(i1,...,il positive integers) p(i1) ... p(il)
+= (p1 + p2 + ...)^l.
+= (A-1)^l,  where A is the average # of times Vj appears in the walk.
+
+
+Therefore the probability that the walk never returns to Vj is
+
+1 - P(union of S's)
+= 1 - (A-1) + (A-1)^2 - (A-1)^3 + ...
+= 1/(1+(A-1))
+= 1/A
+= 1 / [(jj)th entry of (I-A)^-1].
+
+--
+
+e. Straightforward.
+
+
+
+
+
+2.3.4.3-7 --------------------
+
+I had a fake proof that seemed really convincing until I saw a
+counterexample:
+
+Given a contiguous sequence of n integers (a1,...,an), define its
+*profile* to be the corresponding sequence (T1,...,Tn) where each Ti
+is a subset of {S1,...,Sn}, and Sj in Ti <=> Sj contains ai.
+
+Now consider the following tree: the vertices at height m are pairs
+(P,A) where P is a profile of a length-W(k,m) contiguous sequence of
+positive integers, and A is a monochromatic length-m arithmetic
+progression in that sequence (which exists by 2.3.4.3-6).
+
+A height-m (P,A) is a parent of a height-(m+1) (Q,B) if there is some
+contiguous subsequence P' of Q that matches P, and B (treated as a
+subsequence of P') is a subsequence of A.
+
+Clearly there are infinitely many vertices in total, but since there
+are finitely many profiles and arithmetic progressions of a given
+length, there are finitely many vertices with height m, so every
+vertex has finite degree. Thus, by Konig's Lemma there exists an
+infinite path which corresponds to a way of extending a monochromatic
+arithmetic progression indefinitely.
+
+--
+
+The mistake in the proof is the last statement. Observe that multiple
+contiguous sequences of integers (a1,...,an) can have the same
+profile, so when we move from a parent to a child, we might implicitly
+be hopping over to a different sequence. Therefore, we are not really
+extending an arithmetic progression indefinitely, but rather selecting
+increasingly long ones at different places.
+
+An explicit counterexample might illuminate the above remark: let
+S1,S2 be the set of numbers with evenly and oddly many digits
+respectively.
+
+
+
+
+TODO:
+2.3.3-13
+2.3.3-18
+2.3.4.4-27
+2.3.4.5-14
+2.3.4.5-15
