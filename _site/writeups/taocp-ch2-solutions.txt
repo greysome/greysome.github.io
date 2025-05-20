@@ -812,6 +812,62 @@ imply u is a proper ancestor of v.
 
 
 
+2.3.3-18 -------------------
+
+The algorithm maintains a stack X of triples (j,RLINK(j),DEG(j)). Let
+TOP(X) denote the top element of the stack.
+
+P1. [Initialise]
+    Set J<-1 and goto step P3.
+
+P2. [Pop matching RLINKs]
+    If RLINK(TOP(X))=J, then pop (I,R,D)<=X and output (I,D), and then
+    increment DEG(TOP(X)). Repeat this step until RLINK(TOP(X))!=J or
+    X is empty.
+    If J=n+1, then we are done.
+
+P3. [Push new node]
+    Let R<-RLINK[J].
+    If R=0 and X is empty, then set R<-n+1.
+      (INFO1[J] is the last node in postorder.)
+    If R=0 and X is nonempty, then set R<-RLINK(TOP(X)).
+      (INFO1[J] is the last child of its family. It has to be popped before its parent.)
+    Then push X<=(INFO1[J],R,0).
+
+P4. [Next node]
+    Increment J and goto step P2.
+
+
+Running this algorithm on the data
+
+      j   1  2  3  4  5  6  7  8  9 10
+INFO1[j]  A  B  C  K  D  E  H  F  J  G
+RLINK[j]  5  3  0  0  0  8  0 10  0  0
+
+gives the execution trace
+
+ J   STACK AFTER P3              OUTPUT
+ 1   (A,5,0)
+ 2   (A,5,0) (B,3,0)
+ 3   (A,5,1) (C,5,0)             B,0
+ 4   (A,5,1) (C,5,0) (K,5,0)
+ 5   (D,11,0)                    K,0 C,1 A,2
+ 6   (D,11,0) (E,8,0)
+ 7   (D,11,0) (E,8,0) (H,8,0)
+ 8   (D,11,1) (F,10,0)           H,0 E,1
+ 9   (D,11,1) (F,10,0) (J,10,0)
+10   (D,11,2) (G,11,0)           J,0 F,1
+11   empty                       G,0 D,3
+
+
+Note that DEG(TOP(X)) is only incremented in step P2 after popping an
+element, e.g. after visiting a child of TOP(X). Thus the output
+degrees are correct.
+
+
+
+
+
 2.3.4.2-16 -----------------
 
 Recall how a balanced digraph can be formed from a game of solitaire
@@ -1013,9 +1069,35 @@ respectively.
 
 
 
+
+2.3.4.5-14 -------------------
+
+Initially, we start with a forest consisting of n individual roots
+w1,...,wn. At each step, we may merge two roots r and s, adding r+s to
+the total weighted path length. Clearly, the minimum is obtained by
+always merging the two smallest roots.
+
+
+
+
+
+2.3.4.5-15 -------------------
+
+I was inspired by the previous problem.
+
+a. We start with n roots w1,...,wn, and at each step we may merge two
+roots r,s to create a new root with value max(r,s)+1. Note that the
+root's value is always equals to the max-weighted path length of its
+tree. The total max-weighted path length is minimised by always
+merging the two smallest roots.
+
+b. Merging two roots r,s creates a new root with value x(r+s). The
+rest of the argument is same as (a).
+
+
+
+
+
 TODO:
 2.3.3-13
-2.3.3-18
 2.3.4.4-27
-2.3.4.5-14
-2.3.4.5-15
