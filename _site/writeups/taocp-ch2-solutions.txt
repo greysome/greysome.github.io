@@ -4,7 +4,7 @@ The same introductory remarks as taocp-ch1-solutions.txt apply.
 
 
 
-2.2.1-8 --------------------
+2.2.1-8 ---------------------
 
 If n>=5, then any permutation starting with n13... works. If n1 can be
 output from the deque, that means right before n is output (when all n
@@ -21,7 +21,7 @@ and in each case 3 is stuck in the middle after n1 is output.
 
 
 
-2.2.2-9 --------------------
+2.2.2-9 ---------------------
 
 Let xk be the stack of the kth insertion. The basic observation is
 that the number of moves caused by this insertion is equal to the
@@ -205,7 +205,7 @@ the algorithm can't continue.
 
 
 
-2.2.4-9 --------------------
+2.2.4-9 ---------------------
 
 A general observation: if P and Q point inside the same circular list,
 then Algorithm A will behave as intended as long as P doesn't fall
@@ -254,7 +254,7 @@ dirty node.
 
 
 
-2.2.4-10,11 --------------------
+2.2.4-10,11 -----------------
 
 My implementation below, which takes (24p+27)u where p is the number
 of terms in poly(P). Not quite as good as Knuth's (21p+31)u but still
@@ -564,7 +564,7 @@ by induction, it follows that PATH(P*)=PATH(Q*).
 
 
 
-2.3.2-6 --------------------
+2.3.2-6 ---------------------
 
 Consider the nontrivial binary tree
 
@@ -812,7 +812,7 @@ imply u is a proper ancestor of v.
 
 
 
-2.3.3-18 -------------------
+2.3.3-18 --------------------
 
 The algorithm maintains a stack X of triples (j,RLINK(j),DEG(j)). Let
 TOP(X) denote the top element of the stack.
@@ -868,7 +868,7 @@ degrees are correct.
 
 
 
-2.3.4.2-16 -----------------
+2.3.4.2-16 ------------------
 
 Recall how a balanced digraph can be formed from a game of solitaire
 clock: the vertices are the 13 piles, and there is an edge i->j if a
@@ -892,7 +892,7 @@ revisit i afterwards.
 
 
 
-2.3.4.2-17 -----------------
+2.3.4.2-17 ------------------
 
 The clever solution is to observe that there is a correspondence
 between starting configurations (which can be thought of shuffles of a
@@ -916,7 +916,7 @@ shown in the solution to the previous problem). This is equal to
 
 
 
-2.3.4.2-22 --------------------
+2.3.4.2-22 ------------------
 
 An interesting consequence of this formula is that in a connected,
 balanced, directed graph, the number of oriented subtrees rooted at Vi
@@ -933,7 +933,7 @@ the edge from Vj.
 
 
 
-2.3.4.2-26 --------------------
+2.3.4.2-26 ------------------
 
 This problem is actually not that hard if some reasonable-sounding
 results are taken by faith.
@@ -1028,7 +1028,7 @@ e. Straightforward.
 
 
 
-2.3.4.3-7 --------------------
+2.3.4.3-7 -------------------
 
 I had a fake proof that seemed really convincing until I saw a
 counterexample:
@@ -1070,7 +1070,72 @@ respectively.
 
 
 
-2.3.4.5-14 -------------------
+2.3.4.4-27 ------------------
+
+Rearrange the indices of the U's and V's such that
+
+1. range({p+1,...,q}) = {s,...,r} for some s;
+
+2. Listing out the elements of f^-1(s), f^-1(s+1), ..., f^-1(r) in
+   order gives the sequence p+1,...,q.
+   (Actually this is not required, but I think it makes visualisation
+   a bit easier.)
+
+
+For example, a valid configuration would be
+
+   V1    V2 V3
+        / |  |
+U1 U2 U3 U4 U5  (arcs pointing upward).
+
+
+Note that V1,...,V(s-1) can be mapped into any of the U's because they
+are minimal vertices in any graph formed by adding r arcs. This gives
+q^(s-1) possibilities, so WLOG we can assume that s=1.
+
+Suppose we added r arcs and the resulting graph is a tree. A sequence
+can be formed as follows:
+
+1. Find the smallest Vk such that none of the U vertices with indices
+   in f^-1(k) have arcs pointing to them. (Such a Vk always exists,
+   otherwise there is an oriented cycle somewhere.)
+
+2. The arc goes from Vk to some Ul; output l. Remove Vk and the U
+   vertices with indices in f^-1(k), and repeat step 1 until all the
+   Vi's are gone.
+
+
+For instance, suppose the graph looks like
+
+         V1    V2 V3
+        / |   / |  |
+U1 U2 U3 U4 U5 U6 U7 (arcs pointing upward),
+
+and the arcs added are V1->U5, V2->U1, V3->U4. Then the corresponding
+sequence is
+
+4 (because there are no arcs to U7)
+5 (because there are no arcs to U3 or U4)
+1 (because there are no arcs to U5 or U6)
+
+
+The last index must be at most p, otherwise step 1 cannot be done with
+one V left. The other indices can be anything, so there are q^(r-1)p
+sequences in total.
+
+It is not too hard to reverse-engineer the graph from a sequence. For
+example, suppose we are given the above graph and the sequence 5 5
+2. Step 1 must have chosen V1, because the sequence tells us no arcs
+point to U3 or U4. So the first arc is V1->U5. Inductively, our
+problem is now to reverse-engineer the sequence 5 2 on the graph with
+V1,U3,U4 removed. Using the same reasoning, V3 must have been chosen,
+and next arc is V3->U5. The last arc is V2->U2.
+
+
+
+
+
+2.3.4.5-14 ------------------
 
 Initially, we start with a forest consisting of n individual roots
 w1,...,wn. At each step, we may merge two roots r and s, adding r+s to
@@ -1081,7 +1146,7 @@ always merging the two smallest roots.
 
 
 
-2.3.4.5-15 -------------------
+2.3.4.5-15 ------------------
 
 I was inspired by the previous problem.
 
@@ -1098,6 +1163,166 @@ rest of the argument is same as (a).
 
 
 
+2.3.5-7 ---------------------
+
+This is an easier version of 2.3.1-21 because we have an extra bit
+MARK to work with.
+
+
+
+
+
+2.3.5-9 ---------------------
+
+We maintain two pointers P,Q that sweep in opposite directions. Q
+looks for marked nodes from the right, P looks for unmarked nodes from
+the left. Marked nodes found by Q are copied to P, and ALINK(NODE(Q))
+is set to P. (This node is now 'dead'.)
+
+When P and Q eventually meet in the middle, we do one last sweep of S
+from the start of the memory area to P. If ALINK(NODE(S)) or
+BLINK(NODE(S)) > P, then update it to ALINK(P). Thus all links to dead
+nodes are replaced with their new addresses.
+
+
+
+
+
+2.4-4 -----------------------
+
+Otherwise, there is a complete qualification
+
+A0 OF A1 OF ... OF An
+
+that is a (partial) qualification of some other data item. WLOG it is
+a minimal counterexample (this assumption was neglected in the
+solution). Then A1 OF ... OF An is an unambiguous qualification, thus
+this data item has A0 as a child as well as some other descendant.
+
+Hence, the following additional checks are to be done on each pair
+(L,P) in Algorithm A:
+
+If we reached A7 (add to stack) by jumping from A4 to A6, i.e. A is
+the first child of its parent, then let (L1,P1) be the top of the
+stack, P2<-LINK(P), and verify that PARENT^k(P1) is not P2 for any
+k. This rules out counterexamples of the form
+
+P2
+  X
+  ...
+  B
+   ...
+       P1
+          X
+
+If we reached A7 without jumping, then let (L1,P1) be the top of the
+stack, P2<-LINK(P), and verify that PARENT^k(P2) is not P1 for any
+k. This rules out counterexamples of the form
+
+P1
+  ...
+      P2
+         X
+  X
+
+
+
+
+
+2.4-14 ----------------------
+
+The CHILD, SIB and PARENT fields can be inferred from SCOPE and an
+auxiliary stack.
+
+
+
+
+
+2.5-4 -----------------------
+
+A direct translation of Algorithm A results in the inner loop being
+8u:
+
+(rI1=Q, rI2=P, rI6=N)
+	ENT1	AVAIL		Q <- LOC(AVAIL).
+A2	LD2	0,1(LINK)	P <- LINK(Q).
+	J2Z	OVERFLOW
+	CMP6	0,2(SIZE)
+	JLE	A4
+	ENT2	0,1		Q <- P.
+	JMP	A2
+
+But Knuth cleverly rearranges the assignment of variables to cut it to
+7u:
+
+	ENT2	AVAIL		P <- LOC(AVAIL).
+A2	ENT1	0,2		Q <- P.
+	LD2	0,1(LINK)	P <- LINK(Q).
+	J2Z	OVERFLOW
+	CMP6	0,2(SIZE)
+	JG	A2
+
+
+
+
+
+2.5-11 ----------------------
+
+The problem can be simplified as follows. Suppose we want to linear
+search for P0 in a length n list, and we have a random pointer
+ROVER. We start the linear search from ROVER if index of ROVER < index
+of P0, else we start from the beginning. Then the average search
+length is this sum divided by n^2:
+
+(k is the index of P0)
+sum(1kn) (k+(k-1)+...1) + (n-k)k
+= sum(1kn) -k^2/2 + k/2 + nk
+= -n(n+1/2)(n+1)/6 + n(n+1)/4 + n^2(n+1)/2
+= 1/3 n^3 + O(n^2).
+
+
+
+
+
+2.5-13 ----------------------
+
+Some techniques I picked up from Knuth's solution:
+
+- rA and rX are available as temp registers
+
+- STZ ADDR(0:0) to make ADDR positive (making ADDR negative doesn't
+  seem that straightforward)
+
+- Defining a field TSIZE containing TAG and SIZE, so that both can be
+  set in one instruction (also avoids the hassle of negating the sign
+  of a word)
+
+
+
+
+
+2.5-14 ----------------------
+
+Let L=[block to left of P0 free?], R=[block to right of P0 free?].
+
+If L and R, then the situation looks like
+
+[P1 ]        [P1']          [P1 ]         [P1']--*
+  |            |              |                  |
+  |            |              |                  |
+[P  ][P0    ][P' ]    ->    [P,P0,P'          ]  |
+  |            |              |                  |
+  |            |              |                  |
+[P2 ]        [P2']          [P2  ]        [P2']--*
+
+LINK(P1') and LINK(P2'+1) are modified.
+
+If !L and !R, then 4 links are modified to insert P0 into the AVAIL List.
+
+If L and !R, then no links are modified.
+
+If !L and R, then the links LINK(P1'),LINK(P2'+1),LINK(P'),LINK(P'+1) are modified.
+
+
 TODO:
 2.3.3-13
-2.3.4.4-27
