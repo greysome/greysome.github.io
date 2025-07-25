@@ -55,7 +55,7 @@ emphasise the point, we'll use $z$ as the input). Then we can make use
 of tools from *complex analysis*.
 
 For example, plugging in $z=2i$ into the rational function
-$f(z)=z/(z^2+1)$ gives the output $-2i/3$. In fact, we can make a 3D
+$P(z)=z/(z^2+1)$ gives the output $-2i/3$. In fact, we can make a 3D
 plot showing the absolute value of each output:
 
 ![Compelx plot](partialfraction-complexplot.jpg "" 60%)
@@ -99,17 +99,18 @@ Subtracting away these terms leaves us with the series
 
 $$a_k + a_{k+1}(z-c) + a_{k+2}(z-c)^2 + \ldots,$$
 
-which approaches the finite value $a_k+0+0+\ldots$ when $z\to c$. No
-more pole! (Notice that we've cancelled a pole two different ways.)
+which approaches the finite value $a_k+0+0+\ldots$ when $z\to c$
+&mdash; no more pole! (Notice that we've cancelled a pole two
+different ways.)
 
 ### Combining the poles
 
 This subtraction process can be done for every pole $c_i$. Start by
 expanding $P(z)$ in the form $\eqref{2}$ around $c_1$, and subtract
-away the negative-power terms. That leaves us with a function $P_1(z)$
-with poles $c_2,\ldots,c_n$. Then repeat the process with $P_1(z)$ and
-$c_2$, and so on. At the end, we are left with some rational function
-with no poles, namely a polynomial[^2] $p(z)$. In
+away the negative-power terms $(z-c_1)^{-i}$. That leaves us with a
+function $P_1(z)$ with poles $c_2,\ldots,c_n$. Then repeat the process
+with $P_1(z)$ and $c_2$, and so on. At the end, we are left with some
+rational function with no poles, namely a polynomial[^2] $p(z)$. In
 symbols,
 
 $$P(z) - \sum_{i=1}^{k_1}{a_{1i}\over(z-c_1)^i} - \ldots - \sum_{i=1}^{k_n}{a_{ni}\over(z-c_n)^i} = p(z).$$
@@ -163,9 +164,10 @@ $z$, thus turning $P(z)$ 'inside-out':
 $$P(1/z+c) = (a_0z^k+\ldots+a_{k-1}z+a_k)+(a_{k+1}z^{-1}+\ldots)$$
 
 Then, our desired coefficients are obtained by writing $P(1/z+c)$ in
-the form $p(z)/q(z)$ and then computing the quotient of $p(z)$ divided
-by $q(z)$ (which is the first bracketed term). Note that the constant
-coefficient $a_k$ is ignored in the quotient.
+the form $p(z)/q(z)$ where $p(z),q(z)$ are polynomials, and then
+computing the quotient of $p(z)$ divided by $q(z)$ (which is the first
+bracketed term). Note that the constant coefficient $a_k$ is ignored
+in the quotient.
 
 In the case where $P(z)$ is real, we need to perform additional
 polynomial divisions by $(z-c)(z-\overline c)$ as mentioned above.
@@ -195,7 +197,7 @@ Similarly for $z=i$ we have
 
 $$P\left(1/z+i\right) = {iz^5+4z^4-6iz^3-4z^2+iz\over (4+4i)z^3+(4-8i)z^2-(5+i)z+i},$$
 
-and the quotient is $(1/8-i/8)z^2+(3/8-i/4)z+(-1/32-9i/32)$, so the
+and the quotient is $(1/8+i/8)z^2+(3/8-i/4)z+(-1/32-9i/32)$, so the
 partial fractions corresponding to $z=i$ are
 
 $${{3\over8}-{i\over4}\over z-i} + {{1\over8}+{i\over8}\over(z-i)^2}.$$
@@ -239,7 +241,7 @@ $$P(z) = {1\over 4(z-1)} + {3\over4}{z+1\over z^2+1} - {1\over2}{z+1\over(z^2+1)
 
 [^3]: If $p(x)$ is a real polynomial and $p(c)=0$, then $0=\overline{p(c)}=p(\overline c)$, where the second equality holds because the coefficients are real. Furthermore, $c,\overline c$ have the same order in $p(x)/(x-c)(x-\overline c)$ by induction.
 
-[^4]: If $p(z)$ and $q(z)$ are polynomials, then polynomial division refers to writing $p(z)=a(z)q(z)+r(z)$ where $\deg r<\deg q$. This is an analogue of integer division, where the dividend is expressed the quotient times the dividend, plus the remainder.
+[^4]: If $p(z)$ and $q(z)$ are polynomials, then polynomial division refers to writing $p(z)=a(z)q(z)+r(z)$ where $\deg r<\deg q$. This is an analogue of integer division, where the dividend is expressed the quotient times the divisor, plus the remainder.
 
 [^5]: The polynomial $a_i(z-\overline c)^i+b_i(z-c)^i$ has real coefficients because $b_i=\overline{a_i}$. This follows from the power series identity $\overline{P(z)(z-c)^k}=P(\overline z)(\overline z-\overline c)^k$.
 

@@ -147,7 +147,7 @@ perspective by allowing complex-valued inputs and outputs. (To
 emphasise the point, we'll use $z$ as the input). Then we can make use
 of tools from <em>complex analysis</em>.</p>
 <p>For example, plugging in $z=2i$ into the rational function
-$f(z)=z/(z^2+1)$ gives the output $-2i/3$. In fact, we can make a 3D
+$P(z)=z/(z^2+1)$ gives the output $-2i/3$. In fact, we can make a 3D
 plot showing the absolute value of each output:</p>
 <p>
 <table style="margin-left:auto; margin-right:auto">
@@ -190,15 +190,16 @@ appears in the denominator:</p>
 <p>$$a_0(z-c)^{-k}+a_1(z-c)^{-k+1}+\ldots+a_{k-1}(z-c)^{-1}.$$</p>
 <p>Subtracting away these terms leaves us with the series</p>
 <p>$$a_k + a_{k+1}(z-c) + a_{k+2}(z-c)^2 + \ldots,$$</p>
-<p>which approaches the finite value $a_k+0+0+\ldots$ when $z\to c$. No
-more pole! (Notice that we've cancelled a pole two different ways.)</p>
+<p>which approaches the finite value $a_k+0+0+\ldots$ when $z\to c$
+— no more pole! (Notice that we've cancelled a pole two
+different ways.)</p>
 <h3 id="combining-the-poles">Combining the poles</h3>
 <p>This subtraction process can be done for every pole $c_i$. Start by
 expanding $P(z)$ in the form $\eqref{2}$ around $c_1$, and subtract
-away the negative-power terms. That leaves us with a function $P_1(z)$
-with poles $c_2,\ldots,c_n$. Then repeat the process with $P_1(z)$ and
-$c_2$, and so on. At the end, we are left with some rational function
-with no poles, namely a polynomial<sup><a id="footnoteref-2" href="#footnote-2">2</a></sup> $p(z)$. In
+away the negative-power terms $(z-c_1)^{-i}$. That leaves us with a
+function $P_1(z)$ with poles $c_2,\ldots,c_n$. Then repeat the process
+with $P_1(z)$ and $c_2$, and so on. At the end, we are left with some
+rational function with no poles, namely a polynomial<sup><a id="footnoteref-2" href="#footnote-2">2</a></sup> $p(z)$. In
 symbols,</p>
 <p>$$P(z) - \sum_{i=1}^{k_1}{a_{1i}\over(z-c_1)^i} - \ldots - \sum_{i=1}^{k_n}{a_{ni}\over(z-c_n)^i} = p(z).$$</p>
 <p>Bringing all the sums to the right side, we actually get something
@@ -235,9 +236,10 @@ $a_0,\ldots,a_{k-1}$. To do this, we cleverly substitute $1/z+c$ for
 $z$, thus turning $P(z)$ 'inside-out':</p>
 <p>$$P(1/z+c) = (a_0z^k+\ldots+a_{k-1}z+a_k)+(a_{k+1}z^{-1}+\ldots)$$</p>
 <p>Then, our desired coefficients are obtained by writing $P(1/z+c)$ in
-the form $p(z)/q(z)$ and then computing the quotient of $p(z)$ divided
-by $q(z)$ (which is the first bracketed term). Note that the constant
-coefficient $a_k$ is ignored in the quotient.</p>
+the form $p(z)/q(z)$ where $p(z),q(z)$ are polynomials, and then
+computing the quotient of $p(z)$ divided by $q(z)$ (which is the first
+bracketed term). Note that the constant coefficient $a_k$ is ignored
+in the quotient.</p>
 <p>In the case where $P(z)$ is real, we need to perform additional
 polynomial divisions by $(z-c)(z-\overline c)$ as mentioned above.</p>
 <h3 id="a-worked-example">A worked example</h3>
@@ -255,7 +257,7 @@ $z/4+1/2$. Therefore $a_0=1/4$ and the partial fraction corresponding
 to $z=1$ is $1/4(z-1)$.</p>
 <p>Similarly for $z=i$ we have</p>
 <p>$$P\left(1/z+i\right) = {iz^5+4z^4-6iz^3-4z^2+iz\over (4+4i)z^3+(4-8i)z^2-(5+i)z+i},$$</p>
-<p>and the quotient is $(1/8-i/8)z^2+(3/8-i/4)z+(-1/32-9i/32)$, so the
+<p>and the quotient is $(1/8+i/8)z^2+(3/8-i/4)z+(-1/32-9i/32)$, so the
 partial fractions corresponding to $z=i$ are</p>
 <p>$${{3\over8}-{i\over4}\over z-i} + {{1\over8}+{i\over8}\over(z-i)^2}.$$</p>
 <p>The same computation could be done for $z=-i$, but actually we can
@@ -284,7 +286,7 @@ the real partial fraction expansion</p>
 <p></p>
 <p></p>
 <p></p>
-<div class="footnote">1. $P(z)$ cannot be expanded as a power series around $c$ — if it could, then evaluating at $c$ gives $a_0+0+0+\ldots$ which is infinite, contradicting the fact that $c$ is a pole. <a id="footnote-1" href="#footnoteref-1">back</a><br>2. The polynomial is zero only when the degree of numerator $&lt;$ degree of denominator of $P(z)$, by a straightforward degree argument. We can reduce any rational function to this case by polynomial dividing the numerator by the denominator. <a id="footnote-2" href="#footnoteref-2">back</a><br>3. If $p(x)$ is a real polynomial and $p(c)=0$, then $0=\overline{p(c)}=p(\overline c)$, where the second equality holds because the coefficients are real. Furthermore, $c,\overline c$ have the same order in $p(x)/(x-c)(x-\overline c)$ by induction. <a id="footnote-3" href="#footnoteref-3">back</a><br>4. If $p(z)$ and $q(z)$ are polynomials, then polynomial division refers to writing $p(z)=a(z)q(z)+r(z)$ where $\deg r&lt;\deg q$. This is an analogue of integer division, where the dividend is expressed the quotient times the dividend, plus the remainder. <a id="footnote-4" href="#footnoteref-4">back</a><br>5. The polynomial $a_i(z-\overline c)^i+b_i(z-c)^i$ has real coefficients because $b_i=\overline{a_i}$. This follows from the power series identity $\overline{P(z)(z-c)^k}=P(\overline z)(\overline z-\overline c)^k$. <a id="footnote-5" href="#footnoteref-5">back</a><br>6. A computer algebra program like Mathematica helps a lot for these computations. <a id="footnote-6" href="#footnoteref-6">back</a><br>
+<div class="footnote">1. $P(z)$ cannot be expanded as a power series around $c$ — if it could, then evaluating at $c$ gives $a_0+0+0+\ldots$ which is infinite, contradicting the fact that $c$ is a pole. <a id="footnote-1" href="#footnoteref-1">back</a><br>2. The polynomial is zero only when the degree of numerator $&lt;$ degree of denominator of $P(z)$, by a straightforward degree argument. We can reduce any rational function to this case by polynomial dividing the numerator by the denominator. <a id="footnote-2" href="#footnoteref-2">back</a><br>3. If $p(x)$ is a real polynomial and $p(c)=0$, then $0=\overline{p(c)}=p(\overline c)$, where the second equality holds because the coefficients are real. Furthermore, $c,\overline c$ have the same order in $p(x)/(x-c)(x-\overline c)$ by induction. <a id="footnote-3" href="#footnoteref-3">back</a><br>4. If $p(z)$ and $q(z)$ are polynomials, then polynomial division refers to writing $p(z)=a(z)q(z)+r(z)$ where $\deg r&lt;\deg q$. This is an analogue of integer division, where the dividend is expressed the quotient times the divisor, plus the remainder. <a id="footnote-4" href="#footnoteref-4">back</a><br>5. The polynomial $a_i(z-\overline c)^i+b_i(z-c)^i$ has real coefficients because $b_i=\overline{a_i}$. This follows from the power series identity $\overline{P(z)(z-c)^k}=P(\overline z)(\overline z-\overline c)^k$. <a id="footnote-5" href="#footnoteref-5">back</a><br>6. A computer algebra program like Mathematica helps a lot for these computations. <a id="footnote-6" href="#footnoteref-6">back</a><br>
 </div>
 
   </body>
