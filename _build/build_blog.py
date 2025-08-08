@@ -48,32 +48,23 @@ def write_index_html():
 
     content = f'''
 <html>
-  <head>{head_html}</head>
-  <body>
-    <h1><span style="color: #777777">greysome</span>'s page</h1>
+<head>{head_html}</head>
 
-    {aboutme_html}
+<body>
+<h1><span style="color: #777777">greysome</span>'s page</h1>
+{aboutme_html}
+<br>
+<h3>{posts_heading}</h3>
+<table>{post_entries}</table>
+<br>
+<h3>{writeups_heading}</h3>
+<table>{writeup_entries}</table>
+<br>
 
-    <br>
-
-    <h3>{posts_heading}</h3>
-    <table>
-      {post_entries}
-    </table>
-
-    <br>
-
-    <h3>{writeups_heading}</h3>
-    <table>
-      {writeup_entries}
-    </table>
-
-    <br>
-
-    <p>Tell me something nice <a href="comments.html">here</a> ☺</p>
-  </body>
+<p>Tell me something nice <a href="comments.html">here</a> ☺</p>
+</body>
 </html>
- '''
+'''
     with open(f'{SITE_DIR}/index.html', 'w') as f:
         print(f'Writing {SITE_DIR}/index.html')
         f.write(content)
@@ -83,12 +74,10 @@ def write_comments_html():
     comments_body_html = open('../comments_body.html', 'r').read()
     content = f'''
 <html>
-  <head>{head_html}</head>
-  <body>
-    {comments_body_html}
-  </body>
+<head>{head_html}</head>
+<body>{comments_body_html}</body>
 </html>
- '''
+'''
     with open(f'{SITE_DIR}/comments.html', 'w') as f:
         print(f'Writing {SITE_DIR}/comments.html')
         f.write(content)

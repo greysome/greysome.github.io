@@ -1,5 +1,7 @@
 # The extension $\C(t^n,u^n)/\C(t,u)$, where $t^2+u^2=1$
 
+$\require{xypic}$
+
 This is one of my favourite exercises from Jacobson so far. Let $t$ be
 transcendental over $\C$, and $u$ be an element such that $t^2+u^2=1$.
 
