@@ -1,46 +1,46 @@
 body {
-    margin: 5% 10% 5% 10%;
-    font-family: "Helvetica", sans-serif;
-    font-size: 20px;
+  margin: 5% 10% 5% 10%;
+  font-family: "Helvetica", sans-serif;
+  font-size: 20px;
 }
 
 @media (max-width: 480px) {
-    body {
-	margin: 2% 2% 2% 2% !important;
-	font-size: 16px !important;
-    }
+  body {
+    margin: 2% 2% 2% 2% !important;
+    font-size: 16px !important;
+  }
 }
 
 code {
-    font-size: 80%;
+  font-size: 80%;
 }
 
 h2, h3 {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .postdate {
-    text-align: right;
-    padding-right: 10px;
+  text-align: right;
+  padding-right: 10px;
 }
 
 a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover, a:active {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 li {
-    margin: 0% 3% 0% 0%;
+  margin: 0% 3% 0% 0%;
 }
 
 .footnote {
-    margin-top: 3em;
-    font-size: 80%;
+  margin-top: 3em;
+  font-size: 80%;
 }

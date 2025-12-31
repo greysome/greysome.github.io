@@ -1,0 +1,48 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css"/>
+<script async src="/resource/mathjax-config.js"></script>
+<script id="MathJax-script" async src="/resource/tex-chtml.js"></script>
+<a href="/index.html">&lt; Back</a>
+
+<script>
+const COMMENTS_URL = 'https://api.github.com/repos/greysome/greysome.github.io/issues/8/comments?per_page=100';
+
+let request = new XMLHttpRequest();
+request.open('GET', COMMENTS_URL, true);
+request.onload = function() {
+  if (this.status != 200) {
+	console.error(this);
+	return;
+  }
+  let response = JSON.parse(this.response).reverse();
+  console.log(response);
+  for (var i = 0; i < response.length; i++) {
+	document.getElementById('comments-list').appendChild(
+	  comment_entry(response[i])
+	);
+  }
+  MathJax.typeset();
+};
+request.send();
+
+function comment_entry(response) {
+  let user_name = response.user.login;
+  let user_url = response.user.url.replace('api.github.com/users', 'github.com');
+  let date = response.created_at.substring(0, 10);
+  let content = response.body;
+
+  let user = document.createElement('a');
+  user.setAttribute('href', user_url);
+  user.innerHTML = user_name;
+
+  let comment = document.createElement('p');
+  comment.appendChild(user);
+  comment.innerHTML += ' (' + date + ')' + ' ⸺ ';
+  comment.appendChild(document.createTextNode(content));
+  return comment;
+}
+</script>
+
+<h1>Comments</h1>
+<div id="comments-list"></div>
+<p>Leave a comment <a href="https://github.com/greysome/greysome.github.io/issues/8">here!</a></p>

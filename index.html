@@ -1,0 +1,80 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/style.css"/>
+<script async src="/resource/mathjax-config.js"></script>
+<script id="MathJax-script" async src="/resource/tex-chtml.js"></script>
+
+<h1><span style="color: #777777">greysome</span>'s page</h1>
+
+Welcome to my little space! I am Way Yan, an undergraduate student at
+the National University of Singapore.
+<br><br>
+
+Feel free to disturb me at win at u dot nus dot edu dot sg, and also
+check out some of my smart and cool friends:
+<a href="https://tfmsadhith.github.io">Sanjay</a>,
+<a href="https://boonsuan.github.io">Boon Suan</a>, and
+<a href="https://saddle196883.github.io/personalpage/aboutme">Timothy</a>.
+
+<h3>Projects</h3>
+<table>
+<tr class="hover"><td><a target="blank" href="https://github.com/greysome/rayt">rayt</a>: a GPU raytracer</td></tr>
+<tr hidden><td>Admittedly it's pretty basic &mdash; I didn't get to implement more advanced features like path tracing and the renderer is non-interactive (scenes are specified in source code). I intend to rewrite a CPU-based version in the future.</td></td>
+<tr class="hover"><td><a target="blank" href="https://github.com/greysome/vibro">vibro</a>: a synth instrument with expressive features</td></tr>
+<tr hidden><td>I love chiptunes but most songs are programmed via trackers and contain effects like vibrato and glissandos that are hard to achieve well on normal keyboards. I wrote this to overcome some of these limitations and connect deeper with the music.</td></td>
+<tr class="hover"><td><a target="blank" href="https://github.com/greysome/project-taco">Project Taco</a>: current work on The Art of Computer Programming. Includes a custom MIX emulator for running the code listings.</td></tr>
+<tr hidden><td>Tough book!</td></td>
+</table>
+
+<h3>Sketches and miscellaneous</h3>
+<table>
+<tr class="hover"><td><a target="blank" href="https://github.com/greysome/javatype">javatype</a>: a crude recreation of Java's type system
+<tr hidden><td>Great revision for the OOP module I was taking at the time.</td></td>
+<tr class="hover"><td><a target="blank" href="https://youtube.com/@wayyan5195">YouTube channel</a>: I post music here
+<tr hidden><td>I wish I committed more time to writing music.</td></td>
+</table>
+
+<script>
+const rows = document.querySelectorAll('.hover');
+for (let i = 0; i < rows.length; i++) {
+  const row = rows[i];
+  row.addEventListener('mouseenter', function() {
+    const next_row = this.nextElementSibling;
+    next_row.hidden = false;
+  });
+  row.addEventListener('mouseleave', function() {
+    const next_row = this.nextElementSibling;
+    next_row.hidden = true;
+  });
+}
+</script>
+
+<h3>Blog posts</h3>
+<table>
+<tr><td class="postdate">Jul 24, 2025</td> <td><a href="/posts/2025-07-24-partial-fractions.html">Explaining partial fractions</a></td></tr>
+<tr><td class="postdate">Jun 28, 2025</td> <td><a href="/posts/2025-06-28-taco-2.html">Project Taco update 2</a></td></tr>
+<tr><td class="postdate">Jan 3, 2025</td>  <td><a href="/posts/2025-01-03-taco-1.html">Project Taco update 1</a></td></tr>
+<tr><td class="postdate">Jul 29, 2024</td> <td><a href="/posts/2024-07-29-grey-cats-finals-2024.html">Grey Cat The Flags 2024 Finals, Crypto writeups</a></td></tr>
+<tr><td class="postdate">Apr 24, 2024</td> <td><a href="/posts/2024-04-24-grey-ctf-quals-2024.html">Grey Cat The Flags 2024 Qualifiers writeups</a></td></tr>
+<tr><td class="postdate">Mar 16, 2024</td> <td><a href="/posts/2024-03-16-hackbash-solutions.html">Crypto solutions for Hackbash 2024</a></td></tr>
+<tr><td class="postdate">Mar 1, 2024</td>  <td><a href="/posts/2024-03-01-sum-laurent.html">A summation identity, via Laurent expansion</a></td></tr>
+<tr><td class="postdate">Dec 30, 2023</td> <td><a href="/posts/2023-12-30-sum-matrix-inverse.html">An interesting result on the entries of a matrix inverse</a></td></tr>
+<tr><td class="postdate">Jan 6, 2023</td>  <td><a href="/posts/2023-01-06-real-jordan.html">Real Jordan form and complexification</a></td></tr>
+<tr><td class="postdate">Jan 4, 2023</td>  <td><a href="/posts/2023-01-04-linear-map-module.html">Studying linear maps through $F[\l]$-modules</a></td></tr>
+<tr><td class="postdate">Dec 24, 2022</td> <td><a href="/posts/2022-12-24-smith-form-Z2.html">Visualising Smith normal form on $\Z^2$</a></td></tr>
+<tr><td class="postdate">Oct 6, 2022</td>  <td><a href="/posts/2022-10-06-quaternion-cross-product.html">Why quaternion multiplication resembles the cross product</a></td></tr>
+<tr><td class="postdate">Oct 3, 2022</td>  <td><a href="/posts/2022-10-03-crt-easy.html">A very easy way to remember the Chinese Remainder Theorem</a></td></tr>
+<tr><td class="postdate">Jul 10, 2022</td> <td><a href="/posts/2022-07-10-linear-rr-simpler.html">A simpler way of solving linear recurrences</a></td></tr>
+<tr><td class="postdate">Jul 9, 2022</td>  <td><a href="/posts/2022-07-09-gripe-zorns.html">A small gripe on Zorn's lemma</a></td></tr>
+<tr><td class="postdate">Jun 22, 2021</td> <td><a href="/posts/2021-06-22-aut-Q8.html">Deriving $\Aut(Q_8)$</a></td></tr>
+</table>
+
+<h3>Writeups</h3>
+<table>
+<tr><td><a target="blank" href="/writeups/coinflip-game.pdf">A coin flipping game</a></td></tr>
+<tr><td><a target="blank" href="/writeups/fibonacci-game.pdf">Fibonacci Nim</a></td></tr>
+<tr><td><a target="blank" href="https://github.com/greysome/project-taco/blob/main/taocp/ch1-solutions.txt">Solutions to selected problems from The Art of Computer Programming, chapter 1</a></td></tr>
+<tr><td><a target="blank" href="https://github.com/greysome/project-taco/blob/main/taocp/ch2-solutions.txt">Solutions to selected problems from The Art of Computer Programming, chapter 2</a></td></tr>
+</table>
+<br>
+
+<p>Tell me something nice <a href="comments.html">here</a> ☺</p>

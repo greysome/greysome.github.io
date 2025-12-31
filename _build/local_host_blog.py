@@ -3,7 +3,7 @@ from flask import Flask, send_from_directory
 
 app = Flask(__name__)
 
-SITE_DIR = '../_site'
+SITE_DIR = '..'
 
 @app.errorhandler(404)
 def page_not_found(e):
